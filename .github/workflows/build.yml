@@ -45,11 +45,11 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-2c
+          aws-region: ap-northeast-2
 
       # 압축된 파일을 S3에 업로드
       - name: Upload to S3
-        run: aws s3 cp --region ap-northeast-2c ./cicdtest.zip s3://$S3_BUCKET_NAME/cicdtest.zip
+        run: aws s3 cp --region ap-northeast-2 ./cicdtest.zip s3://$S3_BUCKET_NAME/cicdtest.zip
 
       # S3에 업로드 된 빌드 파일을 이용해 CodeDeploy가 정의된 동작을 하도록 트리거
       - name: Code Deploy
