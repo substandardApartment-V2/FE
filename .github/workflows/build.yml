@@ -3,7 +3,6 @@ name: deploy to S3
 on:
   push:
     branches:
-	    # 어떤 브랜치에 CI/CD를 적용할건지 정의
       - Develop
 
 env:
