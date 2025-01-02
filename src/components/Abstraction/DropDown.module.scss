@@ -1,0 +1,16 @@
+.dropDown {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0rem;
+}
+
+.dropDownContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  li {
+    cursor: pointer;
+  }
+}
