@@ -4,13 +4,20 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.4rem 0rem;
+  span {
+    padding-left: 0.8rem;
+  }
 }
 
 .dropDownContent {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  position: absolute;
   li {
     cursor: pointer;
+    border: 1px solid #505b6e;
+    padding: 0.4rem 0rem;
+    padding-left: 0.8rem;
+    padding-right: 1.5rem;
   }
 }

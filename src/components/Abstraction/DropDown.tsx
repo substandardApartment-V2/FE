@@ -1,9 +1,16 @@
 import { useState } from "react";
 import styles from "./DropDown.module.scss";
 import dropDownIcon from "../../assets/dropDownIcon.svg";
+import DropDownList from "./DropDownList";
 
-export default function DropDown() {
+export type TDropDownProps = {
+  listContents: string[];
+  select: string;
+};
+
+export default function DropDown(props: TDropDownProps) {
   const [isShow, setIsShow] = useState(false);
+  const [currentSelect, setCurrentSelect] = useState(props.select);
 
   return (
     <>
@@ -13,13 +20,18 @@ export default function DropDown() {
           setIsShow((prevState) => !prevState);
         }}
       >
-        <span>최신순</span>
+        <span>{currentSelect}</span>
         <img src={dropDownIcon} alt="dropdown icon" />
       </div>
       {isShow && (
         <ul className={styles.dropDownContent}>
-          <li>최신순</li>
-          <li>오래된순</li>
+          {props.listContents.map((listContent) => (
+            <DropDownList
+              content={listContent}
+              setCurrentSelect={setCurrentSelect}
+              setIsShow={setIsShow}
+            />
+          ))}
         </ul>
       )}
     </>
