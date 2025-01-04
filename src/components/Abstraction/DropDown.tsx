@@ -3,8 +3,13 @@ import styles from "./DropDown.module.scss";
 import dropDownIcon from "../../assets/dropDownIcon.svg";
 import DropDownList from "./DropDownList";
 
+export type TListContents = {
+  content: string;
+  contentFn: () => void;
+};
+
 export type TDropDownProps = {
-  listContents: string[];
+  listContents: TListContents[];
   select: string;
 };
 
@@ -27,6 +32,7 @@ export default function DropDown(props: TDropDownProps) {
         <ul className={styles.dropDownContent}>
           {props.listContents.map((listContent) => (
             <DropDownList
+              key={listContent.content}
               content={listContent}
               setCurrentSelect={setCurrentSelect}
               setIsShow={setIsShow}
