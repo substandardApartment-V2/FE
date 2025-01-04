@@ -1,25 +1,33 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import DropDown from "./Abstraction/DropDown";
 
 const Layout = () => {
+  const [currentNews, setCurrentNews] = useState();
+
   const getDataFunctionAsc = async () => {
-    await fetch("https://jsonplaceholder.typicode.com/todos/1")
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+    const data = await fetch(
+      // 뉴스 api 호출이라고 가정
+      "https://swapi.py4e.com/api/people/1"
+    ).then((response) => response.json());
+
+    setCurrentNews(data.name); //뉴스 데이터 state 변경
   };
 
   const getDataFunctionDesc = async () => {
-    await fetch("https://jsonplaceholder.typicode.com/todos/2")
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+    const data = await fetch("https://swapi.py4e.com/api/people/2").then(
+      (response) => response.json()
+    );
+
+    setCurrentNews(data.name);
   };
 
   const getDataFunctionTest = () => {
     console.log("hello");
   };
 
-  const listContents = [
+  const dropDownContents = [
     {
       content: "최신순",
       contentFn: getDataFunctionAsc,
@@ -39,8 +47,12 @@ const Layout = () => {
     <>
       <Header />
       <Outlet />
-      <DropDown select="최신순" listContents={listContents} fontSize="medium" />
-      <div>hello</div>
+      <DropDown
+        select="최신순"
+        dropDownContents={dropDownContents}
+        fontSize="SMALL"
+      />
+      {/* <div style={{ fontSize: "26px", padding: "100px" }}>{currentNews}</div> */}
     </>
   );
 };

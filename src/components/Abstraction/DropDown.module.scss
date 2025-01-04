@@ -4,7 +4,7 @@
   align-items: center;
   width: fit-content;
   gap: 0.4rem;
-  padding: 0.4rem 0rem;
+  padding: 1rem 0rem;
   .selectContent {
     padding-left: 0.8rem;
     &.small {
@@ -26,7 +26,7 @@
     cursor: pointer;
     border: 1px solid #abb0b7;
     border-bottom: none;
-    padding: 0.4rem 1.5rem 0.4rem 0.8rem;
+    padding: 0.4rem 1rem;
   }
   li:last-child {
     border-bottom: 1px solid #abb0b7;
