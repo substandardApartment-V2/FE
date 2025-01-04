@@ -39,6 +39,7 @@ const Layout = () => {
       <Header />
       <Outlet />
       <DropDown select="최신순" listContents={listContents} />
+      <div>hello</div>
     </>
   );
 };
