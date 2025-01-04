@@ -29,7 +29,8 @@ const Layout = () => {
       contentFn: getDataFunctionDesc,
     },
     {
-      content: "테스트",
+      content:
+        "말하는감자입니다말하는감자입니다말하는감자입니다말하는감자입니다말하는감자입니다",
       contentFn: getDataFunctionTest,
     },
   ];
@@ -38,7 +39,7 @@ const Layout = () => {
     <>
       <Header />
       <Outlet />
-      <DropDown select="최신순" listContents={listContents} />
+      <DropDown select="최신순" listContents={listContents} fontSize="medium" />
       <div>hello</div>
     </>
   );

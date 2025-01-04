@@ -2,10 +2,17 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  width: fit-content;
   gap: 0.4rem;
   padding: 0.4rem 0rem;
-  span {
+  .selectContent {
     padding-left: 0.8rem;
+    &.small {
+      font-size: 10px;
+    }
+    &.medium {
+      font-size: 13px;
+    }
   }
 }
 

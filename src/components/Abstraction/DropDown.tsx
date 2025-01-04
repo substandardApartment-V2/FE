@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./DropDown.module.scss";
 import dropDownIcon from "../../assets/dropDownIcon.svg";
 import DropDownList from "./DropDownList";
+import classNames from "classnames";
 
 export type TListContents = {
   content: string;
@@ -11,6 +12,7 @@ export type TListContents = {
 export type TDropDownProps = {
   listContents: TListContents[];
   select: string;
+  fontSize: string;
 };
 
 export default function DropDown(props: TDropDownProps) {
@@ -25,7 +27,11 @@ export default function DropDown(props: TDropDownProps) {
           setIsShow((prevState) => !prevState);
         }}
       >
-        <span>{currentSelect}</span>
+        <span
+          className={classNames(styles.selectContent, styles[props.fontSize])}
+        >
+          {currentSelect}
+        </span>
         <img src={dropDownIcon} alt="dropdown icon" />
       </div>
       {isShow && (
