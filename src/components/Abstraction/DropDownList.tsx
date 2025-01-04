@@ -1,5 +1,5 @@
 import React from "react";
-import { TListContents } from "./DropDown";
+import { TListContents } from "../../types/DropDownTypes";
 
 type TDropDownLits = {
   content: TListContents;

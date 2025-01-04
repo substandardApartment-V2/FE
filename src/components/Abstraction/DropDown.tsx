@@ -2,12 +2,8 @@ import { useState } from "react";
 import styles from "./DropDown.module.scss";
 import dropDownIcon from "../../assets/dropDownIcon.svg";
 import DropDownList from "./DropDownList";
+import { TListContents } from "../../types/DropDownTypes";
 import classNames from "classnames";
-
-export type TListContents = {
-  content: string;
-  contentFn: () => void;
-};
 
 export type TDropDownProps = {
   listContents: TListContents[];
