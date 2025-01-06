@@ -1,5 +1,5 @@
 import newsImg from "../../../assets/news/newsImg01.jpeg";
-import { TNewsItem } from "../../../types/TNewsItem";
+import { TNewsItem } from "../../../types/TNewsItemTypes";
 import newsMain from "./NewsMain.module.scss";
 
 const NewsItem = ({
