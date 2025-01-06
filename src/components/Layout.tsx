@@ -46,7 +46,9 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <DropDown
         select="최신순"
         dropDownContents={dropDownContents}

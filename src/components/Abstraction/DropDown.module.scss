@@ -8,10 +8,10 @@
   .selectContent {
     padding-left: 0.8rem;
     &.small {
-      font-size: 10px;
+      font-size: 1rem;
     }
     &.medium {
-      font-size: 13px;
+      font-size: 1.3rem;
     }
   }
 }
@@ -24,11 +24,11 @@
   background-color: white;
   li {
     cursor: pointer;
-    border: 1px solid #abb0b7;
+    border: 0.1rem solid #abb0b7;
     border-bottom: none;
     padding: 0.4rem 1rem;
   }
   li:last-child {
-    border-bottom: 1px solid #abb0b7;
+    border-bottom: 0.1rem solid #abb0b7;
   }
 }
