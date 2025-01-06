@@ -1,5 +1,5 @@
 import React from "react";
-import { TListContents } from "../../types/DropDownTypes";
+import { TListContents } from "../../types/TDropDownTypes";
 import dropDownIcon from "../../assets/dropDownIcon.svg";
 import styles from "./DropDownList.module.scss";
 

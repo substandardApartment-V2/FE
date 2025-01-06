@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./DropDown.module.scss";
 import dropDownIcon from "../../assets/dropDownIcon.svg";
 import DropDownList from "./DropDownList";
-import { TListContents } from "../../types/DropDownTypes";
+import { TListContents } from "../../types/TDropDownTypes";
 import classNames from "classnames";
 
 // DropDown컴포넌트 props type 정의
