@@ -1,0 +1,27 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  padding-top: 2.7rem;
+  button {
+    border: 0px;
+    background-color: #fff;
+    padding: 0;
+    margin: 0;
+  }
+  .pageContainer {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    .pageLink {
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 2rem;
+      color: #33455c;
+    }
+    .pageActive {
+      font-weight: 700;
+      color: #b53a40;
+    }
+  }
+}
