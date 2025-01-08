@@ -28,10 +28,6 @@
     }
   }
   .headerDropDown {
-    select {
-      border: 0px;
-      font-size: 1rem;
-      line-height: 1.5rem;
-    }
+    position: absolute;
   }
 }

@@ -4,7 +4,7 @@
   align-items: center;
   width: fit-content;
   gap: 0.4rem;
-  padding: 1rem 0rem;
+  padding: 0.4rem 0rem;
   .selectContent {
     padding-left: 0.8rem;
     &.small {
@@ -16,19 +16,14 @@
   }
 }
 
+.dropDownBorder {
+  border: 0.1rem solid #abb0b7;
+}
+
 .dropDownContent {
   display: flex;
   flex-direction: column;
   position: absolute;
   z-index: 10;
   background-color: white;
-  li {
-    cursor: pointer;
-    border: 0.1rem solid #abb0b7;
-    border-bottom: none;
-    padding: 0.4rem 1rem;
-  }
-  li:last-child {
-    border-bottom: 0.1rem solid #abb0b7;
-  }
 }
