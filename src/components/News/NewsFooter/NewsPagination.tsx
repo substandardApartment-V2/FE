@@ -1,10 +1,10 @@
+import doubleLeft from "@/assets/news/doubleLeft.svg";
+import doubleRight from "@/assets/news/doubleRight.svg";
+import left from "@/assets/news/left.svg";
+import right from "@/assets/news/right.svg";
+import threeDot from "@/assets/news/threeDot.svg";
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import doubleLeft from "../../../assets/news/doubleLeft.svg";
-import doubleRight from "../../../assets/news/doubleRight.svg";
-import left from "../../../assets/news/left.svg";
-import right from "../../../assets/news/right.svg";
-import threeDot from "../../../assets/news/threeDot.svg";
 import newsPage from "./NewsPagination.module.scss";
 
 const NewsPagination = () => {
