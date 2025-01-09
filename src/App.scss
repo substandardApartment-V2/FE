@@ -86,6 +86,7 @@ video {
   border: 0;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 
 article,
@@ -107,9 +108,12 @@ html {
 }
 
 body {
+  width: 100%;
+  min-height: 100svh;
   font-size: 1.3rem;
   font-family: "Pretendard", sans-serif;
   padding: 4rem 7.2rem;
+  box-sizing: border-box;
   line-height: 1;
 }
 
@@ -136,4 +140,11 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+button {
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import newsHeader from "./NewsHeader.module.scss";
 import DropDown from "../../Abstraction/DropDown/DropDown";
+import newsHeader from "./NewsHeader.module.scss";
 import NewsHeaderTab from "./NewsHeaderTab";
 
 const NewsHeader = () => {
