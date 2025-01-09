@@ -4,7 +4,7 @@ import searchIcon from "@/assets/Main/searchICon.svg";
 
 export default function Home() {
   return (
-    <main className={styles.home}>
+    <section className={styles.home}>
       <section className={styles.homeRight}>
         <div className={styles.apartSearch}>
           <input
@@ -57,6 +57,6 @@ export default function Home() {
         </div>
       </section>
       <ApartMap />
-    </main>
+    </section>
   );
 }
