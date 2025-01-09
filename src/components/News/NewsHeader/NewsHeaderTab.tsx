@@ -1,5 +1,5 @@
-import slash from "../../../assets/news/slash.svg";
-import { useNewsStore } from "../../../store/useNewsStore";
+import slash from "@/assets/news/slash.svg";
+import { useNewsStore } from "@/store/useNewsStore";
 import newsHeader from "./NewsHeader.module.scss";
 
 const NewsHeaderTab = () => {

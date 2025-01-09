@@ -1,4 +1,4 @@
-import { useNewsStore } from "../../../store/useNewsStore";
+import { useNewsStore } from "@/store/useNewsStore";
 import ApartNewsList from "./ApartNewsList";
 import PoorApartNewsList from "./PoorApartNewsList";
 
