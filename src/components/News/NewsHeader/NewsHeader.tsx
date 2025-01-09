@@ -1,5 +1,5 @@
+import DropDown from "@/components/Abstraction/DropDown/DropDown";
 import { useState } from "react";
-import DropDown from "../../Abstraction/DropDown/DropDown";
 import newsHeader from "./NewsHeader.module.scss";
 import NewsHeaderTab from "./NewsHeaderTab";
 
