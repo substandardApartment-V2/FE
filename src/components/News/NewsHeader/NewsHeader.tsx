@@ -1,27 +1,11 @@
 import DropDown from "@/components/Abstraction/DropDown/DropDown";
-import { useState } from "react";
 import newsHeader from "./NewsHeader.module.scss";
 import NewsHeaderTab from "./NewsHeaderTab";
 
 const NewsHeader = () => {
-  const [currentNews, setCurrentNews] = useState();
+  const getDataFunctionAsc = async () => {};
 
-  const getDataFunctionAsc = async () => {
-    const data = await fetch(
-      // 뉴스 api 호출이라고 가정
-      "https://swapi.py4e.com/api/people/1"
-    ).then((response) => response.json());
-
-    setCurrentNews(data.name); //뉴스 데이터 state 변경
-  };
-
-  const getDataFunctionDesc = async () => {
-    const data = await fetch("https://swapi.py4e.com/api/people/2").then(
-      (response) => response.json()
-    );
-
-    setCurrentNews(data.name);
-  };
+  const getDataFunctionDesc = async () => {};
 
   const dropDownContents = [
     {
