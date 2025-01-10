@@ -1,3 +1,5 @@
+@use "@/styles/colors.scss";
+
 .pagination {
   margin-top: auto;
   display: flex;
@@ -12,11 +14,11 @@
       font-size: 1.2rem;
       font-weight: 500;
       line-height: 2rem;
-      color: #33455c;
+      color: colors.$mainTitle;
     }
     .pageActive {
       font-weight: 700;
-      color: #b53a40;
+      color: colors.$mainRed;
     }
   }
 }
