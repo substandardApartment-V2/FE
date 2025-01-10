@@ -1,0 +1,39 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  font-size: 1.7rem;
+  padding-bottom: 5.6rem;
+  > * {
+    width: 50%;
+  }
+  ul {
+    display: flex;
+    flex-direction: row;
+    li {
+      display: flex;
+      width: 25%;
+      border-left: 0.2rem solid #b43741;
+      box-sizing: border-box;
+      &:last-child {
+        border-right: 0.2rem solid #b43741;
+        box-sizing: border-box;
+      }
+      :hover,
+      .active {
+        background-color: #142337;
+        color: #fff;
+      }
+      a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.8rem;
+        font-weight: 700;
+        color: #142337;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.dropDown {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 0.4rem;
+  padding: 0.4rem 0rem;
+  .selectContent {
+    padding-left: 0.8rem;
+    &.small {
+      font-size: 1rem;
+    }
+    &.medium {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.dropDownBorder {
+  border: 0.1rem solid #abb0b7;
+}
+
+.dropDownContent {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+}
