@@ -28,6 +28,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # env file
+      - name: Set up .env file
+        run: |
+          echo "VITE_GOOGLE_URL=${{ secrets.VITE_GOOGLE_URL }}" >> .env
+
       # 프로젝트 빌드
       - name: Build next app
         run: npm run build
