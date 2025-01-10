@@ -1,12 +1,14 @@
+@use "@/styles/colors.scss";
+
 .newsItem {
   padding: 0.8rem 1.6rem;
-  border: 0.1rem solid #e8eef5;
+  border: 0.1rem solid colors.$mainBorder;
   border-radius: 1rem;
   .newsItemHeader {
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.5rem;
-    color: #abb0b7;
+    color: colors.$mainBorder;
     > span {
       padding-right: 0.4rem;
     }
@@ -15,7 +17,7 @@
     font-size: 1.3rem;
     font-weight: 700;
     line-height: 1.95rem;
-    color: #33455c;
+    color: colors.$mainNavy;
     margin-bottom: 0.8rem;
   }
   .newsItemContentWrapper {
