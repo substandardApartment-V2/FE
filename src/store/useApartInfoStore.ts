@@ -5,7 +5,7 @@ type TuseApartInfoStore = {
   setIsDetailInfo: () => void;
 };
 
-export const useNewsStore = create<TuseApartInfoStore>((set) => ({
+export const useApartInfoStore = create<TuseApartInfoStore>((set) => ({
   isDetailInfo: false,
   setIsDetailInfo: () =>
     set((state) => ({

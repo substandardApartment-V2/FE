@@ -7,6 +7,7 @@ import detailButtonIcon from "@/assets/Main/ApartInfo/detailButtonIcon.svg";
 import detailButtonIconD from "@/assets/Main/ApartInfo/detailButtonIconD.svg";
 import welfareIcon from "@/assets/Main/ApartInfo/welfareIcon.svg";
 import childCareIcon from "@/assets/Main/ApartInfo/childCareIcon.svg";
+import { useApartInfoStore } from "@/store/useApartInfoStore";
 
 export default function ApartInfo() {
   const dropDownContents = [
