@@ -5,6 +5,9 @@
   width: fit-content;
   gap: 0.4rem;
   padding: 0.4rem 0rem;
+  background-color: #ffffff;
+  color: #142337;
+  font-family: "Pretendard", sans-serif;
   .selectContent {
     padding-left: 0.8rem;
     &.small {
@@ -26,4 +29,7 @@
   position: absolute;
   z-index: 10;
   background-color: white;
+  color: #435464;
+  width: 100%;
+  font-family: "Pretendard", sans-serif;
 }

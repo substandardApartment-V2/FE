@@ -1,0 +1,48 @@
+section {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f5fe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #535b83;
+  span {
+    font-size: 1.8rem;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+  }
+}
+
+@keyframes changeColor {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: blue;
+  }
+  100% {
+    background-color: red;
+  }
+}
+
+.circle {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 50%;
+  animation: changeColor 1.5s infinite;
+  margin-right: 0.5rem;
+
+  &.second {
+    margin: 0 0.5rem;
+    animation-delay: 300ms;
+  }
+
+  &.third {
+    margin-left: 0.5rem;
+    animation-delay: 600ms;
+  }
+}
