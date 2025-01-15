@@ -10,6 +10,8 @@ import childCareIcon from "@/assets/Main/ApartInfo/childCareIcon.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 
 export default function ApartInfo() {
+  const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
+
   const dropDownContents = [
     {
       content: "59㎡",
@@ -98,7 +100,7 @@ export default function ApartInfo() {
           <div className={styles.chartTitle}>
             <strong>관리비 - 2024</strong>
             <span>
-              자세히보기{" "}
+              자세히보기
               <img src={detailButtonIcon} alt="apart maintance charge detail" />
             </span>
           </div>
@@ -195,7 +197,12 @@ export default function ApartInfo() {
           </li>
         </ul>
       </section>
-      <button className={styles.detailApartInfoButton}>
+      <button
+        className={styles.detailApartInfoButton}
+        onClick={() => {
+          setIsDetailInfo();
+        }}
+      >
         <img src={detailButtonIconD} alt="apart detail button" />
         자세히보기
       </button>

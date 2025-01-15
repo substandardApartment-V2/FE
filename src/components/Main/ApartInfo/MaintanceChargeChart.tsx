@@ -28,8 +28,8 @@ const MaintanceChargeChart = () => {
         ],
         backgroundColor: ["#E4E1D0"],
         barThickness: 17,
-        barPercentage: 0.5,
-        maxBarThickness: 8,
+        barPercentage: 3,
+        maxBarThickness: 20,
         minBarLength: 3,
       },
     ],
@@ -48,8 +48,12 @@ const MaintanceChargeChart = () => {
           },
           lineWidth: 0.5,
         },
+
         border: {
-          display: false,
+          display: true,
+          dash: [0],
+          width: 1,
+          color: "rgba(255, 255, 255, 0.8)",
         },
         ticks: {
           callback: function (value: number) {
@@ -59,7 +63,7 @@ const MaintanceChargeChart = () => {
           font: {
             size: 12,
           },
-          padding: 0,
+          padding: 10,
         },
       },
       x: {
@@ -69,6 +73,12 @@ const MaintanceChargeChart = () => {
           font: {
             size: 12,
           },
+          padding: 10,
+        },
+        grid: {
+          drawOnChartArea: false,
+          drawTicks: false,
+          drawBorder: false,
         },
       },
     },
@@ -76,6 +86,9 @@ const MaintanceChargeChart = () => {
       title: {
         display: false,
         text: "Custom Chart Subtitle",
+      },
+      legend: {
+        display: false,
       },
     },
   };

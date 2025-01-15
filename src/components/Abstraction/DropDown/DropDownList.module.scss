@@ -3,12 +3,16 @@
   border: 0.1rem solid #abb0b7;
   border-bottom: none;
   padding: 0.4rem 2rem 0.4rem 0.8rem;
+  padding-right: 0%;
+  width: 100%;
+  span {
+    width: 100%;
+  }
   &:first-child {
     &.borderTop {
       border-top: none;
     }
   }
-
   &:last-child {
     border-bottom: 0.1rem solid #abb0b7;
   }
