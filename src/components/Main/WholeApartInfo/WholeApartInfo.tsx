@@ -2,7 +2,7 @@ import styles from "./Home.module.scss";
 import searchIcon from "@/assets/Main/searchICon.svg";
 import DropDown from "@/components/Abstraction/DropDown/DropDown";
 
-export default function Home() {
+export default function WholeApartInfo() {
   const dropDownContents = [
     {
       content: "최신순",
