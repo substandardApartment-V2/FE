@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./components/Layout";
 import ApartInfoPage from "./pages/ApartInfoPage";
 import News from "./pages/News";
-import PoorApart from "./pages/PoorApart";
+import PoorApart from "./pages/PoorApartInfoPage";
 import Report from "./pages/Report";
 
 const Router = createBrowserRouter([
