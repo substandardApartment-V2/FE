@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type TIsDetailInfo = null | "APARTINFO" | "WEAKRANK";
+type TIsDetailInfo = null | "APARTINFO" | "WEAKRANK" | "MAINTANCE";
 
 type TuseApartInfoStore = {
   isDetailInfo: TIsDetailInfo;

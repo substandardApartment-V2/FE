@@ -2,6 +2,7 @@ import styles from "./DetailInfo.module.scss";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import DetailApartInfo from "./DetailApartInfo";
 import DetailWeakRankInfo from "@/components/WeakApart/DetailWeakRankInfo";
+import DetailMaintanceCharge from "./DetailMaintanceCharge";
 
 export default function DetailInfo() {
   const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
@@ -10,6 +11,7 @@ export default function DetailInfo() {
     <div className={styles.detailApartInfo}>
       {isDetailInfo === "APARTINFO" && <DetailApartInfo />}
       {isDetailInfo === "WEAKRANK" && <DetailWeakRankInfo />}
+      {isDetailInfo === "MAINTANCE" && <DetailMaintanceCharge />}
     </div>
   );
 }
