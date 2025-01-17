@@ -1,0 +1,11 @@
+.detailApartInfo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  height: 100%;
+  width: 40%;
+  background-color: white;
+  border: 0.1rem solid black;
+  overflow: scroll;
+}

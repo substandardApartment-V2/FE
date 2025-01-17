@@ -1,4 +1,4 @@
-import styles from "./Home.module.scss";
+import styles from "./WholeApartInfo.module.scss";
 import searchIcon from "@/assets/Main/searchICon.svg";
 import DropDown from "@/components/Abstraction/DropDown/DropDown";
 
@@ -16,13 +16,13 @@ export default function WholeApartInfo() {
 
   return (
     <section className={styles.homeRight}>
-      <div className={styles.apartSearch}>
+      <section className={styles.apartSearch}>
         <input
           className={styles.apartSearchInput}
           placeholder="궁금한 지역, 아파트를 검색해보세요."
         />
         <img src={searchIcon} alt="location apart search" />
-      </div>
+      </section>
       <div className={styles.currentApartStatus}>
         <h1>아파트 근황</h1>
         <div className={styles.averageSellingPrice}>

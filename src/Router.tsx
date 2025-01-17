@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./components/Layout";
 import ApartInfoPage from "./pages/ApartInfoPage";
 import News from "./pages/News";
-import PoorApart from "./pages/PoorApartInfoPage";
+import WeakApartInfoPage from "./pages/WeakApartInfoPage";
 import Report from "./pages/Report";
 
 const Router = createBrowserRouter([
@@ -11,7 +11,7 @@ const Router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <ApartInfoPage /> },
-      { path: "/poor", element: <PoorApart /> },
+      { path: "/poor", element: <WeakApartInfoPage /> },
       { path: "/news", element: <News /> },
       { path: "/report", element: <Report /> },
     ],

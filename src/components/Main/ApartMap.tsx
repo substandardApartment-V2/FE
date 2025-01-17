@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import styles from "./ApartMap.module.scss";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
-import DetailApartInfo from "./ApartInfo/DetailApartInfo";
+import DetailInfo from "./ApartInfo/DetailInfo";
 
 export default function ApartMap() {
   const mapRef = useRef<HTMLDivElement | null>(null);
@@ -67,7 +67,7 @@ export default function ApartMap() {
 
   return (
     <section className={styles.apartMap}>
-      {isDetailInfo && <DetailApartInfo />}
+      {isDetailInfo && <DetailInfo />}
       <div id="map" ref={mapRef} className={styles.map} />
     </section>
   );

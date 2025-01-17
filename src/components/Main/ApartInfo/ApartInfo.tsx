@@ -11,6 +11,7 @@ import { useApartInfoStore } from "@/store/useApartInfoStore";
 
 export default function ApartInfo() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
+  const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
 
   const dropDownContents = [
     {
@@ -200,7 +201,9 @@ export default function ApartInfo() {
       <button
         className={styles.detailApartInfoButton}
         onClick={() => {
-          setIsDetailInfo();
+          if (isDetailInfo === "APARTINFO") {
+            setIsDetailInfo(null);
+          } else setIsDetailInfo("APARTINFO");
         }}
       >
         <img src={detailButtonIconD} alt="apart detail button" />

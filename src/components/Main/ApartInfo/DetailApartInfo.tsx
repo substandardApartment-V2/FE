@@ -3,7 +3,7 @@ import buildingIcon from "@/assets/Main/ApartInfo/buildingIcon.svg";
 
 export default function DetailApartInfo() {
   return (
-    <div className={styles.detailApartInfo}>
+    <>
       <div className={styles.building}>
         <div className={styles.title}>
           건물 <img src={buildingIcon} alt="building icon" />
@@ -124,6 +124,6 @@ export default function DetailApartInfo() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

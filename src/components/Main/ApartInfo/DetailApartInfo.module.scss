@@ -1,46 +1,35 @@
-.detailApartInfo {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1000;
-  height: 100%;
-  width: 40%;
-  background-color: white;
-  border: 0.1rem solid black;
-  overflow: scroll;
-  .building {
-    width: 100%;
-    img {
-      width: 2.4rem;
-    }
+.building {
+  width: 100%;
+  img {
+    width: 2.4rem;
   }
+}
 
-  .contents {
-    width: 100%;
+.contents {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2.4rem;
+  .content {
     display: flex;
-    justify-content: center;
-    padding: 2.4rem;
-    .content {
-      display: flex;
-      width: 50%;
-      align-items: center;
-      flex-direction: column;
-      gap: 2.4rem;
-      padding: 1.2rem;
-      &:first-child {
-        border-right: 0.1rem solid #7f8a95;
-      }
-      &:last-child {
-        border-left: 0.1rem solid #7f8a95;
-      }
-      .subTitle {
-        font-size: 2rem;
-        font-weight: 600;
-      }
-      .subContent {
-        font-size: 3rem;
-        font-weight: 600;
-      }
+    width: 50%;
+    align-items: center;
+    flex-direction: column;
+    gap: 2.4rem;
+    padding: 1.2rem;
+    &:first-child {
+      border-right: 0.1rem solid #7f8a95;
+    }
+    &:last-child {
+      border-left: 0.1rem solid #7f8a95;
+    }
+    .subTitle {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    .subContent {
+      font-size: 3rem;
+      font-weight: 600;
     }
   }
 }

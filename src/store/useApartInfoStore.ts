@@ -1,14 +1,16 @@
 import { create } from "zustand";
 
+type TIsDetailInfo = null | "APARTINFO" | "WEAKRANK";
+
 type TuseApartInfoStore = {
-  isDetailInfo: boolean;
-  setIsDetailInfo: () => void;
+  isDetailInfo: TIsDetailInfo;
+  setIsDetailInfo: (isDetailInfo: TIsDetailInfo) => void;
 };
 
 export const useApartInfoStore = create<TuseApartInfoStore>((set) => ({
-  isDetailInfo: false,
-  setIsDetailInfo: () =>
-    set((state) => ({
-      isDetailInfo: !state.isDetailInfo,
+  isDetailInfo: null,
+  setIsDetailInfo: (isDetailInfo: TIsDetailInfo) =>
+    set(() => ({
+      isDetailInfo: isDetailInfo,
     })),
 }));

@@ -1,6 +1,7 @@
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
-import { plugins } from "chart.js/auto";
+import { ChartOptions } from "chart.js/auto";
+import { Tooltip } from "chart.js";
 
 const MaintanceChargeChart = () => {
   const area = "59㎡";
@@ -35,7 +36,7 @@ const MaintanceChargeChart = () => {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<"bar"> = {
     scales: {
       y: {
         beginAtZero: true,
@@ -78,17 +79,16 @@ const MaintanceChargeChart = () => {
         grid: {
           drawOnChartArea: false,
           drawTicks: false,
-          drawBorder: false,
         },
       },
     },
     plugins: {
-      title: {
-        display: false,
-        text: "Custom Chart Subtitle",
-      },
       legend: {
         display: false,
+      },
+      tooltip: {
+        backgroundColor: "rgba(255,255,255,1)",
+        borderColor: "rgba(224,58,62,1)",
       },
     },
   };
