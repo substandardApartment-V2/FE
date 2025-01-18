@@ -1,3 +1,5 @@
+@use "@/styles/colors.scss";
+
 .homeRight {
   width: 45%;
   display: flex;
@@ -14,7 +16,7 @@
       border-top-left-radius: 10rem;
       border-bottom-left-radius: 10rem;
       padding: 0.8rem 0rem 0.8rem 2.4rem;
-      border: 0.1rem solid #e03a3e;
+      border: 0.1rem solid colors.$mainRed;
       &::placeholder {
         font-size: 1.3rem;
       }
@@ -30,11 +32,11 @@
     flex-direction: column;
     gap: 0.8rem;
     margin-bottom: 1.6rem;
-    h1 {
-      background-color: #142337;
+    h2 {
+      background-color: colors.$mainNavy;
       color: #f5f5f5;
-      font-size: 1.6rem;
-      font-family: "Pretendard-Bold", sans-serif;
+      font-size: 1.8rem;
+      font-weight: 600;
       padding: 1.3rem 0rem 1.3rem 2.4rem;
     }
     .averageSellingPrice {
@@ -45,7 +47,7 @@
         flex-direction: column;
         gap: 0.4rem;
         justify-content: center;
-        background-color: #435464;
+        background-color: colors.$mainTitle;
         padding: 0.8rem 0rem 0.8rem 2.4rem;
         .listMainTitle {
           font-size: 1.3rem;
@@ -69,20 +71,24 @@
       }
     }
   }
+  //공지사항
   .serviceNotice {
+    //공지사항 타이틀
     .serviceNoticeTitle {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #142337;
+      background-color: colors.$mainNavy;
       color: #f5f5f5;
       font-size: 1.6rem;
       padding: 0.8rem 0.8rem 0.8rem 2.4rem;
-      margin-bottom: 0.8rem;
-      strong {
+      margin-bottom: 1rem;
+      h2 {
+        font-size: 1.8rem;
         font-family: "Pretendard-Bold", sans-serif;
       }
     }
+    //공지사항 리스트 모음
     .noticeLists {
       display: flex;
       flex-direction: column;
@@ -90,23 +96,25 @@
       height: 100%;
       li {
         border: 0.1rem solid #aaafb9;
-        padding: 0.8rem 2.4rem 4rem 2.4rem;
+        padding: 1.4rem 2.4rem 4rem 2.4rem;
         .noticeListTitle {
           display: flex;
           justify-content: space-between;
+          align-items: center;
           margin-bottom: 0.8rem;
-          font-size: 1.6rem;
           strong {
+            font-size: 1.8rem;
             font-weight: 700;
             color: #142337;
           }
           span {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: #aaafb9;
           }
         }
         .noticeListContent {
-          font-size: 1.3rem;
+          font-size: 1.5rem;
+          line-height: 2rem;
           color: #142337;
         }
       }

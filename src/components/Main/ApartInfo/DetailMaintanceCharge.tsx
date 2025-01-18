@@ -9,7 +9,7 @@ export default function DetailMaintanceCharge() {
 
   const dropDownContents = [
     {
-      content: "최신순",
+      content: "개별사용료",
       contentFn: () => {},
     },
     {
@@ -22,9 +22,11 @@ export default function DetailMaintanceCharge() {
       <section>
         <div>
           <div>
-            <span className={styles.title}>관리비 개별사용료 - 59㎡ </span>
+            <span className={styles.title}>
+              관리비 개별사용료 - <span>59㎡</span>
+            </span>
             <DropDown
-              select="최신순"
+              select="개별사용료"
               fontSize="MEDIUM"
               outerBorder={true}
               dropDownContents={dropDownContents}
@@ -41,11 +43,15 @@ export default function DetailMaintanceCharge() {
         <MaintanceChargeChart />
       </section>
       <section>
-        <span className={styles.title}>관리비 개별사용료 - 82㎡ </span>
+        <span className={styles.title}>
+          관리비 개별사용료 - <span>82㎡</span>
+        </span>
         <MaintanceChargeChart />
       </section>
       <section>
-        <span className={styles.title}>관리비 개별사용료 - 114㎡ </span>
+        <span className={styles.title}>
+          관리비 개별사용료 - <span>114㎡</span>
+        </span>
         <MaintanceChargeChart />
       </section>
     </section>

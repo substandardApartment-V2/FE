@@ -18,7 +18,7 @@ export default function DropDown(props: TDropDownProps) {
   const [currentSelect, setCurrentSelect] = useState(props.select);
 
   return (
-    <div style={{ position: "relative" }}>
+    <section className={styles.dropDownContainer}>
       <div
         className={classNames(
           styles.dropDown,
@@ -51,6 +51,6 @@ export default function DropDown(props: TDropDownProps) {
           ))}
         </ul>
       )}
-    </div>
+    </section>
   );
 }

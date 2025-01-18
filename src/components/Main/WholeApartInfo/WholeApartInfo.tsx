@@ -24,7 +24,7 @@ export default function WholeApartInfo() {
         <img src={searchIcon} alt="location apart search" />
       </section>
       <div className={styles.currentApartStatus}>
-        <h1>아파트 근황</h1>
+        <h2>아파트 근황</h2>
         <div className={styles.averageSellingPrice}>
           <div className={styles.listTitle}>
             <div className={styles.listMainTitle}>전국 아파트 평균 매매가</div>
@@ -56,7 +56,7 @@ export default function WholeApartInfo() {
       </div>
       <div className={styles.serviceNotice}>
         <div className={styles.serviceNoticeTitle}>
-          <strong>공지사항</strong>
+          <h2>공지사항</h2>
           <DropDown
             select="최신순"
             fontSize="MEDIUM"

@@ -1,35 +1,38 @@
-.dropDown {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  gap: 0.4rem;
-  padding: 0.4rem 0rem;
-  background-color: #ffffff;
-  color: #142337;
-  font-family: "Pretendard", sans-serif;
-  .selectContent {
-    padding-left: 0.8rem;
-    &.small {
-      font-size: 1rem;
-    }
-    &.medium {
-      font-size: 1.3rem;
+.dropDownContainer {
+  position: relative;
+  .dropDown {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    gap: 0.4rem;
+    padding: 0.4rem 0rem;
+    background-color: #ffffff;
+    color: #142337;
+    font-family: "Pretendard", sans-serif;
+    position: relative;
+    .selectContent {
+      padding-left: 0.8rem;
+      &.small {
+        font-size: 1rem;
+      }
+      &.medium {
+        font-size: 1.3rem;
+      }
     }
   }
-}
+  .dropDownBorder {
+    border: 0.1rem solid #abb0b7;
+  }
 
-.dropDownBorder {
-  border: 0.1rem solid #abb0b7;
-}
-
-.dropDownContent {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 10;
-  background-color: white;
-  color: #435464;
-  width: 100%;
-  font-family: "Pretendard", sans-serif;
+  .dropDownContent {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    color: #435464;
+    width: 100%;
+    font-family: "Pretendard", sans-serif;
+  }
 }

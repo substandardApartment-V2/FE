@@ -6,12 +6,12 @@
   justify-content: space-between;
   height: 100%;
   background-color: colors.$mainNavy;
-  padding: 1.6rem;
+  padding: 2rem;
   section {
-    padding: 1.2rem 0rem;
-    display: flex;
-    flex-direction: column;
+    height: 100%;
     &:first-child {
+      display: flex;
+      flex-direction: column;
       div {
         display: flex;
         align-items: center;
@@ -21,7 +21,7 @@
         button {
           position: absolute;
           right: 0;
-          bottom: 0.8rem;
+          bottom: 3rem;
           img {
             width: 3rem;
           }
@@ -30,7 +30,12 @@
     }
     .title {
       color: #ffffff;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      padding: 2rem 0rem;
+      span {
+        font-weight: 400;
+      }
     }
   }
 }

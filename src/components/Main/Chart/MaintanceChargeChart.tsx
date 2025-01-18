@@ -89,6 +89,8 @@ const MaintanceChargeChart = () => {
       tooltip: {
         backgroundColor: "rgba(255,255,255,1)",
         borderColor: "rgba(224,58,62,1)",
+        borderWidth: 1,
+        bodyFontColor: "rgba(255,255,255,1)",
       },
     },
   };
