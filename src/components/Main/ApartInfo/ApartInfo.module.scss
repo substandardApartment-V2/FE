@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  overflow-y: hidden;
   .apartSearch {
     display: flex;
     align-items: center;
@@ -71,10 +70,9 @@
   .apartInfo {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
     gap: 1.6rem;
     width: 100%;
-    height: 100%;
+    overflow-y: auto;
     .buildInfo {
       display: flex;
       .buildCompanyDate {
