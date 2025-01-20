@@ -21,12 +21,11 @@ export default function WeakBuilderChart() {
       {
         data: [118, 92, 82, 76, 71, 59, 58, 57, 53, 51],
         backgroundColor: ["#E4E1D0"],
-        barThickness: 17,
-        maxBarThickness: 12,
-        minBarLength: 3,
+        categoryPercentage: 0.6,
       },
     ],
   };
+
   const options: ChartOptions<"bar"> = {
     responsive: true,
     maintainAspectRatio: false,
@@ -36,34 +35,22 @@ export default function WeakBuilderChart() {
         ticks: {
           color: "#ffffff",
           font: {
-            size: 13,
+            size: 15,
           },
-          crossAlign: "far", //라벨이 축 왼쪽으로 정렬
+          crossAlign: "far", // 라벨이 축 왼쪽으로 정렬
         },
-
         grid: {
-          // y축 line 제거
           offset: false,
-          display: false,
+          display: false, // y축 선 제거
         },
       },
       x: {
-        // x축 제거
-        display: false,
-      },
-    },
-    layout: {
-      padding: {
-        left: 0,
-        right: 25,
+        display: false, // x축 제거
       },
     },
     plugins: {
       legend: {
-        display: false,
-        labels: {
-          padding: 20,
-        },
+        display: false, // 범례 비활성화
       },
       datalabels: {
         color: "#FFFFFF",

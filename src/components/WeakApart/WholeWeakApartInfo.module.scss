@@ -37,7 +37,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 0.8rem;
       div {
         display: flex;
         align-items: center;
@@ -71,32 +70,32 @@
       justify-content: space-between;
       width: 100%;
       height: 100%;
-      padding: 1.2rem;
-      div {
-        &:first-child {
-          width: 65%;
-          height: 100%;
+      // padding: 1.2rem 0rem;
+      .weakBuilderChart {
+        width: 65%;
+        height: 100%;
+      }
+      .fiveYearsWeakBuilderChart {
+        display: flex;
+        flex-direction: column;
+        gap: 2.2rem;
+        width: 30%;
+        h3 {
+          font-weight: 600;
+          margin-bottom: 0.8rem;
+          color: #ffffff;
         }
-        &:last-child {
+        div {
+          display: flex;
+          justify-content: center;
+          width: 90%;
+        }
+        ul {
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          width: 30%;
-          h3 {
-            font-weight: 600;
-            margin-bottom: 0.8rem;
+          gap: 1.2rem;
+          li {
             color: #ffffff;
-          }
-          canvas {
-            width: 30%;
-          }
-          ul {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            li {
-              color: #ffffff;
-            }
           }
         }
       }
@@ -112,7 +111,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.6rem 2.4rem;
+      padding: 1.2rem 2.4rem;
       background-color: colors.$mainTitle;
       .title {
         font-size: 2.4rem;

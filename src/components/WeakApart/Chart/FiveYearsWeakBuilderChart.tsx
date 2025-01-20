@@ -24,7 +24,7 @@ export default function FiveYearsWeakBuilderChart() {
         barPercentage: 3,
         maxBarThickness: 20,
         minBarLength: 3,
-        cutout: "85%",
+        cutout: "85%", //도넛 두께
         borderWidth: 0,
         spacing: 5,
       },

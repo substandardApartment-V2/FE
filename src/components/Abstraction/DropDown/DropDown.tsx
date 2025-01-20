@@ -11,6 +11,7 @@ export type TDropDownProps = {
   select: string;
   fontSize?: "SMALL" | "MEDIUM";
   outerBorder: boolean;
+  width: "SMALL" | "MEDIUM";
 };
 
 export default function DropDown(props: TDropDownProps) {
@@ -22,7 +23,8 @@ export default function DropDown(props: TDropDownProps) {
       <div
         className={classNames(
           styles.dropDown,
-          props.outerBorder ? styles.dropDownBorder : ""
+          props.outerBorder ? styles.dropDownBorder : "",
+          props.width === "SMALL" ? styles.minWidth : styles.maxWidth
         )}
         onClick={() => {
           setIsShow((prevState) => !prevState);

@@ -93,6 +93,7 @@ export default function ApartInfo() {
                 fontSize="MEDIUM"
                 outerBorder={true}
                 dropDownContents={dropDownContents}
+                width="SMALL"
               />
             </div>
           </div>

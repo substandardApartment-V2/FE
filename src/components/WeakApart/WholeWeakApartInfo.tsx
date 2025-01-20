@@ -37,12 +37,14 @@ export default function WholeWeakApartInfo() {
           </button>
         </div>
         <div className={styles.chart}>
-          <div>
+          <div className={styles.weakBuilderChart}>
             <WeakBuilderChart />
           </div>
-          <div>
+          <div className={styles.fiveYearsWeakBuilderChart}>
             <h3>5년간 하자판정 건수 순위</h3>
-            <FiveYearsWeakBuilderChart />
+            <div>
+              <FiveYearsWeakBuilderChart />
+            </div>
             <ul>
               <li>1. 지에스건설(주)</li>
               <li>2. 계롱건설(주)</li>

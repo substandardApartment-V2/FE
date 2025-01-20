@@ -30,6 +30,7 @@ export default function DetailMaintanceCharge() {
               fontSize="MEDIUM"
               outerBorder={true}
               dropDownContents={dropDownContents}
+              width="MEDIUM"
             />
           </div>
           <button

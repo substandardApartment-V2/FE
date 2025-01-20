@@ -39,7 +39,6 @@ const MaintanceChargeChart = () => {
   const options: ChartOptions<"bar"> = {
     scales: {
       y: {
-        beginAtZero: true,
         grid: {
           color: function (context: any) {
             if (context.tick.value === 0) {

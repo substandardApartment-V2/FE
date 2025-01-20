@@ -62,6 +62,7 @@ export default function WholeApartInfo() {
             fontSize="MEDIUM"
             outerBorder={true}
             dropDownContents={dropDownContents}
+            width="SMALL"
           />
         </div>
         <ul className={styles.noticeLists}>
