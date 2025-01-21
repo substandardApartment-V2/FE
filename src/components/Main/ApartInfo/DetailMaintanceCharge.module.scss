@@ -1,13 +1,14 @@
 @use "@/styles/colors.scss";
 
-.maintance {
+.maintances {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
   background-color: colors.$mainNavy;
   padding: 2rem;
-  section {
+  .eachArea {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     &:first-child {
       display: flex;
