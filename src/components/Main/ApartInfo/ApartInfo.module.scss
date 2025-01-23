@@ -1,4 +1,4 @@
-@use "../../../styles/_colors.scss";
+@use "@/styles/_colors.scss";
 
 .apartInfoContainer {
   width: 45%;
@@ -10,16 +10,18 @@
   .apartSearch {
     display: flex;
     align-items: center;
-    width: 100%;
+    max-width: 100%;
     position: relative;
     .apartSearchInput {
       width: 100%;
       border-top-left-radius: 10rem;
       border-bottom-left-radius: 10rem;
-      padding: 0.8rem 0rem 0.8rem 2.4rem;
+      padding: 1rem 0rem 1rem 2.4rem;
       border: 0.1rem solid colors.$mainRed;
+      font-size: 1.6rem;
+      outline: none;
       &::placeholder {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
       }
     }
     img {
