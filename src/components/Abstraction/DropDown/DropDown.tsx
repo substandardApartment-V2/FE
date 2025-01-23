@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "./DropDown.module.scss";
-import dropDownOpen from "../../../assets/dropDown/dropDownOpen.svg";
-import dropDownClose from "../../../assets/dropDown/dropDownClose.svg";
+import dropDownOpen from "@/assets/dropDown/dropDownOpen.svg";
+import dropDownClose from "@/assets/dropDown/dropDownClose.svg";
 import DropDownList from "./DropDownList";
-import { TListContents } from "../../../types/TDropDownTypes";
+import { TListContents } from "@/types/TDropDownTypes";
 import classNames from "classnames";
 
 export type TDropDownProps = {
@@ -11,18 +11,21 @@ export type TDropDownProps = {
   select: string;
   fontSize?: "SMALL" | "MEDIUM";
   outerBorder: boolean;
+  width: "SMALL" | "MEDIUM";
 };
 
 export default function DropDown(props: TDropDownProps) {
   const [isShow, setIsShow] = useState(false);
   const [currentSelect, setCurrentSelect] = useState(props.select);
 
+  console.log(props);
   return (
-    <div style={{ position: "relative" }}>
+    <section className={styles.dropDownContainer}>
       <div
         className={classNames(
           styles.dropDown,
-          props.outerBorder ? styles.dropDownBorder : ""
+          props.outerBorder ? styles.dropDownBorder : "",
+          props.width === "SMALL" ? styles.minWidth : styles.maxWidth
         )}
         onClick={() => {
           setIsShow((prevState) => !prevState);
@@ -31,7 +34,7 @@ export default function DropDown(props: TDropDownProps) {
         <span
           className={classNames(
             styles.selectContent,
-            props.fontSize ? styles[props.fontSize] : "MEDIUM"
+            props.fontSize ? styles[props.fontSize] : styles.medium
           )}
         >
           {currentSelect}
@@ -51,6 +54,6 @@ export default function DropDown(props: TDropDownProps) {
           ))}
         </ul>
       )}
-    </div>
+    </section>
   );
 }

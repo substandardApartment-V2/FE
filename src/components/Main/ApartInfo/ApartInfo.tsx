@@ -2,7 +2,7 @@ import styles from "./ApartInfo.module.scss";
 import searchIcon from "@/assets/Main/searchICon.svg";
 import zipCodeIcon from "@/assets/Main/ApartInfo/zipCodeIcon.svg";
 import DropDown from "@/components/Abstraction/DropDown/DropDown";
-import MaintanceChargeChart from "./MaintanceChargeChart";
+import MaintanceChargeChart from "../Chart/MaintanceChargeChart";
 import detailButtonIcon from "@/assets/Main/ApartInfo/detailButtonIcon.svg";
 import detailButtonIconD from "@/assets/Main/ApartInfo/detailButtonIconD.svg";
 import welfareIcon from "@/assets/Main/ApartInfo/welfareIcon.svg";
@@ -11,6 +11,7 @@ import { useApartInfoStore } from "@/store/useApartInfoStore";
 
 export default function ApartInfo() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
+  const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
 
   const dropDownContents = [
     {
@@ -28,7 +29,7 @@ export default function ApartInfo() {
   ];
 
   return (
-    <section className={styles.apartInfo}>
+    <section className={styles.apartInfoContainer}>
       <div className={styles.apartSearch}>
         <input
           className={styles.apartSearchInput}
@@ -92,6 +93,7 @@ export default function ApartInfo() {
                 fontSize="MEDIUM"
                 outerBorder={true}
                 dropDownContents={dropDownContents}
+                width="SMALL"
               />
             </div>
           </div>
@@ -99,10 +101,16 @@ export default function ApartInfo() {
         <div className={styles.chart}>
           <div className={styles.chartTitle}>
             <strong>관리비 - 2024</strong>
-            <span>
-              자세히보기
+            <button
+              onClick={() => {
+                if (isDetailInfo === "MAINTANCE") {
+                  setIsDetailInfo(null);
+                } else setIsDetailInfo("MAINTANCE");
+              }}
+            >
+              <span>자세히보기</span>
               <img src={detailButtonIcon} alt="apart maintance charge detail" />
-            </span>
+            </button>
           </div>
           <MaintanceChargeChart />
         </div>
@@ -200,7 +208,9 @@ export default function ApartInfo() {
       <button
         className={styles.detailApartInfoButton}
         onClick={() => {
-          setIsDetailInfo();
+          if (isDetailInfo === "APARTINFO") {
+            setIsDetailInfo(null);
+          } else setIsDetailInfo("APARTINFO");
         }}
       >
         <img src={detailButtonIconD} alt="apart detail button" />

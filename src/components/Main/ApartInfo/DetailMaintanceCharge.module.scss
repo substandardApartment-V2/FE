@@ -1,0 +1,42 @@
+@use "@/styles/colors.scss";
+
+.maintances {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: colors.$mainNavy;
+  padding: 2rem;
+  .eachArea {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    &:first-child {
+      display: flex;
+      flex-direction: column;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+        position: relative;
+        button {
+          position: absolute;
+          right: 0;
+          bottom: 3rem;
+          img {
+            width: 3rem;
+          }
+        }
+      }
+    }
+    .title {
+      color: #ffffff;
+      font-size: 1.8rem;
+      font-weight: 600;
+      padding: 2rem 0rem;
+      span {
+        font-weight: 400;
+      }
+    }
+  }
+}

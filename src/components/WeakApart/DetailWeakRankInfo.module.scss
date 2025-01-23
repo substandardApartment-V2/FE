@@ -1,0 +1,19 @@
+@use "@/styles/colors.scss";
+
+.detailWeakRankInfo {
+  padding: 2.4rem 3.2rem;
+  background-color: colors.$mainNavy;
+  height: 100%;
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .title {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+    .closeButton {
+    }
+  }
+}
