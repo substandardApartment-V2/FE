@@ -70,7 +70,7 @@ const MaintanceChargeChart = () => {
           color: "rgba(255, 255, 255, 0.8)",
         },
         ticks: {
-          callback: function (value: number) {
+          callback: function (value) {
             return value.toLocaleString() + "원";
           },
           color: "#ffffff",
