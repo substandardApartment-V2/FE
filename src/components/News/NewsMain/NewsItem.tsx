@@ -1,24 +1,36 @@
-import newsImg from "@/assets/news/newsImg01.jpeg";
 import { TNewsItem } from "@/types/TNewsItemTypes";
+import { formatDate } from "@/utils/formatDate";
+import { Link } from "react-router-dom";
 import newsMain from "./NewsMain.module.scss";
 
 const NewsItem = ({
-  newsName,
-  newsDate,
-  newsTitle,
-  newsDescription,
+  platform,
+  createAt,
+  image,
+  title,
+  content,
+  url,
 }: TNewsItem) => {
+  const parseContent = (html: string) => {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    return doc.body.textContent || "";
+  };
+
   return (
     <div className={newsMain.newsItem}>
-      <div className={newsMain.newsItemHeader}>
-        <span>{newsName}</span>
-        <span>{newsDate}</span>
-      </div>
-      <h3 className={newsMain.newsItemTitle}>{newsTitle}</h3>
-      <div className={newsMain.newsItemContentWrapper}>
-        <img src={newsImg} alt="newsImage" />
-        <p className={newsMain.newsItemDescription}>{newsDescription}</p>
-      </div>
+      <Link to={url} target="_blank">
+        <div className={newsMain.newsItemHeader}>
+          <span>{platform}</span>
+          <span>{formatDate(createAt)}</span>
+        </div>
+        <h3 className={newsMain.newsItemTitle}>{parseContent(title)}</h3>
+        <div className={newsMain.newsItemContentWrapper}>
+          <img src={image} alt="newsImage" />
+          <p className={newsMain.newsItemDescription}>
+            {parseContent(content)}
+          </p>
+        </div>
+      </Link>
     </div>
   );
 };

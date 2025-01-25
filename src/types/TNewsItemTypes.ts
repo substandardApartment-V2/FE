@@ -1,7 +1,8 @@
 export type TNewsItem = {
-  newsName: string;
-  newsDate: string;
-  newsImg?: string;
-  newsTitle: string;
-  newsDescription: string;
+  platform: string;
+  createAt: string;
+  title: string;
+  image: string;
+  content: string;
+  url: string;
 };
