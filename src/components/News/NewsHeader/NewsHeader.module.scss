@@ -6,7 +6,7 @@
   align-items: center;
   padding-bottom: 3svh;
   .empty {
-    width: 8rem;
+    width: 11rem;
   }
   .headerTab {
     display: flex;
@@ -14,7 +14,7 @@
     align-items: center;
     gap: 0.8rem;
     button {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: colors.$mainBorder;
     }
@@ -22,7 +22,7 @@
       color: colors.$mainRed;
     }
     span {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: colors.$mainBorder;
     }

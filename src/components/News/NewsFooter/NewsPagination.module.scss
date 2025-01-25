@@ -4,14 +4,16 @@
   margin-top: auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.4rem;
-  padding-top: 2.7rem;
+  padding-top: 3rem;
   .pageContainer {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 0.8rem;
     .pageLink {
-      font-size: 1.4rem;
+      font-size: 2rem;
       font-weight: 500;
       line-height: 2rem;
       color: colors.$mainTitle;
@@ -20,5 +22,18 @@
       font-weight: 700;
       color: colors.$mainRed;
     }
+    a {
+      img {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  button {
+    display: flex;
+    align-items: center;
+  }
+  img {
+    width: 1.6rem;
   }
 }
