@@ -1,13 +1,13 @@
 import { useNewsStore } from "@/store/useNewsStore";
 import ApartNewsList from "./ApartNewsList";
-import PoorApartNewsList from "./PoorApartNewsList";
+import WeakApartNewsList from "./WeakApartNewsList";
 
 const NewsMain = () => {
   const activeTab = useNewsStore((state) => state.activeTab);
 
   return (
     <div>
-      {activeTab === "apartNews" ? <ApartNewsList /> : <PoorApartNewsList />}
+      {activeTab === "apartNews" ? <ApartNewsList /> : <WeakApartNewsList />}
     </div>
   );
 };
