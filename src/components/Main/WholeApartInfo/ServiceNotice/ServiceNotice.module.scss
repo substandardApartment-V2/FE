@@ -25,35 +25,6 @@
     flex-direction: column;
     gap: 1.6rem;
     height: 100%;
-    li {
-      border: 0.1rem solid #aaafb9;
-      padding: 2.4rem 3rem;
-      height: 33%;
-      .noticeListTitle {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.8rem;
-        strong {
-          font-size: 1.7rem;
-          font-weight: 700;
-          color: #142337;
-        }
-        span {
-          font-size: 1.5rem;
-          color: #aaafb9;
-        }
-      }
-      .noticeListContent {
-        font-size: 1.6rem;
-        line-height: 2rem;
-        color: #1e4164;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-    }
   }
   .pagination {
     margin-top: auto;

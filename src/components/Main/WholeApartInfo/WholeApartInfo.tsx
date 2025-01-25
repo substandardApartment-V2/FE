@@ -1,7 +1,7 @@
 import styles from "./WholeApartInfo.module.scss";
-import CurrentApartsStatus from "./CurrentApartsStatus";
+import CurrentApartsStatus from "./CurrentApartsStatus/CurrentApartsStatus";
 import ApartSearch from "@/components/Common/ApartSearch";
-import ServiceNotice from "./ServiceNotice";
+import ServiceNotice from "./ServiceNotice/ServiceNotice";
 
 export default function WholeApartInfo() {
   return (

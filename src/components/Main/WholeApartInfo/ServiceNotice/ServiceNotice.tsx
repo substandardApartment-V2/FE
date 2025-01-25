@@ -7,6 +7,8 @@ import doubleLeft from "@/assets/news/doubleLeft.svg";
 import doubleRight from "@/assets/news/doubleRight.svg";
 import ReactPaginate from "react-paginate";
 import styles from "./ServiceNotice.module.scss";
+import ServiceNoticeList from "./ServiceNoticeList";
+import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeList";
 
 export default function ServiceNotice() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -31,6 +33,27 @@ export default function ServiceNotice() {
     },
   ];
 
+  const dummyData = [
+    {
+      title: "사이트 긴급점검 시간 공지 2025.01.20~01.21",
+      date: "2025.01.20",
+      content:
+        " 사이트 긴급점검 시간 공지드립니다. 1월 20일 13시~21일 7시까지 점검이있을 예정이오니 이점 유의 바랍니다. 사이트 긴급점검 시간공지드립니다. 1월 20일 13시~21일 7시까지 점검이 있을 예정이오니 이점유의 바랍니다. 사이트 긴급점검 시간 공지드립니다. 1월 20일 13시~21일7시까지 점검이 있을 예정이오니 이점 유의 바랍니다.",
+    },
+    {
+      title: "사이트 긴급점검 시간 공지 2025.01.20~01.21",
+      date: "2025.01.20",
+      content:
+        " 사이트 긴급점검 시간 공지드립니다. 1월 20일 13시~21일 7시까지 점검이있을 예정이오니 이점 유의 바랍니다. 사이트 긴급점검 시간공지드립니다. 1월 20일 13시~21일 7시까지 점검이 있을 예정이오니 이점유의 바랍니다. 사이트 긴급점검 시간 공지드립니다. 1월 20일 13시~21일7시까지 점검이 있을 예정이오니 이점 유의 바랍니다.",
+    },
+    {
+      title: "사이트 긴급점검 시간 공지 2025.01.20~01.21",
+      date: "2025.01.20",
+      content:
+        " 사이트 긴급점검 시간 공지드립니다. 1월 20일 13시~21일 7시까지 점검이있을 예정이오니 이점 유의 바랍니다. 사이트 긴급점검 시간공지드립니다. 1월 20일 13시~21일 7시까지 점검이 있을 예정이오니 이점유의 바랍니다. 사이트 긴급점검 시간 공지드립니다.",
+    },
+  ];
+
   return (
     <section className={styles.serviceNotice}>
       <div className={styles.serviceNoticeTitle}>
@@ -44,39 +67,13 @@ export default function ServiceNotice() {
         />
       </div>
       <ul className={styles.noticeLists}>
-        <li>
-          <div className={styles.noticeListTitle}>
-            <strong>사이트 긴급점검 시간 공지 2025.01.20~01.21</strong>
-            <span>2025.01.20</span>
-          </div>
-          <div className={styles.noticeListContent}>
-            사이트 긴급점검 시간 공지드립니다. 1월 20일 13시~21일 7시까지 점검이
-            있을 예정이오니 이점 유의 바랍니다. 사이트 긴급점검 시간
-            공지드립니다. 1월 20일 13시~21일 7시까지 점검이 있을 예정이오니 이점
-            유의 바랍니다. 사이트 긴급점검 시간 공지드립니다. 1월 20일 13시~21일
-            7시까지 점검이 있을 예정이오니 이점 유의 바랍니다.
-          </div>
-        </li>
-        <li>
-          <div className={styles.noticeListTitle}>
-            <strong>사이트 긴급점검 시간 공지 2025.01.20~01.21</strong>
-            <span>2025.01.20</span>
-          </div>
-          <div className={styles.noticeListContent}>
-            사이트 긴급점검 시간 공지드립니다. 1월 20일 13시~21일 7시까지 점검이
-            있을 예정이오니 이점 유의 바랍니다.
-          </div>
-        </li>
-        <li>
-          <div className={styles.noticeListTitle}>
-            <strong>사이트 긴급점검 시간 공지 2025.01.20~01.21</strong>
-            <span>2025.01.20</span>
-          </div>
-          <div className={styles.noticeListContent}>
-            사이트 긴급점검 시간 공지드립니다. 1월 20일 13시~21일 7시까지 점검이
-            있을 예정이오니 이점 유의 바랍니다.
-          </div>
-        </li>
+        {dummyData.map((listData: TServiceNoticeList) => (
+          <ServiceNoticeList
+            title={listData.title}
+            date={listData.date}
+            content={listData.content}
+          />
+        ))}
       </ul>
       <div className={styles.pagination}>
         <button onClick={() => goToPage(0)} className="goToPage">
