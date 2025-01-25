@@ -34,7 +34,7 @@ export default function DropDown(props: TDropDownProps) {
         <span
           className={classNames(
             styles.selectContent,
-            props.fontSize ? styles[props.fontSize] : styles.medium
+            props.fontSize === "SMALL" ? styles.small : styles.medium
           )}
         >
           {currentSelect}

@@ -90,7 +90,7 @@ export default function ApartInfo() {
               <span className={styles.areaTitle}>전용면적</span>
               <DropDown
                 select="59㎡"
-                fontSize="MEDIUM"
+                fontSize="SMALL"
                 outerBorder={true}
                 dropDownContents={dropDownContents}
                 width="SMALL"

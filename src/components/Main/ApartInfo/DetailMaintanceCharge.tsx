@@ -27,7 +27,7 @@ export default function DetailMaintanceCharge() {
             </span>
             <DropDown
               select="개별사용료"
-              fontSize="MEDIUM"
+              fontSize="SMALL"
               outerBorder={true}
               dropDownContents={dropDownContents}
               width="MEDIUM"
