@@ -1,0 +1,78 @@
+@use "@/styles/colors.scss";
+
+.weakBuildRank {
+  background-color: colors.$mainNavy;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 1.6rem 2.4rem;
+  width: 100%;
+  .titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      .title {
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: #ffffff;
+      }
+      .year {
+        padding: 0.6rem 1.2rem;
+        border: 0.1rem solid colors.$mainRed;
+        border-radius: 10rem;
+        color: #ffffff;
+        font-weight: 600;
+      }
+    }
+    //부실 건설사 판정 디테일 순위보기 버튼
+    button {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #ffffff;
+      font-size: 1.6rem;
+      img {
+        width: 2.4rem;
+      }
+    }
+  }
+  // 부실아파트 차트
+  .chart {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    .weakBuilderChart {
+      width: 65%;
+      height: 100%;
+    }
+    //5년간 하자판정 순위
+    .fiveYearsWeakBuilderChart {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+      width: 30%;
+      h3 {
+        font-weight: 600;
+        color: #ffffff;
+      }
+      div {
+        display: flex;
+        justify-content: center;
+        width: 90%;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        li {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}

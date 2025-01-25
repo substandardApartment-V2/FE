@@ -1,0 +1,48 @@
+@use "@/styles/_colors.scss";
+
+//아파트 헤더타이틀
+.apartHeadInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+  width: 100%;
+  gap: 0.8rem;
+  .apartNameLocation {
+    display: flex;
+    background-color: colors.$mainNavy;
+    padding: 2.2rem 2.4rem;
+    flex-direction: column;
+    gap: 1.6rem;
+    //아파트 이름
+    .apartName {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    //아파트 위치정보
+    .apartLocation {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      .apartRegion {
+        font-size: 1.6rem;
+        color: #ffffff;
+      }
+      //아파트 우편번호
+      .apartZipCode {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        img {
+          width: 2.4rem;
+          height: 2.4rem;
+        }
+        span {
+          font-size: 1.6rem;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
