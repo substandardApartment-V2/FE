@@ -1,13 +1,13 @@
 import styles from "./ApartInfoPage.module.scss";
 import ApartInfo from "@/components/Main/ApartInfo/ApartInfo";
-import ApartMap from "@/components/Main/ApartMap";
+import ApartMap from "@/components/Main/Map";
 import WholeApartInfo from "@/components/Main/WholeApartInfo/WholeApartInfo";
 
 const ApartInfoPage = () => {
   return (
     <div className={styles.home}>
-      <WholeApartInfo />
-      {/* <ApartInfo /> */}
+      {/* <WholeApartInfo /> */}
+      <ApartInfo />
       <ApartMap />
     </div>
   );

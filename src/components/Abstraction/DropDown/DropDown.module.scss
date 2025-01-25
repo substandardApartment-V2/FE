@@ -5,14 +5,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    &.minWidth {
+    &.small {
+      width: 8rem;
+    }
+    &.medium {
       width: 9rem;
     }
-    &.maxWidth {
-      width: 12rem;
+    &.large {
+      width: 11rem;
     }
     gap: 0.4rem;
-    padding: 0.4rem 0rem;
+    // padding: 0.4rem 0rem;
     background-color: #ffffff;
     color: #142337;
     font-family: "Pretendard", sans-serif;
@@ -20,9 +23,12 @@
     .selectContent {
       padding-left: 0.8rem;
       &.small {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
       }
       &.medium {
+        font-size: 1.6rem;
+      }
+      &.large {
         font-size: 2rem;
       }
     }

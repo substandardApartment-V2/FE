@@ -8,9 +8,16 @@ type TDropDownListProps = {
   setCurrentSelect: React.Dispatch<React.SetStateAction<string>>;
   setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
   border: boolean;
+  fontSize: "SMALL" | "MEDIUM" | "LARGE";
 };
 
 export default function DropDownList(props: TDropDownListProps) {
+  const fontSizeHandler = {
+    SMALL: styles.small,
+    MEDIUM: styles.medium,
+    LARGE: styles.large,
+  };
+
   return (
     <li
       className={classNames(
@@ -24,7 +31,9 @@ export default function DropDownList(props: TDropDownListProps) {
         props.setIsShow((prevState) => !prevState);
       }}
     >
-      <span>{props.content.content}</span>
+      <span className={fontSizeHandler[props.fontSize]}>
+        {props.content.content}
+      </span>
     </li>
   );
 }

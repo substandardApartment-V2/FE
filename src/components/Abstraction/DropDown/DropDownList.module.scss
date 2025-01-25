@@ -7,6 +7,15 @@
   font-size: 1.6rem;
   span {
     width: 100%;
+    &.small {
+      font-size: 1.4rem;
+    }
+    &.medium {
+      font-size: 1.6rem;
+    }
+    &.large {
+      font-size: 2rem;
+    }
   }
   &:first-child {
     &.borderTop {

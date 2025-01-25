@@ -25,9 +25,9 @@ const NewsHeader = () => {
         <DropDown
           select="최신순"
           dropDownContents={dropDownContents}
-          fontSize="SMALL"
+          fontSize="MEDIUM"
           outerBorder={false}
-          width="SMALL"
+          width="MEDIUM"
         />
       </div>
     </div>
