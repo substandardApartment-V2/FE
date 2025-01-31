@@ -5,7 +5,6 @@ import classNames from "classnames";
 
 type TDropDownListProps = {
   content: TListContents;
-  setCurrentSelect: React.Dispatch<React.SetStateAction<string>>;
   setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
   border: boolean;
   fontSize: "SMALL" | "MEDIUM" | "LARGE";
@@ -27,7 +26,6 @@ export default function DropDownList(props: TDropDownListProps) {
       key={props.content.content}
       onClick={() => {
         props.content.contentFn();
-        props.setCurrentSelect(props.content.content);
         props.setIsShow((prevState) => !prevState);
       }}
     >

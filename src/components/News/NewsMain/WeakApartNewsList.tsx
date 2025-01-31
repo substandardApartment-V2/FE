@@ -18,7 +18,6 @@ const WeakApartNewsList = () => {
           sort,
         },
       });
-      console.log(response.data);
       setCurrentNews(response.data.data.newsList);
     } catch (error) {
       console.error("뉴스 에러: ", error);

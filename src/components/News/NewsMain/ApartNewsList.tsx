@@ -17,7 +17,6 @@ const ApartNewsList = () => {
           sort,
         },
       });
-      console.log(response.data);
       setCurrentNews(response.data.data.newsList);
       setTotalElements(response.data.data.totalElements);
     } catch (error) {

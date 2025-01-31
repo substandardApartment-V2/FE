@@ -1,19 +1,28 @@
+import { useState } from "react";
 import styles from "./ApartPrice.module.scss";
 import DropDown from "@/components/Abstraction/DropDown/DropDown";
 
 export default function ApartPrice() {
+  const [isShow, setIsShow] = useState("59㎡");
+
   const dropDownContents = [
     {
       content: "59㎡",
-      contentFn: () => {},
+      contentFn: () => {
+        setIsShow("59㎡");
+      },
     },
     {
       content: "79㎡",
-      contentFn: () => {},
+      contentFn: () => {
+        setIsShow("79㎡");
+      },
     },
     {
       content: "118㎡",
-      contentFn: () => {},
+      contentFn: () => {
+        setIsShow("118㎡");
+      },
     },
   ];
 
@@ -25,7 +34,7 @@ export default function ApartPrice() {
         <div className={styles.selectArea}>
           <span className={styles.areaTitle}>전용면적</span>
           <DropDown
-            select="59㎡"
+            select={isShow}
             fontSize="SMALL"
             outerBorder={true}
             dropDownContents={dropDownContents}

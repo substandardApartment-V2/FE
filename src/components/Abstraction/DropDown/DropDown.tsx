@@ -16,8 +16,8 @@ export type TDropDownProps = {
 
 export default function DropDown(props: TDropDownProps) {
   const [isShow, setIsShow] = useState(false);
-  const [currentSelect, setCurrentSelect] = useState(props.select);
 
+  console.log(props);
   const widthSizeHandler = {
     SMALL: styles.small,
     MEDIUM: styles.medium,
@@ -48,7 +48,7 @@ export default function DropDown(props: TDropDownProps) {
             titleFontSizeHandler[props.fontSize]
           )}
         >
-          {currentSelect}
+          {props.select}
         </span>
         <img src={isShow ? dropDownClose : dropDownOpen} alt="dropdown icon" />
       </div>
@@ -58,7 +58,6 @@ export default function DropDown(props: TDropDownProps) {
             <DropDownList
               key={dropDownContent.content}
               content={dropDownContent}
-              setCurrentSelect={setCurrentSelect}
               setIsShow={setIsShow}
               border={props.outerBorder}
               fontSize={props.fontSize}
