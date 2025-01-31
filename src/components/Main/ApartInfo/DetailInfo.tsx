@@ -1,7 +1,7 @@
 import styles from "./DetailInfo.module.scss";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import DetailApartInfo from "./DetailApartInfo";
-import DetailWeakRankInfo from "@/components/WeakApart/DetailWeakRankInfo";
+import DetailWeakRankInfo from "@/components/WeakApart/WholeWeakApartInfo/DetailWeakRankInfo";
 import DetailMaintanceCharge from "./DetailMaintanceCharge";
 
 export default function DetailInfo() {
