@@ -1,0 +1,13 @@
+.apartBulidInfoList {
+  display: flex;
+  gap: 1.6rem;
+  strong {
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  span {
+    color: #ffffff;
+    font-size: 1.6rem;
+  }
+}

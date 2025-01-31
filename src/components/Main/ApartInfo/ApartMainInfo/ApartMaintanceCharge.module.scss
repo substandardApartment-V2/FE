@@ -1,0 +1,27 @@
+@use "@/styles/_colors.scss";
+
+.maintanceChart {
+  background-color: colors.$mainNavy;
+  padding: 1.8rem 1.6rem;
+  .chartTitle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 3rem;
+    strong {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.6rem;
+      color: #ffffff;
+      span {
+        color: #ffffff;
+      }
+    }
+  }
+}

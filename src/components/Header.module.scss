@@ -5,7 +5,6 @@
   display: flex;
   justify-content: space-between;
   align-items: end;
-  font-size: 1.7rem;
   padding-bottom: 5.6rem;
   > * {
     width: 50%;
@@ -33,7 +32,8 @@
         justify-content: center;
         align-items: center;
         padding: 1rem 0.8rem;
-        font-weight: 700;
+        font-weight: 600;
+        font-size: 2rem;
         color: colors.$mainNavy;
       }
     }

@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import styles from "./ApartMap.module.scss";
+import styles from "./Map.module.scss";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import DetailInfo from "./ApartInfo/DetailInfo";
 

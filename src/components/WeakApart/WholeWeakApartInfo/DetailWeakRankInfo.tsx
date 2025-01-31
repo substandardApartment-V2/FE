@@ -1,5 +1,5 @@
 import styles from "./DetailWeakRankInfo.module.scss";
-import DetailWeakBuilderChart from "./Chart/DetailWeakBuilderChart";
+import DetailWeakBuilderChart from "../Chart/DetailWeakBuilderChart";
 import closeButtonIcon from "@/assets/Main/ApartInfo/closeButtonIcon.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 

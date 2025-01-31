@@ -1,5 +1,8 @@
-.homeRight {
+@use "@/styles/colors.scss";
+
+.weakRight {
   width: 45%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;

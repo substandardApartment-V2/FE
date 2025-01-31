@@ -27,7 +27,7 @@ const NewsHeader = () => {
           dropDownContents={dropDownContents}
           fontSize="MEDIUM"
           outerBorder={false}
-          width="SMALL"
+          width="MEDIUM"
         />
       </div>
     </div>
