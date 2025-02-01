@@ -1,7 +1,7 @@
 import styles from "./WeakBuildRank.module.scss";
 import detailButtonIcon from "@/assets/Main/ApartInfo/detailButtonIcon.svg";
-import WeakBuilderChart from "./Chart/WeakBuilderChart";
-import FiveYearsWeakBuilderChart from "./Chart/FiveYearsWeakBuilderChart";
+import WeakBuilderChart from "../Chart/WeakBuilderChart";
+import FiveYearsWeakBuilderChart from "../Chart/FiveYearsWeakBuilderChart";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 
 export default function WeakBuildRank() {
