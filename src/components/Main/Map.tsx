@@ -40,9 +40,9 @@ export default function ApartMap() {
     const { naver } = window;
 
     // 맵 로딩 테스트 강제 로딩 setTimeOut
-    setTimeout(() => {
-      if (naver) setIsLoading(false);
-    }, 1000);
+    // setTimeout(() => {
+    //   if (naver) setIsLoading(false);
+    // }, 1000);
 
     if (mapRef.current && naver) {
       const location = new naver.maps.LatLng(lat, lng);

@@ -22,16 +22,14 @@ export default function DetailMaintanceCharge() {
       <section className={styles.eachArea}>
         <div>
           <div>
-            <span className={styles.title}>
-              관리비 개별사용료 - <span>59㎡</span>
-            </span>
-            <DropDown
+            <span className={styles.title}>개별사용료</span>
+            {/* <DropDown
               select="개별사용료"
               fontSize="SMALL"
               outerBorder={true}
               dropDownContents={dropDownContents}
               width="LARGE"
-            />
+            /> */}
           </div>
           <button
             onClick={() => {
@@ -44,15 +42,11 @@ export default function DetailMaintanceCharge() {
         <MaintanceChargeChart />
       </section>
       <section className={styles.eachArea}>
-        <span className={styles.title}>
-          관리비 개별사용료 - <span>82㎡</span>
-        </span>
+        <span className={styles.title}>유지비</span>
         <MaintanceChargeChart />
       </section>
       <section className={styles.eachArea}>
-        <span className={styles.title}>
-          관리비 개별사용료 - <span>114㎡</span>
-        </span>
+        <span className={styles.title}>점검비</span>
         <MaintanceChargeChart />
       </section>
     </section>

@@ -4,12 +4,14 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow-y: auto;
   background-color: colors.$mainNavy;
-  padding: 2rem;
+  padding: 0rem 2rem;
   .eachArea {
     display: flex;
     flex-direction: column;
     height: 100%;
+    background-color: colors.$mainNavy;
     &:first-child {
       display: flex;
       flex-direction: column;
@@ -20,9 +22,6 @@
         gap: 0.8rem;
         position: relative;
         button {
-          position: absolute;
-          right: 0;
-          bottom: 3rem;
           img {
             width: 3rem;
           }
