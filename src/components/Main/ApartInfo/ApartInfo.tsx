@@ -16,7 +16,11 @@ export default function ApartInfo() {
   return (
     <section className={styles.apartInfoContainer}>
       <ApartSearch />
-      <ApartHeadInfo />
+      <ApartHeadInfo
+        apartName="롯데캐슬 베네치아"
+        apartRegion="서울특별시 중구 황학동 2545 롯데캐슬베네치아"
+        zipCode="04572"
+      />
       <section className={styles.apartMainInfo}>
         <ApartBuildInfo />
         <ApartPrice />
