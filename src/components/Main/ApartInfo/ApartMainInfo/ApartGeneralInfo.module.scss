@@ -10,14 +10,17 @@
       grid-column: 1 / -1;
     }
     .title {
-      padding: 0.8rem 2.4rem 0.8rem;
-      font-size: 1.6rem;
+      padding: 1rem 2.6rem 1rem;
+      font-size: 1.8rem;
       font-weight: 600;
       display: flex;
       align-items: center;
       gap: 0.8rem;
       color: #ffffff;
       background-color: colors.$mainTitle;
+      img {
+        width: 2rem;
+      }
     }
     .content {
       display: inline-block;
