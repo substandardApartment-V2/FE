@@ -3,6 +3,7 @@ import ApartHeadInfo from "@/components/Main/ApartInfo/ApartHeadInfo";
 import weakInfoIcon from "@/assets/Main/ApartInfo/weakInfoIcon.svg";
 import goBackIcon from "@/assets/Main/ApartInfo/goBackIcon.svg";
 import pillarIcon from "@/assets/Main/ApartInfo/structureIcon.svg";
+import supplementIcon from "@/assets/Main/ApartInfo/supplementIcon.svg";
 
 export default function WeakApartInfo() {
   const dummyData = [
@@ -75,7 +76,7 @@ export default function WeakApartInfo() {
           <section className={styles.supplementMethod}>
             <div className={styles.title}>
               <strong>보완공법</strong>
-              <img src={pillarIcon} alt="apart pillar current status" />
+              <img src={pillarIcon} alt="apart supplement method" />
             </div>
             <ul className={styles.contentContainer}>
               {dummySupplementData.map((listData) => (
