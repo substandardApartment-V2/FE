@@ -12,9 +12,9 @@ li {
     font-size: 2rem;
     padding: 1.2rem 0rem 1.2rem 2.4rem;
   }
-  div {
-    padding: 2rem 0;
-    .contents {
+  .contents {
+    padding: 3rem 0;
+    .contentsListContainer {
       width: 100%;
       &.even {
         display: grid;
@@ -31,7 +31,7 @@ li {
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        padding-bottom: 3rem;
+        padding-bottom: 2rem;
         &:not(:last-child) {
           border-right: 0.2rem solid #7f8a95;
         }
@@ -53,6 +53,7 @@ li {
           font-weight: 600;
         }
         .subContent {
+          padding: 2.6rem 0;
           font-size: 2.6rem;
           font-weight: 600;
         }

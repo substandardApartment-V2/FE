@@ -20,8 +20,8 @@ export default function DetailApartInfoList(props: TDetailApartInfoList) {
         <h3>{props.title}</h3>
         <img src={buildingIcon} alt="building icon" />
       </div>
-      <div>
-        <ul className={classNames(styles.contents, contentsStyle)}>
+      <div className={styles.contents}>
+        <ul className={classNames(styles.contentsListContainer, contentsStyle)}>
           {Object.keys(props.data).map((key) => (
             <li className={classNames(styles.contentList, contentsStyle)}>
               <div className={styles.subTitle}>{key}</div>

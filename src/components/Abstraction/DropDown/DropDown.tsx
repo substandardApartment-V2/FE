@@ -17,7 +17,6 @@ export type TDropDownProps = {
 export default function DropDown(props: TDropDownProps) {
   const [isShow, setIsShow] = useState(false);
 
-  console.log(props);
   const widthSizeHandler = {
     SMALL: styles.small,
     MEDIUM: styles.medium,
