@@ -1,14 +1,14 @@
-import styles from "./DetailApartInfoList.module.scss";
+import styles from "./ApartDetail.module.scss";
 import buildingIcon from "@/assets/Main/ApartInfo/buildingIcon.svg";
 import classNames from "classnames";
 
-type TDetailApartInfoList = {
+type TApartDetailList = {
   title: string;
-  data: any;
-  detailData?: any;
+  data: any; //데이터 형식 미정의
+  detailData?: any; //데이터 형식 미정의
 };
 
-export default function DetailApartInfoList(props: TDetailApartInfoList) {
+export default function ApartDetailList(props: TApartDetailList) {
   const contentsStyle =
     Object.keys(props.data).length === 2 || Object.keys(props.data).length === 4
       ? styles.even

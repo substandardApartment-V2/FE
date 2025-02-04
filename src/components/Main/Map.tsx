@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import styles from "./Map.module.scss";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
-import DetailInfo from "./ApartInfo/DetailInfo";
+import DetailInfo from "./DetailInfo/DetailInfo";
 import MapLoading from "./MapLoading";
 
 export default function ApartMap() {
