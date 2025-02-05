@@ -8,11 +8,11 @@ export default function WholeWeakApartInfo() {
   return (
     <div className={styles.weakRight}>
       <ApartSearch />
-      <WeakApartInfo />
-      {/* <>
+      {/* <WeakApartInfo /> */}
+      <>
         <WeakBuildRank />
         <WeakMainNews />
-      </> */}
+      </>
     </div>
   );
 }

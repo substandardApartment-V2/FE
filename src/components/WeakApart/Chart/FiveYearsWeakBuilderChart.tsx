@@ -1,4 +1,4 @@
-import { Doughnut } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
 import { ChartOptions } from "chart.js";
 
@@ -10,28 +10,31 @@ export default function FiveYearsWeakBuilderChart() {
       "지브이종합건설",
       "라임종합건설",
       "삼도종합건설(주)",
-      "보광종합건설(주)",
-      "(주)포스코이앤씨",
-      "계룡건설산업(주)",
-      "(주)시티건설",
-      "(주)대우건설",
     ],
     datasets: [
       {
-        data: [118, 92, 82, 76, 71, 59, 58, 57, 53, 51],
+        data: [118, 92, 82, 76, 71],
         backgroundColor: ["#E4E1D0"],
-        barThickness: 17,
-        barPercentage: 3,
+        barThickness: 12,
         maxBarThickness: 20,
         minBarLength: 3,
-        cutout: "85%", //도넛 두께
         borderWidth: 0,
-        spacing: 5,
+        barPercentage: 1.0,
+        categoryPercentage: 1.0,
       },
     ],
   };
 
-  const options: ChartOptions<"doughnut"> = {
+  const options: ChartOptions<"bar"> = {
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        display: false,
+      },
+      x: {
+        display: false,
+      },
+    },
     plugins: {
       legend: {
         display: false,
@@ -39,5 +42,5 @@ export default function FiveYearsWeakBuilderChart() {
     },
   };
 
-  return <Doughnut data={data} options={options} />;
+  return <Bar data={data} options={options} />;
 }

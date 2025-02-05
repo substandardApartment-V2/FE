@@ -31,14 +31,16 @@ export default function WeakBuildRank() {
           <WeakBuilderChart />
         </div>
         <div className={styles.fiveYearsWeakBuilderChart}>
-          <h3>5년간 하자판정 건수 순위</h3>
-          <div>
+          <h3 className={styles.title}>5년간 하자판정 건수 순위</h3>
+          <div className={styles.fiveYearsChart}>
             <FiveYearsWeakBuilderChart />
           </div>
-          <ul>
+          <ul className={styles.topFiveWeakBuilder}>
             <li>1. 지에스건설(주)</li>
             <li>2. 계롱건설(주)</li>
             <li>3. 대방건설(주)</li>
+            <li>4. 에스엠상선(주)</li>
+            <li>5. (주)대명종합건설</li>
           </ul>
         </div>
       </div>

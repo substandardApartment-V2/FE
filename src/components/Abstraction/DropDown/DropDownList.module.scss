@@ -5,6 +5,10 @@
   padding: 0.4rem 2rem 0.4rem 0.8rem;
   padding-right: 0%;
   font-size: 1.6rem;
+  &:hover {
+    background-color: #d6d6d6;
+    color: #435464;
+  }
   span {
     width: 100%;
     &.small {
