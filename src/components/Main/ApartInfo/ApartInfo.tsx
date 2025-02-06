@@ -1,6 +1,6 @@
 import styles from "./ApartInfo.module.scss";
 import detailButtonIconD from "@/assets/Main/ApartInfo/detailButtonIconD.svg";
-import ApartSearch from "@/components/Common/ApartSearch";
+import ApartSearch from "@/components/Common/ApartSearch/ApartSearch";
 import ApartHeadInfo from "./ApartHeadInfo";
 import ApartBuildInfo from "./ApartMainInfo/ApartBuildInfo/ApartBuildInfo";
 import ApartPrice from "./ApartMainInfo/ApartPrice";

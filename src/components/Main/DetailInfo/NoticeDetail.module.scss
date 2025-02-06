@@ -1,0 +1,57 @@
+@use "@/styles/colors.scss";
+
+.noticeDetail {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 1.6rem;
+  .closeNoticeDetail {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin-bottom: 1.8rem;
+    button {
+      img {
+        width: 3rem;
+      }
+    }
+  }
+  .noticeTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    margin-bottom: 3.4rem;
+    .date {
+      font-size: 1.6rem;
+      color: #aaafb9;
+    }
+    .title {
+      font-size: 2.4rem;
+      color: colors.$mainNavy;
+      font-weight: 600;
+      text-align: justify;
+    }
+  }
+  .content {
+    flex-grow: 1;
+    font-size: 2rem;
+    color: #1e4164;
+    font-weight: 400;
+    line-height: 3.4rem;
+    text-align: justify;
+  }
+  .advertisement {
+    width: 100%;
+    height: 10rem;
+    background-color: #1e4164;
+    position: relative;
+    color: #ffffff;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 10rem;
+  }
+}

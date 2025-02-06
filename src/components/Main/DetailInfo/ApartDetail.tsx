@@ -1,9 +1,9 @@
-import styles from "./DetailApartInfo.module.scss";
+import styles from "./ApartDetail.module.scss";
 import closeButtonIcon from "@/assets/Main/ApartInfo/closeButtonIconD.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
-import DetailApartInfoList from "./DetailApartInfoList";
+import DetailApartInfoList from "./ApartDetailList";
 
-export default function DetailApartInfo() {
+export default function ApartDetail() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
 
   const dummyData = [

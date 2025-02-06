@@ -12,6 +12,8 @@ import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeList";
 
 export default function ServiceNotice() {
   const [currentPage, setCurrentPage] = useState(0);
+  const [isShow, setIsShow] = useState("최신순");
+
   const pageCount = 1000;
 
   const handlePageChange = (selectedItem: { selected: number }) => {
@@ -25,11 +27,15 @@ export default function ServiceNotice() {
   const dropDownContents = [
     {
       content: "최신순",
-      contentFn: () => {},
+      contentFn: () => {
+        setIsShow("최신순");
+      },
     },
     {
       content: "과거순",
-      contentFn: () => {},
+      contentFn: () => {
+        setIsShow("과거순");
+      },
     },
   ];
 
@@ -59,7 +65,7 @@ export default function ServiceNotice() {
       <div className={styles.serviceNoticeTitle}>
         <h2 className={styles.title}>공지사항</h2>
         <DropDown
-          select="최신순"
+          select={isShow}
           fontSize="SMALL"
           outerBorder={true}
           dropDownContents={dropDownContents}

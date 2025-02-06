@@ -1,8 +1,11 @@
 import { useRef, useEffect, useState } from "react";
 import styles from "./Map.module.scss";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
-import DetailInfo from "./ApartInfo/DetailInfo";
+import DetailInfo from "./DetailInfo/DetailInfo";
 import MapLoading from "./MapLoading";
+import zoomUpIcon from "@/assets/Main/Map/zoomUpIcon.svg";
+import zoomDownIcon from "@/assets/Main/Map/zoomDownIcon.svg";
+import locationIcon from "@/assets/Main/Map/locationIcon.svg";
 
 export default function ApartMap() {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,13 +15,6 @@ export default function ApartMap() {
     sw: { lat: number; lng: number };
     ne: { lat: number; lng: number };
   } | null>(null);
-
-  const addMarkersWithinRadius = (
-    map: naver.maps.Map,
-    center: naver.maps.LatLng
-  ) => {
-    const { naver } = window;
-  };
 
   //지도 경계 좌표 업데이트 함수
   const updateBounds = (map: naver.maps.Map) => {
@@ -38,12 +34,7 @@ export default function ApartMap() {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     const { naver } = window;
-
-    // 맵 로딩 테스트 강제 로딩 setTimeOut
-    setTimeout(() => {
-      if (naver) setIsLoading(false);
-    }, 1000);
-
+    if (naver) setIsLoading(false);
     if (mapRef.current && naver) {
       const location = new naver.maps.LatLng(lat, lng);
 
@@ -52,8 +43,53 @@ export default function ApartMap() {
         zoom: 15,
       });
 
-      updateBounds(map);
+      // 커스텀 줌 버튼 임시 코드
+      const zoomUpBtnHtml = `<button><img src="${zoomUpIcon}"/></button>`;
+      const zoomDownBtnHtml = `<button><img src="${zoomDownIcon}"/></button>`;
 
+      const zoomUpControl = new naver.maps.CustomControl(zoomUpBtnHtml, {
+        position: naver.maps.Position.TOP_RIGHT,
+      });
+
+      const zoomDownControl = new naver.maps.CustomControl(zoomDownBtnHtml, {
+        position: naver.maps.Position.TOP_RIGHT,
+      });
+
+      // 이벤트 리스너 Remove 로직 추가 예정
+      naver.maps.Event.once(map, "init", function () {
+        zoomUpControl.setMap(map);
+
+        // 이벤트 리스너 저장
+        naver.maps.Event.addDOMListener(
+          zoomUpControl.getElement(),
+          "click",
+          () => {
+            const currentZoom = map.getZoom();
+            if (currentZoom < 21) {
+              map.setZoom(currentZoom + 1, true);
+            }
+
+            // naver.maps.Event.removeDOMListener(zoomUpClickListener);
+          }
+        );
+      });
+
+      naver.maps.Event.once(map, "init", function () {
+        zoomDownControl.setMap(map);
+        naver.maps.Event.addDOMListener(
+          zoomDownControl.getElement(),
+          "click",
+          () => {
+            const currentZoom = map.getZoom();
+            if (currentZoom > 1) {
+              map.setZoom(currentZoom - 1, true);
+            }
+          }
+        );
+      });
+      // 커스텀 줌 버튼 임시 코드
+
+      updateBounds(map);
       naver.maps.Event.addListener(map, "bounds_changed", () => {
         updateBounds(map);
       });
@@ -70,13 +106,17 @@ export default function ApartMap() {
   }, [isLoading]);
 
   useEffect(() => {
-    if (bounds) {
-      console.log("Current Map Bounds:", bounds);
-    }
+    // if (bounds) {
+    // console.log("Current Map Bounds:", bounds);
+    // }
   }, [bounds]);
 
   return (
     <section className={styles.apartMap}>
+      <div className={styles.location}>
+        <span>서울특별시 중구 황학동</span>
+        <img src={locationIcon} alt="map location" />
+      </div>
       {isDetailInfo && <DetailInfo />}
       {isLoading ? (
         <MapLoading />
