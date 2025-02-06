@@ -5,6 +5,7 @@ import DetailInfo from "./DetailInfo/DetailInfo";
 import MapLoading from "./MapLoading";
 import zoomUpIcon from "@/assets/Main/Map/zoomUpIcon.svg";
 import zoomDownIcon from "@/assets/Main/Map/zoomDownIcon.svg";
+import locationIcon from "@/assets/Main/Map/locationIcon.svg";
 
 export default function ApartMap() {
   const [isLoading, setIsLoading] = useState(true);
@@ -105,13 +106,17 @@ export default function ApartMap() {
   }, [isLoading]);
 
   useEffect(() => {
-    if (bounds) {
-      console.log("Current Map Bounds:", bounds);
-    }
+    // if (bounds) {
+    // console.log("Current Map Bounds:", bounds);
+    // }
   }, [bounds]);
 
   return (
     <section className={styles.apartMap}>
+      <div className={styles.location}>
+        <span>서울특별시 중구 황학동</span>
+        <img src={locationIcon} alt="map location" />
+      </div>
       {isDetailInfo && <DetailInfo />}
       {isLoading ? (
         <MapLoading />
