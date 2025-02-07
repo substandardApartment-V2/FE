@@ -11,7 +11,7 @@ const Router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <ApartInfoPage /> },
-      { path: "/poor", element: <WeakApartInfoPage /> },
+      { path: "/weak", element: <WeakApartInfoPage /> },
       { path: "/news", element: <News /> },
       { path: "/report", element: <Report /> },
     ],

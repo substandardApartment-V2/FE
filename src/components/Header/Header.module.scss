@@ -1,0 +1,16 @@
+@use "@/styles/colors.scss";
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding-bottom: 5.6rem;
+  > * {
+    width: 50%;
+  }
+  ul {
+    display: flex;
+    flex-direction: row;
+  }
+}
