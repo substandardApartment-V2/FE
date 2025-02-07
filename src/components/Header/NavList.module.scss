@@ -1,0 +1,27 @@
+@use "@/styles/colors.scss";
+
+.navList {
+  display: flex;
+  width: 25%;
+  border-left: 0.2rem solid colors.$mainRed;
+  box-sizing: border-box;
+  &:last-child {
+    border-right: 0.2rem solid colors.$mainRed;
+    box-sizing: border-box;
+  }
+  :hover,
+  .active {
+    background-color: colors.$mainNavy;
+    color: #fff;
+  }
+  a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0.8rem;
+    font-weight: 600;
+    font-size: 2rem;
+    color: colors.$mainNavy;
+  }
+}
