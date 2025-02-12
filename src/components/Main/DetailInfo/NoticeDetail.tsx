@@ -1,9 +1,12 @@
+import React from "react";
 import styles from "./NoticeDetail.module.scss";
 import closeIcon from "@/assets/Main/ApartInfo/closeButtonIconD.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
+import { useNoticeStore } from "@/store/useNoticeStore";
 
 export default function NoticeDetail() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
+  const noticeInfo = useNoticeStore((state) => state.noticeInfo);
 
   return (
     <div className={styles.noticeDetail}>
@@ -17,20 +20,16 @@ export default function NoticeDetail() {
         </button>
       </div>
       <div className={styles.noticeTitle}>
-        <div className={styles.date}>일주일 전</div>
-        <div className={styles.title}>
-          타이틀 테스트입니다. 타이틀 테스트입니다. 타이틀 테스트입니다. 타이틀
-          테스트입니다. 타이틀 테스트입니다. 타이틀 테스트입니다.{" "}
-        </div>
+        <div className={styles.date}>{noticeInfo?.createAt}</div>
+        <div className={styles.title}>{noticeInfo?.title}</div>
       </div>
       <div className={styles.content}>
-        사이트 긴급점검 시간 공지드립니다. 사이트 긴급점검 시간 공지드립니다.
-        사이트 긴급점검 시간 공지드립니다. 사이트 긴급점검 시간 공지드립니다.
-        사이트 긴급점검 시간 공지드립니다. 사이트 긴급점검 시간 공지드립니다.
-        사이트 긴급점검 시간 공지드립니다. 사이트 긴급점검 시간 공지드립니다.
-        사이트 긴급점검 시간 공지드립니다. 사이트 긴급점검 시간 공지드립니다.
-        사이트 긴급점검 시간 공지드립니다. 사이트 긴급점검 시간 공지드립니다.
-        사이트 긴급점검 시간 공지드립니다. 사이트 긴급점검 시간 공지드립니다.
+        {noticeInfo?.content.split("\\n").map((line, index) => (
+          <React.Fragment key={index}>
+            {line}
+            <br />
+          </React.Fragment>
+        ))}
       </div>
       <div className={styles.advertisement}>광고</div>
     </div>

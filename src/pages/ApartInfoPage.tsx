@@ -6,8 +6,8 @@ import WholeApartInfo from "@/components/Main/WholeApartInfo/WholeApartInfo";
 const ApartInfoPage = () => {
   return (
     <div className={styles.home}>
-      {/* <WholeApartInfo /> */}
-      <ApartInfo />
+      <WholeApartInfo />
+      {/* <ApartInfo /> */}
       <ApartMap />
     </div>
   );
