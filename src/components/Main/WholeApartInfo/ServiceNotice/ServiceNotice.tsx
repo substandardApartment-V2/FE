@@ -9,20 +9,19 @@ import ReactPaginate from "react-paginate";
 import styles from "./ServiceNotice.module.scss";
 import ServiceNoticeList from "./ServiceNoticeList";
 import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeList";
-import { useEffect } from "react";
-import axios from "axios";
+import useGetPageData from "@/hooks/useGetPageData";
+import { useNoticeStore } from "@/store/useNoticeStore";
 
 export default function ServiceNotice() {
-  const [currentPage, setCurrentPage] = useState(0);
   const [isShow, setIsShow] = useState("최신순");
-  const [serviceNoticeData, setServiceNoticeData] =
-    useState<TServiceNoticeList[]>();
-  const [pageCount, setPageCount] = useState(0);
+  const pageCount = useNoticeStore((state) => state.pageCount);
+  const serviceNoticeData = useNoticeStore((state) => state.serviceNoticeData);
+  const currentPage = useNoticeStore((state) => state.currentPage);
+  const setCurrentPage = useNoticeStore((state) => state.setCurrentPage);
 
   const handlePageChange = (selectedItem: { selected: number }) => {
     setCurrentPage(selectedItem.selected);
   };
-
   const goToPage = (page: number) => {
     setCurrentPage(page);
   };
@@ -42,20 +41,10 @@ export default function ServiceNotice() {
     },
   ];
 
-  useEffect(() => {
-    const getNoticeAPIHandler = async () => {
-      const response = await axios("http://localhost:8080/apt/notice", {
-        method: "POST",
-        data: {
-          num: 3,
-          pages: currentPage,
-        },
-      });
-      setServiceNoticeData(response.data.data.notices);
-      setPageCount(response.data.data.totalElements);
-    };
-    getNoticeAPIHandler();
-  }, [currentPage]);
+  useGetPageData("http://localhost:8080/apt/notice", {
+    num: 3,
+    pages: currentPage,
+  });
 
   return (
     <section className={styles.serviceNotice}>

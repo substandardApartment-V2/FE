@@ -30,8 +30,9 @@ export default function CurrentApartsStatus() {
     <section className={styles.currentApartStatus}>
       <h2 className={styles.title}>아파트 근황</h2>
       <ul className={styles.currentApartsStatusContainer}>
-        {dummyData.map((listData: TCurrentApartsStatusList) => (
+        {dummyData.map((listData: TCurrentApartsStatusList, index) => (
           <StatusList
+            key={index}
             title={listData.title}
             subTitle={listData.subTitle}
             content={listData.content}

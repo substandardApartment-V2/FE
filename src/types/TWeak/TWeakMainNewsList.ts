@@ -1,6 +1,8 @@
 export type TWeakMainNewsList = {
-  media: string;
-  date: string;
+  platform: string;
+  createAt: string;
   title: string;
   content: string;
+  url: string;
+  image: string;
 };
