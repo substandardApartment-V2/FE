@@ -18,8 +18,9 @@ const Header = () => {
       </div>
       <nav>
         <ul>
-          {navData.map((listData: TNavList) => (
+          {navData.map((listData: TNavList, index) => (
             <NavList
+              key={index}
               target={listData.target}
               navContent={listData.navContent}
             />

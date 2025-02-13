@@ -1,11 +1,12 @@
 import { useRef, useEffect, useState } from "react";
 import styles from "./ApartMap.module.scss";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
-import DetailInfo from "./DetailInfo/DetailInfo";
+import DetailInfo from "../DetailInfo/DetailInfo";
 import MapLoading from "./MapLoading";
 import zoomUpIcon from "@/assets/Main/Map/zoomUpIcon.svg";
 import zoomDownIcon from "@/assets/Main/Map/zoomDownIcon.svg";
 import locationIcon from "@/assets/Main/Map/locationIcon.svg";
+import CurrentMapSearch from "./CurrentMapSearch";
 
 export default function ApartMap() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +20,6 @@ export default function ApartMap() {
   //지도 경계 좌표 업데이트 함수
   const updateBounds = (map: naver.maps.Map) => {
     const mapBounds = map.getBounds() as naver.maps.LatLngBounds;
-    // console.log(mapBounds);
     const sw = mapBounds.getSW();
     const ne = mapBounds.getNE();
 
@@ -106,9 +106,9 @@ export default function ApartMap() {
   }, [isLoading]);
 
   useEffect(() => {
-    // if (bounds) {
-    // console.log("Current Map Bounds:", bounds);
-    // }
+    if (bounds) {
+      console.log("Current Map Bounds:", bounds);
+    }
   }, [bounds]);
 
   return (
@@ -123,6 +123,7 @@ export default function ApartMap() {
       ) : (
         <div id="map" ref={mapRef} className={styles.map} />
       )}
+      <CurrentMapSearch />
     </section>
   );
 }
