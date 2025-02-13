@@ -1,28 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DropDown from "@/components/Abstraction/DropDown/DropDown";
 import styles from "./ServiceNotice.module.scss";
 import ServiceNoticeList from "./ServiceNoticeList";
 import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeList";
-import useGetPageData from "@/hooks/useGetPageData";
+import useGetPageData from "@/hooks/Api/useGetPageData";
 import { useNoticeStore } from "@/store/useNoticeStore";
 import ServiceNoticePagination from "./ServiceNoticePagination";
 
 export default function ServiceNotice() {
-  const [isShow, setIsShow] = useState("최신순");
   const serviceNoticeData = useNoticeStore((state) => state.serviceNoticeData);
   const currentPage = useNoticeStore((state) => state.currentPage);
+  const setCurrentPage = useNoticeStore((state) => state.setCurrentPage);
+  const setIsShow = useNoticeStore((state) => state.setIsShow);
+  const isShow = useNoticeStore((state) => state.isShow);
 
   const dropDownContents = [
     {
       content: "최신순",
       contentFn: () => {
         setIsShow("최신순");
+        setCurrentPage(0);
       },
     },
     {
       content: "과거순",
       contentFn: () => {
         setIsShow("과거순");
+        setCurrentPage(0);
       },
     },
   ];
@@ -30,6 +34,7 @@ export default function ServiceNotice() {
   useGetPageData("http://localhost:8080/apt/notice", {
     num: 3,
     pages: currentPage,
+    sort: isShow === "최신순" ? "DESC" : "ASC",
   });
 
   return (

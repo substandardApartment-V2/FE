@@ -1,5 +1,14 @@
 import styles from "./CurrentMapSearch.module.scss";
 
-export default function CurrentMapSearch() {
-  return <button className={styles.searchButton}>현 지도에서 검색</button>;
+type TCurrentMapSearch = {
+  isLoading: boolean;
+  updateBoundsHandler: () => void;
+};
+
+export default function CurrentMapSearch(props: TCurrentMapSearch) {
+  return (
+    <button className={styles.searchButton} onClick={props.updateBoundsHandler}>
+      현 지도에서 검색
+    </button>
+  );
 }

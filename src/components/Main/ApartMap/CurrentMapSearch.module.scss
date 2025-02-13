@@ -11,9 +11,12 @@
   padding: 1.2rem 2rem;
   border-radius: 1.4rem;
   transition: all 0.2s ease-in;
-  &:hover {
+  &:not(:disabled):hover {
     transform: translate(-50%, -60%);
     color: #ffffff;
     background-color: colors.$mainNavy;
+  }
+  &:disabled {
+    background-color: grey;
   }
 }

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { TAPIResponse } from "./useGetApartData";
 import { useNoticeStore } from "@/store/useNoticeStore";
-
 export default function useGetPageData(url: string, sendData: any) {
   const [data, setData] = useState<TAPIResponse | null>(null);
   const setPageCount = useNoticeStore((state) => state.setPageCount);
@@ -10,6 +9,7 @@ export default function useGetPageData(url: string, sendData: any) {
     (state) => state.setServiceNoticeData
   );
   const currentpage = useNoticeStore((state) => state.currentPage);
+  const isShow = useNoticeStore((state) => state.isShow);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +26,7 @@ export default function useGetPageData(url: string, sendData: any) {
       }
     };
     fetchData();
-  }, [currentpage]);
+  }, [currentpage, isShow]);
 
   return data;
 }

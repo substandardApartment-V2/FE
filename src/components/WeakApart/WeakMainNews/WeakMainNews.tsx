@@ -2,13 +2,12 @@ import styles from "./WeakMainNews.module.scss";
 import detailButtonIcon from "@/assets/Main/ApartInfo/detailButtonIcon.svg";
 import { TWeakMainNewsList } from "@/types/TWeak/TWeakMainNewsList";
 import WeakMainNewsList from "./WeakMainNewsList";
-import useGetApartData from "@/hooks/useGetApartData";
+import useGetApartData from "@/hooks/Api/useGetApartData";
 import { Link } from "react-router-dom";
 
 export default function WeakMainNews() {
   const data = useGetApartData("http://localhost:8080/defect/main");
 
-  console.log(data);
   return (
     <section className={styles.weakApartNews}>
       <div className={styles.titleContainer}>

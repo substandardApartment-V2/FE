@@ -1,22 +1,20 @@
 import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeList";
 import { create } from "zustand";
+import { TNoticeInfo } from "@/types/TMain/TNoriceInfo";
 
-type TNoticeInfo = {
-  title: string;
-  content: string;
-  createAt: string;
-  id: number;
-};
+type TIsShow = "최신순" | "과거순";
 
 type TUseNoticeStore = {
   serviceNoticeData: TServiceNoticeList[];
   noticeInfo: TNoticeInfo | null;
   pageCount: number;
   currentPage: number;
+  isShow: TIsShow;
   setServiceNoticeData: (serviceNoticeData: TServiceNoticeList[]) => void;
   setNoticeInfo: (noticeInfo: TNoticeInfo) => void;
   setPageCount: (pageCOunt: number) => void;
   setCurrentPage: (currentPage: number) => void;
+  setIsShow: (isShow: TIsShow) => void;
 };
 
 export const useNoticeStore = create<TUseNoticeStore>((set) => ({
@@ -24,6 +22,7 @@ export const useNoticeStore = create<TUseNoticeStore>((set) => ({
   noticeInfo: null,
   pageCount: 0,
   currentPage: 0,
+  isShow: "최신순",
   setServiceNoticeData: (serviceNoticeData: TServiceNoticeList[]) =>
     set(() => ({ serviceNoticeData: serviceNoticeData })),
   setNoticeInfo: (noticeInfo: TNoticeInfo) =>
@@ -31,4 +30,5 @@ export const useNoticeStore = create<TUseNoticeStore>((set) => ({
   setPageCount: (pageCount: number) => set(() => ({ pageCount: pageCount })),
   setCurrentPage: (currentPage: number) =>
     set(() => ({ currentPage: currentPage })),
+  setIsShow: (isShow: TIsShow) => set(() => ({ isShow: isShow })),
 }));
