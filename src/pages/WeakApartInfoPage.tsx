@@ -1,4 +1,4 @@
-import ApartMap from "@/components/Main/Map";
+import ApartMap from "@/components/Main/ApartMap";
 import WholeWeakApartInfo from "@/components/WeakApart/WholeWeakApartInfo/WholeWeakApartInfo";
 import styels from "./WeakApartInfoPage.module.scss";
 

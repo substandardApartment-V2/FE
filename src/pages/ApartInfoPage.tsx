@@ -1,6 +1,6 @@
 import styles from "./ApartInfoPage.module.scss";
 import ApartInfo from "@/components/Main/ApartInfo/ApartInfo";
-import ApartMap from "@/components/Main/Map";
+import ApartMap from "@/components/Main/ApartMap";
 import WholeApartInfo from "@/components/Main/WholeApartInfo/WholeApartInfo";
 
 const ApartInfoPage = () => {

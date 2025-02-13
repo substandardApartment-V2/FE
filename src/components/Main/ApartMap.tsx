@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import styles from "./Map.module.scss";
+import styles from "./ApartMap.module.scss";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import DetailInfo from "./DetailInfo/DetailInfo";
 import MapLoading from "./MapLoading";
@@ -114,7 +114,7 @@ export default function ApartMap() {
   return (
     <section className={styles.apartMap}>
       <div className={styles.location}>
-        <span>서울특별시 중구 황학동</span>
+        <span></span>
         <img src={locationIcon} alt="map location" />
       </div>
       {isDetailInfo && <DetailInfo />}
