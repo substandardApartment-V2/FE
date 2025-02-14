@@ -1,4 +1,4 @@
-import { TNewsItem } from "@/types/TNewsItemTypes";
+import { TNewsItem } from "@/types/TNews/TNewsItemTypes";
 import { formatDate } from "@/utils/formatDate";
 import { Link } from "react-router-dom";
 import newsMain from "./NewsMain.module.scss";

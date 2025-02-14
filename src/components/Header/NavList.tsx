@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
-import styles from "./NavList.module.scss";
 import { TNavList } from "@/types/THeader/TNavList";
+import { NavLink } from "react-router-dom";
+import styles from "./NavList.module.scss";
 
 export default function NavList(props: TNavList) {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
@@ -15,7 +15,7 @@ export default function NavList(props: TNavList) {
           setIsDetailInfo(null);
         }}
       >
-        {props.navContent}
+        <span className={styles.navSpan}>{props.navContent}</span>
       </NavLink>
     </li>
   );

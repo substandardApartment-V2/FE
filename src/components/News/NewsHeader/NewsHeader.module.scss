@@ -1,30 +1,75 @@
 @use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .newsHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 3svh;
+  @include rs.respond-to("tablet-large") {
+    padding-bottom: 2%;
+  }
+  @include rs.respond-to("mobile-large") {
+    padding-bottom: 3%;
+  }
   .empty {
     width: 11rem;
+
+    @include rs.respond-to("tablet-large") {
+      display: none;
+    }
   }
   .headerTab {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.8rem;
+
+    @include rs.respond-to("tablet-large") {
+      width: 56%;
+      border: 0.1rem solid colors.$mainBorder;
+      gap: 0;
+    }
+
     button {
+      all: unset;
       font-size: 2.5rem;
       font-weight: 700;
       color: colors.$mainBorder;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include rs.respond-to("tablet-large") {
+        width: 100%;
+        font-size: 120%;
+        text-align: center;
+        padding: 1vh 0;
+        background-color: #f6f6f6;
+        color: #9e9e9e;
+        box-sizing: border-box;
+      }
+      @include rs.respond-to("mobile-large") {
+        font-size: 110%;
+      }
+      @include rs.respond-to("mobile-medium") {
+        font-size: 100%;
+      }
     }
     .active {
       color: colors.$mainRed;
+
+      @include rs.respond-to("tablet-large") {
+        background-color: #fff;
+      }
     }
     span {
       font-size: 2.5rem;
       font-weight: 700;
       color: colors.$mainBorder;
+
+      @include rs.respond-to("tablet-large") {
+        display: none;
+      }
     }
   }
 }

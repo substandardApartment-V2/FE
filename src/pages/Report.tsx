@@ -7,7 +7,8 @@ const Report = () => {
   return (
     <div className={styles.report}>
       <p>
-        아파트 관련 제보사항이 있으신 분들은 아래 이메일로 연락 부탁드립니다.
+        아파트 관련 제보사항이 있으신 분들은
+        <br className={styles.mobileBr} /> 아래 이메일로 연락 부탁드립니다.
       </p>
       <Link to={googleUrl} target="_blank">
         apartment0513@gmail.com
