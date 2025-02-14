@@ -6,7 +6,9 @@ import useGetApartData from "@/hooks/Api/useGetApartData";
 import { Link } from "react-router-dom";
 
 export default function WeakMainNews() {
-  const data = useGetApartData("http://localhost:8080/defect/main");
+  const data = useGetApartData(
+    `${import.meta.env.VITE_LOCAL_API_CALL}/defect/main`
+  );
 
   return (
     <section className={styles.weakApartNews}>

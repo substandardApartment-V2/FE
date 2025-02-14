@@ -30,7 +30,7 @@ export default function ServiceNotice() {
     },
   ];
 
-  useGetPageData("http://localhost:8080/apt/notice", {
+  useGetPageData(`${import.meta.env.VITE_LOCAL_API_CALL}/apt/notice`, {
     num: 3,
     pages: currentPage,
     sort: isShow === "최신순" ? "DESC" : "ASC",

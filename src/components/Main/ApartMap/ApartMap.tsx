@@ -48,7 +48,7 @@ export default function ApartMap() {
     }
   };
 
-  useGetApartMarker("http://localhost:8080/map/building?", {
+  useGetApartMarker(`${import.meta.env.VITE_LOCAL_API_CALL}/map/building?`, {
     maxLa: bounds?.ne.lat,
     maxLo: bounds?.ne.lng,
     minLa: bounds?.sw.lat,
