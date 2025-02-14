@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ServiceNoticeList.module.scss";
-import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeList";
+import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeListTypes";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import { useNoticeStore } from "@/store/useNoticeStore";
 

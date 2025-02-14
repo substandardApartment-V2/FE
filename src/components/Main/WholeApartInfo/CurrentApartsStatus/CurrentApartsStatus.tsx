@@ -1,6 +1,6 @@
 import styles from "./CurrentApartsStatus.module.scss";
 import StatusList from "./StatusList";
-import { TCurrentApartsStatusList } from "@/types/TMain/TCurrentApartsStatusList";
+import { TCurrentApartsStatusList } from "@/types/TMain/TCurrentApartsStatusListTypes";
 
 export default function CurrentApartsStatus() {
   const dummyData = [

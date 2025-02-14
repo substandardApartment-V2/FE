@@ -1,6 +1,6 @@
-import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeList";
+import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeListTypes";
 import { create } from "zustand";
-import { TNoticeInfo } from "@/types/TMain/TNoriceInfo";
+import { TNoticeInfo } from "@/types/TMain/TNoriceInfoTypes";
 
 type TIsShow = "최신순" | "과거순";
 

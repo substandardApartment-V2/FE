@@ -2,6 +2,7 @@ import styles from "./ApartDetailList.module.scss";
 import buildingIcon from "@/assets/Main/ApartInfo/buildingIcon.svg";
 import classNames from "classnames";
 import { TEvChargingFacilitiesDetails } from "@/store/useApartInfoStore";
+import { TApartDetailInfo } from "@/store/useApartInfoStore";
 
 type TApartDetailList = {
   title: string;

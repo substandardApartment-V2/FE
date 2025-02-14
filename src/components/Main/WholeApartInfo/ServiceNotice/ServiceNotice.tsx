@@ -1,7 +1,7 @@
 import DropDown from "@/components/Abstraction/DropDown/DropDown";
 import styles from "./ServiceNotice.module.scss";
 import ServiceNoticeList from "./ServiceNoticeList";
-import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeList";
+import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeListTypes";
 import useGetPageData from "@/hooks/Api/useGetPageData";
 import { useNoticeStore } from "@/store/useNoticeStore";
 import ServiceNoticePagination from "./ServiceNoticePagination";
