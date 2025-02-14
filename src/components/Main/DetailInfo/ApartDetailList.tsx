@@ -1,11 +1,11 @@
 import styles from "./ApartDetailList.module.scss";
 import buildingIcon from "@/assets/Main/ApartInfo/buildingIcon.svg";
 import classNames from "classnames";
+import { TEvChargingFacilitiesDetails } from "@/store/useApartInfoStore";
 
 type TApartDetailList = {
   title: string;
   data: any; //데이터 형식 미정의
-  detailData?: any; //데이터 형식 미정의
 };
 
 export default function ApartDetailList(props: TApartDetailList) {
@@ -22,23 +22,30 @@ export default function ApartDetailList(props: TApartDetailList) {
       </div>
       <div className={styles.contents}>
         <ul className={classNames(styles.contentsListContainer, contentsStyle)}>
-          {Object.keys(props.data).map((key) => (
-            <li className={classNames(styles.contentList, contentsStyle)}>
+          {Object.keys(props.data).map((key, index) => (
+            <li
+              className={classNames(styles.contentList, contentsStyle)}
+              key={index}
+            >
               <div className={styles.subTitle}>{key}</div>
-              <div className={styles.subContent}>{props.data[key]}</div>
+              <div className={styles.subContent}>
+                {JSON.stringify(props.data[key])}
+              </div>
             </li>
           ))}
         </ul>
-        {props.detailData && (
+        {props.data.evChargingFacilitiesDetails && (
           <div className={styles.chargeDetail}>
             <span>충전시설상세</span>
             <ul className={styles.chargeDetailLists}>
-              {props.detailData.map((listData: any) => (
-                <li className={styles.chargeDetailList}>
-                  <span>지상</span>
-                  <p>{listData}</p>
-                </li>
-              ))}
+              {props.data.evChargingFacilitiesDetails.map(
+                (listData: TEvChargingFacilitiesDetails, index: number) => (
+                  <li className={styles.chargeDetailList} key={index}>
+                    <span>{listData.location}</span>
+                    <p>{listData.type}</p>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         )}

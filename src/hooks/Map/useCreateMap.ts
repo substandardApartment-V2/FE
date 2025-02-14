@@ -14,7 +14,7 @@ export default function useCreateMap(
     const lng = position.coords.longitude;
     const { naver } = window;
     if (!naver || !mapRef.current) return;
-    setIsLoading(false);
+    // setIsLoading(false);
     const location = new naver.maps.LatLng(lat, lng);
     const map = new naver.maps.Map(mapRef.current, {
       center: location,

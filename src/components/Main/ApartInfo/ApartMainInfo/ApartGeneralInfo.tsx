@@ -31,9 +31,9 @@ export default function ApartGeneralInfo() {
           <img src={welfareIcon} alt="welfare facilities" />
         </div>
         <ul className={styles.amenities}>
-          {amenitiesData.content?.map((listData) => {
+          {amenitiesData.content?.map((listData, index) => {
             return (
-              <li>
+              <li key={index}>
                 <img src={childCareIcon} alt="childCare ICon" />
                 <span>{listData}</span>
               </li>
