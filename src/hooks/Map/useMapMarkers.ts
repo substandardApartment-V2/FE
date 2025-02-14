@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { TApartMarkerData } from "@/store/useMarkerStore";
-import MapMarker from "@/assets/Main/Map/MapMarkerIcon.svg";
+import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
+import selectMapMarkerIcon from "@/assets/Main/Map/selectMapMarkerIcon.svg";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import getApartData from "@/utils/api/getApartData";
 
@@ -11,6 +12,7 @@ export default function useMapMarkers(
   const [markers, setMarkers] = useState<naver.maps.Marker[]>([]);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
+  const selectMarkerRef = useRef<naver.maps.Marker | null>(null);
 
   useEffect(() => {
     if (!map || !markerData.length) return;
@@ -27,7 +29,7 @@ export default function useMapMarkers(
         position: location,
         map,
         icon: {
-          url: MapMarker,
+          url: mapMarkerIcon,
           size: new naver.maps.Size(45, 50),
           scaledSize: new naver.maps.Size(45, 50),
           origin: new naver.maps.Point(0, 0),
@@ -41,6 +43,26 @@ export default function useMapMarkers(
         const data = await getApartData(
           `${import.meta.env.VITE_LOCAL_API_CALL}/apt/info?id=${listData.aptId}`
         );
+
+        if (selectMarkerRef.current) {
+          selectMarkerRef.current.setIcon({
+            url: mapMarkerIcon,
+            size: new naver.maps.Size(45, 50),
+            scaledSize: new naver.maps.Size(45, 50),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(12, 34),
+          });
+        }
+
+        marker.setIcon({
+          url: selectMapMarkerIcon,
+          size: new naver.maps.Size(45, 50),
+          scaledSize: new naver.maps.Size(45, 50),
+          origin: new naver.maps.Point(0, 0),
+          anchor: new naver.maps.Point(12, 34),
+        });
+        selectMarkerRef.current = marker;
+
         setApartInfo(data.data);
       });
 
