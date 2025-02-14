@@ -22,6 +22,7 @@
         width: 2rem;
       }
     }
+    .amenities,
     .content {
       display: inline-block;
       width: 100%;
@@ -29,7 +30,7 @@
       border: 0.1rem solid #9e9e9e;
       border-top: none;
       color: colors.$mainNavy;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       li {
         display: flex;
         align-items: center;
@@ -39,6 +40,11 @@
           font-weight: 500;
         }
       }
+    }
+    .amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
   }
 }

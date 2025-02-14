@@ -67,17 +67,17 @@ export default function ApartMap() {
         <img src={locationIcon} alt="map location" />
       </div>
       {isDetailInfo && <DetailInfo />}
-      {isLoading ? (
+      {/* {isLoading ? (
         <MapLoading />
-      ) : (
-        <>
-          <div id="map" ref={mapRef} className={styles.map} />
-          <CurrentMapSearch
-            isLoading={isLoading}
-            updateBoundsHandler={updateBoundsHandler}
-          />
-        </>
-      )}
+      ) : ( */}
+      <>
+        <div id="map" ref={mapRef} className={styles.map} />
+        <CurrentMapSearch
+          isLoading={isLoading}
+          updateBoundsHandler={updateBoundsHandler}
+        />
+      </>
+      {/* )} */}
     </section>
   );
 }

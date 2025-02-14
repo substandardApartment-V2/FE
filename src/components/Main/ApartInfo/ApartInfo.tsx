@@ -6,21 +6,24 @@ import ApartBuildInfo from "./ApartMainInfo/ApartBuildInfo/ApartBuildInfo";
 import ApartPrice from "./ApartMainInfo/ApartPrice";
 import ApartMaintanceCharge from "./ApartMainInfo/ApartMaintanceCharge";
 import ApartGeneralInfo from "./ApartMainInfo/ApartGeneralInfo";
-
 import { useApartInfoStore } from "@/store/useApartInfoStore";
+import { useMainInfoStore } from "@/store/useMainInfoStore";
 
 export default function ApartInfo() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
+  const apartInfo = useMainInfoStore((state) => state.apartInfo);
 
   return (
     <section className={styles.apartInfoContainer}>
       <ApartSearch />
-      <ApartHeadInfo
-        apartName="롯데캐슬 베네치아"
-        apartRegion="서울특별시 중구 황학동 2545 롯데캐슬베네치아"
-        zipCode="04572"
-      />
+      {apartInfo && (
+        <ApartHeadInfo
+          apartName={apartInfo.name}
+          apartRegion={apartInfo.roadAddress}
+          zipCode={apartInfo.zipCode}
+        />
+      )}
       <section className={styles.apartMainInfo}>
         <ApartBuildInfo />
         <ApartPrice />

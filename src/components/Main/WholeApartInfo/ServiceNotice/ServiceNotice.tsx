@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import DropDown from "@/components/Abstraction/DropDown/DropDown";
 import styles from "./ServiceNotice.module.scss";
 import ServiceNoticeList from "./ServiceNoticeList";

@@ -1,24 +1,25 @@
 import styles from "./ApartBuildInfo.module.scss";
 import ApartBuildInfoList from "./ApartBuildInfoList";
 import ApartHouseHoldInfoList from "./ApartHouseHoldInfoList";
+import { useMainInfoStore } from "@/store/useMainInfoStore";
 
 export default function ApartBuildInfo() {
-  const compannyDummyData = [
-    { title: "준공일", content: "2008.12.22" },
-    { title: "시행사", content: "황학주택재개발조합" },
-    { title: "시공사", content: "롯데건설" },
+  const apartInfo = useMainInfoStore((state) => state.apartInfo);
+
+  const compannyData = [
+    { title: "준공일", content: apartInfo?.completionDate },
+    { title: "시행사", content: apartInfo?.developer },
+    { title: "시공사", content: apartInfo?.constructor },
   ];
 
-  const houseHoldDummyData = [
-    { title: "세대수", content: "1534세대" },
-    { title: "용적률", content: "557%" },
-    { title: "건폐율", content: "55%" },
+  const houseHoldData = [
+    { title: "세대수", content: apartInfo?.numberOfUnits },
   ];
 
   return (
     <section className={styles.buildInfo}>
       <ul className={styles.buildCompanyDate}>
-        {compannyDummyData.map((listData) => (
+        {compannyData.map((listData: any) => (
           <ApartBuildInfoList
             title={listData.title}
             content={listData.content}
@@ -26,7 +27,7 @@ export default function ApartBuildInfo() {
         ))}
       </ul>
       <ul className={styles.apartHousehold}>
-        {houseHoldDummyData.map((listData) => (
+        {houseHoldData.map((listData: any) => (
           <ApartHouseHoldInfoList
             title={listData.title}
             content={listData.content}
