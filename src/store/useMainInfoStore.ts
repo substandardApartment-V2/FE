@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 type TApartInfo = {
-  detailId: string;
-  name: string;
-  buildingType: string;
-  roadAddress: string;
-  zipCode: string;
-  completionDate: string;
-  developer: string;
+  detailId: string; //상세 아파트 id
+  name: string; //아파트 이름
+  buildingType: string; //아파트 건물구조
+  roadAddress: string; //아파트 주소
+  zipCode: string; //아파트 우편번호
+  completionDate: string; //아파트 완공일
+  developer: string; //시행사
   constructor: string; //시공사
   numberOfUnits: number; //세대 수
   buildingStructure: string; // 건물구조

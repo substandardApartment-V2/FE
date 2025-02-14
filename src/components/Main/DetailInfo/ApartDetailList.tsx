@@ -5,7 +5,7 @@ import {
   TTitle,
   TSubTitle,
 } from "@/types/TMain/TApartDetailInfoTypes";
-import { titleMapping } from "@/utils/mapping/ApartDetail";
+import { titleMapping } from "@/utils/mapping/ApartDetailInfo";
 
 type TApartDetailList = {
   title: TTitle;

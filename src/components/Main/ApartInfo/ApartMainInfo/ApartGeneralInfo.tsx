@@ -5,6 +5,7 @@ import { useMainInfoStore } from "@/store/useMainInfoStore";
 
 export default function ApartGeneralInfo() {
   const apartInfo = useMainInfoStore((state) => state.apartInfo);
+  console.log(apartInfo);
   const amenitiesData = {
     title: "부대복리시설",
     content: apartInfo?.amenities,
