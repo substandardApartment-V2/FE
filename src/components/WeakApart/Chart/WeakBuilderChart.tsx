@@ -21,7 +21,7 @@ export default function WeakBuilderChart() {
       {
         data: [118, 92, 82, 76, 71, 59, 58, 57, 53, 51],
         backgroundColor: ["#E4E1D0"],
-        categoryPercentage: 0.6,
+        barThickness: 15,
       },
     ],
   };

@@ -1,0 +1,22 @@
+@use "@/styles/colors.scss";
+
+.searchButton {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  bottom: 1rem;
+  font-size: 1.6rem;
+  color: #ffffff;
+  background-color: colors.$mainTitle;
+  padding: 1.2rem 2rem;
+  border-radius: 1.4rem;
+  transition: all 0.2s ease-in;
+  &:not(:disabled):hover {
+    transform: translate(-50%, -60%);
+    color: #ffffff;
+    background-color: colors.$mainNavy;
+  }
+  &:disabled {
+    background-color: grey;
+  }
+}

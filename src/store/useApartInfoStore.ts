@@ -1,10 +1,14 @@
 import { create } from "zustand";
-
-type TIsDetailInfo = null | "APARTINFO" | "WEAKRANK" | "MAINTANCE" | "NOTICE";
+import {
+  TIsDetailInfo,
+  TApartDetailInfo,
+} from "@/types/TMain/TApartDetailInfoTypes";
 
 type TuseApartInfoStore = {
   isDetailInfo: TIsDetailInfo;
+  apartDetailInfo?: TApartDetailInfo;
   setIsDetailInfo: (isDetailInfo: TIsDetailInfo) => void;
+  setApartDetailInfo: (apartDetailInfo: TApartDetailInfo) => void;
 };
 
 export const useApartInfoStore = create<TuseApartInfoStore>((set) => ({
@@ -13,4 +17,6 @@ export const useApartInfoStore = create<TuseApartInfoStore>((set) => ({
     set(() => ({
       isDetailInfo: isDetailInfo,
     })),
+  setApartDetailInfo: (apartDetailInfo: TApartDetailInfo) =>
+    set(() => ({ apartDetailInfo: apartDetailInfo })),
 }));

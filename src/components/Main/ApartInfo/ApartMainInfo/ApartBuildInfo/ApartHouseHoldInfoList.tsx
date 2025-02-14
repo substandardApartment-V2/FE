@@ -1,5 +1,5 @@
 import styles from "./ApartHouseholdInfoList.module.scss";
-import { TApartBuildInfoList } from "@/types/TMain/TApartBuildInfoList";
+import { TApartBuildInfoList } from "@/types/TMain/TApartBuildInfoListTypes";
 
 export default function ApartHouseHoldInfoList(props: TApartBuildInfoList) {
   return (

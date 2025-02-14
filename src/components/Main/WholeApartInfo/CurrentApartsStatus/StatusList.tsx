@@ -1,5 +1,5 @@
 import styles from "./StatusList.module.scss";
-import { TCurrentApartsStatusList } from "@/types/TMain/TCurrentApartsStatusList";
+import { TCurrentApartsStatusList } from "@/types/TMain/TCurrentApartsStatusListTypes";
 import detailInfoIcon from "@/assets/Main/ApartInfo/detailInfoIcon.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 
