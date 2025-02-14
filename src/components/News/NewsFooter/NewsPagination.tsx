@@ -10,6 +10,7 @@ import newsPage from "./NewsPagination.module.scss";
 const NewsPagination = () => {
   const { pages, setPages, totalElements } = useNewsStore();
   const pageCount = Math.ceil(totalElements / 8);
+  const currentPage = Math.min(pages - 1, pageCount - 1);
 
   const handlePageChange = (selectedItem: { selected: number }) => {
     setPages(selectedItem.selected + 1);
@@ -25,7 +26,7 @@ const NewsPagination = () => {
         <img src={doubleLeft} alt="맨처음으로" />
       </button>
       <ReactPaginate
-        forcePage={pages - 1}
+        forcePage={currentPage}
         pageCount={pageCount}
         pageRangeDisplayed={5}
         marginPagesDisplayed={1}

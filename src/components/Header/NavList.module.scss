@@ -1,18 +1,37 @@
 @use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .navList {
+  width: 100%;
   display: flex;
-  width: 25%;
+  justify-content: space-between;
   border-left: 0.2rem solid colors.$mainRed;
   box-sizing: border-box;
   &:last-child {
     border-right: 0.2rem solid colors.$mainRed;
     box-sizing: border-box;
+    @include rs.respond-to("tablet-large") {
+      border: 0;
+    }
+  }
+  @include rs.respond-to("tablet-large") {
+    border: 0;
   }
   :hover,
   .active {
     background-color: colors.$mainNavy;
     color: #fff;
+
+    @include rs.respond-to("tablet-large") {
+      background-color: #fff;
+      color: colors.$mainRed;
+    }
+    span {
+      @include rs.respond-to("tablet-large") {
+        padding-top: 0.8rem;
+        border-top: 0.2rem solid colors.$mainRed;
+      }
+    }
   }
   a {
     width: 100%;
@@ -23,5 +42,21 @@
     font-weight: 600;
     font-size: 2rem;
     color: colors.$mainNavy;
+    @include rs.respond-to("tablet-large") {
+      font-size: 130%;
+      padding: 1rem 0rem;
+    }
+    @include rs.respond-to("mobile-large") {
+      font-size: 115%;
+    }
+    @include rs.respond-to("mobile-medium") {
+      font-size: 110%;
+    }
+    span {
+      @include rs.respond-to("tablet-large") {
+        padding-top: 0.8rem;
+        border-top: 2px solid transparent;
+      }
+    }
   }
 }

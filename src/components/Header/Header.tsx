@@ -1,7 +1,7 @@
 import logo from "@/assets/logo.svg";
+import { TNavList } from "@/types/THeader/TNavList";
 import styles from "./Header.module.scss";
 import NavList from "./NavList";
-import { TNavList } from "@/types/THeader/TNavList";
 
 const Header = () => {
   const navData = [
@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div>
+      <div className={styles.logo}>
         <img src={logo} alt="로고" />
       </div>
       <nav>

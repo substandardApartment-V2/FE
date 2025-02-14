@@ -1,4 +1,5 @@
 @use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .header {
   width: 100%;
@@ -6,8 +7,31 @@
   justify-content: space-between;
   align-items: end;
   padding-bottom: 5.6rem;
+  @include rs.respond-to("tablet-large") {
+    flex-direction: column;
+    align-items: start;
+    padding-bottom: 0.2rem;
+    border-bottom: 0.1rem solid colors.$mainRed;
+  }
   > * {
     width: 50%;
+    @include rs.respond-to("tablet-large") {
+      width: 100%;
+    }
+  }
+  .logo {
+    @include rs.respond-to("tablet-large") {
+      width: 35%;
+      padding: 3%;
+    }
+    @include rs.respond-to("mobile-large") {
+      width: 45%;
+    }
+    img {
+      @include rs.respond-to("tablet-large") {
+        width: 100%;
+      }
+    }
   }
   ul {
     display: flex;
