@@ -1,3 +1,6 @@
+@use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
 .report {
   width: 100%;
   height: 100%;
@@ -10,17 +13,40 @@
   border-radius: 2rem;
   padding: 2.4rem;
   box-sizing: border-box;
+  @include rs.respond-to("tablet-large") {
+    border: 0;
+    gap: 1.6rem;
+  }
   p {
     font-size: 2.4rem;
     font-weight: 600;
     text-align: center;
-    color: #435464;
+    color: colors.$mainNavy;
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.8rem;
+      line-height: 150%;
+    }
+    @include rs.respond-to("mobile-medium") {
+      font-size: 1.6rem;
+    }
   }
   a {
     font-size: 2.8rem;
     font-weight: 600;
     color: #fff;
-    padding: 1.2rem 5rem;
-    background-color: #e03a3e;
+    padding: 1.2rem 3rem;
+    background-color: colors.$mainRed;
+    @include rs.respond-to("tablet-large") {
+      font-size: 2.2rem;
+    }
+    @include rs.respond-to("mobile-medium") {
+      font-size: 1.8rem;
+    }
+  }
+  .mobileBr {
+    display: none;
+    @include rs.respond-to("mobile-large") {
+      display: block;
+    }
   }
 }
