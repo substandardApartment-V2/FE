@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { TApartMarkerData } from "@/store/useMarkerStore";
 import MapMarker from "@/assets/Main/Map/MapMarkerIcon.svg";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
-import axios from "axios";
-import useGetApartData from "../Api/useGetApartData";
+import getApartData from "@/utils/api/getApartData";
 
 export default function useMapMarkers(
   map: naver.maps.Map | null,
@@ -39,14 +38,10 @@ export default function useMapMarkers(
 
       naver.maps.Event.addListener(marker, "click", async () => {
         setMainInfo(false);
-        try {
-          const result = await axios(
-            "http://localhost:8080/apt/info?id=APT1111030000080230000001"
-          );
-          setApartInfo(result.data.data);
-        } catch (error) {
-          console.log("Error : ", error);
-        }
+        const data = await getApartData(
+          `${import.meta.env.VITE_LOCAL_API_CALL}/apt/info?id=${listData.aptId}`
+        );
+        setApartInfo(data.data);
       });
 
       return marker;

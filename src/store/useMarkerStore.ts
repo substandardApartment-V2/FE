@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 export type TApartMarkerData = {
-  bulidingId: string;
-  buildingName: string;
+  aptId: string;
+  aptName: string;
   latitude: number;
   longitude: number;
 };
