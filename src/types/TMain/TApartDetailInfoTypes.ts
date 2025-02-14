@@ -79,3 +79,54 @@ export type TApartDetailInfo = {
   cleaningManagement: TCleaningManagement;
   generalManagement: TGeneralMangement;
 };
+
+export type TTitle =
+  | "building"
+  | "accessibleToPublic"
+  | "parking"
+  | "evCharging"
+  | "disinfectionManagement"
+  | "securityManagement"
+  | "cleaningManagement"
+  | "generalManagement";
+
+export type TSubTitle = {
+  building: {
+    maxFloorCount: string;
+    basementFloorCount: string;
+    passengerCargoElevatorCount: string;
+    buildingStructure: string;
+  };
+  accessibleToPublic: {
+    groundAccessibleToPublic: string;
+    undergroundAccessibleToPublic: string;
+  };
+  parking: {
+    groundParkingSpaces: string;
+    undergroundParkingSpaces: string;
+  };
+  evCharging: {
+    groundEvChargerCount: string;
+    undergroundEvChargerCount: string;
+    groundEvParkingSpaces: string;
+    undergroundEvParkingSpaces: string;
+  };
+  disinfectionManagement: {
+    managementType: string;
+    contractor: string;
+    annualFrequency: string;
+  };
+  securityManagement: {
+    managementType: string;
+    contractor: string;
+    staffCount: string;
+  };
+  cleaningManagement: {
+    managementType: string;
+    contractor: string;
+    foodWasteDisposalMethod: string;
+  };
+  generalManagement: {
+    staffCount: string;
+  };
+};

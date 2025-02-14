@@ -1,7 +1,8 @@
 import styles from "./ApartDetail.module.scss";
 import closeButtonIcon from "@/assets/Main/ApartInfo/closeButtonIconD.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
-import DetailApartInfoList from "./ApartDetailList";
+import ApartDetailList from "./ApartDetailList";
+import { TTitle } from "@/types/TMain/TApartDetailInfoTypes";
 
 export default function ApartDetail() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
@@ -9,12 +10,11 @@ export default function ApartDetail() {
 
   const transformedArray = apartDetailInfo
     ? Object.entries(apartDetailInfo).map(([key, value]) => ({
-        title: key,
+        title: key as TTitle,
         data: value,
       }))
     : [];
 
-  console.log(transformedArray);
   return (
     <section className={styles.building}>
       <button
@@ -26,11 +26,7 @@ export default function ApartDetail() {
       </button>
       <ul>
         {transformedArray.map((data, index) => (
-          <DetailApartInfoList
-            key={index}
-            title={data.title}
-            data={data.data}
-          />
+          <ApartDetailList key={index} title={data.title} data={data.data} />
         ))}
       </ul>
     </section>

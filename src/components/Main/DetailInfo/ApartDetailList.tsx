@@ -1,49 +1,65 @@
 import styles from "./ApartDetailList.module.scss";
-import buildingIcon from "@/assets/Main/ApartInfo/buildingIcon.svg";
 import classNames from "classnames";
-import { TEvChargingFacilitiesDetails } from "@/store/useApartInfoStore";
-import { TApartDetailInfo } from "@/store/useApartInfoStore";
+import {
+  TEvChargingFacilitiesDetails,
+  TTitle,
+  TSubTitle,
+} from "@/types/TMain/TApartDetailInfoTypes";
+import { titleMapping } from "@/utils/mapping/ApartDetail";
 
 type TApartDetailList = {
-  title: string;
+  title: TTitle;
   data: any; //데이터 형식 미정의
 };
 
-export default function ApartDetailList(props: TApartDetailList) {
-  const contentsStyle =
-    Object.keys(props.data).length === 2 || Object.keys(props.data).length === 4
-      ? styles.even
-      : styles.odd;
+export default function ApartDetailList({ title, data }: TApartDetailList) {
+  const contentsStyle = [2, 4, 5].includes(Object.keys(data).length)
+    ? styles.even
+    : styles.odd;
 
   return (
     <li>
       <div className={styles.title}>
-        <h3>{props.title}</h3>
-        <img src={buildingIcon} alt="building icon" />
+        <h3>{titleMapping[title] && titleMapping[title].title}</h3>
+        <img
+          src={titleMapping[title] && titleMapping[title].icon}
+          alt="building icon"
+        />
       </div>
       <div className={styles.contents}>
         <ul className={classNames(styles.contentsListContainer, contentsStyle)}>
-          {Object.keys(props.data).map((key, index) => (
-            <li
-              className={classNames(styles.contentList, contentsStyle)}
-              key={index}
-            >
-              <div className={styles.subTitle}>{key}</div>
-              <div className={styles.subContent}>
-                {JSON.stringify(props.data[key])}
-              </div>
-            </li>
-          ))}
+          {Object.keys(data).map((key, index) =>
+            key !== "evChargingFacilitiesDetails" ? (
+              <li
+                className={classNames(styles.contentList, contentsStyle)}
+                key={index}
+              >
+                <div className={styles.subTitle}>
+                  {titleMapping[title] &&
+                    titleMapping[title].subTitle[
+                      key as keyof TSubTitle[TTitle]
+                    ]}
+                </div>
+                <div className={styles.subContent}>
+                  {JSON.stringify(data[key]).replace(/^"|"$/g, "")}
+                </div>
+              </li>
+            ) : null
+          )}
         </ul>
-        {props.data.evChargingFacilitiesDetails && (
+        {data.evChargingFacilitiesDetails && (
           <div className={styles.chargeDetail}>
             <span>충전시설상세</span>
             <ul className={styles.chargeDetailLists}>
-              {props.data.evChargingFacilitiesDetails.map(
+              {data.evChargingFacilitiesDetails.map(
                 (listData: TEvChargingFacilitiesDetails, index: number) => (
                   <li className={styles.chargeDetailList} key={index}>
                     <span>{listData.location}</span>
-                    <p>{listData.type}</p>
+                    <p>
+                      {listData.type} | {listData.connector} |{" "}
+                      {listData.chargingSpeed} | {listData.count} |{" "}
+                      {listData.provider}
+                    </p>
                   </li>
                 )
               )}
