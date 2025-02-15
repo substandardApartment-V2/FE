@@ -1,5 +1,5 @@
 import styles from "./WeakMainNewsList.module.scss";
-import { TWeakMainNewsList } from "@/types/TWeak/TWeakMainNewsList";
+import { TWeakMainNewsList } from "@/types/TWeak/TWeakMainNewsListTypes";
 import { formatDate } from "@/utils/formatDate";
 import { Link } from "react-router-dom";
 

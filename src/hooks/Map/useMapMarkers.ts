@@ -4,6 +4,8 @@ import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
 import selectMapMarkerIcon from "@/assets/Main/Map/selectMapMarkerIcon.svg";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import getApartData from "@/utils/api/getApartData";
+import useLocationPath from "./useLocationPath";
+import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 
 export default function useMapMarkers(
   map: naver.maps.Map | null,
@@ -12,7 +14,11 @@ export default function useMapMarkers(
   const [markers, setMarkers] = useState<naver.maps.Marker[]>([]);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
+  const setWeakApartInfo = useWeakApartInfoStore(
+    (state) => state.setWeakApartInfo
+  );
   const selectMarkerRef = useRef<naver.maps.Marker | null>(null);
+  const locationPath = useLocationPath();
 
   useEffect(() => {
     if (!map || !markerData.length) return;
@@ -38,11 +44,13 @@ export default function useMapMarkers(
       });
 
       naver.maps.Event.addListener(marker, "click", async () => {
-        setMainInfo(false);
         const data = await getApartData(
-          `${import.meta.env.VITE_LOCAL_API_CALL}/apt/info?id=${listData.aptId}`
+          `${import.meta.env.VITE_LOCAL_API_CALL}/${locationPath}/info?id=${
+            listData.aptId
+          }`
         );
-
+        console.log(data);
+        setMainInfo(false);
         if (selectMarkerRef.current) {
           selectMarkerRef.current.setIcon({
             url: mapMarkerIcon,
@@ -61,8 +69,8 @@ export default function useMapMarkers(
           anchor: new naver.maps.Point(12, 34),
         });
         selectMarkerRef.current = marker;
-
-        setApartInfo(data.data);
+        if (locationPath === "apt") setApartInfo(data.data);
+        else setWeakApartInfo(data.data);
       });
 
       return marker;

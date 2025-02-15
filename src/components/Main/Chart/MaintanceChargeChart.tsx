@@ -110,8 +110,8 @@ const MaintanceChargeChart = () => {
           },
           label: function (context) {
             //툴팁 컨텐츠 함수
-            const value = context.raw;
-            return `${value}원`;
+            const value = context.raw as number;
+            return `${value.toLocaleString()}원`;
           },
         },
         position: "myCustomPositioner", // 커스텀 위치 사용

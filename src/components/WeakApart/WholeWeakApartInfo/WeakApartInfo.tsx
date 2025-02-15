@@ -3,37 +3,33 @@ import ApartHeadInfo from "@/components/Main/ApartInfo/ApartHeadInfo";
 import weakInfoIcon from "@/assets/Main/ApartInfo/weakInfoIcon.svg";
 import goBackIcon from "@/assets/Main/ApartInfo/goBackIcon.svg";
 import pillarIcon from "@/assets/Main/ApartInfo/structureIcon.svg";
-import supplementIcon from "@/assets/Main/ApartInfo/supplementIcon.svg";
+import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
+import { transformedArrayHandler } from "@/utils/mapping/TransFormedArray";
+import {
+  weakBasicInfoTitleMapping,
+  weakBuildInfoTitleMapping,
+  weakSplmnInfoTitleMapping,
+} from "@/utils/mapping/WeakApartInfo";
 
 export default function WeakApartInfo() {
-  const dummyData = [
-    { title: "준공일", content: "2008.12.22" },
-    { title: "설계사", content: "에스아이/에스유" },
-    { title: "세대수", content: "870세대" },
-    { title: "시공사", content: "대보건설" },
-    { title: "시행사", content: "에스아이/에스유" },
-    { title: "감리사", content: "건원 신화 한빛" },
-  ];
+  const weakApartInfo = useWeakApartInfoStore((state) => state.weakApartInfo);
 
-  const dummyPillarData = [
-    { title: "전체", content: "464" },
-    { title: "무량판", content: "331" },
-    { title: "미흡개소", content: "12" },
-    { title: "콘크리트 강도", content: "25" },
-  ];
-
-  const dummySupplementData = [
-    { title: "공법", content: "슬래브보완" },
-    { title: "보강 현황", content: "보강중" },
-    { title: "공사 완료 예정일", content: "2023.08.10" },
-  ];
+  const transformedBasicInfoArray = transformedArrayHandler(
+    weakApartInfo?.basicInfo
+  );
+  const transformedBuildInfoArray = transformedArrayHandler(
+    weakApartInfo?.bulidInfo
+  );
+  const transformedSplmnInfoArray = transformedArrayHandler(
+    weakApartInfo?.splmnInfo
+  );
 
   return (
-    <>
+    <section className={styles.weakApartInfoContainer}>
       <ApartHeadInfo
-        apartName="파주 운정 A34"
-        apartRegion="경기도 파주시 초롱꽃로 17"
-        zipCode="04572"
+        apartName={weakApartInfo?.aptInfo.name}
+        apartRegion={weakApartInfo?.aptInfo.address}
+        zipCode={weakApartInfo?.aptInfo.zipCode}
       />
       <section className={styles.weakApartInfo}>
         <section className={styles.apartInfo}>
@@ -50,10 +46,10 @@ export default function WeakApartInfo() {
             </div>
           </div>
           <ul className={styles.contentContainer}>
-            {dummyData.map((listData) => (
+            {transformedBasicInfoArray.map((listData) => (
               <li>
-                <strong>{listData.title}</strong>
-                <span>{listData.content}</span>
+                <strong>{weakBasicInfoTitleMapping[listData.title]}</strong>
+                <span>{listData.data}</span>
               </li>
             ))}
           </ul>
@@ -65,10 +61,10 @@ export default function WeakApartInfo() {
               <img src={pillarIcon} alt="apart pillar current status" />
             </div>
             <ul className={styles.contentContainer}>
-              {dummyPillarData.map((listData) => (
+              {transformedBuildInfoArray.map((listData) => (
                 <li>
-                  <strong>{listData.title}</strong>
-                  <span>{listData.content}</span>
+                  <strong>{weakBuildInfoTitleMapping[listData.title]}</strong>
+                  <span>{listData.data}</span>
                 </li>
               ))}
             </ul>
@@ -79,16 +75,16 @@ export default function WeakApartInfo() {
               <img src={pillarIcon} alt="apart supplement method" />
             </div>
             <ul className={styles.contentContainer}>
-              {dummySupplementData.map((listData) => (
-                <li>
-                  <strong>{listData.title}</strong>
-                  <span>{listData.content}</span>
+              {transformedSplmnInfoArray.map((listData, index) => (
+                <li key={index}>
+                  <strong>{weakSplmnInfoTitleMapping[listData.title]}</strong>
+                  <span>{listData.data}</span>
                 </li>
               ))}
             </ul>
           </section>
         </section>
       </section>
-    </>
+    </section>
   );
 }

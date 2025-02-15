@@ -52,3 +52,11 @@
     }
   }
 }
+
+.tooltip {
+  z-index: 10;
+  background: white;
+  color: #142337;
+  border: 0.2rem solid #e03a3e;
+  font-size: 1.4rem;
+}

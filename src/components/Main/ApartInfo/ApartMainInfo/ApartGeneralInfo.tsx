@@ -6,6 +6,7 @@ import {
 } from "@/utils/mapping/ApartGeneralInfo";
 import { TAmenities } from "@/types/TMain/TApartGeneralInfoTypes";
 import { transformedArrayHandler } from "@/utils/mapping/TransFormedArray";
+import { Tooltip } from "react-tooltip";
 
 export default function ApartGeneralInfo() {
   const apartInfo = useMainInfoStore((state) => state.apartInfo);
@@ -51,7 +52,24 @@ export default function ApartGeneralInfo() {
                   alt="apart etc info icon"
                 />
               </div>
-              <span className={styles.content}>{listData.data}</span>
+              <span
+                className={styles.content}
+                data-tooltip-id="generalInfo"
+                data-tooltip-html={`${listData.data}`}
+              >
+                {listData.data}
+              </span>
+              <Tooltip
+                className={styles.tooltip}
+                id="generalInfo"
+                clickable={true}
+                place="top"
+                style={{
+                  background: "#ffffff",
+                  color: "#142337",
+                  borderRadius: 0,
+                }}
+              />
             </li>
           )
       )}
