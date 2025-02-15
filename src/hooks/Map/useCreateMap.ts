@@ -22,7 +22,6 @@ export default function useCreateMap(
         zoom: 15,
       });
       setMap(map);
-      console.log("useCreateMap : ", isLoading);
       // 커스텀 줌 버튼 추가
       const zoomUpBtnHtml = `<button><img src="${zoomUpIcon}"/></button>`;
       const zoomDownBtnHtml = `<button><img src="${zoomDownIcon}"/></button>`;

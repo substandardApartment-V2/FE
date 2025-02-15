@@ -21,7 +21,7 @@ export default function ApartInfo() {
   const apartDetailApiHandler = async () => {
     const data = await getApartData(
       `${import.meta.env.VITE_LOCAL_API_CALL}/apt/detail?id=${
-        apartInfo?.detailId
+        apartInfo?.aptInfo.detailId
       }`
     );
     setApartDetailInfo(data.data);
@@ -32,9 +32,9 @@ export default function ApartInfo() {
       <ApartSearch />
       {apartInfo && (
         <ApartHeadInfo
-          apartName={apartInfo.name}
-          apartRegion={apartInfo.roadAddress}
-          zipCode={apartInfo.zipCode}
+          apartName={apartInfo.aptInfo.name}
+          apartRegion={apartInfo.aptInfo.roadAddress}
+          zipCode={apartInfo.aptInfo.zipCode}
         />
       )}
       <section className={styles.apartMainInfo}>

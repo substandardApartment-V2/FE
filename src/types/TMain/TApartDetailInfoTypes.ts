@@ -12,13 +12,6 @@ export type TBulding = {
   buildingStructure: string; //건물 구조
 };
 
-export type TPropertyInfo = {
-  approvalDate: string; //준공일
-  developer: string; //시행사
-  constructor: string; //시공사
-  numberOfUnits: number; //세대수
-};
-
 export type TAccessibleToPublic = {
   groundAccessibleToPublic: boolean; // 외부인개방여부(지상)
   undergroundAccessibleToPublic: boolean; // 외부인개방여부(지하)
@@ -69,11 +62,10 @@ export type TGeneralMangement = {
 };
 
 export type TApartDetailInfo = {
-  buliding: TBulding;
-  propertyInfo: TPropertyInfo;
+  building: TBulding;
   accessibleToPublic: TAccessibleToPublic;
   parking: TParking;
-  evCharing: TEvCharging;
+  evCharging: TEvCharging;
   disinfectionManagement: TDisinfectionManagement;
   securityManagement: TSecurityManagement;
   cleaningManagement: TCleaningManagement;

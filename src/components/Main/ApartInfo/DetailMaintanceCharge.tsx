@@ -23,13 +23,6 @@ export default function DetailMaintanceCharge() {
         <div>
           <div>
             <span className={styles.title}>개별사용료</span>
-            {/* <DropDown
-              select="개별사용료"
-              fontSize="SMALL"
-              outerBorder={true}
-              dropDownContents={dropDownContents}
-              width="LARGE"
-            /> */}
           </div>
           <button
             onClick={() => {

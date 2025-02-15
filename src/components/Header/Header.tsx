@@ -1,5 +1,5 @@
 import logo from "@/assets/logo.svg";
-import { TNavList } from "@/types/THeader/TNavList";
+import { TNavList } from "@/types/THeader/TNavListTypes";
 import styles from "./Header.module.scss";
 import NavList from "./NavList";
 

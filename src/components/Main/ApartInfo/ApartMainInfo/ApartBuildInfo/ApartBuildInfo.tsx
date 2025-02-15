@@ -7,13 +7,13 @@ export default function ApartBuildInfo() {
   const apartInfo = useMainInfoStore((state) => state.apartInfo);
 
   const compannyData = [
-    { title: "준공일", content: apartInfo?.completionDate },
-    { title: "시행사", content: apartInfo?.developer },
-    { title: "시공사", content: apartInfo?.constructor },
+    { title: "준공일", content: apartInfo?.buildInfo.completionDate },
+    { title: "시행사", content: apartInfo?.buildInfo.constructor },
+    { title: "시공사", content: apartInfo?.buildInfo.developer },
   ];
 
   const houseHoldData = [
-    { title: "세대수", content: apartInfo?.numberOfUnits },
+    { title: "세대수", content: apartInfo?.buildInfo.numberOfUnits },
   ];
 
   return (

@@ -9,8 +9,15 @@ import managementAddressIcon from "@/assets/Main/GeneralInfo/managementAddressIc
 import managementContactIcon from "@/assets/Main/GeneralInfo/managementContactIcon.svg";
 import managementFaxIcon from "@/assets/Main/GeneralInfo/managementFaxIcon.svg";
 import housingManagerIcon from "@/assets/Main/GeneralInfo/housingManagerIcon.svg";
+import managementOfficeIcon from "@/assets/Main/GeneralInfo/Amenities/managementOfficeIcon.svg";
+import bikeIcon from "@/assets/Main/GeneralInfo/Amenities/bikeIcon.svg";
+import seniorCenterIcon from "@/assets/Main/GeneralInfo/Amenities/seniorCenterIcon.svg";
+import communityFacilitiesIcon from "@/assets/Main/GeneralInfo/Amenities/communityFacilitiesIcon.svg";
+import communityLocationIcon from "@/assets/Main/GeneralInfo/Amenities/communityLocationIcon.svg";
+import playgroundIcon from "@/assets/Main/GeneralInfo/Amenities/playgroundIcon.svg";
+import childCareIcon from "@/assets/Main/GeneralInfo/Amenities/childCareIcon.svg";
 
-export const titleMapping = {
+export const apartEtcInfoTitleMapping = {
   amenities: { title: "부대복리시설", icon: amenitiesIcon },
   buildingStructure: { title: "건물구조", icon: structureIcon },
   managementType: { title: "관리방식", icon: managementIcon },
@@ -28,4 +35,17 @@ export const titleMapping = {
   },
   managementOfficeFax: { title: "관리사무소 팩스", icon: managementFaxIcon },
   housingManager: { title: "주택관리업자", icon: housingManagerIcon },
+};
+
+export const amenitiesIconMapping = {
+  관리사무소: managementOfficeIcon,
+  자전거보관소: bikeIcon,
+  노인정: seniorCenterIcon,
+  주민공동시설: communityFacilitiesIcon,
+  커뮤니티공간: communityLocationIcon,
+  휴게시설: communityLocationIcon,
+  어린이놀이터: playgroundIcon,
+  보육시설: childCareIcon,
+  문고: childCareIcon,
+  유치원: childCareIcon,
 };
