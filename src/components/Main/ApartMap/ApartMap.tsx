@@ -10,6 +10,8 @@ import { useMarkerStore } from "@/store/useMarkerStore";
 import useMapMarkers from "@/hooks/Map/useMapMarkers";
 import useCreateMap from "@/hooks/Map/useCreateMap";
 import useLocationPath from "@/hooks/Map/useLocationPath";
+import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
+import { useMainInfoStore } from "@/store/useMainInfoStore";
 
 export type TBounds = {
   minLa?: number;
@@ -26,7 +28,10 @@ export default function ApartMap() {
   } | null>(null);
   const [map, setMap] = useState<naver.maps.Map | null>(null);
   const markerData = useMarkerStore((state) => state.markerData);
+  const weakApartInfo = useWeakApartInfoStore((state) => state.weakApartInfo);
+  const apartInfo = useMainInfoStore((state) => state.apartInfo);
   const locationPath = useLocationPath();
+  const selectMarker = useMarkerStore((state) => state.selectMarker);
 
   //지도 경계 좌표 업데이트 함수
   const updateBounds = (map: naver.maps.Map) => {
@@ -50,6 +55,16 @@ export default function ApartMap() {
     }
   };
 
+  const locationClickHandler = () => {
+    if (selectMarker && map) {
+      const newLocation = new naver.maps.LatLng(
+        selectMarker?.latitude,
+        selectMarker?.longitude
+      );
+      map.panTo(newLocation);
+    }
+  };
+
   useGetApartMarker(
     `${import.meta.env.VITE_LOCAL_API_CALL}/map/${locationPath}?`,
     {
@@ -59,8 +74,8 @@ export default function ApartMap() {
       minLo: bounds?.sw.lng,
     }
   );
-  useMapMarkers(map, markerData);
 
+  useMapMarkers(map, markerData);
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getSuccess, getError);
   }, [isLoading]);
@@ -68,8 +83,12 @@ export default function ApartMap() {
   return (
     <section className={styles.apartMap}>
       {!isLoading && (
-        <div className={styles.location}>
-          <span></span>
+        <div className={styles.location} onClick={locationClickHandler}>
+          <span>
+            {locationPath === "apt"
+              ? apartInfo?.aptInfo.roadAddress
+              : weakApartInfo?.aptInfo.address}
+          </span>
           <img src={locationIcon} alt="map location" />
         </div>
       )}

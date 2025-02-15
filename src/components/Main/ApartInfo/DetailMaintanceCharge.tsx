@@ -1,22 +1,11 @@
 import MaintanceChargeChart from "../Chart/MaintanceChargeChart";
 import styles from "./DetailMaintanceCharge.module.scss";
-import DropDown from "@/components/Abstraction/DropDown/DropDown";
 import closeButtonIcon from "@/assets/Main/ApartInfo/closeButtonIcon.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 
 export default function DetailMaintanceCharge() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
 
-  const dropDownContents = [
-    {
-      content: "개별사용료",
-      contentFn: () => {},
-    },
-    {
-      content: "과거순",
-      contentFn: () => {},
-    },
-  ];
   return (
     <section className={styles.maintances}>
       <section className={styles.eachArea}>

@@ -46,8 +46,8 @@ export default function WeakApartInfo() {
             </div>
           </div>
           <ul className={styles.contentContainer}>
-            {transformedBasicInfoArray.map((listData) => (
-              <li>
+            {transformedBasicInfoArray.map((listData, index) => (
+              <li key={index}>
                 <strong>{weakBasicInfoTitleMapping[listData.title]}</strong>
                 <span>{listData.data}</span>
               </li>
@@ -61,8 +61,8 @@ export default function WeakApartInfo() {
               <img src={pillarIcon} alt="apart pillar current status" />
             </div>
             <ul className={styles.contentContainer}>
-              {transformedBuildInfoArray.map((listData) => (
-                <li>
+              {transformedBuildInfoArray.map((listData, index) => (
+                <li key={index}>
                   <strong>{weakBuildInfoTitleMapping[listData.title]}</strong>
                   <span>{listData.data}</span>
                 </li>
