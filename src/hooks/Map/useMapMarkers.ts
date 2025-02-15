@@ -35,7 +35,6 @@ export default function useMapMarkers(
           origin: new naver.maps.Point(0, 0),
           anchor: new naver.maps.Point(12, 34),
         },
-        animation: naver.maps.Animation.DROP,
       });
 
       naver.maps.Event.addListener(marker, "click", async () => {

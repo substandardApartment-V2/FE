@@ -62,10 +62,12 @@ export default function ApartMap() {
 
   return (
     <section className={styles.apartMap}>
-      <div className={styles.location}>
-        <span></span>
-        <img src={locationIcon} alt="map location" />
-      </div>
+      {!isLoading && (
+        <div className={styles.location}>
+          <span></span>
+          <img src={locationIcon} alt="map location" />
+        </div>
+      )}
       {isDetailInfo && <DetailInfo />}
       {isLoading ? (
         <MapLoading />

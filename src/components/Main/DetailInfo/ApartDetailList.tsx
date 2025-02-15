@@ -41,7 +41,11 @@ export default function ApartDetailList({ title, data }: TApartDetailList) {
                     ]}
                 </div>
                 <div className={styles.subContent}>
-                  {JSON.stringify(data[key]).replace(/^"|"$/g, "")}
+                  {title === "accessibleToPublic"
+                    ? data[key]
+                      ? "O"
+                      : "X"
+                    : JSON.stringify(data[key]).replace(/^"|"$/g, "")}
                 </div>
               </li>
             ) : null

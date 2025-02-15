@@ -39,9 +39,9 @@ export default function ApartGeneralInfo() {
       </li>
       {/* 부대복리시설 제외 영역 */}
       {transformedArray.map(
-        (listData) =>
+        (listData, index) =>
           listData.title !== "amenities" && (
-            <li>
+            <li key={index}>
               <div className={styles.title}>
                 <strong>
                   {apartEtcInfoTitleMapping[listData.title].title}

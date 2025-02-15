@@ -10,7 +10,6 @@ export default function ApartDetail() {
 
   const transformedArray = transformedArrayHandler(apartDetailInfo);
 
-  console.log(transformedArray);
   return (
     <section className={styles.building}>
       <button

@@ -19,16 +19,18 @@ export default function ApartBuildInfo() {
   return (
     <section className={styles.buildInfo}>
       <ul className={styles.buildCompanyDate}>
-        {compannyData.map((listData: any) => (
+        {compannyData.map((listData: any, index) => (
           <ApartBuildInfoList
+            key={index}
             title={listData.title}
             content={listData.content}
           />
         ))}
       </ul>
       <ul className={styles.apartHousehold}>
-        {houseHoldData.map((listData: any) => (
+        {houseHoldData.map((listData: any, index) => (
           <ApartHouseHoldInfoList
+            key={index}
             title={listData.title}
             content={listData.content}
           />
