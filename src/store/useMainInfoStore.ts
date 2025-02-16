@@ -2,15 +2,15 @@ import { create } from "zustand";
 import { TApartInfo } from "@/types/TMain/TApartGeneralInfoTypes";
 
 type TUseMainInfoStore = {
-  mainInfo: boolean;
+  mainInfo: "WHOLE" | "SELECT" | "SEARCH";
   apartInfo?: TApartInfo;
-  setMainInfo: (mainInfo: boolean) => void;
+  setMainInfo: (mainInfo: "WHOLE" | "SELECT" | "SEARCH") => void;
   setApartInfo: (apartInfo: TApartInfo) => void;
 };
 
 export const useMainInfoStore = create<TUseMainInfoStore>((set) => ({
-  mainInfo: true,
-  setMainInfo: (mainInfo: boolean) =>
+  mainInfo: "WHOLE",
+  setMainInfo: (mainInfo: "WHOLE" | "SELECT" | "SEARCH") =>
     set(() => ({
       mainInfo: mainInfo,
     })),

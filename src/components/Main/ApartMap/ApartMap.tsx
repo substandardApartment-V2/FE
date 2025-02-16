@@ -26,13 +26,13 @@ export default function ApartMap() {
     sw: { lat: number; lng: number };
     ne: { lat: number; lng: number };
   } | null>(null);
-  const [map, setMap] = useState<naver.maps.Map | null>(null);
-  const markerData = useMarkerStore((state) => state.markerData);
+  // const [map, setMap] = useState<naver.maps.Map | null>(null);
   const weakApartInfo = useWeakApartInfoStore((state) => state.weakApartInfo);
   const apartInfo = useMainInfoStore((state) => state.apartInfo);
   const locationPath = useLocationPath();
   const selectMarker = useMarkerStore((state) => state.selectMarker);
-
+  const map = useMarkerStore((state) => state.map);
+  const setMap = useMarkerStore((state) => state.setMap);
   //지도 경계 좌표 업데이트 함수
   const updateBounds = (map: naver.maps.Map) => {
     const mapBounds = map.getBounds() as naver.maps.LatLngBounds;
@@ -75,7 +75,7 @@ export default function ApartMap() {
     }
   );
 
-  useMapMarkers(map, markerData);
+  useMapMarkers();
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getSuccess, getError);
   }, [isLoading]);

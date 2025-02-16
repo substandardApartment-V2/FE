@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link to={"/"} onClick={() => setMainInfo(true)}>
+        <Link to={"/"} onClick={() => setMainInfo("WHOLE")}>
           <img src={logo} alt="로고" />
         </Link>
       </div>

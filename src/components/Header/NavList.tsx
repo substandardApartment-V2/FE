@@ -17,7 +17,7 @@ export default function NavList(props: TNavList) {
         className={({ isActive }) => (isActive ? styles.active : "undefined")}
         onClick={() => {
           setIsDetailInfo(null);
-          setMainInfo(true);
+          setMainInfo("WHOLE");
           setMarkderData([]);
         }}
       >

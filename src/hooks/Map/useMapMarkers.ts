@@ -8,10 +8,7 @@ import useLocationPath from "./useLocationPath";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
 
-export default function useMapMarkers(
-  map: naver.maps.Map | null,
-  markerData: TApartMarkerData[]
-) {
+export default function useMapMarkers() {
   const [markers, setMarkers] = useState<naver.maps.Marker[]>([]);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
@@ -20,6 +17,8 @@ export default function useMapMarkers(
   );
   const selectMarkerRef = useRef<naver.maps.Marker | null>(null);
   const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
+  const markerData = useMarkerStore((state) => state.markerData);
+  const map = useMarkerStore((state) => state.map);
   const locationPath = useLocationPath();
 
   useEffect(() => {
@@ -55,7 +54,7 @@ export default function useMapMarkers(
           longitude: marker.getPosition().x,
           latitude: marker.getPosition().y,
         });
-        setMainInfo(false);
+        setMainInfo("SELECT");
         if (selectMarkerRef.current) {
           selectMarkerRef.current.setIcon({
             url: mapMarkerIcon,

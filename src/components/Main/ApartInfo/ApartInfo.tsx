@@ -39,7 +39,7 @@ export default function ApartInfo() {
       )}
       <section className={styles.apartMainInfo}>
         <ApartBuildInfo />
-        <ApartPrice />
+        {/* <ApartPrice /> */}
         <ApartMaintanceCharge />
         <ApartGeneralInfo />
       </section>
