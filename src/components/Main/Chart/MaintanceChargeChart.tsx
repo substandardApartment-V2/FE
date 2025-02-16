@@ -1,6 +1,6 @@
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
-import { ChartOptions, Tooltip } from "chart.js";
+import { ChartOptions, Tick, Tooltip } from "chart.js";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 
 //툴팁 커스텀 포지션
@@ -58,7 +58,7 @@ const MaintanceChargeChart = () => {
     scales: {
       y: {
         grid: {
-          color: function (context: any) {
+          color: function (context: { tick: Tick }) {
             if (context.tick.value === 0) {
               return "#ffffff";
             }

@@ -4,9 +4,10 @@ import { TWeakMainNewsList } from "@/types/TWeak/TWeakMainNewsListTypes";
 import WeakMainNewsList from "./WeakMainNewsList";
 import useGetApartData from "@/hooks/Api/useGetApartData";
 import { Link } from "react-router-dom";
+import { TWeakMainNewsResponse } from "@/types/TApi/TAPITypes";
 
 export default function WeakMainNews() {
-  const data = useGetApartData(
+  const data = useGetApartData<TWeakMainNewsResponse>(
     `${import.meta.env.VITE_LOCAL_API_CALL}/defect/main`
   );
 

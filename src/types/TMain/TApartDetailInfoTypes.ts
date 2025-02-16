@@ -5,7 +5,7 @@ export type TIsDetailInfo =
   | "MAINTANCE"
   | "NOTICE";
 
-export type TBulding = {
+export type TBuilding = {
   maxFloorCount: number; //최고층 수
   basementFloorCount: number; //지하층 수
   passengerCargoElevatorCount: number; //승강기 수(동 단위)
@@ -62,15 +62,27 @@ export type TGeneralMangement = {
 };
 
 export type TApartDetailInfo = {
-  building: TBulding;
-  accessibleToPublic: TAccessibleToPublic;
-  parking: TParking;
-  evCharging: TEvCharging;
-  disinfectionManagement: TDisinfectionManagement;
-  securityManagement: TSecurityManagement;
-  cleaningManagement: TCleaningManagement;
-  generalManagement: TGeneralMangement;
+  building?: TBuilding;
+  accessibleToPublic?: TAccessibleToPublic;
+  parking?: TParking;
+  evCharging?: TEvCharging;
+  disinfectionManagement?: TDisinfectionManagement;
+  securityManagement?: TSecurityManagement;
+  cleaningManagement?: TCleaningManagement;
+  generalManagement?: TGeneralMangement;
 };
+
+// Partial로 객체 속성 선택적으로 데이터 타입 선택
+export type TApartDetailInfoList = Partial<
+  TBuilding &
+    TAccessibleToPublic &
+    TParking &
+    TEvCharging &
+    TDisinfectionManagement &
+    TSecurityManagement &
+    TCleaningManagement &
+    TGeneralMangement
+>;
 
 export type TTitle =
   | "building"

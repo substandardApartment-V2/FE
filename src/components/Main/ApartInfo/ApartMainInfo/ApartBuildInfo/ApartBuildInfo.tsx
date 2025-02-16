@@ -2,6 +2,7 @@ import styles from "./ApartBuildInfo.module.scss";
 import ApartBuildInfoList from "./ApartBuildInfoList";
 import ApartHouseHoldInfoList from "./ApartHouseHoldInfoList";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
+import { TApartBuildInfoList } from "@/types/TMain/TApartBuildInfoListTypes";
 
 export default function ApartBuildInfo() {
   const apartInfo = useMainInfoStore((state) => state.apartInfo);
@@ -19,7 +20,7 @@ export default function ApartBuildInfo() {
   return (
     <section className={styles.buildInfo}>
       <ul className={styles.buildCompanyDate}>
-        {compannyData.map((listData: any, index) => (
+        {compannyData.map((listData: TApartBuildInfoList, index) => (
           <ApartBuildInfoList
             key={index}
             title={listData.title}
@@ -28,7 +29,7 @@ export default function ApartBuildInfo() {
         ))}
       </ul>
       <ul className={styles.apartHousehold}>
-        {houseHoldData.map((listData: any, index) => (
+        {houseHoldData.map((listData: TApartBuildInfoList, index) => (
           <ApartHouseHoldInfoList
             key={index}
             title={listData.title}

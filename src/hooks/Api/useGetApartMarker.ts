@@ -1,11 +1,9 @@
-import { useState, useEffect, useMemo, useRef } from "react";
-import { TAPIResponse } from "./useGetApartData";
+import { useEffect, useMemo, useRef } from "react";
 import axios from "axios";
 import { TBounds } from "@/components/Main/ApartMap/ApartMap";
 import { useMarkerStore } from "@/store/useMarkerStore";
 
 export default function useGetApartMarker(url: string, query: TBounds) {
-  const [data, setData] = useState<TAPIResponse | null>(null);
   const prevQuery = useRef<TBounds | null>(null);
   const stableQuery = useMemo(
     () => ({ ...query }),
