@@ -1,4 +1,4 @@
 export type TApartBuildInfoList = {
-  title: string;
-  content: string;
+  title?: string;
+  content?: string | number;
 };

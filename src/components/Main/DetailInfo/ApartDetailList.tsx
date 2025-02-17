@@ -4,12 +4,13 @@ import {
   TEvChargingFacilitiesDetails,
   TTitle,
   TSubTitle,
+  TApartDetailInfoList,
 } from "@/types/TMain/TApartDetailInfoTypes";
-import { titleMapping } from "@/utils/mapping/ApartDetail";
+import { titleMapping } from "@/utils/mapping/ApartDetailInfo";
 
 type TApartDetailList = {
   title: TTitle;
-  data: any; //데이터 형식 미정의
+  data: TApartDetailInfoList;
 };
 
 export default function ApartDetailList({ title, data }: TApartDetailList) {
@@ -41,7 +42,11 @@ export default function ApartDetailList({ title, data }: TApartDetailList) {
                     ]}
                 </div>
                 <div className={styles.subContent}>
-                  {JSON.stringify(data[key]).replace(/^"|"$/g, "")}
+                  {title === "accessibleToPublic"
+                    ? data[key as keyof typeof data]
+                      ? "O"
+                      : "X"
+                    : String(data[key as keyof typeof data])}
                 </div>
               </li>
             ) : null

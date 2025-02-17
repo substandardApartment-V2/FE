@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { TAPIResponse } from "./useGetApartData";
+import { TAPIResponse, TPageAPIRequest } from "@/types/TApi/TAPITypes";
 import { useNoticeStore } from "@/store/useNoticeStore";
-export default function useGetPageData(url: string, sendData: any) {
+
+export default function useGetPageData(url: string, sendData: TPageAPIRequest) {
   const [data, setData] = useState<TAPIResponse | null>(null);
   const setPageCount = useNoticeStore((state) => state.setPageCount);
   const setServiceNoticeData = useNoticeStore(

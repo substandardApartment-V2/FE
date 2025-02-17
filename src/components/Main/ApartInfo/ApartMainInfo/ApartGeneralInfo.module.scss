@@ -2,7 +2,7 @@
 
 .apartGeneralInfo {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: auto auto;
   gap: 0.8rem;
   li {
@@ -20,6 +20,7 @@
       background-color: colors.$mainTitle;
       img {
         width: 2rem;
+        height: 2rem;
       }
     }
     .amenities,
@@ -31,6 +32,9 @@
       border-top: none;
       color: colors.$mainNavy;
       font-size: 1.6rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
       li {
         display: flex;
         align-items: center;
@@ -47,4 +51,12 @@
       gap: 1rem;
     }
   }
+}
+
+.tooltip {
+  z-index: 10;
+  background: white;
+  color: #142337;
+  border: 0.2rem solid #e03a3e;
+  font-size: 1.4rem;
 }

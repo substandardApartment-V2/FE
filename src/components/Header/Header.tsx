@@ -1,9 +1,13 @@
 import logo from "@/assets/logo.svg";
-import { TNavList } from "@/types/THeader/TNavList";
+import { TNavList } from "@/types/THeader/TNavListTypes";
 import styles from "./Header.module.scss";
 import NavList from "./NavList";
+import { Link } from "react-router-dom";
+import { useMainInfoStore } from "@/store/useMainInfoStore";
 
 const Header = () => {
+  const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
+
   const navData = [
     { target: ".", navContent: "아파트 정보" },
     { target: "/weak", navContent: "부실아파트" },
@@ -14,7 +18,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <img src={logo} alt="로고" />
+        <Link to={"/"} onClick={() => setMainInfo("WHOLE")}>
+          <img src={logo} alt="로고" />
+        </Link>
       </div>
       <nav>
         <ul>

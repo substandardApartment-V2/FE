@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { TAPIResponse } from "@/types/TApi/TAPITypes";
 
-export type TAPIResponse = {
-  code: number;
-  message: string;
-  data: any;
-};
-
-export default function useGetApartData(url: string, query?: string) {
-  const [data, setData] = useState<TAPIResponse | null>(null);
+export default function useGetApartData<T extends TAPIResponse>(url: string) {
+  const [data, setData] = useState<T | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {

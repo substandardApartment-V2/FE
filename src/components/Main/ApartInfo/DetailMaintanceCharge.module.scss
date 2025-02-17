@@ -20,7 +20,6 @@
         align-items: center;
         justify-content: space-between;
         gap: 0.8rem;
-        position: relative;
         button {
           img {
             width: 3rem;
@@ -33,9 +32,30 @@
       font-size: 1.8rem;
       font-weight: 600;
       padding: 2rem 0rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      float: left;
       span {
-        font-weight: 400;
+        font-weight: 600;
+        &:nth-child(2) {
+          font-size: 1.4rem;
+        }
+      }
+      img {
+        width: 1.6rem;
       }
     }
   }
+}
+
+.tooltip {
+  width: 10rem;
+  z-index: 10;
+  background-color: white;
+  font-weight: 300;
+  color: #142337;
+  border: 0.2rem solid #e03a3e;
+  font-size: 1.4rem;
 }

@@ -2,15 +2,21 @@
 
 .searchButton {
   position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   transform: translate(-50%, -50%);
   left: 50%;
   bottom: 1rem;
   font-size: 1.6rem;
+  font-weight: 600;
   color: #ffffff;
   background-color: colors.$mainTitle;
-  padding: 1.2rem 2rem;
-  border-radius: 1.4rem;
+  padding: 0.8rem 1rem;
   transition: all 0.2s ease-in;
+  img {
+    width: 2rem;
+  }
   &:not(:disabled):hover {
     transform: translate(-50%, -60%);
     color: #ffffff;

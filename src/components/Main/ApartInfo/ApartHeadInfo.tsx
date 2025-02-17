@@ -2,9 +2,9 @@ import styles from "./ApartHeadInfo.module.scss";
 import zipCodeIcon from "@/assets/Main/ApartInfo/zipCodeIcon.svg";
 
 type TApartHeadInfo = {
-  apartName: string;
-  apartRegion: string;
-  zipCode: string;
+  apartName?: string;
+  apartRegion?: string;
+  zipCode?: string;
 };
 
 export default function ApartHeadInfo(props: TApartHeadInfo) {

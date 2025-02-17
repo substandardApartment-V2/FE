@@ -1,19 +1,16 @@
+// 아파트 상세 정보 컴포넌트
+
 import styles from "./ApartDetail.module.scss";
 import closeButtonIcon from "@/assets/Main/ApartInfo/closeButtonIconD.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import ApartDetailList from "./ApartDetailList";
-import { TTitle } from "@/types/TMain/TApartDetailInfoTypes";
+import { transformedArrayHandler } from "@/utils/mapping/TransFormedArray";
 
 export default function ApartDetail() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const apartDetailInfo = useApartInfoStore((state) => state.apartDetailInfo);
 
-  const transformedArray = apartDetailInfo
-    ? Object.entries(apartDetailInfo).map(([key, value]) => ({
-        title: key as TTitle,
-        data: value,
-      }))
-    : [];
+  const transformedArray = transformedArrayHandler(apartDetailInfo);
 
   return (
     <section className={styles.building}>
@@ -25,8 +22,12 @@ export default function ApartDetail() {
         <img src={closeButtonIcon} alt="close icon" />
       </button>
       <ul>
-        {transformedArray.map((data, index) => (
-          <ApartDetailList key={index} title={data.title} data={data.data} />
+        {transformedArray.map((listData, index) => (
+          <ApartDetailList
+            key={index}
+            title={listData.title}
+            data={listData.data}
+          />
         ))}
       </ul>
     </section>

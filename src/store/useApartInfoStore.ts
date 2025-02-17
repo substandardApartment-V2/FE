@@ -4,14 +4,14 @@ import {
   TApartDetailInfo,
 } from "@/types/TMain/TApartDetailInfoTypes";
 
-type TuseApartInfoStore = {
+type TUseApartInfoStore = {
   isDetailInfo: TIsDetailInfo;
   apartDetailInfo?: TApartDetailInfo;
   setIsDetailInfo: (isDetailInfo: TIsDetailInfo) => void;
   setApartDetailInfo: (apartDetailInfo: TApartDetailInfo) => void;
 };
 
-export const useApartInfoStore = create<TuseApartInfoStore>((set) => ({
+export const useApartInfoStore = create<TUseApartInfoStore>((set) => ({
   isDetailInfo: null,
   setIsDetailInfo: (isDetailInfo: TIsDetailInfo) =>
     set(() => ({

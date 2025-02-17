@@ -14,10 +14,12 @@ const WeakApartNewsList = () => {
   const fetchNews = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get("http://localhost:8080/news/defect", {
-        params: {
+      const response = await axios("http://localhost:8080/news/defect", {
+        method: "POST",
+        data: {
           pages,
           sort,
+          num: 8,
         },
       });
       setCurrentNews(response.data.data.newsList);
