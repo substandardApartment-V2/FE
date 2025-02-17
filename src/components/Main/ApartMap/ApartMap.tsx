@@ -1,3 +1,5 @@
+// 네이버지도 컴포넌트
+
 import { useEffect, useState } from "react";
 import styles from "./ApartMap.module.scss";
 import { useApartInfoStore } from "@/store/useApartInfoStore";

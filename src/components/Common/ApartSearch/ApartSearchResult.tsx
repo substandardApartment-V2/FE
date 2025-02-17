@@ -1,3 +1,5 @@
+// 아파트 검색 결과 컴포넌트
+
 import styles from "./ApartSearchResult.module.scss";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import { TApartMarkerData } from "@/store/useMarkerStore";

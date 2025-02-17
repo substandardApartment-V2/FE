@@ -9,7 +9,8 @@ export default function WeakApartInfoPage() {
 
   return (
     <div className={styels.weak}>
-      {mainInfo ? <WholeWeakApartInfo /> : <WeakApartInfo />}
+      {mainInfo === "WHOLE" && <WholeWeakApartInfo />}
+      {mainInfo === "SELECT" && <WeakApartInfo />}
       <ApartMap />
     </div>
   );

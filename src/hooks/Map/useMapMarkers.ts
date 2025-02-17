@@ -1,4 +1,6 @@
-import { useEffect, useState, useRef } from "react";
+// 네이버 지도 마커 렌더링  커스텀 훅
+
+import { useEffect } from "react";
 import { TApartMarkerData } from "@/store/useMarkerStore";
 import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
 import selectMapMarkerIcon from "@/assets/Main/Map/selectMapMarkerIcon.svg";
@@ -7,18 +9,20 @@ import getApartData from "@/utils/api/getApartData";
 import useLocationPath from "./useLocationPath";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
+import useSelectMarker from "./useSelectMarker";
 
 export default function useMapMarkers() {
-  const [markers, setMarkers] = useState<naver.maps.Marker[]>([]);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
   const setWeakApartInfo = useWeakApartInfoStore(
     (state) => state.setWeakApartInfo
   );
-  const selectMarkerRef = useRef<naver.maps.Marker | null>(null);
   const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
   const markerData = useMarkerStore((state) => state.markerData);
   const map = useMarkerStore((state) => state.map);
+  const markers = useMarkerStore((state) => state.markers);
+  const setMarkers = useMarkerStore((state) => state.setMarkers);
+  const { selectMarkerRef } = useSelectMarker();
   const locationPath = useLocationPath();
 
   useEffect(() => {

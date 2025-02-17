@@ -1,3 +1,5 @@
+// 부실아파트 정보 컴포넌트
+
 import styles from "./WeakApartInfo.module.scss";
 import ApartHeadInfo from "@/components/Main/ApartInfo/ApartHeadInfo";
 import weakInfoIcon from "@/assets/Main/ApartInfo/weakInfoIcon.svg";
@@ -10,9 +12,14 @@ import {
   weakBuildInfoTitleMapping,
   weakSplmnInfoTitleMapping,
 } from "@/utils/mapping/WeakApartInfo";
+import { useMainInfoStore } from "@/store/useMainInfoStore";
+import useSelectMarker from "@/hooks/Map/useSelectMarker";
+import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
 
 export default function WeakApartInfo() {
   const weakApartInfo = useWeakApartInfoStore((state) => state.weakApartInfo);
+  const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
+  const { selectMarkerRef } = useSelectMarker();
 
   const transformedBasicInfoArray = transformedArrayHandler(
     weakApartInfo?.basicInfo
@@ -36,14 +43,27 @@ export default function WeakApartInfo() {
           <div className={styles.titleContainer}>
             <div className={styles.title}>
               <strong>기본정보</strong>
-              <img src={weakInfoIcon} alt="welfare facilities" />
+              <img src={weakInfoIcon} alt="부실아파트 기본정보" />
             </div>
-            <div className={styles.goBack}>
-              <strong>뒤로가기</strong>
-              <button>
-                <img src={goBackIcon} alt="welfare facilities" />
-              </button>
-            </div>
+            <button
+              className={styles.goBack}
+              onClick={() => {
+                setMainInfo("WHOLE");
+                if (selectMarkerRef.current) {
+                  selectMarkerRef.current.setIcon({
+                    url: mapMarkerIcon,
+                    size: new naver.maps.Size(45, 50),
+                    scaledSize: new naver.maps.Size(45, 50),
+                    origin: new naver.maps.Point(0, 0),
+                    anchor: new naver.maps.Point(12, 34),
+                  });
+                  selectMarkerRef.current = null;
+                }
+              }}
+            >
+              <span>뒤로가기</span>
+              <img src={goBackIcon} alt="뒤로가기" />
+            </button>
           </div>
           <ul className={styles.contentContainer}>
             {transformedBasicInfoArray.map((listData, index) => (
