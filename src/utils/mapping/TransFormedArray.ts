@@ -1,6 +1,6 @@
 // 객체 -> 배열 변환 함수
 export const transformedArrayHandler = <
-  T extends Record<string, string | number>
+  T extends Record<string, string | number | object>
 >(
   data: T | null | undefined
 ) => {

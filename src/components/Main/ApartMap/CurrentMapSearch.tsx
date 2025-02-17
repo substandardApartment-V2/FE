@@ -1,4 +1,5 @@
 import styles from "./CurrentMapSearch.module.scss";
+import currentLocationSearchIcon from "@/assets/Main/Map/currentLocationSearchIcon.svg";
 
 type TCurrentMapSearch = {
   isLoading: boolean;
@@ -8,7 +9,8 @@ type TCurrentMapSearch = {
 export default function CurrentMapSearch(props: TCurrentMapSearch) {
   return (
     <button className={styles.searchButton} onClick={props.updateBoundsHandler}>
-      현 지도에서 검색
+      <img src={currentLocationSearchIcon} alt="현 지도에서 검색" />
+      <span>현 지도에서 검색</span>
     </button>
   );
 }

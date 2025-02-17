@@ -29,7 +29,6 @@ export default function ApartSearch() {
 
   const searchApiHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setClearMarkerData();
     const pathName = locationPath === "apt" ? "apt" : "defect";
     try {
       if (searchRef.current?.value) {
@@ -39,6 +38,7 @@ export default function ApartSearch() {
           }/map/search/${pathName}?keyword=${searchRef.current?.value}`
         );
         if (data.data.code === 200 && map) {
+          setClearMarkerData();
           setMarkerData(data.data.data);
           setMainInfo("SEARCH");
           data.data.data.map((listData: TApartMarkerData) => {
@@ -57,6 +57,7 @@ export default function ApartSearch() {
                 anchor: new naver.maps.Point(12, 34),
               },
             });
+
             naver.maps.Event.addListener(marker, "click", async () => {
               const data = await getApartData(
                 `${

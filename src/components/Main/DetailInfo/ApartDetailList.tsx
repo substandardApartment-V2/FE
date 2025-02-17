@@ -18,7 +18,6 @@ export default function ApartDetailList({ title, data }: TApartDetailList) {
     ? styles.even
     : styles.odd;
 
-  console.log(data);
   return (
     <li>
       <div className={styles.title}>

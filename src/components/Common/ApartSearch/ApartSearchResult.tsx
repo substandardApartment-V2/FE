@@ -10,7 +10,8 @@ export default function ApartSearchResult() {
   const selectSearchApartHandler = (latitude: number, longitude: number) => {
     if (map) {
       const newLocation = new naver.maps.LatLng(latitude, longitude);
-      map.panTo(newLocation);
+      map.setCenter(newLocation);
+      map.setZoom(17);
     }
   };
 

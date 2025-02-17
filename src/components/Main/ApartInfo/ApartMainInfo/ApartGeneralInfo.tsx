@@ -1,3 +1,5 @@
+//아파트 기본 정보 컴포넌트
+
 import styles from "./ApartGeneralInfo.module.scss";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import {
@@ -21,7 +23,7 @@ export default function ApartGeneralInfo() {
           <strong>부대복리시설</strong>
           <img
             src={apartEtcInfoTitleMapping.amenities.icon}
-            alt="apart amenity Icon"
+            alt="부대복리시설"
           />
         </div>
         <ul className={styles.amenities}>
