@@ -1,3 +1,5 @@
+// 네이버지도 현재 지역 검색 버튼 컴포넌트
+
 import styles from "./CurrentMapSearch.module.scss";
 import currentLocationSearchIcon from "@/assets/Main/Map/currentLocationSearchIcon.svg";
 

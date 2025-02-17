@@ -1,3 +1,5 @@
+// 아파트 상세 정보 컴포넌트
+
 import styles from "./ApartDetail.module.scss";
 import closeButtonIcon from "@/assets/Main/ApartInfo/closeButtonIconD.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";

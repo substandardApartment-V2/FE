@@ -1,3 +1,5 @@
+// 아파트 관리비 컴포넌트
+
 import MaintanceChargeChart from "../../Chart/MaintanceChargeChart";
 import detailButtonIcon from "@/assets/Main/ApartInfo/detailButtonIcon.svg";
 import styles from "./ApartMaintanceCharge.module.scss";
