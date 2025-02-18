@@ -40,8 +40,8 @@ export default function useMapMarkers() {
         map,
         icon: {
           url: mapMarkerIcon,
-          size: new naver.maps.Size(45, 50),
-          scaledSize: new naver.maps.Size(45, 50),
+          size: new naver.maps.Size(35, 40),
+          scaledSize: new naver.maps.Size(35, 40),
           origin: new naver.maps.Point(0, 0),
           anchor: new naver.maps.Point(12, 34),
         },
@@ -61,8 +61,8 @@ export default function useMapMarkers() {
         if (selectMarkerRef.current) {
           selectMarkerRef.current.setIcon({
             url: mapMarkerIcon,
-            size: new naver.maps.Size(45, 50),
-            scaledSize: new naver.maps.Size(45, 50),
+            size: new naver.maps.Size(35, 40),
+            scaledSize: new naver.maps.Size(35, 40),
             origin: new naver.maps.Point(0, 0),
             anchor: new naver.maps.Point(12, 34),
           });
@@ -70,8 +70,8 @@ export default function useMapMarkers() {
 
         marker.setIcon({
           url: selectMapMarkerIcon,
-          size: new naver.maps.Size(45, 50),
-          scaledSize: new naver.maps.Size(45, 50),
+          size: new naver.maps.Size(35, 40),
+          scaledSize: new naver.maps.Size(35, 40),
           origin: new naver.maps.Point(0, 0),
           anchor: new naver.maps.Point(12, 34),
         });
