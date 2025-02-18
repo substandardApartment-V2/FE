@@ -65,7 +65,6 @@ export default function useCreateMap(
           }
         );
       });
-
       updateBounds(map);
     }
   };

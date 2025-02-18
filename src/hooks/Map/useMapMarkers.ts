@@ -1,4 +1,4 @@
-// 네이버 지도 마커 렌더링  커스텀 훅
+// 네이버 지도 마커 생성 커스텀 훅
 
 import { useEffect } from "react";
 import { TApartMarkerData } from "@/store/useMarkerStore";
@@ -10,6 +10,7 @@ import useLocationPath from "./useLocationPath";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import useSelectMarker from "./useSelectMarker";
+import useCreateCluster from "./useCreateCluster";
 
 export default function useMapMarkers() {
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
@@ -27,15 +28,13 @@ export default function useMapMarkers() {
 
   useEffect(() => {
     if (!map || !markerData.length) return;
-
     markers.forEach((marker) => marker.setMap(null));
-
-    //마커 생성 함수
     const newMarkers = markerData.map((listData: TApartMarkerData) => {
       const location = new naver.maps.LatLng(
         listData.latitude,
         listData.longitude
       );
+
       const marker = new naver.maps.Marker({
         position: location,
         map,
@@ -85,11 +84,9 @@ export default function useMapMarkers() {
     });
 
     setMarkers(newMarkers);
-
     return () => {
       newMarkers.forEach((marker) => marker.setMap(null));
     };
-  }, [markerData, map]);
-
-  return markers;
+  }, [markerData]);
+  useCreateCluster(markers);
 }

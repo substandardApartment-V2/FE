@@ -15,13 +15,6 @@ import useLocationPath from "@/hooks/Map/useLocationPath";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 
-export type TBounds = {
-  minLa?: number;
-  minLo?: number;
-  maxLa?: number;
-  maxLo?: number;
-};
-
 export default function ApartMap() {
   const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
   const [bounds, setBounds] = useState<{
@@ -77,10 +70,10 @@ export default function ApartMap() {
     }
   );
 
-  useMapMarkers();
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getSuccess, getError);
   }, [isLoading]);
+  useMapMarkers();
 
   return (
     <section className={styles.apartMap}>
