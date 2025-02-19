@@ -1,10 +1,14 @@
 import { useEffect, useMemo, useRef } from "react";
 import axios from "axios";
 import { useMarkerStore } from "@/store/useMarkerStore";
-import { TBounds } from "@/types/TMap/TMapMarkerTypes";
+import { TGetMarkersBounds } from "@/types/TApi/TAPITypes";
 
-export default function useGetApartMarker(url: string, query: TBounds) {
-  const prevQuery = useRef<TBounds | null>(null);
+export default function useGetApartMarker(
+  url: string,
+  query: TGetMarkersBounds
+) {
+  console.log(query);
+  const prevQuery = useRef<TGetMarkersBounds | null>(null);
   const stableQuery = useMemo(
     () => ({ ...query }),
     [query.minLa, query.minLo, query.maxLa, query.maxLo]

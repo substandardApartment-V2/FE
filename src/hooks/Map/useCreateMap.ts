@@ -1,14 +1,17 @@
+// 네이버 지도 생성 커스텀 훅
+
 import { useState, useRef } from "react";
 import zoomUpIcon from "@/assets/Main/Map/zoomUpIcon.svg";
 import zoomDownIcon from "@/assets/Main/Map/zoomDownIcon.svg";
+import { updateBounds } from "@/utils/map/updateBounds";
+import { useMarkerStore } from "@/store/useMarkerStore";
 
-export default function useCreateMap(
-  setMap: (map: naver.maps.Map) => void,
-  updateBounds: (map: naver.maps.Map) => void
-) {
+export default function useCreateMap(setMap: (map: naver.maps.Map) => void) {
   const [isLoading, setIsLoading] = useState(true);
   const mapRef = useRef<HTMLDivElement | null>(null);
+  const setBounds = useMarkerStore((state) => state.setBounds);
 
+  // 지도 불러오기 성공
   const getSuccess = (position: GeolocationPosition) => {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
@@ -26,7 +29,7 @@ export default function useCreateMap(
         zoom: 15,
       });
       setMap(map);
-      // 커스텀 줌 버튼 추가
+
       const zoomUpBtnHtml = `<button><img src="${zoomUpIcon}"/></button>`;
       const zoomDownBtnHtml = `<button><img src="${zoomDownIcon}"/></button>`;
 
@@ -65,9 +68,10 @@ export default function useCreateMap(
           }
         );
       });
-      updateBounds(map);
+      updateBounds(map, setBounds);
     }
   };
+
   // 지도 불러오기 에러 함수
   const getError = () => {
     console.error("location error");
