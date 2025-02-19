@@ -9,7 +9,7 @@ import getApartData from "@/utils/api/getApartData";
 import useLocationPath from "./useLocationPath";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
-import useSelectMarker from "./useSelectMarker";
+// import useSelectMarker from "./useSelectMarker";
 import useCreateCluster from "./useCreateCluster";
 
 export default function useMapMarkers() {
@@ -19,11 +19,11 @@ export default function useMapMarkers() {
     (state) => state.setWeakApartInfo
   );
   const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
+  const selectMarker = useMarkerStore((state) => state.selectMarker);
   const markerData = useMarkerStore((state) => state.markerData);
   const map = useMarkerStore((state) => state.map);
   const markers = useMarkerStore((state) => state.markers);
   const setMarkers = useMarkerStore((state) => state.setMarkers);
-  const { selectMarkerRef } = useSelectMarker();
   const locationPath = useLocationPath();
 
   useEffect(() => {
@@ -53,13 +53,10 @@ export default function useMapMarkers() {
             listData.aptId
           }`
         );
-        setSelectMarker({
-          longitude: marker.getPosition().x,
-          latitude: marker.getPosition().y,
-        });
+        setSelectMarker(marker);
         setMainInfo("SELECT");
-        if (selectMarkerRef.current) {
-          selectMarkerRef.current.setIcon({
+        if (selectMarker) {
+          selectMarker.setIcon({
             url: mapMarkerIcon,
             size: new naver.maps.Size(35, 40),
             scaledSize: new naver.maps.Size(35, 40),
@@ -75,11 +72,9 @@ export default function useMapMarkers() {
           origin: new naver.maps.Point(0, 0),
           anchor: new naver.maps.Point(12, 34),
         });
-        selectMarkerRef.current = marker;
         if (locationPath === "apt") setApartInfo(data.data);
         else setWeakApartInfo(data.data);
       });
-
       return marker;
     });
 

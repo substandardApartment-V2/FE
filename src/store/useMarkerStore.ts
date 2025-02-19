@@ -16,10 +16,10 @@ type TUseMarkerStore = {
   map?: naver.maps.Map | null;
   markers: naver.maps.Marker[];
   markerData: TApartMarkerData[];
-  selectMarker?: TSelectMarker;
+  selectMarker?: naver.maps.Marker | null;
   setMap: (map: naver.maps.Map | null) => void;
   setMarkderData: (markerData: TApartMarkerData[]) => void;
-  setSelectMarker: (selectMarker: TSelectMarker) => void;
+  setSelectMarker: (selectMarker: naver.maps.Marker | null) => void;
   setMarkers: (markers: naver.maps.Marker[]) => void;
 };
 
@@ -29,7 +29,7 @@ export const useMarkerStore = create<TUseMarkerStore>((set) => ({
   setMap: (map: naver.maps.Map | null) => set(() => ({ map: map })),
   setMarkderData: (markerData: TApartMarkerData[]) =>
     set(() => ({ markerData: markerData })),
-  setSelectMarker: (selectMarker: TSelectMarker) =>
+  setSelectMarker: (selectMarker: naver.maps.Marker | null) =>
     set(() => ({ selectMarker: selectMarker })),
   setMarkers: (markers: naver.maps.Marker[]) =>
     set(() => ({ markers: markers })),

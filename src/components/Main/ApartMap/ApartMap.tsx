@@ -53,8 +53,8 @@ export default function ApartMap() {
   const locationClickHandler = () => {
     if (selectMarker && map) {
       const newLocation = new naver.maps.LatLng(
-        selectMarker?.latitude,
-        selectMarker?.longitude
+        selectMarker?.getPosition().y,
+        selectMarker?.getPosition().x
       );
       map.panTo(newLocation);
     }
