@@ -21,7 +21,6 @@ export default function createCluster(
       icons: [clusterMarkerIcon],
       indexGenerator: [10, 100, 200, 500, 1000],
       stylingFunction: function (clusterMarker, count: number) {
-        console.log(clusterMarker);
         const element = clusterMarker.getElement();
         if (element) {
           clusterMarker

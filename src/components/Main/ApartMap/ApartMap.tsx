@@ -73,6 +73,7 @@ export default function ApartMap() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getSuccess, getError);
   }, [isLoading]);
+
   useMapMarkers();
 
   return (

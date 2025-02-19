@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useMarkerStore } from "@/store/useMarkerStore";
-import { TMarkerClustering } from "@/types/TMap/TMarkerClustering";
+import { TMarkerClustering } from "@/types/TMap/TMapMarkerTypes";
 
 export default function useCreateCluster(newMarkers: naver.maps.Marker[]) {
   const map = useMarkerStore((state) => state.map);

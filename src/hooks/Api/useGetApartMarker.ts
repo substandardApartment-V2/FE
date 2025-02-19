@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import axios from "axios";
-import { TBounds } from "@/components/Main/ApartMap/ApartMap";
 import { useMarkerStore } from "@/store/useMarkerStore";
+import { TBounds } from "@/types/TMap/TMapMarkerTypes";
 
 export default function useGetApartMarker(url: string, query: TBounds) {
   const prevQuery = useRef<TBounds | null>(null);
@@ -10,6 +10,7 @@ export default function useGetApartMarker(url: string, query: TBounds) {
     [query.minLa, query.minLo, query.maxLa, query.maxLo]
   );
   const setMarkderData = useMarkerStore((state) => state.setMarkderData);
+  const setMarkers = useMarkerStore((state) => state.setMarkers);
 
   useEffect(() => {
     if (
@@ -35,6 +36,7 @@ export default function useGetApartMarker(url: string, query: TBounds) {
         }
       } catch (error) {
         console.log("ERROR : ", error);
+        setMarkers([]);
       }
     };
     fetchData();
