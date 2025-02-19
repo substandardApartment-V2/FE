@@ -1,6 +1,6 @@
 // 네이버 지도 마커 생성 커스텀 훅
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { TApartMarkerData } from "@/store/useMarkerStore";
 import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
 import selectMapMarkerIcon from "@/assets/Main/Map/selectMapMarkerIcon.svg";
@@ -13,6 +13,7 @@ import { useMarkerStore } from "@/store/useMarkerStore";
 import useCreateCluster from "./useCreateCluster";
 
 export default function useMapMarkers() {
+  const selectMarkerRef = useRef<naver.maps.Marker | null>(null);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
   const setWeakApartInfo = useWeakApartInfoStore(
@@ -55,16 +56,16 @@ export default function useMapMarkers() {
         );
         setSelectMarker(marker);
         setMainInfo("SELECT");
-        if (selectMarker) {
-          selectMarker.setIcon({
+        if (selectMarkerRef.current) {
+          selectMarkerRef.current.setIcon({
             url: mapMarkerIcon,
             size: new naver.maps.Size(35, 40),
             scaledSize: new naver.maps.Size(35, 40),
             origin: new naver.maps.Point(0, 0),
             anchor: new naver.maps.Point(12, 34),
           });
+          selectMarkerRef.current = null;
         }
-
         marker.setIcon({
           url: selectMapMarkerIcon,
           size: new naver.maps.Size(35, 40),
@@ -72,6 +73,8 @@ export default function useMapMarkers() {
           origin: new naver.maps.Point(0, 0),
           anchor: new naver.maps.Point(12, 34),
         });
+
+        selectMarkerRef.current = marker;
         if (locationPath === "apt") setApartInfo(data.data);
         else setWeakApartInfo(data.data);
       });

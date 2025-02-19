@@ -19,6 +19,9 @@ import { useMarkerStore } from "@/store/useMarkerStore";
 
 export default function WeakApartInfo() {
   const weakApartInfo = useWeakApartInfoStore((state) => state.weakApartInfo);
+  const setWeakApartInfo = useWeakApartInfoStore(
+    (state) => state.setWeakApartInfo
+  );
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const selectMarker = useMarkerStore((state) => state.selectMarker);
   const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
@@ -61,6 +64,7 @@ export default function WeakApartInfo() {
                     anchor: new naver.maps.Point(12, 34),
                   });
                   setSelectMarker(null);
+                  setWeakApartInfo(null);
                 }
               }}
             >
