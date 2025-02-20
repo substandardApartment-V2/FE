@@ -7,7 +7,6 @@ export default function useGetApartMarker(
   url: string,
   query: TGetMarkersBounds
 ) {
-  console.log(query);
   const prevQuery = useRef<TGetMarkersBounds | null>(null);
   const stableQuery = useMemo(
     () => ({ ...query }),

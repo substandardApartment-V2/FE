@@ -3,26 +3,6 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  .location {
-    position: absolute;
-    display: flex;
-    z-index: 50;
-    align-items: center;
-    gap: 6rem;
-    background-color: #435464;
-    padding: 1.2rem 2.4rem;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    span {
-      color: #ffffff;
-      font-size: 2rem;
-      font-weight: 600;
-    }
-    img {
-      width: 2rem;
-    }
-  }
   .map {
     width: 100%;
     height: 100%;
