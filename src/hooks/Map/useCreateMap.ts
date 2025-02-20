@@ -1,10 +1,9 @@
 // 네이버 지도 생성 커스텀 훅
 
 import { useState, useRef } from "react";
-import zoomUpIcon from "@/assets/Main/Map/zoomUpIcon.svg";
-import zoomDownIcon from "@/assets/Main/Map/zoomDownIcon.svg";
 import { updateBounds } from "@/utils/map/updateBounds";
 import { useMarkerStore } from "@/store/useMarkerStore";
+import createCustumButton from "@/utils/map/createCustomButton";
 
 export default function useCreateMap(setMap: (map: naver.maps.Map) => void) {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,45 +28,7 @@ export default function useCreateMap(setMap: (map: naver.maps.Map) => void) {
         zoom: 15,
       });
       setMap(map);
-
-      const zoomUpBtnHtml = `<button><img src="${zoomUpIcon}"/></button>`;
-      const zoomDownBtnHtml = `<button><img src="${zoomDownIcon}"/></button>`;
-
-      const zoomUpControl = new naver.maps.CustomControl(zoomUpBtnHtml, {
-        position: naver.maps.Position.TOP_RIGHT,
-      });
-
-      const zoomDownControl = new naver.maps.CustomControl(zoomDownBtnHtml, {
-        position: naver.maps.Position.TOP_RIGHT,
-      });
-
-      naver.maps.Event.once(map, "init", function () {
-        zoomUpControl.setMap(map);
-        naver.maps.Event.addDOMListener(
-          zoomUpControl.getElement(),
-          "click",
-          () => {
-            const currentZoom = map.getZoom();
-            if (currentZoom < 21) {
-              map.setZoom(currentZoom + 1, true);
-            }
-          }
-        );
-      });
-
-      naver.maps.Event.once(map, "init", function () {
-        zoomDownControl.setMap(map);
-        naver.maps.Event.addDOMListener(
-          zoomDownControl.getElement(),
-          "click",
-          () => {
-            const currentZoom = map.getZoom();
-            if (currentZoom > 1) {
-              map.setZoom(currentZoom - 1, true);
-            }
-          }
-        );
-      });
+      createCustumButton(map);
       updateBounds(map, setBounds);
     }
   };

@@ -1,19 +1,22 @@
+// 네이버지도 마커 불러오기 API 커스텀 훅
+
 import { useEffect, useMemo, useRef } from "react";
-import axios from "axios";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import { TGetMarkersBounds } from "@/types/TApi/TAPITypes";
+import axios from "axios";
 
-export default function useGetApartMarker(
-  url: string,
-  query: TGetMarkersBounds
-) {
+type TUseGetApartMarker = {
+  url: string;
+  query: TGetMarkersBounds;
+};
+
+export default function useGetApartMarker(paras: TUseGetApartMarker) {
   const prevQuery = useRef<TGetMarkersBounds | null>(null);
   const stableQuery = useMemo(
-    () => ({ ...query }),
-    [query.minLa, query.minLo, query.maxLa, query.maxLo]
+    () => ({ ...paras.query }),
+    [paras.query.minLa, paras.query.minLo, paras.query.maxLa, paras.query.maxLo]
   );
   const setMarkderData = useMarkerStore((state) => state.setMarkderData);
-  const setMarkers = useMarkerStore((state) => state.setMarkers);
 
   useEffect(() => {
     if (
@@ -32,16 +35,15 @@ export default function useGetApartMarker(
           stableQuery.maxLo
         ) {
           const result = await axios(
-            `${url}minLa=${stableQuery.minLa}&minLo=${stableQuery.minLo}&maxLa=${stableQuery.maxLa}&maxLo=${stableQuery.maxLo}`
+            `${paras.url}minLa=${stableQuery.minLa}&minLo=${stableQuery.minLo}&maxLa=${stableQuery.maxLa}&maxLo=${stableQuery.maxLo}`
           );
           setMarkderData(result.data.data);
           prevQuery.current = stableQuery;
         }
       } catch (error) {
         console.log("ERROR : ", error);
-        setMarkers([]);
       }
     };
     fetchData();
-  }, [stableQuery, url]);
+  }, [stableQuery, paras.url]);
 }

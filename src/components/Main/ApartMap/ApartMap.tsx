@@ -29,15 +29,15 @@ export default function ApartMap() {
     }
   };
 
-  useGetApartMarker(
-    `${import.meta.env.VITE_LOCAL_API_CALL}/map/${locationPath}?`,
-    {
+  useGetApartMarker({
+    url: `${import.meta.env.VITE_LOCAL_API_CALL}/map/${locationPath}?`,
+    query: {
       maxLa: bounds?.ne.lat,
       maxLo: bounds?.ne.lng,
       minLa: bounds?.sw.lat,
       minLo: bounds?.sw.lng,
-    }
-  );
+    },
+  });
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getSuccess, getError);
@@ -45,7 +45,6 @@ export default function ApartMap() {
 
   useMapMarkers();
 
-  console.log(mapRef);
   return (
     <section className={styles.apartMap}>
       {!isLoading && <ApartLocation />}
