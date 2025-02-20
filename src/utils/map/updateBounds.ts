@@ -1,4 +1,5 @@
 //지도 경계 좌표 업데이트 함수
+
 import { TBounds } from "@/store/useMarkerStore";
 
 export const updateBounds = (

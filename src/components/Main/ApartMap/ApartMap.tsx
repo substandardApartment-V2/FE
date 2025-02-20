@@ -29,6 +29,10 @@ export default function ApartMap() {
     }
   };
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(getSuccess, getError);
+  }, [isLoading]);
+
   useGetApartMarker({
     url: `${import.meta.env.VITE_LOCAL_API_CALL}/map/${locationPath}?`,
     query: {
@@ -38,10 +42,6 @@ export default function ApartMap() {
       minLo: bounds?.sw.lng,
     },
   });
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(getSuccess, getError);
-  }, [isLoading]);
 
   useMapMarkers();
 

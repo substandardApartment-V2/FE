@@ -29,13 +29,14 @@ export default function useCreateCluster(newMarkers: naver.maps.Marker[]) {
       gridSize: 120,
       icons: [clusterMarkerIcon],
       indexGenerator: [10, 100, 200, 500, 1000],
-      stylingFunction: function (clusterMarker, count: number) {
-        const element = clusterMarker.getElement();
-        if (element) {
-          clusterMarker
-            .getElement()
-            .querySelector("div:first-child").innerText = count;
-        }
+      stylingFunction: function (
+        clusterMarker: naver.maps.Marker | null,
+        count: number
+      ) {
+        const countElement = clusterMarker
+          ?.getElement()
+          ?.querySelector("div:first-child") as HTMLElement | null;
+        if (countElement) countElement.innerText = count.toString();
       },
     });
 

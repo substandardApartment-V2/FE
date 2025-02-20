@@ -9,7 +9,6 @@ import getApartData from "@/utils/api/getApartData";
 import useLocationPath from "./useLocationPath";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
-// import useSelectMarker from "./useSelectMarker";
 import useCreateCluster from "./useCreateCluster";
 
 export default function useMapMarkers() {
@@ -20,7 +19,6 @@ export default function useMapMarkers() {
     (state) => state.setWeakApartInfo
   );
   const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
-  const selectMarker = useMarkerStore((state) => state.selectMarker);
   const markerData = useMarkerStore((state) => state.markerData);
   const map = useMarkerStore((state) => state.map);
   const markers = useMarkerStore((state) => state.markers);
@@ -30,6 +28,7 @@ export default function useMapMarkers() {
   useEffect(() => {
     if (!map || !markerData.length) return;
     markers.forEach((marker) => marker.setMap(null));
+
     const newMarkers = markerData.map((listData: TApartMarkerData) => {
       const location = new naver.maps.LatLng(
         listData.latitude,

@@ -17,6 +17,7 @@ export default function useGetApartMarker(paras: TUseGetApartMarker) {
     [paras.query.minLa, paras.query.minLo, paras.query.maxLa, paras.query.maxLo]
   );
   const setMarkderData = useMarkerStore((state) => state.setMarkderData);
+  const setMarkers = useMarkerStore((state) => state.setMarkers);
 
   useEffect(() => {
     if (
@@ -42,6 +43,7 @@ export default function useGetApartMarker(paras: TUseGetApartMarker) {
         }
       } catch (error) {
         console.log("ERROR : ", error);
+        setMarkers([]);
       }
     };
     fetchData();
