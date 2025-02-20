@@ -1,53 +1,56 @@
 @use "@/styles/colors.scss";
 
 .newsContent {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   border: 0.1rem solid #d6d6d6;
   border-radius: 1rem;
-  padding: 1.2rem 1.6rem;
+  padding: 2rem 1.8rem;
   cursor: pointer;
   height: 100%;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-3%);
+    box-shadow: 0 0.8rem 0.8rem -0.8rem;
+  }
   a {
     display: flex;
-    flex-direction: column;
     gap: 1.2rem;
     height: 100%;
-    .newsTitle {
+    width: 100%;
+    .newsImage {
+      width: 35%;
+      aspect-ratio: 5 / 1;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+    .newsText {
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
-      .newsDate {
-        display: flex;
-        gap: 0.4rem;
-        color: #9e9e9e;
-      }
+      justify-content: space-between;
+      width: 65%;
       .title {
-        font-size: 1.6rem;
-        font-weight: 600;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         color: colors.$mainNavy;
-      }
-    }
-    .contents {
-      display: flex;
-      gap: 0.8rem;
-      max-width: 100%;
-      height: 100%;
-      .newsImage {
-        object-fit: cover;
-        max-width: 40%;
-        aspect-ratio: 5 / 1;
+        width: 100%;
+        font-size: 1.8rem;
+        font-weight: 600;
       }
       .content {
-        font-size: 1.4rem;
-        max-width: 100%;
+        display: block;
+        width: 100%;
         overflow: hidden;
+        text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
-        line-height: 2.4rem;
-        color: #505b6e;
+        line-height: 2rem;
+        color: colors.$mainTitle;
+      }
+      .platformDate {
+        color: #9e9e9e;
       }
     }
   }
