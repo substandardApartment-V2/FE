@@ -4,5 +4,5 @@ export type TWeakMainNewsList = {
   title: string;
   content: string;
   url: string;
-  image: string;
+  image: string | null;
 };

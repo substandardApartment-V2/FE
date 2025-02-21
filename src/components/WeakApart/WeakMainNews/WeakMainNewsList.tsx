@@ -2,7 +2,7 @@ import styles from "./WeakMainNewsList.module.scss";
 import { TWeakMainNewsList } from "@/types/TWeak/TWeakMainNewsListTypes";
 import { formatDate } from "@/utils/formatDate";
 import { Link } from "react-router-dom";
-import defaultNewsImage from "@/assets/news/newsImg01.jpeg";
+import imageDefaultImage from "@/assets/news/newsDefaultImage.jpeg";
 
 export default function WeakMainNewsList(props: TWeakMainNewsList) {
   const parseContent = (html: string) => {
@@ -14,7 +14,7 @@ export default function WeakMainNewsList(props: TWeakMainNewsList) {
     <li className={styles.newsContent}>
       <Link to={props.url} target="_blank">
         <img
-          src={props.image ? props.image : defaultNewsImage}
+          src={props.image ? props.image : imageDefaultImage}
           className={styles.newsImage}
           alt="news image"
         />

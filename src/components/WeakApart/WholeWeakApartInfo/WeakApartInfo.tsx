@@ -85,7 +85,7 @@ export default function WeakApartInfo() {
           <section className={styles.pillarStatus}>
             <div className={styles.title}>
               <strong>기둥설치현황</strong>
-              <img src={pillarIcon} alt="apart pillar current status" />
+              <img src={pillarIcon} alt="기둥설치현황" />
             </div>
             <ul className={styles.contentContainer}>
               {transformedBuildInfoArray.map((listData, index) => (
@@ -99,7 +99,7 @@ export default function WeakApartInfo() {
           <section className={styles.supplementMethod}>
             <div className={styles.title}>
               <strong>보완공법</strong>
-              <img src={pillarIcon} alt="apart supplement method" />
+              <img src={pillarIcon} alt="보완공법" />
             </div>
             <ul className={styles.contentContainer}>
               {transformedSplmnInfoArray.map((listData, index) => (
