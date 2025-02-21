@@ -13,13 +13,18 @@ import {
   weakSplmnInfoTitleMapping,
 } from "@/utils/mapping/WeakApartInfo";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
-import useSelectMarker from "@/hooks/Map/useSelectMarker";
 import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
+import ApartSearch from "@/components/Common/ApartSearch/ApartSearch";
+import { useMarkerStore } from "@/store/useMarkerStore";
 
 export default function WeakApartInfo() {
   const weakApartInfo = useWeakApartInfoStore((state) => state.weakApartInfo);
+  const setWeakApartInfo = useWeakApartInfoStore(
+    (state) => state.setWeakApartInfo
+  );
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
-  const { selectMarkerRef } = useSelectMarker();
+  const selectMarker = useMarkerStore((state) => state.selectMarker);
+  const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
 
   const transformedBasicInfoArray = transformedArrayHandler(
     weakApartInfo?.basicInfo
@@ -33,6 +38,7 @@ export default function WeakApartInfo() {
 
   return (
     <section className={styles.weakApartInfoContainer}>
+      <ApartSearch />
       <ApartHeadInfo
         apartName={weakApartInfo?.aptInfo.name}
         apartRegion={weakApartInfo?.aptInfo.address}
@@ -49,15 +55,16 @@ export default function WeakApartInfo() {
               className={styles.goBack}
               onClick={() => {
                 setMainInfo("WHOLE");
-                if (selectMarkerRef.current) {
-                  selectMarkerRef.current.setIcon({
+                if (selectMarker) {
+                  selectMarker.setIcon({
                     url: mapMarkerIcon,
-                    size: new naver.maps.Size(45, 50),
-                    scaledSize: new naver.maps.Size(45, 50),
+                    size: new naver.maps.Size(35, 40),
+                    scaledSize: new naver.maps.Size(35, 40),
                     origin: new naver.maps.Point(0, 0),
                     anchor: new naver.maps.Point(12, 34),
                   });
-                  selectMarkerRef.current = null;
+                  setSelectMarker(null);
+                  setWeakApartInfo(null);
                 }
               }}
             >

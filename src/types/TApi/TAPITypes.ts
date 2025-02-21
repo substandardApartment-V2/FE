@@ -36,3 +36,12 @@ export type TPageAPIRequest = {
   pages: number;
   sort: "DESC" | "ASC";
 };
+
+// 위도, 경도 타입
+
+export type TGetMarkersBounds = {
+  maxLa?: number;
+  maxLo?: number;
+  minLa?: number;
+  minLo?: number;
+};
