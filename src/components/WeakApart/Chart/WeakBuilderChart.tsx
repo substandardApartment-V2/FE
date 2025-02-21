@@ -22,6 +22,7 @@ export default function WeakBuilderChart() {
         data: [118, 92, 82, 76, 71, 59, 58, 57, 53, 51],
         backgroundColor: ["#E4E1D0"],
         barThickness: 15,
+        hoverBackgroundColor: "#E03A3E",
       },
     ],
   };
@@ -52,6 +53,22 @@ export default function WeakBuilderChart() {
       legend: {
         display: false, // 범례 비활성화
       },
+      tooltip: {
+        callbacks: {
+          title: () => "",
+          label: (context) => `${context.label} ${context.raw}건`,
+        },
+        position: "myCustomPositioner", // 커스텀 위치 사용
+        backgroundColor: "rgba(255,255,255,1)", //툴팁 백그라운드 컬러
+        borderColor: "rgba(224,58,62,1)", //툴팁 외곽선 컬러
+        borderWidth: 1, //툴팁 외곽선 두께
+        bodyColor: "rgba(20, 35, 55 ,1)", //툴팁 컨텐츠 텍스트 컬러
+        titleColor: "#435464",
+        cornerRadius: 0, //툴팁 radius
+        displayColors: false, //툴팁 bar color 표시 여부
+        caretSize: 0,
+      },
+
       datalabels: {
         color: "#FFFFFF",
         font: {
