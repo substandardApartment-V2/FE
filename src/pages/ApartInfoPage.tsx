@@ -8,11 +8,15 @@ import { useMainInfoStore } from "@/store/useMainInfoStore";
 const ApartInfoPage = () => {
   const mainInfo = useMainInfoStore((state) => state.mainInfo);
 
+  const mainInfoType = {
+    WHOLE: <WholeApartInfo />,
+    SELECT: <ApartInfo />,
+    SEARCH: <ApartSearchResult />,
+  };
+
   return (
     <div className={styles.home}>
-      {mainInfo === "WHOLE" && <WholeApartInfo />}
-      {mainInfo === "SELECT" && <ApartInfo />}
-      {mainInfo === "SEARCH" && <ApartSearchResult />}
+      {mainInfo && mainInfoType[mainInfo]}
       <ApartMap />
     </div>
   );

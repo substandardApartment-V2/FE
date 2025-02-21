@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { TApartInfo } from "@/types/TMain/TApartGeneralInfoTypes";
 
-type TMainInfo = "WHOLE" | "SELECT" | "SEARCH";
+type TMainInfo = "WHOLE" | "SELECT" | "SEARCH" | null;
 
 type TUseMainInfoStore = {
   mainInfo: TMainInfo;

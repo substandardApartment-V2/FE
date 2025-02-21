@@ -42,6 +42,7 @@ li {
           .subTitle {
             font-size: 2rem;
             font-weight: 600;
+            color: #7f8a95;
           }
           .subContent {
             font-size: 3.2rem;
@@ -52,12 +53,17 @@ li {
         .subTitle {
           font-size: 2rem;
           font-weight: 600;
+          color: #7f8a95;
         }
         .subContent {
           padding: 2.6rem 0;
           font-size: 2.6rem;
           font-weight: 600;
           text-align: center;
+          white-space: nowrap;
+          &.smallFont {
+            font-size: 2rem;
+          }
         }
       }
     }

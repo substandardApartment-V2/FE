@@ -8,12 +8,16 @@ import NoticeDetail from "./NoticeDetail";
 export default function DetailInfo() {
   const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
 
+  const detailInfoType = {
+    APARTINFO: <ApartDetail />,
+    WEAKRANK: <DetailWeakRankInfo />,
+    MAINTANCE: <DetailMaintanceCharge />,
+    NOTICE: <NoticeDetail />,
+  };
+
   return (
     <section className={styles.detailInfo}>
-      {isDetailInfo === "APARTINFO" && <ApartDetail />}
-      {isDetailInfo === "WEAKRANK" && <DetailWeakRankInfo />}
-      {isDetailInfo === "MAINTANCE" && <DetailMaintanceCharge />}
-      {isDetailInfo === "NOTICE" && <NoticeDetail />}
+      {isDetailInfo && detailInfoType[isDetailInfo]}
     </section>
   );
 }
