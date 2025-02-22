@@ -5,6 +5,7 @@ import { useNoticeStore } from "@/store/useNoticeStore";
 
 export default function useGetPageData(url: string, sendData: TPageAPIRequest) {
   const [data, setData] = useState<TAPIResponse | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const setPageCount = useNoticeStore((state) => state.setPageCount);
   const setServiceNoticeData = useNoticeStore(
     (state) => state.setServiceNoticeData
@@ -24,10 +25,14 @@ export default function useGetPageData(url: string, sendData: TPageAPIRequest) {
         setServiceNoticeData(result.data.data.notices);
       } catch (error) {
         console.log("Error : ", error);
+      } finally {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       }
     };
     fetchData();
   }, [currentpage, isShow]);
 
-  return data;
+  return { data, isLoading };
 }

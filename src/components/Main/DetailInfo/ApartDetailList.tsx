@@ -45,7 +45,13 @@ export default function ApartDetailList({ title, data }: TApartDetailList) {
                         key as keyof TSubTitle[TTitle]
                       ]}
                   </div>
-                  <div className={classNames(styles.subContent)}>
+                  <div
+                    className={classNames(
+                      styles.subContent,
+                      String(data[key as keyof typeof data]).length >= 7 &&
+                        styles.smallFont
+                    )}
+                  >
                     {title === "accessibleToPublic"
                       ? data[key as keyof typeof data]
                         ? "O"
