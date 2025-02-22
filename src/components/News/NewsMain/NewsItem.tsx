@@ -1,7 +1,8 @@
 import { TNewsItem } from "@/types/TNews/TNewsItemTypes";
-import { formatDate } from "@/utils/formatDate";
+import { formatDate } from "@/utils/parse/formatDate";
 import { Link } from "react-router-dom";
 import newsMain from "./NewsMain.module.scss";
+import parseContent from "@/utils/parse/parseContent";
 
 const NewsItem = ({
   platform,
@@ -11,11 +12,6 @@ const NewsItem = ({
   content,
   url,
 }: TNewsItem) => {
-  const parseContent = (html: string) => {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    return doc.body.textContent || "";
-  };
-
   return (
     <div className={newsMain.newsItem}>
       <Link to={url} target="_blank">
