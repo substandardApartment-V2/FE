@@ -3,7 +3,6 @@
 import styles from "./ApartSearchResult.module.scss";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import { TApartMarkerData } from "@/store/useMarkerStore";
-import ApartSearch from "./ApartSearch";
 
 export default function ApartSearchResult() {
   const markerData = useMarkerStore((state) => state.markerData);
@@ -19,7 +18,6 @@ export default function ApartSearchResult() {
 
   return (
     <section className={styles.apartSearchResult}>
-      <ApartSearch />
       <ul className={styles.searchResultContainer}>
         {markerData.map((listData: TApartMarkerData) => (
           <li

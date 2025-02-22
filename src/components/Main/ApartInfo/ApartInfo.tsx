@@ -2,7 +2,6 @@
 
 import styles from "./ApartInfo.module.scss";
 import detailButtonIconD from "@/assets/Main/ApartInfo/detailButtonIconD.svg";
-import ApartSearch from "@/components/Common/ApartSearch/ApartSearch";
 import ApartHeadInfo from "./ApartHeadInfo";
 import ApartBuildInfo from "./ApartMainInfo/ApartBuildInfo/ApartBuildInfo";
 import ApartPrice from "./ApartMainInfo/ApartPrice";
@@ -31,7 +30,6 @@ export default function ApartInfo() {
 
   return (
     <section className={styles.apartInfoContainer}>
-      <ApartSearch />
       {apartInfo && (
         <ApartHeadInfo
           apartName={apartInfo.aptInfo.name}

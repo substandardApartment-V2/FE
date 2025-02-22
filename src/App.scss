@@ -124,17 +124,18 @@ body {
   }
 }
 
+// 논의 필요한 부분
 main {
   height: 100%;
   min-height: 0;
-  @include rs.respond-to("tablet-large") {
-    padding: 2%;
-    box-sizing: border-box;
-  }
-  @include rs.respond-to("mobile-large") {
-    padding: 3%;
-    box-sizing: border-box;
-  }
+  // @include rs.respond-to("tablet-large") {
+  //   padding: 2%;
+  //   box-sizing: border-box;
+  // }
+  // @include rs.respond-to("mobile-large") {
+  //   padding: 3%;
+  //   box-sizing: border-box;
+  // }
 }
 
 ol,

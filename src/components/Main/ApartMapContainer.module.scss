@@ -1,0 +1,16 @@
+@use "@/styles/responsive.scss" as rs;
+
+.apartMap {
+  width: 100%;
+  @include rs.respond-to("tablet-large") {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+  .apartSearch {
+    display: none;
+    @include rs.respond-to("tablet-large") {
+      display: block;
+    }
+  }
+}

@@ -1,6 +1,10 @@
+@use "@/styles/responsive.scss" as rs;
+
 .homeRight {
-  width: 45%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+  overflow-y: scroll;
 }

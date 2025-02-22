@@ -1,4 +1,5 @@
 @use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .apartSearch {
   display: flex;
@@ -15,6 +16,11 @@
     outline: none;
     &::placeholder {
       font-size: 1.6rem;
+    }
+    @include rs.respond-to("tablet-large") {
+      border-radius: 0;
+      top: 0;
+      width: 100%;
     }
   }
   img {

@@ -1,23 +1,14 @@
+// 일반 아파트 페이지
+
 import styles from "./ApartInfoPage.module.scss";
-import ApartInfo from "@/components/Main/ApartInfo/ApartInfo";
-import ApartMap from "@/components/Main/ApartMap/ApartMap";
-import ApartSearchResult from "@/components/Common/ApartSearch/ApartSearchResult";
-import WholeApartInfo from "@/components/Main/WholeApartInfo/WholeApartInfo";
-import { useMainInfoStore } from "@/store/useMainInfoStore";
+import InfoContainer from "@/components/Main/InfoContainer";
+import ApartMapContainer from "@/components/Main/ApartMapContainer";
 
 const ApartInfoPage = () => {
-  const mainInfo = useMainInfoStore((state) => state.mainInfo);
-
-  const mainInfoType = {
-    WHOLE: <WholeApartInfo />,
-    SELECT: <ApartInfo />,
-    SEARCH: <ApartSearchResult />,
-  };
-
   return (
-    <div className={styles.home}>
-      {mainInfo && mainInfoType[mainInfo]}
-      <ApartMap />
+    <div className={styles.apartInfoPage}>
+      <InfoContainer />
+      <ApartMapContainer />
     </div>
   );
 };
