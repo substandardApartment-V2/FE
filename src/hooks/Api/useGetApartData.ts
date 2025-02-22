@@ -1,9 +1,12 @@
+// 아파트 정보 API 콜 커스텀 훅
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { TAPIResponse } from "@/types/TApi/TAPITypes";
 
 export default function useGetApartData<T extends TAPIResponse>(url: string) {
   const [data, setData] = useState<T | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,10 +15,14 @@ export default function useGetApartData<T extends TAPIResponse>(url: string) {
         setData(result.data);
       } catch (error) {
         console.log("Error : ", error);
+      } finally {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       }
     };
     fetchData();
   }, []);
 
-  return data;
+  return { data, isLoading };
 }

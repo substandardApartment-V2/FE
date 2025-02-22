@@ -1,0 +1,38 @@
+@use "@/styles/colors.scss";
+
+.skeletonWrapper {
+  width: 100%;
+  height: 100%;
+  border: 0.1rem solid #d6d6d6;
+  border-radius: 1rem;
+  padding: 2rem 1.8rem;
+  box-sizing: border-box;
+  display: flex;
+  gap: 1.2rem;
+  .thumbnail {
+    width: 35%;
+    height: 100%;
+    border-radius: 1rem;
+    flex-shrink: 0;
+  }
+  .skeletonText {
+    width: 65%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    .title {
+      width: 100%;
+      height: 2rem;
+    }
+    .description {
+      width: 100%;
+      height: 6rem;
+    }
+    .date {
+      width: 100%;
+      height: 2rem;
+    }
+  }
+}
