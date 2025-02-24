@@ -14,10 +14,12 @@ const ApartNewsList = () => {
   const fetchNews = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get("http://localhost:8080/news/general", {
-        params: {
+      const response = await axios("http://localhost:8080/news/apt", {
+        method: "POST",
+        data: {
           pages,
           sort,
+          num: 8,
         },
       });
       setCurrentNews(response.data.data.newsList);
@@ -34,13 +36,13 @@ const ApartNewsList = () => {
   }, [pages, sort]);
 
   return (
-    <div className={newsMain.newsList}>
+    <ul className={newsMain.newsList}>
       {isLoading
         ? Array.from({ length: 8 }).map((_, index) => (
             <NewsSkeleton key={index} />
           ))
         : currentNews.map((news) => <NewsItem key={news.url} {...news} />)}
-    </div>
+    </ul>
   );
 };
 

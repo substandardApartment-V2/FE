@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "./report.module.scss";
+import styles from "./Report.module.scss";
 
 const Report = () => {
   const googleUrl = import.meta.env.VITE_GOOGLE_URL;

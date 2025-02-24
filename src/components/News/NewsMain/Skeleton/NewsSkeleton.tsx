@@ -1,19 +1,14 @@
+import SkeletonElement from "@/components/Common/Skeleton/SkeletonElement";
 import styles from "./NewsSkeleton.module.scss";
-import SkeletonElement from "./SkeletonElement";
 
 const NewsSkeleton = () => {
   return (
     <div className={styles.skeletonWrapper}>
-      <div className={styles.skeletonNewsItem}>
-        <div className={styles.skeletonHeader}>
-          <SkeletonElement type="platform" />
-          <SkeletonElement type="date" />
-        </div>
-        <SkeletonElement type="title" />
-        <div className={styles.skeletonContent}>
-          <SkeletonElement type="thumbnail" />
-          <SkeletonElement type="description" />
-        </div>
+      <SkeletonElement type="thumbnail" className={styles.thumbnail} />
+      <div className={styles.skeletonText}>
+        <SkeletonElement type="title" className={styles.title} />
+        <SkeletonElement type="description" className={styles.description} />
+        <SkeletonElement type="date" className={styles.date} />
       </div>
     </div>
   );
