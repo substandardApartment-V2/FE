@@ -35,13 +35,13 @@ const WeakApartNewsList = () => {
   }, [pages, sort]);
 
   return (
-    <div className={newsMain.newsList}>
+    <ul className={newsMain.newsList}>
       {isLoading
         ? Array.from({ length: 8 }).map((_, index) => (
             <NewsSkeleton key={index} />
           ))
         : currentNews.map((news) => <NewsItem key={news.url} {...news} />)}
-    </div>
+    </ul>
   );
 };
 

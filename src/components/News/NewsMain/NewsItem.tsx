@@ -1,8 +1,8 @@
 import { TNewsItem } from "@/types/TNews/TNewsItemTypes";
 import { formatDate } from "@/utils/parse/formatDate";
-import { Link } from "react-router-dom";
-import newsMain from "./NewsMain.module.scss";
 import parseContent from "@/utils/parse/parseContent";
+import { Link } from "react-router-dom";
+import styles from "./NewsMain.module.scss";
 
 const NewsItem = ({
   platform,
@@ -12,23 +12,21 @@ const NewsItem = ({
   content,
   url,
 }: TNewsItem) => {
-  console.log(platform);
   return (
-    <div className={newsMain.newsItem}>
-      <Link to={url} target="_blank">
-        <div className={newsMain.newsItemHeader}>
-          <span>{platform}</span>
-          <span>{formatDate(createAt)}</span>
-        </div>
-        <h3 className={newsMain.newsItemTitle}>{parseContent(title)}</h3>
-        <div className={newsMain.newsItemContentWrapper}>
-          <img src={image} alt="newsImage" />
-          <p className={newsMain.newsItemDescription}>
-            {parseContent(content)}
-          </p>
+    <li className={styles.newsItem}>
+      <Link to={url} target="_blank" className={styles.newsItemWrap}>
+        <img src={image} alt="newsImage" className={styles.newsImgBox} />
+        <div className={styles.newsItemContentWrapper}>
+          <h3 className={styles.newsItemTitle}>{parseContent(title)}</h3>
+          <p className={styles.newsItemDescription}>{parseContent(content)}</p>
+          <div className={styles.newsItemHeader}>
+            <span>{platform}</span>
+            <span>|</span>
+            <span>{formatDate(createAt)}</span>
+          </div>
         </div>
       </Link>
-    </div>
+    </li>
   );
 };
 

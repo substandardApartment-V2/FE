@@ -39,8 +39,9 @@
     @include rs.respond-to("tablet-large") {
       font-size: 2.2rem;
     }
-    @include rs.respond-to("mobile-medium") {
+    @include rs.respond-to("mobile-large") {
       font-size: 1.8rem;
+      padding: 1.2rem 2rem;
     }
   }
   .mobileBr {
