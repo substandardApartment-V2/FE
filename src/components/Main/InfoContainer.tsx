@@ -9,6 +9,7 @@ import WholeApartInfo from "@/components/Main/WholeApartInfo/WholeApartInfo";
 import ApartInfo from "@/components/Main/ApartInfo/ApartInfo";
 import styles from "./InfoContainer.module.scss";
 import ApartSearch from "../Common/ApartSearch/ApartSearch";
+import DetailInfo from "./DetailInfo/DetailInfo";
 
 export default function InfoContainer() {
   const mainInfo = useMainInfoStore((state) => state.mainInfo);
@@ -18,6 +19,7 @@ export default function InfoContainer() {
     WHOLE: <WholeApartInfo />,
     SELECT: <ApartInfo />,
     SEARCH: <ApartSearchResult />,
+    DETAIL: <DetailInfo />,
   };
 
   return (

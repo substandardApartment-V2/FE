@@ -12,6 +12,7 @@ const NewsItem = ({
   content,
   url,
 }: TNewsItem) => {
+  console.log(platform);
   return (
     <div className={newsMain.newsItem}>
       <Link to={url} target="_blank">

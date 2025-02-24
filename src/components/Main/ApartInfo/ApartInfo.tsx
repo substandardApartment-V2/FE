@@ -18,6 +18,7 @@ export default function ApartInfo() {
     (state) => state.setApartDetailInfo
   );
   const apartInfo = useMainInfoStore((state) => state.apartInfo);
+  const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
 
   const apartDetailApiHandler = async () => {
     const data = await getApartData(
@@ -50,6 +51,7 @@ export default function ApartInfo() {
           else {
             setIsDetailInfo("APARTINFO");
             apartDetailApiHandler();
+            setMainInfo("DETAIL");
           }
         }}
       >

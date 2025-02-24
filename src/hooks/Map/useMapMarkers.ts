@@ -26,7 +26,7 @@ export default function useMapMarkers() {
   const locationPath = useLocationPath();
 
   useEffect(() => {
-    if (!map || !markerData.length) return;
+    if (!map || !markerData) return;
     markers.forEach((marker) => marker.setMap(null));
 
     const newMarkers = markerData.map((listData: TApartMarkerData) => {

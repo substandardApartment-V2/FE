@@ -28,7 +28,7 @@ export default function useGetPageData(url: string, sendData: TPageAPIRequest) {
       } finally {
         setTimeout(() => {
           setIsLoading(false);
-        }, 500);
+        }, 300);
       }
     };
     fetchData();

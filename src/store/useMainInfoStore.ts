@@ -3,7 +3,7 @@
 import { create } from "zustand";
 import { TApartInfo } from "@/types/TMain/TApartGeneralInfoTypes";
 
-type TMainInfo = "WHOLE" | "SELECT" | "SEARCH" | null;
+type TMainInfo = "WHOLE" | "SELECT" | "SEARCH" | "DETAIL" | null;
 
 type TUseMainInfoStore = {
   mainInfo: TMainInfo;

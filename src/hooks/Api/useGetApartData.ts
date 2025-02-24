@@ -18,7 +18,7 @@ export default function useGetApartData<T extends TAPIResponse>(url: string) {
       } finally {
         setTimeout(() => {
           setIsLoading(false);
-        }, 500);
+        }, 300);
       }
     };
     fetchData();
