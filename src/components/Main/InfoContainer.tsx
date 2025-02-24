@@ -19,7 +19,7 @@ export default function InfoContainer() {
     WHOLE: <WholeApartInfo />,
     SELECT: <ApartInfo />,
     SEARCH: <ApartSearchResult />,
-    DETAIL: <DetailInfo />,
+    // DETAIL: <DetailInfo />,
   };
 
   return (
