@@ -1,3 +1,5 @@
+// 아파트 매매가 컴포넌트
+
 import { useState } from "react";
 import styles from "./ApartPrice.module.scss";
 import DropDown from "@/components/Abstraction/DropDown/DropDown";

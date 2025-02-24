@@ -5,6 +5,7 @@ import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeListTypes";
 import useGetPageData from "@/hooks/Api/useGetPageData";
 import { useNoticeStore } from "@/store/useNoticeStore";
 import ServiceNoticePagination from "./ServiceNoticePagination";
+import ServiceNoticeSkeleton from "./ServiceNoticeSkeleton";
 
 export default function ServiceNotice() {
   const serviceNoticeData = useNoticeStore((state) => state.serviceNoticeData);
@@ -30,11 +31,14 @@ export default function ServiceNotice() {
     },
   ];
 
-  useGetPageData(`${import.meta.env.VITE_LOCAL_API_CALL}/apt/notice`, {
-    num: 3,
-    pages: currentPage,
-    sort: isShow === "최신순" ? "DESC" : "ASC",
-  });
+  const { isLoading } = useGetPageData(
+    `${import.meta.env.VITE_LOCAL_API_CALL}/apt/notice`,
+    {
+      num: 3,
+      pages: currentPage,
+      sort: isShow === "최신순" ? "DESC" : "ASC",
+    }
+  );
 
   return (
     <section className={styles.serviceNotice}>
@@ -49,16 +53,20 @@ export default function ServiceNotice() {
         />
       </div>
       <ul className={styles.noticeLists}>
-        {serviceNoticeData &&
-          serviceNoticeData.map((listData: TServiceNoticeList) => (
-            <ServiceNoticeList
-              key={listData.id}
-              id={listData.id}
-              title={listData.title}
-              createAt={listData.createAt}
-              content={listData.content}
-            />
-          ))}
+        {isLoading
+          ? Array.from({ length: 3 }).map((_, index) => (
+              <ServiceNoticeSkeleton key={index} />
+            ))
+          : serviceNoticeData &&
+            serviceNoticeData.map((listData: TServiceNoticeList) => (
+              <ServiceNoticeList
+                key={listData.id}
+                id={listData.id}
+                title={listData.title}
+                createAt={listData.createAt}
+                content={listData.content}
+              />
+            ))}
       </ul>
       <ServiceNoticePagination />
     </section>

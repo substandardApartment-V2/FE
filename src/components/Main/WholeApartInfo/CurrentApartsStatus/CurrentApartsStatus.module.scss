@@ -1,9 +1,13 @@
 @use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .currentApartStatus {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  @include rs.respond-to("tablet-large") {
+    gap: 0;
+  }
   margin-bottom: 1.6rem;
   .title {
     background-color: colors.$mainNavy;
@@ -16,5 +20,8 @@
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    @include rs.respond-to("tablet-large") {
+      gap: 0.4rem;
+    }
   }
 }
