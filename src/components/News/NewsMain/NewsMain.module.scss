@@ -3,81 +3,114 @@
 
 .newsItem {
   width: 100%;
-  padding: 1.2rem 2rem;
+  padding: 2.4rem 3rem;
   border: 0.1rem solid colors.$mainBorder;
   border-radius: 1rem;
   box-sizing: border-box;
   overflow: hidden;
   @include rs.respond-to("tablet-large") {
-    border-radius: 0;
+    padding: 2.5%;
   }
-  .newsItemHeader {
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 2.2rem;
-    padding-bottom: 0.5rem;
-    color: colors.$mainBorder;
-    > span {
-      padding-right: 0.8rem;
-    }
-    @include rs.respond-to("desktop-large") {
-      font-size: 1.2rem;
-    }
+
+  @include rs.respond-to("mobile-large") {
+    padding: 4%;
   }
-  .newsItemTitle {
-    font-size: 2rem;
-    font-weight: 600;
-    color: colors.$mainNavy;
-    margin-bottom: 1.2rem;
+
+  .newsItemWrap {
     width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    display: flex;
+    align-items: stretch;
+    gap: 3%;
 
-    @include rs.respond-to("desktop-large") {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
+    .newsImgBox {
+      width: 30%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border: 0.1rem solid #d6d6d6;
+      border-radius: 0.8rem;
+      box-sizing: border-box;
+      @include rs.respond-to("tablet-large") {
+        width: 37%;
+      }
     }
   }
-  .newsItemContentWrapper {
-    max-width: 100%;
-    display: grid;
-    grid-template-columns: 22% auto;
-    grid-template-rows: calc(2.4rem * 4);
-    gap: 1.2rem;
 
+  .newsItemContentWrapper {
+    width: 67%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 0.5rem;
     @include rs.respond-to("tablet-large") {
-      grid-template-columns: 30% auto;
-      grid-template-rows: calc(2.2rem * 2);
+      width: 60%;
+      padding-top: 0rem;
     }
 
-    img {
+    .newsItemTitle {
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 2.8rem;
+      color: colors.$mainNavy;
       width: 100%;
-      height: 100%;
-      border: 0.1rem solid #d6d6d6;
-      border-radius: 1rem;
-      box-sizing: border-box;
-      object-fit: cover;
-      @include rs.respond-to("tablet-large") {
-        border-radius: 0rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      @include rs.respond-to("desktop-large") {
+        font-size: 1.8rem;
+        line-height: 2.6rem;
+      }
+
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.5rem;
+        line-height: 2.2rem;
       }
     }
     p {
       font-size: 1.6rem;
-      line-height: 2.4rem;
+      line-height: 2.6rem;
+      margin: 0.8rem 0 0.4rem;
       color: #505b6e;
       display: -webkit-box;
-      line-clamp: 4;
-      -webkit-line-clamp: 4;
+      line-clamp: 3;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
 
       @include rs.respond-to("desktop-large") {
-        font-size: 1.4rem;
-        line-height: 2.2rem;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        margin: 0.4rem 0;
+      }
+
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.3rem;
+        line-height: 1.9rem;
         line-clamp: 2;
         -webkit-line-clamp: 2;
+      }
+    }
+    .newsItemHeader {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 2.2rem;
+      color: colors.$mainBorder;
+      gap: 0.8rem;
+      @include rs.respond-to("desktop-large") {
+        font-size: 1.3rem;
+        gap: 0.6rem;
+      }
+      > *:nth-child(2) {
+        font-size: 1.2rem;
+        color: #ccc;
+        @include rs.respond-to("mobile-large") {
+          font-size: 1rem;
+        }
+      }
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.2rem;
       }
     }
   }
@@ -88,9 +121,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem 2rem;
-  @include rs.respond-to("desktop-large") {
-    gap: 0.8rem 1.6rem;
-  }
   @include rs.respond-to("tablet-large") {
     grid-template-columns: repeat(1, 1fr);
   }
