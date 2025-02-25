@@ -9,11 +9,11 @@ const NewsHeader = () => {
   const dropDownContents = [
     {
       content: "최신순",
-      contentFn: () => setSort("asc"),
+      contentFn: () => setSort("desc"),
     },
     {
       content: "과거순",
-      contentFn: () => setSort("desc"),
+      contentFn: () => setSort("asc"),
     },
   ];
 
@@ -23,7 +23,7 @@ const NewsHeader = () => {
       <NewsHeaderTab />
       <div>
         <DropDown
-          select={sort === "asc" ? "최신순" : "과거순"}
+          select={sort === "desc" ? "최신순" : "과거순"}
           dropDownContents={dropDownContents}
           fontSize="MEDIUM"
           outerBorder={false}

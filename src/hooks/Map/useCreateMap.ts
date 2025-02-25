@@ -1,14 +1,15 @@
 // 네이버 지도 생성 커스텀 훅
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { updateBounds } from "@/utils/map/updateBounds";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import createCustumButton from "@/utils/map/createCustomButton";
 
 export default function useCreateMap(setMap: (map: naver.maps.Map) => void) {
-  const [isLoading, setIsLoading] = useState(true);
   const mapRef = useRef<HTMLDivElement | null>(null);
   const setBounds = useMarkerStore((state) => state.setBounds);
+  const setIsLoading = useMarkerStore((state) => state.setIsLoading);
+  const isLoading = useMarkerStore((state) => state.isLoading);
 
   // 지도 불러오기 성공
   const getSuccess = (position: GeolocationPosition) => {
