@@ -10,6 +10,7 @@ import ApartGeneralInfo from "./ApartMainInfo/ApartGeneralInfo/ApartGeneralInfo"
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import getApartData from "@/utils/api/getApartData";
+import DetailInfo from "../DetailInfo/DetailInfo";
 
 export default function ApartInfo() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
@@ -18,7 +19,6 @@ export default function ApartInfo() {
     (state) => state.setApartDetailInfo
   );
   const apartInfo = useMainInfoStore((state) => state.apartInfo);
-  const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
 
   const apartDetailApiHandler = async () => {
     const data = await getApartData(
@@ -31,33 +31,37 @@ export default function ApartInfo() {
 
   return (
     <section className={styles.apartInfoContainer}>
-      {apartInfo && (
-        <ApartHeadInfo
-          apartName={apartInfo.aptInfo.name}
-          apartRegion={apartInfo.aptInfo.roadAddress}
-          zipCode={apartInfo.aptInfo.zipCode}
-        />
-      )}
-      <section className={styles.apartMainInfo}>
-        <ApartBuildInfo />
-        {/* <ApartPrice /> */}
-        <ApartMaintanceCharge />
-        <ApartGeneralInfo />
+      <section className={styles.detailInfoContainer}>
+        <DetailInfo />
       </section>
-      <button
-        className={styles.detailApartInfoButton}
-        onClick={() => {
-          if (isDetailInfo === "APARTINFO") setIsDetailInfo(null);
-          else {
-            setIsDetailInfo("APARTINFO");
-            apartDetailApiHandler();
-            setMainInfo("DETAIL");
-          }
-        }}
-      >
-        <img src={detailButtonIconD} alt="apart detail button" />
-        자세히보기
-      </button>
+      <section className={styles.apartInfoContainer}>
+        {apartInfo && (
+          <ApartHeadInfo
+            apartName={apartInfo.aptInfo.name}
+            apartRegion={apartInfo.aptInfo.roadAddress}
+            zipCode={apartInfo.aptInfo.zipCode}
+          />
+        )}
+        <section className={styles.apartMainInfo}>
+          <ApartBuildInfo />
+          <ApartPrice />
+          <ApartMaintanceCharge />
+          <ApartGeneralInfo />
+        </section>
+        <button
+          className={styles.detailApartInfoButton}
+          onClick={() => {
+            if (isDetailInfo === "APARTINFO") setIsDetailInfo(null);
+            else {
+              setIsDetailInfo("APARTINFO");
+              apartDetailApiHandler();
+            }
+          }}
+        >
+          <img src={detailButtonIconD} alt="apart detail button" />
+          자세히보기
+        </button>
+      </section>
     </section>
   );
 }

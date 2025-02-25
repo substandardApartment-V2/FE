@@ -1,9 +1,17 @@
+@use "@/styles/responsive.scss" as rs;
+
 .apartMap {
   border: 0.1rem solid #9e9e9e;
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
+  .detailInfo {
+    display: block;
+    @include rs.respond-to("tablet-large") {
+      display: none;
+    }
+  }
   .map {
     width: 100%;
     height: 100%;

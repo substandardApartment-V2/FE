@@ -9,23 +9,37 @@
   gap: 1.6rem;
   overflow-y: scroll;
   background-color: #ffffff;
+  position: relative;
   @include rs.respond-to("tablet-large") {
+    position: relative;
     gap: 0;
   }
-  .apartMainInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-    width: 100%;
-    overflow-y: auto;
+  .detailInfoContainer {
+    display: none;
+    @include rs.respond-to("tablet-large") {
+      display: block;
+    }
   }
-  .detailApartInfoButton {
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: colors.$mainTitle;
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    gap: 0.4rem;
+  .apartInfoContainer {
+    display: block;
+    .apartMainInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      width: 100%;
+      overflow-y: auto;
+    }
+    .detailApartInfoButton {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: colors.$mainTitle;
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      gap: 0.4rem;
+    }
+    @include rs.respond-to("tablet-large") {
+      // display: none;
+    }
   }
 }

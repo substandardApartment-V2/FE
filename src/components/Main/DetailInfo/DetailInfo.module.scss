@@ -13,7 +13,9 @@
   animation: slideIn 0.6s ease-out;
   transform-origin: left;
   @include rs.respond-to("tablet-large") {
-    display: none;
+    position: static;
+    width: 100%;
+    animation: none;
   }
 }
 

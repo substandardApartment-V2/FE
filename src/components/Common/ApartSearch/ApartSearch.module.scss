@@ -1,30 +1,53 @@
 @use "@/styles/colors.scss";
 @use "@/styles/responsive.scss" as rs;
 
-.apartSearch {
+.apartSearchContainer {
   display: flex;
-  align-items: center;
-  max-width: 100%;
+  flex-direction: column;
   position: relative;
-  .apartSearchInput {
-    width: 100%;
-    border-top-left-radius: 10rem;
-    border-bottom-left-radius: 10rem;
-    padding: 1rem 0rem 1rem 2.4rem;
-    border: 0.1rem solid colors.$mainRed;
-    font-size: 1.6rem;
-    outline: none;
-    &::placeholder {
-      font-size: 1.6rem;
-    }
-    @include rs.respond-to("tablet-large") {
-      border-radius: 0;
-      top: 0;
+  .apartSearch {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    position: relative;
+    .apartSearchInput {
       width: 100%;
+      border-top-left-radius: 10rem;
+      border-bottom-left-radius: 10rem;
+      padding: 1rem 0rem 1rem 2.4rem;
+      border: 0.1rem solid colors.$mainRed;
+      font-size: 1.6rem;
+      outline: none;
+      &::placeholder {
+        font-size: 1.6rem;
+      }
+      @include rs.respond-to("tablet-large") {
+        border-radius: 0;
+        top: 100%;
+      }
+    }
+    img {
+      position: absolute;
+      right: 1.6rem;
     }
   }
-  img {
+
+  .searchResults {
     position: absolute;
-    right: 1.6rem;
+    top: 100%;
+    width: 100%;
+    background-color: black;
+    color: white;
+    z-index: 1000;
+    .searchResultsList {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      color: white;
+      button {
+        color: white;
+      }
+    }
   }
 }
