@@ -1,4 +1,5 @@
 @use "@/styles/_colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .apartEtcInfo {
   .title {
@@ -10,9 +11,17 @@
     gap: 0.8rem;
     color: #ffffff;
     background-color: colors.$mainTitle;
+    @include rs.respond-to("mobile-large") {
+      justify-content: center;
+      font-size: 1.4rem;
+    }
     img {
       width: 2rem;
       height: 2rem;
+      @include rs.respond-to("mobile-large") {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
     }
   }
   .amenities,
@@ -27,14 +36,11 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    li {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      span {
-        color: colors.$mainNavy;
-        font-weight: 500;
-      }
+    @include rs.respond-to("mobile-large") {
+      padding: 1.6rem 2rem;
+      border: none;
+      text-align: center;
+      font-weight: 600;
     }
   }
   .amenities {

@@ -6,6 +6,9 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  @include rs.respond-to("tablet-large") {
+    border: none;
+  }
   .detailInfo {
     display: block;
     @include rs.respond-to("tablet-large") {

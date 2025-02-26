@@ -8,6 +8,7 @@
   gap: 1.6rem;
   overflow-y: scroll;
   @include rs.respond-to("tablet-large") {
+    background-color: white;
     gap: 0;
   }
 }

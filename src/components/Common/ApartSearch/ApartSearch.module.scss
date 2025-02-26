@@ -24,6 +24,9 @@
       @include rs.respond-to("tablet-large") {
         border-radius: 0;
         top: 100%;
+        border-top: none;
+        border-left: none;
+        border-right: none;
       }
     }
     img {

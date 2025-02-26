@@ -1,6 +1,9 @@
+// 전국 아파트 종합 정보 컴포넌트
+
 import styles from "./CurrentApartsStatus.module.scss";
 import StatusList from "./StatusList";
 import { TCurrentApartsStatusList } from "@/types/TMain/TCurrentApartsStatusListTypes";
+import useGetApartData from "@/hooks/Api/useGetApartData";
 
 export default function CurrentApartsStatus() {
   const dummyData = [
@@ -19,12 +22,11 @@ export default function CurrentApartsStatus() {
       subTitle: "2025년 2월 기준",
       content: "87 곳",
     },
-    {
-      title: "전국 최저 관리비 아파트",
-      subTitle: "울산시 북구 화봉동",
-      content: "동아 청구 아파트",
-    },
   ];
+
+  const { data, isLoading } = useGetApartData(
+    `${import.meta.env.VITE_LOCAL_API_CALL}/apt/main`
+  );
 
   return (
     <section className={styles.currentApartStatus}>

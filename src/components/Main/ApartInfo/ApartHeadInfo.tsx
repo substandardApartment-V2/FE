@@ -1,3 +1,5 @@
+// 아파트 기본 정보 헤더 컴포넌트
+
 import styles from "./ApartHeadInfo.module.scss";
 import zipCodeIcon from "@/assets/Main/ApartInfo/zipCodeIcon.svg";
 

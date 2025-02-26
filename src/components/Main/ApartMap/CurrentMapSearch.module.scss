@@ -2,6 +2,7 @@
 @use "@/styles/responsive.scss" as rs;
 
 .searchButton {
+  all: unset;
   position: absolute;
   display: flex;
   align-items: center;
@@ -20,6 +21,12 @@
   }
   img {
     width: 2rem;
+    @include rs.respond-to("tablet-large") {
+      font-size: 1.8rem;
+    }
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.6rem;
+    }
   }
   &:not(:disabled):hover {
     transform: translate(-50%, -60%);
@@ -28,5 +35,10 @@
   }
   &:disabled {
     background-color: grey;
+  }
+  span {
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.4rem;
+    }
   }
 }

@@ -1,9 +1,19 @@
+@use "@/styles/responsive.scss" as rs;
+
 .noticeList {
   border: 0.1rem solid #aaafb9;
   padding: 2.4rem 3rem;
-  height: 33%;
+  height: 100%;
   width: 100%;
   cursor: pointer;
+  overflow: hidden;
+  @include rs.respond-to("mobile-large") {
+    padding: 1.4rem 2rem;
+  }
+  @include rs.respond-to("tablet-large") {
+    border: none;
+    border-bottom: 0.1rem solid #aaafb9;
+  }
   .noticeListTitle {
     display: flex;
     justify-content: space-between;
@@ -13,10 +23,16 @@
       font-size: 1.7rem;
       font-weight: 700;
       color: #142337;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.4rem;
+      }
     }
     span {
       font-size: 1.5rem;
       color: #aaafb9;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.3rem;
+      }
     }
   }
   .noticeListContent {
@@ -29,5 +45,8 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     white-space: pre-line;
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.2rem;
+    }
   }
 }

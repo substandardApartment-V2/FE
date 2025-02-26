@@ -15,6 +15,10 @@
     font-size: 2rem;
     font-weight: 600;
     padding: 1rem 0rem 1rem 2.4rem;
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.8rem;
+      padding: 1rem 0rem 1rem 2rem;
+    }
   }
   .currentApartsStatusContainer {
     display: flex;
