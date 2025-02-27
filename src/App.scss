@@ -119,7 +119,7 @@ body {
   box-sizing: border-box;
   padding: 4rem 7.2rem;
 
-  @include rs.respond-to("tablet-large") {
+  @include rs.respond-to("desktop-small") {
     padding: 0;
   }
 }

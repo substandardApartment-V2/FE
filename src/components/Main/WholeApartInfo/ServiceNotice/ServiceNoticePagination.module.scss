@@ -1,4 +1,5 @@
 @use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .pagination {
   margin-top: auto;
@@ -6,6 +7,9 @@
   justify-content: center;
   gap: 0.4rem;
   padding-top: 1.6rem;
+  @include rs.respond-to("desktop-small") {
+    padding: 1.6rem;
+  }
   .pageContainer {
     display: flex;
     justify-content: center;
@@ -15,6 +19,12 @@
       font-weight: 500;
       line-height: 2rem;
       color: colors.$mainTitle;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.3rem;
+      }
+      @include rs.respond-to("mobile-small") {
+        font-size: 1.2rem;
+      }
     }
     .pageActive {
       font-weight: 700;

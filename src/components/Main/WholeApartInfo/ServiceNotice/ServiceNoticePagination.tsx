@@ -26,7 +26,7 @@ export default function ServiceNoticePagination() {
       </button>
       <ReactPaginate
         forcePage={currentPage}
-        pageCount={pageCount / 3}
+        pageCount={pageCount / 4}
         pageRangeDisplayed={5}
         marginPagesDisplayed={1}
         onPageChange={handlePageChange}

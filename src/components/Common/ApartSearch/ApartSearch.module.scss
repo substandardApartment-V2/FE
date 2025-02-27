@@ -21,7 +21,7 @@
       &::placeholder {
         font-size: 1.6rem;
       }
-      @include rs.respond-to("tablet-large") {
+      @include rs.respond-to("desktop-small") {
         border-radius: 0;
         top: 100%;
         border-top: none;

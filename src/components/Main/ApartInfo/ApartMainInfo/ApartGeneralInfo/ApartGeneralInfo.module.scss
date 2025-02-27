@@ -1,5 +1,3 @@
-@use "@/styles/responsive.scss" as rs;
-
 .apartGeneralInfo {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

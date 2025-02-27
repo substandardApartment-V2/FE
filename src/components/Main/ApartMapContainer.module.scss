@@ -2,14 +2,14 @@
 
 .apartMap {
   width: 100%;
-  @include rs.respond-to("tablet-large") {
+  @include rs.respond-to("desktop-small") {
     display: flex;
     height: 100%;
     flex-direction: column;
   }
   .apartSearch {
     display: none;
-    @include rs.respond-to("tablet-large") {
+    @include rs.respond-to("desktop-small") {
       display: block;
     }
   }

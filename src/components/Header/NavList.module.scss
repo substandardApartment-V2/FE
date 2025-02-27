@@ -10,11 +10,11 @@
   &:last-child {
     border-right: 0.2rem solid colors.$mainRed;
     box-sizing: border-box;
-    @include rs.respond-to("tablet-large") {
+    @include rs.respond-to("desktop-small") {
       border: 0;
     }
   }
-  @include rs.respond-to("tablet-large") {
+  @include rs.respond-to("desktop-small") {
     border: 0;
   }
   :hover,
@@ -22,12 +22,12 @@
     background-color: colors.$mainNavy;
     color: #fff;
 
-    @include rs.respond-to("tablet-large") {
+    @include rs.respond-to("desktop-small") {
       background-color: #fff;
       color: colors.$mainRed;
     }
     span {
-      @include rs.respond-to("tablet-large") {
+      @include rs.respond-to("desktop-small") {
         padding-top: 0.8rem;
         border-top: 0.2rem solid colors.$mainRed;
       }
@@ -42,7 +42,7 @@
     font-weight: 600;
     font-size: 2rem;
     color: colors.$mainNavy;
-    @include rs.respond-to("tablet-large") {
+    @include rs.respond-to("desktop-small") {
       font-size: 130%;
       padding: 1rem 0rem;
     }
@@ -53,7 +53,7 @@
       font-size: 110%;
     }
     span {
-      @include rs.respond-to("tablet-large") {
+      @include rs.respond-to("desktop-small") {
         padding-top: 0.8rem;
         border-top: 2px solid transparent;
       }

@@ -30,7 +30,7 @@ export default function ApartInfo() {
   };
 
   return (
-    <section className={styles.apartInfoContainer}>
+    <section className={styles.apartInfo}>
       <section className={styles.detailInfoContainer}>
         <DetailInfo />
       </section>
@@ -44,7 +44,6 @@ export default function ApartInfo() {
         )}
         <section className={styles.apartMainInfo}>
           <ApartBuildInfo />
-          {/* <ApartPrice /> */}
           <ApartMaintanceCharge />
           <ApartGeneralInfo />
         </section>

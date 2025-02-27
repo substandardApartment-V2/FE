@@ -10,7 +10,7 @@
     gap: 0.8rem;
     justify-content: center;
     background-color: colors.$mainTitle;
-    padding: 1.8rem 0rem 1.8rem 2.4rem;
+    padding: 1.8rem 0rem 1.8rem 2rem;
     @include rs.respond-to("mobile-large") {
       font-size: 1.4rem;
       padding: 1.8rem 0rem 1.8rem 2rem;
@@ -19,6 +19,15 @@
       font-size: 1.6rem;
       font-weight: 600;
       color: #f5f5f5;
+      @include rs.respond-to("desktop-medium") {
+        font-size: 1.4rem;
+      }
+      @include rs.respond-to("desktop-small") {
+        font-size: 2rem;
+      }
+      @include rs.respond-to("tablet-small") {
+        font-size: 1.8rem;
+      }
       @include rs.respond-to("mobile-large") {
         font-size: 1.4rem;
       }
@@ -26,7 +35,7 @@
     .listSubTitle {
       font-size: 2rem;
       color: #f5f5f5;
-      @include rs.respond-to("mobile-large") {
+      @include rs.respond-to("desktop-medium") {
         font-size: 1.8rem;
       }
     }
@@ -36,12 +45,24 @@
     align-items: center;
     justify-content: end;
     gap: 0.8rem;
-    padding: 2rem 2.6rem 2rem 0rem;
-    width: 50%;
     font-size: 2.6rem;
+    padding: 2rem 2rem 2rem 0rem;
+    width: 50%;
     font-family: "Pretendard-Bold", sans-serif;
     color: #f5f5f5;
     background-color: #142337;
+    @include rs.respond-to("desktop-large") {
+      font-size: 2.4rem;
+      padding: 1.6rem 2.2rem 1.6rem 0rem;
+    }
+    @include rs.respond-to("desktop-medium") {
+      font-size: 2.2rem;
+      padding: 1.6rem 2rem 1.6rem 0rem;
+    }
+    @include rs.respond-to("desktop-small") {
+      font-size: 2rem;
+      padding: 0rem 1.8rem 0rem 0rem;
+    }
     @include rs.respond-to("mobile-large") {
       font-size: 2rem;
     }

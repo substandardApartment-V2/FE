@@ -16,6 +16,7 @@
   background-color: colors.$mainTitle;
   padding: 0.8rem 1rem;
   transition: all 0.2s ease-in;
+  cursor: pointer;
   @include rs.respond-to("tablet-large") {
     bottom: 5rem;
   }

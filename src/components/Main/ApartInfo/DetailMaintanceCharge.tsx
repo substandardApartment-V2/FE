@@ -11,7 +11,8 @@ import { Tooltip } from "react-tooltip";
 export default function DetailMaintanceCharge() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const apartInfo = useMainInfoStore((state) => state.apartInfo);
-  const data = useGetApartData<TMaintanceChargeResponse>(
+
+  const { data, isLoading } = useGetApartData<TMaintanceChargeResponse>(
     `${import.meta.env.VITE_LOCAL_API_CALL}/apt/feeDetail?id=${
       apartInfo?.aptInfo.detailId
     }`
@@ -55,7 +56,9 @@ export default function DetailMaintanceCharge() {
             <img src={closeButtonIcon} />
           </button>
         </div>
-        {data && <MaintanceChargeChart data={data?.data.individualUsageSum} />}
+        {data?.data && (
+          <MaintanceChargeChart data={data?.data.individualUsageSum} />
+        )}
       </section>
       <section className={styles.eachArea}>
         <h4 className={styles.title}>

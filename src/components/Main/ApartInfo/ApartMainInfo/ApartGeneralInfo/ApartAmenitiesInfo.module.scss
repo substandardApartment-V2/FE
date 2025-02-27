@@ -14,16 +14,32 @@
     gap: 0.8rem;
     color: #ffffff;
     background-color: colors.$mainTitle;
-    @include rs.respond-to("mobile-large") {
+    @include rs.respond-to("desktop-small") {
       justify-content: center;
       font-size: 1.6rem;
+    }
+    @include rs.respond-to("mobile-large") {
+      padding: 0.8rem 2.2rem 0.8rem;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    @include rs.respond-to("mobile-medium") {
+      font-size: 1.2rem;
     }
     img {
       width: 2rem;
       height: 2rem;
+      @include rs.respond-to("desktop-small") {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
       @include rs.respond-to("mobile-large") {
         width: 1.6rem;
         height: 1.6rem;
+      }
+      @include rs.respond-to("mobile-medium") {
+        width: 1.4rem;
+        height: 1.4rem;
       }
     }
   }
@@ -38,19 +54,39 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    @include rs.respond-to("mobile-large") {
+    @include rs.respond-to("desktop-small") {
       padding: 1.6rem 2rem;
       border: none;
+    }
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.4rem;
     }
     li {
       display: flex;
       align-items: center;
       gap: 0.4rem;
+      img {
+        @include rs.respond-to("desktop-small") {
+          width: 1.8rem;
+          height: 1.8rem;
+        }
+        @include rs.respond-to("mobile-large") {
+          width: 1.6rem;
+          height: 1.6rem;
+        }
+        @include rs.respond-to("mobile-medium") {
+          width: 1.4rem;
+          height: 1.4rem;
+        }
+      }
       span {
         color: colors.$mainNavy;
         font-weight: 500;
-        @include rs.respond-to("mobile-large") {
+        @include rs.respond-to("desktop-small") {
           font-weight: 600;
+        }
+        @include rs.respond-to("mobile-large") {
+          font-size: 1.4rem;
         }
       }
     }
@@ -59,7 +95,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    @include rs.respond-to("mobile-large") {
+    @include rs.respond-to("desktop-small") {
       gap: 2.4rem;
     }
   }

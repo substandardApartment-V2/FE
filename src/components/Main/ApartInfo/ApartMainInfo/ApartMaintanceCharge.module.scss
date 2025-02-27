@@ -1,8 +1,18 @@
 @use "@/styles/_colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .maintanceChart {
   background-color: colors.$mainNavy;
   padding: 1.8rem 1.6rem;
+  @include rs.respond-to("mobile-large") {
+    padding: 1.4rem 1.2rem;
+  }
+  @include rs.respond-to("mobile-medium") {
+    padding: 1.3rem 1.1rem;
+  }
+  @include rs.respond-to("mobile-small") {
+    padding: 1.2rem 1rem;
+  }
   .chartTitle {
     width: 100%;
     display: flex;

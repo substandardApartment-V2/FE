@@ -34,7 +34,7 @@ export default function ServiceNotice() {
   const { isLoading } = useGetPageData(
     `${import.meta.env.VITE_LOCAL_API_CALL}/apt/notice`,
     {
-      num: 3,
+      num: 4,
       pages: currentPage,
       sort: isShow === "최신순" ? "DESC" : "ASC",
     }

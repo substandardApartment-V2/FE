@@ -1,13 +1,33 @@
+@use "@/styles/_colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
 .apartBulidInfoList {
   display: flex;
+  align-items: center;
   gap: 1.6rem;
+  @include rs.respond-to("mobile-large") {
+    gap: 1rem;
+  }
   strong {
+    background-color: colors.$mainTitle;
+    padding: 1rem 1.6rem;
     color: #ffffff;
     font-size: 1.6rem;
     font-weight: 600;
+    @include rs.respond-to("desktop-large") {
+      padding: 0.6rem 2rem;
+      font-size: 1.4rem;
+    }
+    @include rs.respond-to("mobile-large") {
+      padding: 0.5rem 2rem;
+      font-size: 1.3rem;
+    }
   }
   span {
-    color: #ffffff;
+    color: colors.$mainTitle;
     font-size: 1.6rem;
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.3rem;
+    }
   }
 }

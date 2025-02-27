@@ -1,33 +1,43 @@
 @use "@/styles/_colors.scss";
 @use "@/styles/responsive.scss" as rs;
 
-.apartInfoContainer {
+.apartInfo {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
-  overflow-y: scroll;
   background-color: #ffffff;
-  position: relative;
-  @include rs.respond-to("tablet-large") {
+  overflow-y: hidden;
+  @include rs.respond-to("desktop-small") {
     position: relative;
     gap: 0;
   }
   .detailInfoContainer {
     display: none;
     @include rs.respond-to("tablet-large") {
+      height: 100%;
       display: block;
     }
   }
   .apartInfoContainer {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 1.6rem;
+    @include rs.respond-to("desktop-small") {
+      gap: 0;
+    }
     .apartMainInfo {
       display: flex;
       flex-direction: column;
       gap: 1.6rem;
       width: 100%;
+      height: 100%;
       overflow-y: auto;
+      @include rs.respond-to("desktop-small") {
+        gap: 0rem;
+      }
     }
     .detailApartInfoButton {
       font-size: 1.4rem;
@@ -35,11 +45,12 @@
       color: colors.$mainTitle;
       display: flex;
       align-items: center;
-      flex-direction: row-reverse;
       gap: 0.4rem;
-    }
-    @include rs.respond-to("tablet-large") {
-      // display: none;
+      flex-direction: row-reverse;
+      cursor: pointer;
+      @include rs.respond-to("desktop-small") {
+        padding: 1.4rem 2rem;
+      }
     }
   }
 }
