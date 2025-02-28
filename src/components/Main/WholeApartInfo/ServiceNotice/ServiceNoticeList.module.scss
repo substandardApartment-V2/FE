@@ -20,6 +20,7 @@
     border-bottom: 0.1rem solid #aaafb9;
   }
   @include rs.respond-to("mobile-large") {
+    padding: 1.6rem 2rem;
     height: 10rem;
   }
   .noticeListTitle {

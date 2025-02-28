@@ -11,7 +11,7 @@ type TUseNoticeStore = {
   currentPage: number;
   isShow: TIsShow;
   setServiceNoticeData: (serviceNoticeData: TServiceNoticeList[]) => void;
-  setNoticeInfo: (noticeInfo: TNoticeInfo) => void;
+  setNoticeInfo: (noticeInfo: TNoticeInfo | null) => void;
   setPageCount: (pageCOunt: number) => void;
   setCurrentPage: (currentPage: number) => void;
   setIsShow: (isShow: TIsShow) => void;

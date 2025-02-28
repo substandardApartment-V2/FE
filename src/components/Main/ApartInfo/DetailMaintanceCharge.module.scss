@@ -5,58 +5,74 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow-y: auto;
   background-color: colors.$mainNavy;
-  padding: 0rem 2rem;
-  .eachArea {
+  .mobileApartHeadInfo {
+    display: none;
+    @include rs.respond-to("desktop-small") {
+      display: block;
+    }
+  }
+  .chargeCharts {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    background-color: colors.$mainNavy;
-    &:first-child {
+    overflow-y: auto;
+    width: 100%;
+    .eachArea {
+      padding: 0rem 2rem;
       display: flex;
       flex-direction: column;
-      div {
+      height: 100%;
+      background-color: colors.$mainNavy;
+      &:first-child {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.8rem;
-        button {
-          img {
-            width: 3rem;
+        flex-direction: column;
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.8rem;
+          button {
+            img {
+              width: 3rem;
+            }
           }
         }
       }
-    }
-    .title {
-      color: #ffffff;
-      font-size: 1.8rem;
-      font-weight: 600;
-      padding: 2rem 0rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      position: relative;
-      float: left;
-      span {
+      .title {
+        color: #ffffff;
+        font-size: 1.8rem;
         font-weight: 600;
-        &:nth-child(2) {
-          font-size: 1.4rem;
+        padding: 2rem 0rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+        float: left;
+        span {
+          font-weight: 600;
+          &:nth-child(2) {
+            font-size: 1.4rem;
+          }
+        }
+        img {
+          width: 1.6rem;
         }
       }
-      img {
-        width: 1.6rem;
+      button {
+        @include rs.respond-to("desktop-small") {
+          display: none;
+        }
       }
     }
   }
-}
 
-.tooltip {
-  width: 10rem;
-  z-index: 10;
-  background-color: white;
-  font-weight: 300;
-  color: #142337;
-  border: 0.2rem solid #e03a3e;
-  font-size: 1.4rem;
+  .tooltip {
+    width: 10rem;
+    z-index: 10;
+    background-color: white;
+    font-weight: 300;
+    color: #142337;
+    border: 0.2rem solid #e03a3e;
+    font-size: 1.4rem;
+  }
 }

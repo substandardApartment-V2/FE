@@ -6,12 +6,11 @@
   height: 100%;
   position: relative;
   overflow: hidden;
-  @include rs.respond-to("tablet-large") {
+  @include rs.respond-to("desktop-small") {
     border: none;
   }
   .detailInfo {
-    display: block;
-    @include rs.respond-to("tablet-large") {
+    @include rs.respond-to("desktop-small") {
       display: none;
     }
   }

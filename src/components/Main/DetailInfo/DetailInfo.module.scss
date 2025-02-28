@@ -6,13 +6,19 @@
   top: 0;
   z-index: 1000;
   height: 100%;
-  width: 45%;
+  width: 50%;
   background-color: white;
   border-right: 0.1rem solid #9e9e9e;
   overflow: scroll;
   animation: slideIn 0.6s ease-out;
   transform-origin: left;
-  @include rs.respond-to("tablet-large") {
+  @include rs.respond-to("desktop-large") {
+    width: 55%;
+  }
+  @include rs.respond-to("desktop-medium") {
+    width: 70%;
+  }
+  @include rs.respond-to("desktop-small") {
     position: static;
     width: 100%;
     animation: none;

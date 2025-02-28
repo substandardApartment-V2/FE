@@ -51,6 +51,7 @@ const MaintanceChargeChart = (props: TMaintanceChargeChart) => {
         minBarLength: 3,
         categoryPercentage: 0.6,
         barPercentage: 0.8,
+        hoverBackgroundColor: "#E03A3E",
       },
     ],
   };

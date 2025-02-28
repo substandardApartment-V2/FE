@@ -3,6 +3,10 @@
 
 .buildInfo {
   display: flex;
+  padding-top: 1.6rem;
+  @include rs.respond-to("desktop-small") {
+    padding-top: 0;
+  }
   .buildCompanyDate {
     display: grid;
     grid-template: repeat(2, 1fr) / repeat(2, 1fr);

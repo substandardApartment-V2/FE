@@ -31,9 +31,11 @@ export default function ApartInfo() {
 
   return (
     <section className={styles.apartInfo}>
-      <section className={styles.detailInfoContainer}>
-        <DetailInfo />
-      </section>
+      {isDetailInfo && (
+        <section className={styles.detailInfoContainer}>
+          <DetailInfo />
+        </section>
+      )}
       <section className={styles.apartInfoContainer}>
         {apartInfo && (
           <ApartHeadInfo
