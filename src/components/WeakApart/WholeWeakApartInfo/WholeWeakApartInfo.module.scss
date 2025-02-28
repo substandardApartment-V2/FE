@@ -1,9 +1,26 @@
-@use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .weakRight {
-  width: 45%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  overflow-y: scroll;
+  background-color: white;
+  .mobileDetailWeakBuilderChart {
+    display: none;
+    @include rs.respond-to("desktop-small") {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .wholeWeakApartInfo {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 1.6rem;
+    @include rs.respond-to("desktop-small") {
+      display: none;
+    }
+  }
 }

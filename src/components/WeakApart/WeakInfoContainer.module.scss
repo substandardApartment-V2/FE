@@ -1,0 +1,51 @@
+@use "@/styles/responsive.scss" as rs;
+@use "@/styles/colors.scss";
+
+@mixin testRs {
+  @include rs.respond-to("desktop-small") {
+    position: absolute;
+    bottom: 0;
+    overflow: scroll;
+    z-index: 1000;
+    width: 100%;
+    height: 65%;
+    gap: 0;
+    transition: height 0.4s ease-in-out;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 45%;
+  @include testRs();
+  .apartSearch {
+    @include rs.respond-to("desktop-small") {
+      display: none;
+    }
+  }
+  &.closed {
+    @include rs.respond-to("desktop-small") {
+      height: 4rem;
+    }
+  }
+  .slideButton {
+    display: none;
+    @include rs.respond-to("desktop-small") {
+      display: block;
+      background-color: colors.$mainNavy;
+      position: sticky;
+      top: 0;
+      height: 4rem;
+      padding: 1.6rem;
+      border-radius: 2rem;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      color: white;
+    }
+  }
+}

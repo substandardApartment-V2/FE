@@ -4,6 +4,11 @@ import styles from "./ApartHeadInfo.module.scss";
 import zipCodeIcon from "@/assets/Main/ApartInfo/zipCodeIcon.svg";
 import backIcon from "@/assets/Main/DetailInfo/backIcon.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
+import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
+import useLocationPath from "@/hooks/Map/useLocationPath";
+import { useMainInfoStore } from "@/store/useMainInfoStore";
+import { useMarkerStore } from "@/store/useMarkerStore";
+import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
 
 type TApartHeadInfo = {
   apartName?: string;
@@ -15,8 +20,15 @@ type TApartHeadInfo = {
 export default function ApartHeadInfo(props: TApartHeadInfo) {
   const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
+  const weakApartInfo = useWeakApartInfoStore((state) => state.weakApartInfo);
+  const setWeakApartInfo = useWeakApartInfoStore(
+    (state) => state.setWeakApartInfo
+  );
+  const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
+  const path = useLocationPath();
+  const selectMarker = useMarkerStore((state) => state.selectMarker);
+  const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
 
-  console.log(props);
   return (
     <section
       className={
@@ -32,10 +44,26 @@ export default function ApartHeadInfo(props: TApartHeadInfo) {
       >
         <div className={styles.apartName}>
           <span>{props.apartName}</span>
-          {isDetailInfo && (
+          {(isDetailInfo || weakApartInfo) && (
             <button
               onClick={() => {
-                setIsDetailInfo(null);
+                if (path === "defect") {
+                  // weakApartInfo.tsx 재사용함수 정의
+                  setMainInfo("WHOLE");
+                  if (selectMarker) {
+                    selectMarker.setIcon({
+                      url: mapMarkerIcon,
+                      size: new naver.maps.Size(35, 40),
+                      scaledSize: new naver.maps.Size(35, 40),
+                      origin: new naver.maps.Point(0, 0),
+                      anchor: new naver.maps.Point(12, 34),
+                    });
+                    setSelectMarker(null);
+                    setWeakApartInfo(null);
+                  }
+                } else {
+                  setIsDetailInfo(null);
+                }
               }}
             >
               <img src={backIcon} alt="뒤로가기" />

@@ -129,7 +129,7 @@ li {
             font-size: 3.2rem;
             font-weight: 600;
             text-align: center;
-            @include rs.respond-to("desktop-small") {
+            @include rs.respond-to("desktop-medium") {
               font-size: 2.8rem;
             }
             @include rs.respond-to("tablet-large") {
@@ -162,13 +162,16 @@ li {
         }
         .subContent {
           padding: 2.6rem 0;
-          font-size: 2rem;
+          font-size: 1.8rem;
           font-weight: 600;
           text-align: center;
           white-space: nowrap;
+          @include rs.respond-to("desktop-medium") {
+            font-size: 1.6rem;
+            padding: 2.2rem 0;
+          }
           @include rs.respond-to("desktop-small") {
             font-size: 2.8rem;
-            padding: 2.2rem 0;
           }
           @include rs.respond-to("tablet-large") {
             font-size: 2.4rem;

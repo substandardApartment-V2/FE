@@ -2,8 +2,13 @@ import styles from "./DetailWeakRankInfo.module.scss";
 import DetailWeakBuilderChart from "../Chart/DetailWeakBuilderChart";
 import closeButtonIcon from "@/assets/Main/ApartInfo/closeButtonIcon.svg";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
+import backIcon from "@/assets/Main/DetailInfo/backIcon.svg";
 
-export default function DetailWeakRankInfo() {
+type TDetailWeakRankInfo = {
+  mobile?: boolean;
+};
+
+export default function DetailWeakRankInfo({ mobile }: TDetailWeakRankInfo) {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
 
   return (
@@ -16,7 +21,10 @@ export default function DetailWeakRankInfo() {
             setIsDetailInfo(null);
           }}
         >
-          <img src={closeButtonIcon} alt="detail info close button" />
+          <img
+            src={mobile ? backIcon : closeButtonIcon}
+            alt="detail info close button"
+          />
         </button>
       </div>
       <DetailWeakBuilderChart />

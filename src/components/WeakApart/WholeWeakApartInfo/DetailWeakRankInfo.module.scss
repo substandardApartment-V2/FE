@@ -1,19 +1,22 @@
 @use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .detailWeakRankInfo {
   padding: 2.4rem 3.2rem;
   background-color: colors.$mainNavy;
   height: 100%;
+  overflow-y: auto;
   .titleContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include rs.respond-to("desktop-small") {
+      margin-bottom: 3rem;
+    }
     .title {
       color: #ffffff;
       font-weight: 600;
       font-size: 1.8rem;
-    }
-    .closeButton {
     }
   }
 }

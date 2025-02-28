@@ -37,9 +37,12 @@ export default function DetailWeakBuilderChart() {
         barThickness: 17,
         maxBarThickness: 20,
         minBarLength: 3,
+        barPercentage: 0.1,
+        categoryPercentage: 0.1,
       },
     ],
   };
+
   const options: ChartOptions<"bar"> = {
     responsive: true,
     maintainAspectRatio: false,
@@ -47,44 +50,40 @@ export default function DetailWeakBuilderChart() {
     scales: {
       y: {
         ticks: {
-          color: "#ffffff",
-          font: {
-            size: 15,
-          },
-          crossAlign: "far", //라벨이 축 왼쪽으로 정렬
+          display: false,
         },
-
         grid: {
-          // y축 line 제거
-          offset: false,
           display: false,
         },
       },
       x: {
-        // x축 제거
         display: false,
       },
     },
     layout: {
       padding: {
-        left: 0,
-        right: 25,
+        // left: 70, // 왼쪽 여백 늘리기
+        // right: 20,
+        top: 20,
+        bottom: 20,
       },
     },
     plugins: {
       legend: {
         display: false,
-        labels: {
-          padding: 20,
-        },
       },
       datalabels: {
         color: "#FFFFFF",
         font: {
-          size: 12,
+          size: 14,
+          weight: "bold",
         },
-        anchor: "end",
-        align: "right",
+        anchor: "center", // ✅ 막대 기준 상단에 배치
+        align: "top", // ✅ 수평막대 위로 이동
+        offset: 6, // ✅ 막대와 간격 조정 (값을 키우면 더 위로 이동)
+        formatter: (value, context) => {
+          return context.chart.data.labels?.[context.dataIndex] || "";
+        },
       },
     },
   };
