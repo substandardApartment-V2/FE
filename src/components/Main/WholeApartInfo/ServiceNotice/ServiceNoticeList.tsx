@@ -1,3 +1,5 @@
+// 공지사항 컴포넌트
+
 import React from "react";
 import styles from "./ServiceNoticeList.module.scss";
 import { TServiceNoticeList } from "@/types/TMain/TServiceNoticeListTypes";

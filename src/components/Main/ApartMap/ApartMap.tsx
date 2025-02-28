@@ -48,7 +48,9 @@ export default function ApartMap() {
   return (
     <section className={styles.apartMap}>
       {!isLoading && <ApartLocation />}
-      {isDetailInfo && <DetailInfo />}
+      <section className={styles.detailInfo}>
+        {isDetailInfo && <DetailInfo />}
+      </section>
       {isLoading ? (
         <MapLoading />
       ) : (

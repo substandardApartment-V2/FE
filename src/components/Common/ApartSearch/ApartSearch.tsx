@@ -18,6 +18,7 @@ export default function ApartSearch() {
   const setMarkerData = useMarkerStore((state) => state.setMarkderData);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const markers = useMarkerStore((state) => state.markers);
+  const isLoading = useMarkerStore((state) => state.isLoading);
   const locationPath = useLocationPath();
   const [showRecentSearch, setShowRecentSearch] = useState(false);
   const { searchRecord, addRecord, removeRecord, clearRecord } =
@@ -37,7 +38,7 @@ export default function ApartSearch() {
         );
         if (data.data.code === 200 && map) {
           markers.forEach((marker) => marker.setMap(null));
-          setMarkerData(data.data.data);
+          setMarkerData(data.data.data.results);
           setMainInfo("SEARCH");
           useMapMarkers(); // 마커 생성 커스텀 훅 호출
         }
@@ -49,6 +50,8 @@ export default function ApartSearch() {
     }
   };
 
+  // useMapMarkers(); // 마커 생성 커스텀 훅 호출
+
   // const recentSearchHandler = async (keyword: string) => {
   //   setShowRecentSearch(false);
   // };
@@ -58,13 +61,19 @@ export default function ApartSearch() {
       <form className={styles.apartSearch} onSubmit={searchApiHandler}>
         <input
           className={styles.apartSearchInput}
-          placeholder="궁금한 지역, 아파트를 검색해보세요."
+          placeholder={
+            isLoading
+              ? "잠시만 기다려 주세요."
+              : "궁금한 지역, 아파트를 검색해보세요."
+          }
           ref={searchRef}
           tabIndex={1}
           onFocus={() => setShowRecentSearch(true)}
           onBlur={() => setShowRecentSearch(false)}
         />
-        <img src={searchIcon} alt="location apart search" />
+        <button className={styles.searchButton}>
+          <img src={searchIcon} alt="location apart search" />
+        </button>
       </form>
       {showRecentSearch && (
         <div className={styles.recentSearch}>

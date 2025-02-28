@@ -1,4 +1,5 @@
 @use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .location {
   position: absolute;
@@ -11,12 +12,32 @@
   top: 0;
   left: 0;
   cursor: pointer;
+  @include rs.respond-to("tablet-large") {
+    padding: 1rem 2.2rem;
+    gap: 4rem;
+  }
+  @include rs.respond-to("mobile-large") {
+    padding: 0.8rem 2rem;
+    gap: 2rem;
+  }
   span {
     color: #ffffff;
     font-size: 2rem;
     font-weight: 600;
+    @include rs.respond-to("tablet-large") {
+      font-size: 1.8rem;
+    }
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.6rem;
+    }
   }
   img {
     width: 2rem;
+    @include rs.respond-to("tablet-large") {
+      width: 1.8rem;
+    }
+    @include rs.respond-to("mobile-large") {
+      width: 1.6rem;
+    }
   }
 }

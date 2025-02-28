@@ -14,7 +14,6 @@ import {
 } from "@/utils/mapping/WeakApartInfo";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
-import ApartSearch from "@/components/Common/ApartSearch/ApartSearch";
 import { useMarkerStore } from "@/store/useMarkerStore";
 
 export default function WeakApartInfo() {
@@ -38,11 +37,11 @@ export default function WeakApartInfo() {
 
   return (
     <section className={styles.weakApartInfoContainer}>
-      <ApartSearch />
       <ApartHeadInfo
         apartName={weakApartInfo?.aptInfo.name}
         apartRegion={weakApartInfo?.aptInfo.address}
         zipCode={weakApartInfo?.aptInfo.zipCode}
+        mobile={true}
       />
       <section className={styles.weakApartInfo}>
         <section className={styles.apartInfo}>

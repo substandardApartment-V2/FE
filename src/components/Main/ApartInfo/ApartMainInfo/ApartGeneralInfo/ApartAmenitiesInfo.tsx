@@ -1,3 +1,5 @@
+// 부대복리시설 컴포넌트
+
 import styles from "./ApartAmenitiesInfo.module.scss";
 import {
   amenitiesIconMapping,

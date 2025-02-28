@@ -14,7 +14,7 @@ export default function ApartMaintanceCharge() {
   return (
     <section className={styles.maintanceChart}>
       <div className={styles.chartTitle}>
-        <strong>관리비 - 2024</strong>
+        <strong>관리비</strong>
         <button
           onClick={() => {
             if (isDetailInfo === "MAINTANCE") {

@@ -47,10 +47,11 @@ const MaintanceChargeChart = (props: TMaintanceChargeChart) => {
       {
         data: maintanceFee,
         backgroundColor: ["#E4E1D0"],
-        barThickness: 17,
-        barPercentage: 3,
         maxBarThickness: 20,
         minBarLength: 3,
+        categoryPercentage: 0.6,
+        barPercentage: 0.8,
+        hoverBackgroundColor: "#E03A3E",
       },
     ],
   };

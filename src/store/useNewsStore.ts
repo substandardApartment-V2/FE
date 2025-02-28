@@ -15,10 +15,10 @@ type NewsStore = {
 
 export const useNewsStore = create<NewsStore>((set) => ({
   activeTab: "apartNews",
-  sort: "asc",
+  sort: "desc",
   pages: 1,
   totalElements: 0,
-  setActiveTab: (tab) => set({ activeTab: tab, pages: 1, sort: "asc" }),
+  setActiveTab: (tab) => set({ activeTab: tab, pages: 1, sort: "desc" }),
   setSort: (sort) => set({ sort }),
   setPages: (pages) => set({ pages }),
   setTotalElements: (total) => set({ totalElements: total }),

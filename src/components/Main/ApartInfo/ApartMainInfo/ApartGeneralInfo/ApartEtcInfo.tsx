@@ -1,3 +1,5 @@
+// 아파트 기본 기타 정보 컴포넌트
+
 import styles from "./ApartEtcInfo.module.scss";
 import { apartEtcInfoTitleMapping } from "@/utils/mapping/ApartGeneralInfo";
 import { Tooltip } from "react-tooltip";

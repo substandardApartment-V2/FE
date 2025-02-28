@@ -1,23 +1,22 @@
-// 일반아파트 정보 컨테이너 컴포넌트
+// 부실아파트 정보 컨테이너 컴포넌트
 
 import { useState } from "react";
 import slideUpIcon from "@/assets/Main/ApartInfo/slideUpIcon.svg";
 import slideDownIcon from "@/assets/Main/ApartInfo/slideDownIcon.svg";
-import { useMainInfoStore } from "@/store/useMainInfoStore";
-import ApartSearchResult from "@/components/Common/ApartSearch/ApartSearchResult";
-import WholeApartInfo from "@/components/Main/WholeApartInfo/WholeApartInfo";
-import ApartInfo from "@/components/Main/ApartInfo/ApartInfo";
-import styles from "./InfoContainer.module.scss";
+import styles from "./WeakInfoContainer.module.scss";
+import WholeWeakApartInfo from "./WholeWeakApartInfo/WholeWeakApartInfo";
+import WeakApartInfo from "./WholeWeakApartInfo/WeakApartInfo";
 import ApartSearch from "../Common/ApartSearch/ApartSearch";
+import { useMainInfoStore } from "@/store/useMainInfoStore";
 
-export default function InfoContainer() {
+export default function WeakInfoContainer() {
   const mainInfo = useMainInfoStore((state) => state.mainInfo);
   const [isOpen, setIsOpen] = useState(true);
 
   const mainInfoType = {
-    WHOLE: <WholeApartInfo />,
-    SELECT: <ApartInfo />,
-    SEARCH: <ApartSearchResult />,
+    WHOLE: <WholeWeakApartInfo />,
+    SELECT: <WeakApartInfo />,
+    SEARCH: <ApartSearch />,
   };
 
   return (

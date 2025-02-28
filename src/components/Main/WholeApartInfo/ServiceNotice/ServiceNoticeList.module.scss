@@ -1,22 +1,62 @@
+@use "@/styles/responsive.scss" as rs;
+
 .noticeList {
   border: 0.1rem solid #aaafb9;
-  padding: 2.4rem 3rem;
-  height: 33%;
+  padding: 1.4rem 2rem;
   width: 100%;
+  height: 25%;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-3%);
+    box-shadow: 0 0.8rem 0.8rem -0.8rem;
+  }
+  @include rs.respond-to("desktop-large") {
+    padding: 1.4rem 2rem;
+  }
+  @include rs.respond-to("desktop-small") {
+    min-height: 10rem;
+    border: none;
+    border-bottom: 0.1rem solid #aaafb9;
+  }
+  @include rs.respond-to("mobile-large") {
+    padding: 1.6rem 2rem;
+    height: 10rem;
+  }
   .noticeListTitle {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
     align-items: center;
     margin-bottom: 0.8rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     strong {
       font-size: 1.7rem;
       font-weight: 700;
       color: #142337;
+      @include rs.respond-to("desktop-large") {
+        font-size: 1.6rem;
+      }
+      @include rs.respond-to("desktop-small") {
+        font-size: 1.5rem;
+      }
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.4rem;
+      }
     }
     span {
       font-size: 1.5rem;
       color: #aaafb9;
+      @include rs.respond-to("desktop-large") {
+        font-size: 1.4rem;
+      }
+      @include rs.respond-to("desktop-small") {
+        font-size: 1.3rem;
+      }
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.3rem;
+      }
     }
   }
   .noticeListContent {
@@ -25,9 +65,17 @@
     color: #1e4164;
     display: -webkit-box;
     text-align: justify;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     white-space: pre-line;
+    @include rs.respond-to("desktop-large") {
+      font-size: 1.5rem;
+    }
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.3rem;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
   }
 }

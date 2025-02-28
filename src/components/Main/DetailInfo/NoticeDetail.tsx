@@ -1,3 +1,5 @@
+// 공지사항 상세정보 컴폰넌트
+
 import React from "react";
 import styles from "./NoticeDetail.module.scss";
 import closeIcon from "@/assets/Main/ApartInfo/closeButtonIconD.svg";
@@ -7,6 +9,7 @@ import { useNoticeStore } from "@/store/useNoticeStore";
 export default function NoticeDetail() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const noticeInfo = useNoticeStore((state) => state.noticeInfo);
+  const setNoticeInfo = useNoticeStore((state) => state.setNoticeInfo);
 
   return (
     <div className={styles.noticeDetail}>
@@ -15,7 +18,10 @@ export default function NoticeDetail() {
           <img
             src={closeIcon}
             alt="close notice detail"
-            onClick={() => setIsDetailInfo(null)}
+            onClick={() => {
+              setIsDetailInfo(null);
+              setNoticeInfo(null);
+            }}
           />
         </button>
       </div>

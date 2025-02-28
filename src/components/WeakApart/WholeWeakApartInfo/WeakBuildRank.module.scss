@@ -1,4 +1,5 @@
 @use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .weakBuildRank {
   background-color: colors.$mainNavy;
@@ -19,6 +20,18 @@
         font-size: 2.2rem;
         font-weight: 600;
         color: #ffffff;
+        @include rs.respond-to("desktop-small") {
+          font-size: 2rem;
+        }
+        @include rs.respond-to("desktop-small") {
+          font-size: 1.8rem;
+        }
+        @include rs.respond-to("tablet-large") {
+          font-size: 1.6rem;
+        }
+        @include rs.respond-to("mobile-large") {
+          font-size: 1.4rem;
+        }
       }
       .year {
         padding: 0.6rem 1.2rem;
@@ -26,6 +39,15 @@
         border-radius: 10rem;
         color: #ffffff;
         font-weight: 600;
+        @include rs.respond-to("desktop-small") {
+          font-size: 1.4rem;
+        }
+        @include rs.respond-to("tablet-large") {
+          font-size: 1.2rem;
+        }
+        @include rs.respond-to("mobile-large") {
+          font-size: 1rem;
+        }
       }
     }
     //부실 건설사 판정 디테일 순위보기 버튼
@@ -35,6 +57,12 @@
       gap: 0.4rem;
       color: #ffffff;
       font-size: 1.6rem;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.4rem;
+      }
+      @include rs.respond-to("mobile-medium") {
+        font-size: 1.2rem;
+      }
       img {
         width: 2.4rem;
       }
@@ -43,9 +71,18 @@
   // 부실아파트 차트
   .chart {
     display: flex;
+    gap: 1.6rem;
+    max-width: 50rem;
     justify-content: space-between;
+    @include rs.respond-to("desktop-small") {
+      max-width: 100%;
+    }
     .weakBuilderChart {
+      width: 60%;
       height: 100%;
+      @include rs.respond-to("desktop-small") {
+        font-size: 0.1rem;
+      }
     }
     //5년간 하자판정 순위
     .fiveYearsWeakBuilderChart {

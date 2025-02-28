@@ -28,7 +28,11 @@ export default function WeakBuilderChart() {
   };
 
   const options: ChartOptions<"bar"> = {
-    responsive: true,
+    layout: {
+      padding: {
+        right: 30,
+      },
+    },
     maintainAspectRatio: false,
     indexAxis: "y",
     scales: {
@@ -38,41 +42,41 @@ export default function WeakBuilderChart() {
           font: {
             size: 15,
           },
-          crossAlign: "far", // 라벨이 축 왼쪽으로 정렬
+          crossAlign: "far",
         },
         grid: {
           offset: false,
-          display: false, // y축 선 제거
+          display: false,
         },
       },
       x: {
-        display: false, // x축 제거
+        display: false,
       },
     },
     plugins: {
       legend: {
-        display: false, // 범례 비활성화
+        display: false,
       },
       tooltip: {
         callbacks: {
           title: () => "",
           label: (context) => `${context.label} ${context.raw}건`,
         },
-        position: "myCustomPositioner", // 커스텀 위치 사용
-        backgroundColor: "rgba(255,255,255,1)", //툴팁 백그라운드 컬러
-        borderColor: "rgba(224,58,62,1)", //툴팁 외곽선 컬러
-        borderWidth: 1, //툴팁 외곽선 두께
-        bodyColor: "rgba(20, 35, 55 ,1)", //툴팁 컨텐츠 텍스트 컬러
+        position: "myCustomPositioner",
+        backgroundColor: "rgba(255,255,255,1)",
+        borderColor: "rgba(224,58,62,1)",
+        borderWidth: 1,
+        bodyColor: "rgba(20, 35, 55 ,1)",
         titleColor: "#435464",
-        cornerRadius: 0, //툴팁 radius
-        displayColors: false, //툴팁 bar color 표시 여부
+        cornerRadius: 0,
+        displayColors: false,
         caretSize: 0,
       },
 
       datalabels: {
         color: "#FFFFFF",
         font: {
-          size: 12,
+          size: 16,
         },
         anchor: "end",
         align: "right",

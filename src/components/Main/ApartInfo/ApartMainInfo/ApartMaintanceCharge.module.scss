@@ -1,19 +1,37 @@
 @use "@/styles/_colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .maintanceChart {
   background-color: colors.$mainNavy;
   padding: 1.8rem 1.6rem;
+  @include rs.respond-to("mobile-large") {
+    padding: 1.4rem 1.2rem;
+  }
+  @include rs.respond-to("mobile-medium") {
+    padding: 1.3rem 1.1rem;
+  }
+  @include rs.respond-to("mobile-small") {
+    padding: 1.2rem 1rem;
+  }
   .chartTitle {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding-bottom: 3rem;
+    padding-bottom: 2.4rem;
+    padding-left: 0.8rem;
+    @include rs.respond-to("desktop-small") {
+      padding-bottom: 2rem;
+    }
     strong {
       font-size: 1.6rem;
       font-weight: 700;
       color: #ffffff;
+      @include rs.respond-to("desktop-small") {
+        font-size: 1.5rem;
+      }
     }
     button {
+      all: unset;
       display: flex;
       align-items: center;
       gap: 0.4rem;
@@ -21,6 +39,9 @@
       color: #ffffff;
       span {
         color: #ffffff;
+        @include rs.respond-to("mobile-large") {
+          font-size: 1.3rem;
+        }
       }
     }
   }

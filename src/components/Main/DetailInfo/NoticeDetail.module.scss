@@ -1,4 +1,5 @@
 @use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
 
 .noticeDetail {
   width: 100%;
@@ -7,16 +8,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.2rem 1.6rem;
+  padding: 1.6em 2rem;
+  @include rs.respond-to("mobile-large") {
+    padding: 1.6rem 2rem;
+  }
   .closeNoticeDetail {
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
     margin-bottom: 1.8rem;
+    @include rs.respond-to("desktop-small") {
+      display: none;
+    }
     button {
       img {
         width: 3rem;
+        @include rs.respond-to("desktop-small") {
+          width: 2.8rem;
+        }
+        @include rs.respond-to("tablet-large") {
+          width: 2.6rem;
+        }
+        @include rs.respond-to("mobile-large") {
+          width: 2.4rem;
+        }
       }
     }
   }
@@ -26,15 +42,40 @@
     gap: 1.4rem;
     margin-bottom: 3.4rem;
     align-self: flex-start;
+    font-weight: 600;
+    @include rs.respond-to("desktop-small") {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
     .date {
       font-size: 1.6rem;
       color: #aaafb9;
+      @include rs.respond-to("desktop-small") {
+        font-size: 1.4rem;
+      }
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.3rem;
+      }
     }
     .title {
       font-size: 2.4rem;
       color: colors.$mainNavy;
       font-weight: 600;
       text-align: justify;
+      @include rs.respond-to("desktop-small") {
+        font-size: 2rem;
+      }
+      @include rs.respond-to("tablet-large") {
+        font-size: 1.8rem;
+      }
+      @include rs.respond-to("tablet-small") {
+        font-size: 1.6rem;
+      }
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.4rem;
+      }
     }
   }
   .content {
@@ -45,6 +86,17 @@
     line-height: 3.4rem;
     text-align: justify;
     align-self: flex-start;
+    @include rs.respond-to("desktop-small") {
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+      height: 20rem;
+    }
+    @include rs.respond-to("tablet-large") {
+      font-size: 1.5rem;
+    }
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.4rem;
+    }
   }
   .advertisement {
     width: 100%;
@@ -55,5 +107,8 @@
     text-align: center;
     font-size: 2rem;
     line-height: 10rem;
+    @include rs.respond-to("desktop-small") {
+      display: none;
+    }
   }
 }
