@@ -57,7 +57,7 @@ export default function ApartSearch() {
   // };
 
   return (
-    <section className={styles.apartSearchContainer}>
+    <div className={styles.apartSearchContainer}>
       <form className={styles.apartSearch} onSubmit={searchApiHandler}>
         <input
           className={styles.apartSearchInput}
@@ -68,22 +68,12 @@ export default function ApartSearch() {
           }
           ref={searchRef}
           tabIndex={1}
-          disabled={isLoading}
-        />
-        <img src={searchIcon} alt="location apart search" />
-      </form>
-    </section>
-    <div className={styles.apartSearchContainer}>
-      <form className={styles.apartSearch} onSubmit={searchApiHandler}>
-        <input
-          className={styles.apartSearchInput}
-          placeholder="궁금한 지역, 아파트를 검색해보세요."
-          ref={searchRef}
-          tabIndex={1}
           onFocus={() => setShowRecentSearch(true)}
           onBlur={() => setShowRecentSearch(false)}
         />
-        <img src={searchIcon} alt="location apart search" />
+        <button className={styles.searchButton}>
+          <img src={searchIcon} alt="location apart search" />
+        </button>
       </form>
       {showRecentSearch && (
         <div className={styles.recentSearch}>
