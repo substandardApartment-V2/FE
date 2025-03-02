@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   gap: 1.6rem;
-  border-right: 0.1rem solid colors.$mainTitle;
   @include rs.respond-to("mobile-large") {
     gap: 1rem;
   }
@@ -15,18 +14,37 @@
     color: #ffffff;
     font-size: 2rem;
     font-weight: 600;
+    text-align: center;
+    flex: 30;
     @include rs.respond-to("desktop-large") {
-      padding: 0.6rem 2rem;
-      font-size: 1.4rem;
+      padding: 1rem 2.4rem;
+      font-size: 1.8rem;
+    }
+    @include rs.respond-to("tablet-small") {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
     }
     @include rs.respond-to("mobile-large") {
-      padding: 0.5rem 2rem;
-      font-size: 1.3rem;
+      padding: 0.8rem 2rem;
+      font-size: 1.4rem;
+    }
+    @include rs.respond-to("mobile-medium") {
+      padding: 0.6rem 1.6rem;
+      font-size: 1.2rem;
     }
   }
   span {
+    flex: 70;
+    display: inline-block;
     color: colors.$mainTitle;
     font-size: 1.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 0.4rem;
+    @include rs.respond-to("tablet-small") {
+      font-size: 1.5rem;
+    }
     @include rs.respond-to("mobile-large") {
       font-size: 1.3rem;
     }

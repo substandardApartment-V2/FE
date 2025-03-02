@@ -23,6 +23,10 @@ export default function ApartSearch() {
   const { searchRecord, addRecord, removeRecord, clearRecord } =
     useSearchRecord();
 
+  const removeSpecialCharacters = (input: string): string => {
+    return input.replace(/[^a-zA-Z0-9가-힣\s]/g, "");
+  };
+
   const searchApiHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const pathName = locationPath === "apt" ? "apt" : "defect";
@@ -33,11 +37,12 @@ export default function ApartSearch() {
         const data = await axios(
           `${
             import.meta.env.VITE_LOCAL_API_CALL
-          }/map/search/${pathName}?keyword=${searchRef.current?.value}`
+          }/map/search/${pathName}?keyword=${removeSpecialCharacters(
+            searchRef.current?.value.trim()
+          )}`
         );
         if (data.data.code === 200 && map) {
           markers.forEach((marker) => marker.setMap(null));
-          console.log(data);
           setMarkerData(data.data.data.results);
           setMainInfo("SEARCH");
           useMapMarkers(); // 마커 생성 커스텀 훅 호출

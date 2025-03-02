@@ -4,9 +4,14 @@ import styles from "./Header.module.scss";
 import NavList from "./NavList";
 import { Link } from "react-router-dom";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
+import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 
 const Header = () => {
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
+  const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
+  const setWeakApartInfo = useWeakApartInfoStore(
+    (state) => state.setWeakApartInfo
+  );
 
   const navData = [
     { target: ".", navContent: "아파트 정보" },
@@ -18,7 +23,14 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link to={"/"} onClick={() => setMainInfo("WHOLE")}>
+        <Link
+          to={"/"}
+          onClick={() => {
+            setApartInfo(null);
+            setWeakApartInfo(null);
+            setMainInfo("WHOLE");
+          }}
+        >
           <img src={logo} alt="로고" />
         </Link>
       </div>

@@ -10,6 +10,7 @@ import useLocationPath from "./useLocationPath";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import useCreateCluster from "./useCreateCluster";
+import { useApartInfoStore } from "@/store/useApartInfoStore";
 
 export default function useMapMarkers() {
   const selectMarkerRef = useRef<naver.maps.Marker | null>(null);
@@ -24,6 +25,7 @@ export default function useMapMarkers() {
   const map = useMarkerStore((state) => state.map);
   const markers = useMarkerStore((state) => state.markers);
   const setMarkers = useMarkerStore((state) => state.setMarkers);
+  const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const locationPath = useLocationPath();
 
   useEffect(() => {
@@ -76,9 +78,9 @@ export default function useMapMarkers() {
         });
 
         selectMarkerRef.current = marker;
+        setIsDetailInfo(null);
         if (locationPath === "apt") setApartInfo(data.data);
         else setWeakApartInfo(data.data);
-        console.log(data.data);
       });
       return marker;
     });
