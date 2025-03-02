@@ -27,7 +27,9 @@ export default function DetailWeakRankInfo({ mobile }: TDetailWeakRankInfo) {
           />
         </button>
       </div>
-      <DetailWeakBuilderChart />
+      <div className={styles.detailWeakbuilderChart}>
+        <DetailWeakBuilderChart />
+      </div>
     </section>
   );
 }
