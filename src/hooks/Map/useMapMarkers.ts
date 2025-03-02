@@ -15,6 +15,7 @@ export default function useMapMarkers() {
   const selectMarkerRef = useRef<naver.maps.Marker | null>(null);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
+  const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
   const setWeakApartInfo = useWeakApartInfoStore(
     (state) => state.setWeakApartInfo
   );
@@ -55,6 +56,7 @@ export default function useMapMarkers() {
         );
         setSelectMarker(marker);
         setMainInfo("SELECT");
+        setIsSlide(true);
         if (selectMarkerRef.current) {
           selectMarkerRef.current.setIcon({
             url: mapMarkerIcon,
@@ -76,6 +78,7 @@ export default function useMapMarkers() {
         selectMarkerRef.current = marker;
         if (locationPath === "apt") setApartInfo(data.data);
         else setWeakApartInfo(data.data);
+        console.log(data.data);
       });
       return marker;
     });

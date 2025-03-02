@@ -20,7 +20,7 @@ export default function useCreateMap(setMap: (map: naver.maps.Map) => void) {
     if (naver) {
       setTimeout(() => {
         setIsLoading(false);
-      }, 500);
+      }, 1000);
     }
     if (naver && mapRef.current) {
       const location = new naver.maps.LatLng(lat, lng);

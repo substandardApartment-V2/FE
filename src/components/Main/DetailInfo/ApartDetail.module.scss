@@ -3,6 +3,9 @@
 
 .building {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   .mobileApartHeadInfo {
     display: none;
     @include rs.respond-to("desktop-small") {
@@ -24,7 +27,10 @@
       width: 2.5rem;
     }
   }
-
+  ul {
+    height: 100%;
+    overflow-y: auto;
+  }
   .title {
     display: flex;
     gap: 0.8rem;

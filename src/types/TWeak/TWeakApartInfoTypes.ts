@@ -14,7 +14,7 @@ export type TWeakBasicInfo = {
 
 export type TWeakbuildInfo = {
   buildStru: string;
-  defectType: string;
+  defctType: string;
 };
 
 export type TWeakSplmnInfo = {
@@ -25,6 +25,6 @@ export type TWeakSplmnInfo = {
 export type TWeakApartInfo = {
   aptInfo: TWeakAptInfo;
   basicInfo: TWeakBasicInfo;
-  bulidInfo: TWeakbuildInfo;
+  buildInfo: TWeakbuildInfo;
   splmnInfo: TWeakSplmnInfo;
 };

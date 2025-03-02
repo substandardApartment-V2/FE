@@ -2,15 +2,15 @@
 
 import closeIcon from "@/assets/Main/Search/searchClose.svg";
 import time from "@/assets/Main/Search/searchTime.svg";
-import searchIcon from "@/assets/Main/searchICon.svg";
 import useSearchRecord from "@/hooks/\bSearch/useSearhRecord";
 import useLocationPath from "@/hooks/Map/useLocationPath";
 import useMapMarkers from "@/hooks/Map/useMapMarkers";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import styles from "./ApartSearch.module.scss";
+import ApartSearchInput from "./ApartSearchInput";
 
 export default function ApartSearch() {
   const searchRef = useRef<HTMLInputElement>(null);
@@ -18,7 +18,6 @@ export default function ApartSearch() {
   const setMarkerData = useMarkerStore((state) => state.setMarkderData);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const markers = useMarkerStore((state) => state.markers);
-  const isLoading = useMarkerStore((state) => state.isLoading);
   const locationPath = useLocationPath();
   const [showRecentSearch, setShowRecentSearch] = useState(false);
   const { searchRecord, addRecord, removeRecord, clearRecord } =
@@ -38,6 +37,7 @@ export default function ApartSearch() {
         );
         if (data.data.code === 200 && map) {
           markers.forEach((marker) => marker.setMap(null));
+          console.log(data);
           setMarkerData(data.data.data.results);
           setMainInfo("SEARCH");
           useMapMarkers(); // 마커 생성 커스텀 훅 호출
@@ -58,23 +58,11 @@ export default function ApartSearch() {
 
   return (
     <div className={styles.apartSearchContainer}>
-      <form className={styles.apartSearch} onSubmit={searchApiHandler}>
-        <input
-          className={styles.apartSearchInput}
-          placeholder={
-            isLoading
-              ? "잠시만 기다려 주세요."
-              : "궁금한 지역, 아파트를 검색해보세요."
-          }
-          ref={searchRef}
-          tabIndex={1}
-          onFocus={() => setShowRecentSearch(true)}
-          onBlur={() => setShowRecentSearch(false)}
-        />
-        <button className={styles.searchButton}>
-          <img src={searchIcon} alt="location apart search" />
-        </button>
-      </form>
+      <ApartSearchInput
+        searchRef={searchRef}
+        setShowRecentSearch={setShowRecentSearch}
+        searchApiHandler={searchApiHandler}
+      />
       {showRecentSearch && (
         <div className={styles.recentSearch}>
           {searchRecord.length > 0 ? (

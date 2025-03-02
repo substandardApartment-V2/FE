@@ -29,7 +29,7 @@ export default function WeakApartInfo() {
     weakApartInfo?.basicInfo
   );
   const transformedBuildInfoArray = transformedArrayHandler(
-    weakApartInfo?.bulidInfo
+    weakApartInfo?.buildInfo
   );
   const transformedSplmnInfoArray = transformedArrayHandler(
     weakApartInfo?.splmnInfo

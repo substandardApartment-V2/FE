@@ -1,7 +1,7 @@
 @use "@/styles/responsive.scss" as rs;
 
 .apartMap {
-  width: 100%;
+  flex: 65;
   @include rs.respond-to("desktop-small") {
     display: flex;
     height: 100%;
