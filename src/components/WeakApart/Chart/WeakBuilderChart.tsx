@@ -1,9 +1,28 @@
+import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import { ChartOptions } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 export default function WeakBuilderChart() {
+  const [fontSize, setFontSize] = useState(16);
+  const [barThickness, setBarThickness] = useState(13);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newFontSize = window.innerWidth < 600 ? 12 : 16;
+      const newBarThickness = window.innerWidth < 600 ? 11 : 13;
+
+      setFontSize(newFontSize);
+      setBarThickness(newBarThickness);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const data = {
     labels: [
       "현대엔지니어링(주)",
@@ -21,18 +40,17 @@ export default function WeakBuilderChart() {
       {
         data: [118, 92, 82, 76, 71, 59, 58, 57, 53, 51],
         backgroundColor: ["#E4E1D0"],
-        barThickness: 15,
+        barThickness: barThickness, // Use dynamic bar thickness
+        maxBarThickness: 50,
+        minBarLength: 3,
+        barPercentage: 0.5,
+        categoryPercentage: 0.3,
         hoverBackgroundColor: "#E03A3E",
       },
     ],
   };
 
   const options: ChartOptions<"bar"> = {
-    layout: {
-      padding: {
-        right: 30,
-      },
-    },
     maintainAspectRatio: false,
     indexAxis: "y",
     scales: {
@@ -40,7 +58,7 @@ export default function WeakBuilderChart() {
         ticks: {
           color: "#ffffff",
           font: {
-            size: 15,
+            size: fontSize,
           },
           crossAlign: "far",
         },
@@ -51,6 +69,13 @@ export default function WeakBuilderChart() {
       },
       x: {
         display: false,
+      },
+    },
+    layout: {
+      padding: {
+        right: 30,
+        top: -6,
+        bottom: -6,
       },
     },
     plugins: {
@@ -76,7 +101,7 @@ export default function WeakBuilderChart() {
       datalabels: {
         color: "#FFFFFF",
         font: {
-          size: 16,
+          size: fontSize,
         },
         anchor: "end",
         align: "right",
