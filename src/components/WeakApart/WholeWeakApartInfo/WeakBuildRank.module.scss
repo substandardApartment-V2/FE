@@ -82,7 +82,7 @@
     }
     .weakBuilderChart {
       width: 65%;
-      height: 34rem;
+      height: 30rem;
       canvas {
         width: 100%;
       }
@@ -122,6 +122,9 @@
         gap: 1.2rem;
         li {
           color: #ffffff;
+          @include rs.respond-to("mobile-large") {
+            font-size: 1.2rem;
+          }
         }
       }
     }

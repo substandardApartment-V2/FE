@@ -8,7 +8,7 @@ import useMapMarkers from "@/hooks/Map/useMapMarkers";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import axios from "axios";
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState } from "react";
 import styles from "./ApartSearch.module.scss";
 import ApartSearchInput from "./ApartSearchInput";
 

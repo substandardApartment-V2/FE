@@ -8,8 +8,10 @@ import useGetApartData from "@/hooks/Api/useGetApartData";
 import { Link } from "react-router-dom";
 import { TWeakMainNewsResponse } from "@/types/TApi/TAPITypes";
 import WeakNewsSkeleton from "./WeakNewsSkeleton";
+import { useNewsStore } from "@/store/useNewsStore";
 
 export default function WeakMainNews() {
+  const setActiveTab = useNewsStore((state) => state.setActiveTab);
   const { data, isLoading } = useGetApartData<TWeakMainNewsResponse>(
     `${import.meta.env.VITE_LOCAL_API_CALL}/defect/main`
   );
@@ -18,7 +20,7 @@ export default function WeakMainNews() {
     <section className={styles.weakApartNews}>
       <div className={styles.titleContainer}>
         <h2 className={styles.title}>뉴스</h2>
-        <Link to="/news">
+        <Link to="/news" onClick={() => setActiveTab("weakNews")}>
           더 많은 뉴스
           <img src={detailButtonIcon} alt="more weak apart news" />
         </Link>
