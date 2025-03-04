@@ -23,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     span {
-      width: 100%;
+      // width: 100%;
       font-size: 2.4rem;
       font-weight: 700;
       color: #ffffff;
@@ -40,11 +40,14 @@
       }
       img {
         width: 3rem;
-        @include rs.respond-to("mobile-large") {
+        @include rs.respond-to("tablet-small") {
           width: 2.4rem;
         }
-        @include rs.respond-to("mobile-medium") {
+        @include rs.respond-to("mobile-large") {
           width: 2rem;
+        }
+        @include rs.respond-to("mobile-medium") {
+          width: 1.8rem;
         }
       }
     }

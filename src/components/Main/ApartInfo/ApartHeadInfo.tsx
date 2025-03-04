@@ -7,8 +7,7 @@ import { useApartInfoStore } from "@/store/useApartInfoStore";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import useLocationPath from "@/hooks/Map/useLocationPath";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
-import { useMarkerStore } from "@/store/useMarkerStore";
-import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
+import { resetSelectMarker } from "@/utils/map/resetSelectMarker";
 
 type TApartHeadInfo = {
   apartName?: string;
@@ -21,13 +20,8 @@ export default function ApartHeadInfo(props: TApartHeadInfo) {
   const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const weakApartInfo = useWeakApartInfoStore((state) => state.weakApartInfo);
-  const setWeakApartInfo = useWeakApartInfoStore(
-    (state) => state.setWeakApartInfo
-  );
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const path = useLocationPath();
-  const selectMarker = useMarkerStore((state) => state.selectMarker);
-  const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
 
   return (
     <section
@@ -48,19 +42,8 @@ export default function ApartHeadInfo(props: TApartHeadInfo) {
             <button
               onClick={() => {
                 if (path === "defect") {
-                  // weakApartInfo.tsx 재사용함수 정의
                   setMainInfo("WHOLE");
-                  if (selectMarker) {
-                    selectMarker.setIcon({
-                      url: mapMarkerIcon,
-                      size: new naver.maps.Size(35, 40),
-                      scaledSize: new naver.maps.Size(35, 40),
-                      origin: new naver.maps.Point(0, 0),
-                      anchor: new naver.maps.Point(12, 34),
-                    });
-                    setSelectMarker(null);
-                    setWeakApartInfo(null);
-                  }
+                  resetSelectMarker();
                 } else {
                   setIsDetailInfo(null);
                 }

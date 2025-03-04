@@ -27,6 +27,7 @@ export default function FiveYearsWeakBuilderChart() {
   };
 
   const options: ChartOptions<"bar"> = {
+    // responsive: false,
     maintainAspectRatio: false,
     scales: {
       y: {
@@ -36,7 +37,16 @@ export default function FiveYearsWeakBuilderChart() {
         display: false,
       },
     },
+    layout: {
+      padding: {
+        top: -100,
+        bottom: -100,
+      },
+    },
     plugins: {
+      datalabels: {
+        display: false,
+      },
       legend: {
         display: false,
       },

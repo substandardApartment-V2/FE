@@ -10,20 +10,32 @@ import useLocationPath from "./useLocationPath";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import useCreateCluster from "./useCreateCluster";
+import { useApartInfoStore } from "@/store/useApartInfoStore";
 
 export default function useMapMarkers() {
+  const selectMarkerIdRef = useRef<string | null>(null);
   const selectMarkerRef = useRef<naver.maps.Marker | null>(null);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
   const setWeakApartInfo = useWeakApartInfoStore(
     (state) => state.setWeakApartInfo
   );
+  const selectMarker = useMarkerStore((state) => state.selectMarker);
   const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
   const markerData = useMarkerStore((state) => state.markerData);
   const map = useMarkerStore((state) => state.map);
   const markers = useMarkerStore((state) => state.markers);
   const setMarkers = useMarkerStore((state) => state.setMarkers);
+  const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
+  const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
+
   const locationPath = useLocationPath();
+
+  useEffect(() => {
+    if (selectMarker === null) {
+      selectMarkerRef.current = null;
+    }
+  }, [selectMarker]);
 
   useEffect(() => {
     if (!map || !markerData) return;
@@ -48,14 +60,8 @@ export default function useMapMarkers() {
       });
 
       naver.maps.Event.addListener(marker, "click", async () => {
-        const data = await getApartData(
-          `${import.meta.env.VITE_LOCAL_API_CALL}/${locationPath}/info?id=${
-            listData.aptId
-          }`
-        );
-        setSelectMarker(marker);
-        setMainInfo("SELECT");
         if (selectMarkerRef.current) {
+          setIsSlide(false);
           selectMarkerRef.current.setIcon({
             url: mapMarkerIcon,
             size: new naver.maps.Size(35, 40),
@@ -64,7 +70,23 @@ export default function useMapMarkers() {
             anchor: new naver.maps.Point(12, 34),
           });
           selectMarkerRef.current = null;
+          if (
+            selectMarkerIdRef &&
+            selectMarkerIdRef.current === listData.aptId
+          ) {
+            setMainInfo("WHOLE");
+            selectMarkerIdRef.current = null;
+            setSelectMarker(null);
+            if (locationPath === "apt") setApartInfo(null);
+            else setWeakApartInfo(null);
+            return;
+          }
         }
+        const data = await getApartData(
+          `${import.meta.env.VITE_LOCAL_API_CALL}/${locationPath}/info?id=${
+            listData.aptId
+          }`
+        );
         marker.setIcon({
           url: selectMapMarkerIcon,
           size: new naver.maps.Size(35, 40),
@@ -72,7 +94,11 @@ export default function useMapMarkers() {
           origin: new naver.maps.Point(0, 0),
           anchor: new naver.maps.Point(12, 34),
         });
-
+        setIsDetailInfo(null);
+        setIsSlide(true);
+        setSelectMarker(marker);
+        setMainInfo("SELECT");
+        selectMarkerIdRef.current = listData.aptId;
         selectMarkerRef.current = marker;
         if (locationPath === "apt") setApartInfo(data.data);
         else setWeakApartInfo(data.data);

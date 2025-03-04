@@ -48,10 +48,22 @@
       font-size: 2rem;
       font-weight: 600;
       color: colors.$mainNavy;
+      @include rs.respond-to("desktop-large") {
+        font-size: 1.8rem;
+      }
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.6rem;
+      }
     }
     span {
       font-size: 2rem;
       color: colors.$mainTitle;
+      @include rs.respond-to("desktop-large") {
+        font-size: 1.8rem;
+      }
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.6rem;
+      }
     }
   }
 }
@@ -90,8 +102,8 @@
           @include rs.respond-to("desktop-large") {
             font-size: 1.8rem;
           }
-          @include rs.respond-to("desktop-medium") {
-            font-size: 1.8rem;
+          @include rs.respond-to("mobile-large") {
+            font-size: 1.6rem;
           }
           img {
             width: 2.2rem;
@@ -140,10 +152,22 @@
             font-size: 2rem;
             font-weight: 600;
             color: colors.$mainNavy;
+            @include rs.respond-to("desktop-large") {
+              font-size: 1.8rem;
+            }
+            @include rs.respond-to("mobile-large") {
+              font-size: 1.6rem;
+            }
           }
           span {
             font-size: 2rem;
             color: colors.$mainTitle;
+            @include rs.respond-to("desktop-large") {
+              font-size: 1.8rem;
+            }
+            @include rs.respond-to("mobile-large") {
+              font-size: 1.6rem;
+            }
           }
         }
       }
@@ -155,6 +179,9 @@
       border-top: none;
       height: 100%;
       position: relative;
+      @include rs.respond-to("desktop-small") {
+        border: none;
+      }
       .pillarStatus {
         @include listTitleStyle;
         .contentContainer {

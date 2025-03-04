@@ -1,4 +1,10 @@
+export type ApartBuildInfoTitle =
+  | "completionDate"
+  | "constructor"
+  | "developer"
+  | "numberOfUnits";
+
 export type TApartBuildInfoList = {
-  title?: string;
-  content?: string | number;
+  title?: ApartBuildInfoTitle;
+  data?: string | number;
 };

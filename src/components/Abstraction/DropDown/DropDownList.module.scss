@@ -1,3 +1,6 @@
+@use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
 .dropDownList {
   cursor: pointer;
   border: 0.1rem solid #abb0b7;
@@ -13,12 +16,21 @@
     width: 100%;
     &.small {
       font-size: 1.4rem;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.3rem;
+      }
     }
     &.medium {
       font-size: 1.6rem;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.4rem;
+      }
     }
     &.large {
       font-size: 2rem;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.6rem;
+      }
     }
   }
   &:first-child {

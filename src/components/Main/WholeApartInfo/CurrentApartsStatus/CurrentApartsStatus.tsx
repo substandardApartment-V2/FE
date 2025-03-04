@@ -28,7 +28,6 @@ export default function CurrentApartsStatus() {
     `${import.meta.env.VITE_LOCAL_API_CALL}/apt/main`
   );
 
-  console.log(data);
   return (
     <section className={styles.currentApartStatus}>
       <h2 className={styles.title}>아파트 근황</h2>

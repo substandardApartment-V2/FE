@@ -71,29 +71,38 @@
   // 부실아파트 차트
   .chart {
     display: flex;
+    max-width: 100%;
+    height: 100%;
     gap: 1.6rem;
-    max-width: 50rem;
-    justify-content: space-between;
     @include rs.respond-to("desktop-small") {
       max-width: 100%;
     }
+    @include rs.respond-to("mobile-large") {
+      gap: 0rem;
+    }
     .weakBuilderChart {
-      width: 60%;
-      height: 100%;
+      width: 65%;
+      height: 30rem;
+      canvas {
+        width: 100%;
+      }
       @include rs.respond-to("desktop-small") {
         font-size: 0.1rem;
       }
     }
-    //5년간 하자판정 순위
+    // 5년간 하자판정 순위
     .fiveYearsWeakBuilderChart {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      width: 30%;
+      width: 35%;
       .title {
         font-weight: 600;
         color: #ffffff;
         margin-bottom: 1.2rem;
+        @include rs.respond-to("mobile-large") {
+          font-size: 1.1rem;
+        }
       }
       .fiveYearsChart {
         display: flex;
@@ -101,6 +110,10 @@
         width: 100%;
         height: 35%;
         margin-bottom: 1.2rem;
+        canvas {
+          width: 100%;
+          height: 100%;
+        }
       }
       .topFiveWeakBuilder {
         align-self: flex-start;
@@ -109,6 +122,9 @@
         gap: 1.2rem;
         li {
           color: #ffffff;
+          @include rs.respond-to("mobile-large") {
+            font-size: 1.2rem;
+          }
         }
       }
     }
