@@ -2,7 +2,7 @@
 
 import closeIcon from "@/assets/Main/Search/searchClose.svg";
 import time from "@/assets/Main/Search/searchTime.svg";
-import useSearchRecord from "@/hooks/\bSearch/useSearhRecord";
+import useSearchRecord from "@/hooks/Search/useSearhRecord";
 import useLocationPath from "@/hooks/Map/useLocationPath";
 import useMapMarkers from "@/hooks/Map/useMapMarkers";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
@@ -22,6 +22,7 @@ export default function ApartSearch() {
   const [showRecentSearch, setShowRecentSearch] = useState(false);
   const { searchRecord, addRecord, removeRecord, clearRecord } =
     useSearchRecord();
+  const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
 
   const removeSpecialCharacters = (input: string): string => {
     return input.replace(/[^a-zA-Z0-9가-힣\s]/g, "");
@@ -45,6 +46,7 @@ export default function ApartSearch() {
           markers.forEach((marker) => marker.setMap(null));
           setMarkerData(data.data.data.results);
           setMainInfo("SEARCH");
+          setIsSlide(true);
           useMapMarkers(); // 마커 생성 커스텀 훅 호출
         }
       }
@@ -63,11 +65,13 @@ export default function ApartSearch() {
 
   return (
     <div className={styles.apartSearchContainer}>
-      <ApartSearchInput
-        searchRef={searchRef}
-        setShowRecentSearch={setShowRecentSearch}
-        searchApiHandler={searchApiHandler}
-      />
+      <div className={styles.apartSearchInput}>
+        <ApartSearchInput
+          searchRef={searchRef}
+          setShowRecentSearch={setShowRecentSearch}
+          searchApiHandler={searchApiHandler}
+        />
+      </div>
       {showRecentSearch && (
         <div className={styles.recentSearch}>
           {searchRecord.length > 0 ? (

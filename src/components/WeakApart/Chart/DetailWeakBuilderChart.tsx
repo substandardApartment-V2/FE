@@ -74,6 +74,9 @@ export default function DetailWeakBuilderChart() {
       legend: {
         display: false,
       },
+      tooltip: {
+        enabled: false,
+      },
       datalabels: {
         labels: {
           label: {
