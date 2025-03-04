@@ -5,6 +5,7 @@ import NavList from "./NavList";
 import { Link } from "react-router-dom";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
+import { resetSelectMarker } from "@/utils/map/resetSelectMarker";
 
 const Header = () => {
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
@@ -27,8 +28,8 @@ const Header = () => {
           to={"/"}
           onClick={() => {
             setApartInfo(null);
-            setWeakApartInfo(null);
             setMainInfo("WHOLE");
+            resetSelectMarker();
           }}
         >
           <img src={logo} alt="로고" />

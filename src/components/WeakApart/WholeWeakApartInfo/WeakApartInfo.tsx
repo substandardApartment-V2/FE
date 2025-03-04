@@ -13,17 +13,11 @@ import {
   weakSplmnInfoTitleMapping,
 } from "@/utils/mapping/WeakApartInfo";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
-import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
-import { useMarkerStore } from "@/store/useMarkerStore";
+import { resetSelectMarker } from "@/utils/map/resetSelectMarker";
 
 export default function WeakApartInfo() {
   const weakApartInfo = useWeakApartInfoStore((state) => state.weakApartInfo);
-  const setWeakApartInfo = useWeakApartInfoStore(
-    (state) => state.setWeakApartInfo
-  );
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
-  const selectMarker = useMarkerStore((state) => state.selectMarker);
-  const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
 
   const transformedBasicInfoArray = transformedArrayHandler(
     weakApartInfo?.basicInfo
@@ -54,17 +48,7 @@ export default function WeakApartInfo() {
               className={styles.goBack}
               onClick={() => {
                 setMainInfo("WHOLE");
-                if (selectMarker) {
-                  selectMarker.setIcon({
-                    url: mapMarkerIcon,
-                    size: new naver.maps.Size(35, 40),
-                    scaledSize: new naver.maps.Size(35, 40),
-                    origin: new naver.maps.Point(0, 0),
-                    anchor: new naver.maps.Point(12, 34),
-                  });
-                  setSelectMarker(null);
-                  setWeakApartInfo(null);
-                }
+                resetSelectMarker();
               }}
             >
               <span>뒤로가기</span>

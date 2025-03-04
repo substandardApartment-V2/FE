@@ -25,7 +25,7 @@ type TUseMarkerStore = {
   bounds: TBounds | null; // 경계좌표
   markers: naver.maps.Marker[]; // 변환 후 마커 배열
   markerData: TApartMarkerData[]; // 변환 전 마커 배열
-  selectMarker?: naver.maps.Marker | null; // 선택된 마커
+  selectMarker: naver.maps.Marker | null; // 선택된 마커
   selectMarkerId?: string;
   setMap: (map: naver.maps.Map | null) => void;
   // setIsLoading: (isLoading: boolean) => void;
@@ -41,6 +41,7 @@ export const useMarkerStore = create<TUseMarkerStore>((set) => ({
   // isLoading: true,
   markers: [],
   bounds: null,
+  selectMarker: null,
   setMap: (map: naver.maps.Map | null) => set(() => ({ map: map })),
   // setIsLoading: (isLoading: boolean) => set(() => ({ isLoading: isLoading })),
   setBounds: (bounds: TBounds) => set(() => ({ bounds: bounds })),
