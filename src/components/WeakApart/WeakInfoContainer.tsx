@@ -7,6 +7,7 @@ import WholeWeakApartInfo from "./WholeWeakApartInfo/WholeWeakApartInfo";
 import WeakApartInfo from "./WholeWeakApartInfo/WeakApartInfo";
 import ApartSearch from "../Common/ApartSearch/ApartSearch";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
+import ApartSearchResult from "../Common/ApartSearch/ApartSearchResult";
 
 export default function WeakInfoContainer() {
   const mainInfo = useMainInfoStore((state) => state.mainInfo);
@@ -16,7 +17,7 @@ export default function WeakInfoContainer() {
   const mainInfoType = {
     WHOLE: <WholeWeakApartInfo />,
     SELECT: <WeakApartInfo />,
-    SEARCH: <ApartSearch />,
+    SEARCH: <ApartSearchResult />,
   };
 
   return (

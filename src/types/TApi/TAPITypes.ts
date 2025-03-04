@@ -32,9 +32,10 @@ export type TMaintanceChargeResponse = TAPIResponse & {
 
 // 페이지 API Request 타입
 export type TPageAPIRequest = {
-  num: number;
-  pages: number;
-  sort: "DESC" | "ASC";
+  num?: number;
+  pages?: number;
+  sort?: "DESC" | "ASC";
+  keyword?: string;
 };
 
 // 위도, 경도 타입
