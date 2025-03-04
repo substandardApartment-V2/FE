@@ -39,7 +39,7 @@
     }
   }
   .detailWeakbuilderChart {
-    height: 100svh;
+    height: 110svh;
     overflow-y: auto;
     @include rs.respond-to("mobile-large") {
       height: 150svh;
