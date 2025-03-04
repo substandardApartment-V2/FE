@@ -52,6 +52,7 @@
     }
     //부실 건설사 판정 디테일 순위보기 버튼
     button {
+      all: unset;
       display: flex;
       align-items: center;
       gap: 0.4rem;

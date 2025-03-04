@@ -22,7 +22,7 @@ export default function WeakBuildRank() {
             } else setIsDetailInfo("WEAKRANK");
           }}
         >
-          자세히보기
+          <span>자세히보기</span>
           <img src={detailButtonIcon} alt="detail weak Apart Builder rank" />
         </button>
       </div>

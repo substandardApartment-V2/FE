@@ -4,15 +4,13 @@ import styles from "./Header.module.scss";
 import NavList from "./NavList";
 import { Link } from "react-router-dom";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
-import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { resetSelectMarker } from "@/utils/map/resetSelectMarker";
+import { useApartInfoStore } from "@/store/useApartInfoStore";
 
 const Header = () => {
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
-  const setWeakApartInfo = useWeakApartInfoStore(
-    (state) => state.setWeakApartInfo
-  );
+  const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
 
   const navData = [
     { target: ".", navContent: "아파트 정보" },
@@ -30,6 +28,7 @@ const Header = () => {
             setApartInfo(null);
             setMainInfo("WHOLE");
             resetSelectMarker();
+            setIsDetailInfo(null);
           }}
         >
           <img src={logo} alt="로고" />
