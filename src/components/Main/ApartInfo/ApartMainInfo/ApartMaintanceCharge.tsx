@@ -15,19 +15,23 @@ export default function ApartMaintanceCharge() {
     <section className={styles.maintanceChart}>
       <div className={styles.chartTitle}>
         <strong>관리비</strong>
-        <button
-          onClick={() => {
-            if (isDetailInfo === "MAINTANCE") {
-              setIsDetailInfo(null);
-            } else setIsDetailInfo("MAINTANCE");
-          }}
-        >
-          <span>자세히보기</span>
-          <img src={detailButtonIcon} alt="apart maintance charge detail" />
-        </button>
+        {apartInfo?.monthlyMaintenanceFees.data.length && (
+          <button
+            onClick={() => {
+              if (isDetailInfo === "MAINTANCE") {
+                setIsDetailInfo(null);
+              } else setIsDetailInfo("MAINTANCE");
+            }}
+          >
+            <span>자세히보기</span>
+            <img src={detailButtonIcon} alt="apart maintance charge detail" />
+          </button>
+        )}
       </div>
-      {apartInfo && (
+      {apartInfo?.monthlyMaintenanceFees.data.length ? (
         <MaintanceChargeChart data={apartInfo?.monthlyMaintenanceFees.data} />
+      ) : (
+        <div className={styles.noData}>관리비 정보가 존재하지 않습니다.</div>
       )}
     </section>
   );

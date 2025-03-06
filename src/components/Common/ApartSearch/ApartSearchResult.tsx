@@ -19,8 +19,9 @@ export default function ApartSearchResult() {
   return (
     <section className={styles.apartSearchResult}>
       <ul className={styles.searchResultContainer}>
-        {markerData.map((listData: TApartMarkerData) => (
+        {markerData.map((listData: TApartMarkerData, index) => (
           <li
+            key={index}
             className={styles.searchResult}
             onClick={() => {
               selectSearchApartHandler(listData.latitude, listData.longitude);
