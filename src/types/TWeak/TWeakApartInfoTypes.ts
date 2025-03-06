@@ -14,7 +14,7 @@ export type TWeakBasicInfo = {
 
 export type TWeakbuildInfo = {
   buildStru: string;
-  defctType: string;
+  defectType: string;
 };
 
 export type TWeakSplmnInfo = {

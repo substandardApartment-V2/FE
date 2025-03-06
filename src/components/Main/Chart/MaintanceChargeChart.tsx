@@ -57,6 +57,11 @@ const MaintanceChargeChart = (props: TMaintanceChargeChart) => {
   };
 
   const options: ChartOptions<"bar"> = {
+    layout: {
+      padding: {
+        left: -8,
+      },
+    },
     scales: {
       y: {
         grid: {

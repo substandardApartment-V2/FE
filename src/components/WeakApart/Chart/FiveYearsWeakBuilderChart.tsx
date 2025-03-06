@@ -1,8 +1,27 @@
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import { ChartOptions } from "chart.js";
+import { useState, useEffect } from "react";
 
 export default function FiveYearsWeakBuilderChart() {
+  const [fontSize, setFontSize] = useState(16);
+  const [barThickness, setBarThickness] = useState(13);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newFontSize = window.innerWidth < 600 ? 10 : 16;
+      const newBarThickness = window.innerWidth < 600 ? 11 : 13;
+
+      setFontSize(newFontSize);
+      setBarThickness(newBarThickness);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const data = {
     labels: [
       "현대엔지니어링(주)",
@@ -64,6 +83,9 @@ export default function FiveYearsWeakBuilderChart() {
         cornerRadius: 0, //툴팁 radius
         displayColors: false, //툴팁 bar color 표시 여부
         caretSize: 0,
+        bodyFont: {
+          size: fontSize,
+        },
       },
     },
   };

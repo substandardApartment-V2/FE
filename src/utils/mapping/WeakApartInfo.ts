@@ -8,7 +8,7 @@ export const weakBasicInfoTitleMapping = {
 
 export const weakBuildInfoTitleMapping = {
   buildStru: "건축공법",
-  defctType: "부실내용",
+  defectType: "부실내용",
 };
 
 export const weakSplmnInfoTitleMapping = {
