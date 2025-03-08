@@ -49,7 +49,6 @@
       align-items: center;
       width: 100%;
       padding: 1.2rem 2rem;
-
       &:last-child {
         border-bottom: none;
       }
@@ -73,12 +72,15 @@
       }
 
       .recentTitle {
+        display: flex;
+        align-items: center;
         font-size: 1.6rem;
         font-weight: 500;
         color: colors.$mainNavy;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        height: 2rem;
         &:hover {
           text-decoration: underline;
         }

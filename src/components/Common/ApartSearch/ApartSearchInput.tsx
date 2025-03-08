@@ -21,7 +21,7 @@ export default function ApartSearchInput(props: TApartSearchInput) {
       }}
     >
       <input
-        maxLength={50}
+        maxLength={30}
         className={styles.apartSearchInput}
         placeholder={"궁금한 지역, 아파트를 검색해보세요."}
         ref={props.searchRef}
