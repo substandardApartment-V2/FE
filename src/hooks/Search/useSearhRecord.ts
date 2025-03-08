@@ -1,7 +1,7 @@
 // 최근 검색어 커스텀 훅
 
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useSearchRecordStore } from "@/store/useSearchRecordStore";
 
 type TSearchRecord = {
   keyword: string;
@@ -9,8 +9,9 @@ type TSearchRecord = {
 };
 
 export default function useSearchRecord() {
-  const [searchRecord, setSearchRecord] = useState<TSearchRecord[]>(
-    JSON.parse(localStorage.getItem("search") ?? "[]")
+  const searchRecord = useSearchRecordStore((state) => state.searchRecord);
+  const setSearchRecord = useSearchRecordStore(
+    (state) => state.setSearchRecord
   );
 
   // 최근 검색어 추가 함수
@@ -22,15 +23,15 @@ export default function useSearchRecord() {
 
     setSearchRecord((prevState) => {
       const currentRecords = prevState.filter(
-        (record) => record.keyword !== newKeyword
+        (record: TSearchRecord) => record.keyword !== newKeyword
       );
 
       const updatedSearchRecord = [newSearchKeyword, ...currentRecords].slice(
         0,
         5
       );
-
       localStorage.setItem("search", JSON.stringify(updatedSearchRecord));
+      console.log(updatedSearchRecord);
       return updatedSearchRecord;
     });
   };
@@ -50,5 +51,5 @@ export default function useSearchRecord() {
     localStorage.removeItem("search");
   };
 
-  return { searchRecord, addRecord, removeRecord, clearRecord };
+  return { addRecord, removeRecord, clearRecord };
 }

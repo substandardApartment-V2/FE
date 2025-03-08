@@ -8,13 +8,15 @@ import styles from "./ApartSearch.module.scss";
 import ApartSearchInput from "./ApartSearchInput";
 import { useGetSearchData } from "@/hooks/Api/useGetSearchData";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
+import { useSearchRecordStore } from "@/store/useSearchRecordStore";
 
 export default function ApartSearch() {
   const searchRef = useRef<HTMLInputElement>(null);
   const [showRecentSearch, setShowRecentSearch] = useState(false);
-  const { searchRecord, removeRecord, clearRecord } = useSearchRecord();
+  const { removeRecord, clearRecord } = useSearchRecord();
   const setIsSlide = useMainInfoStore.getState().setIsSlide;
   const getSearchData = useGetSearchData();
+  const searchRecord = useSearchRecordStore((state) => state.searchRecord);
 
   // const recentSearchHandler = async (keyword: string) => {
   //   setShowRecentSearch(false);
@@ -44,37 +46,38 @@ export default function ApartSearch() {
                 </button>
               </div>
               <ul>
-                {searchRecord.map((record) => (
-                  <li
-                    key={record.id}
-                    onClick={() => {
-                      getSearchData(record.keyword);
-                      setIsSlide(true);
-                    }}
-                  >
-                    <button
-                      onMouseDown={(e) => {
-                        e.preventDefault();
+                {searchRecord &&
+                  searchRecord.map((record) => (
+                    <li
+                      key={record.id}
+                      onClick={() => {
+                        getSearchData(record.keyword);
+                        setIsSlide(true);
                       }}
                     >
-                      <span className={styles.recentIcon}>
-                        <img src={time} alt="시계 아이콘" />
-                      </span>
-                      <span className={styles.recentTitle}>
-                        {record.keyword}
-                      </span>
-                    </button>
-                    <button
-                      className={styles.closeIcon}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        removeRecord(record.id);
-                      }}
-                    >
-                      <img src={closeIcon} alt="닫기 아이콘" />
-                    </button>
-                  </li>
-                ))}
+                      <button
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                        }}
+                      >
+                        <span className={styles.recentIcon}>
+                          <img src={time} alt="시계 아이콘" />
+                        </span>
+                        <span className={styles.recentTitle}>
+                          {record.keyword}
+                        </span>
+                      </button>
+                      <button
+                        className={styles.closeIcon}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          removeRecord(record.id);
+                        }}
+                      >
+                        <img src={closeIcon} alt="닫기 아이콘" />
+                      </button>
+                    </li>
+                  ))}
               </ul>
             </div>
           ) : (
