@@ -46,11 +46,13 @@ export default function ApartDetailList({ title, data }: TApartDetailList) {
                       ]}
                   </div>
                   <div className={styles.subContent}>
-                    {title === "accessibleToPublic"
-                      ? data[key as keyof typeof data]
-                        ? "O"
-                        : "X"
-                      : String(data[key as keyof typeof data])}
+                    {data[key as keyof typeof data]
+                      ? title === "accessibleToPublic"
+                        ? data[key as keyof typeof data]
+                          ? "O"
+                          : "X"
+                        : String(data[key as keyof typeof data])
+                      : "정보없음"}
                   </div>
                 </li>
               ) : null
