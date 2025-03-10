@@ -76,7 +76,7 @@ export default function ServiceNotice() {
       <div className={noticeInfo ? styles.noShow : styles.show}>
         <ul className={styles.noticeLists}>
           {isLoading
-            ? Array.from({ length: 3 }).map((_, index) => (
+            ? Array.from({ length: 4 }).map((_, index) => (
                 <ServiceNoticeSkeleton key={index} />
               ))
             : serviceNoticeData &&
