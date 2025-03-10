@@ -7,7 +7,10 @@ const Report = () => {
 
   return (
     <div className={styles.report}>
-      <SEOMetaTag title="제보" />
+      <SEOMetaTag
+        title="제보"
+        content="부실아파트에 관련된 제보를 할 수 있는 페이지입니다."
+      />
       <p>
         아파트 관련 제보사항이 있으신 분들은
         <br className={styles.mobileBr} /> 아래 이메일로 연락 부탁드립니다.
