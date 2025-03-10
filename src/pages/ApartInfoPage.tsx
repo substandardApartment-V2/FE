@@ -3,14 +3,12 @@
 import styles from "./ApartInfoPage.module.scss";
 import InfoContainer from "@/components/Main/InfoContainer";
 import ApartMapContainer from "@/components/Main/ApartMapContainer";
-import { Helmet } from "react-helmet-async";
+import SEOMetaTag from "@/components/Common/SEOMetaTag/SEOMetaTag";
 
 const ApartInfoPage = () => {
   return (
     <div className={styles.apartInfoPage}>
-      <Helmet>
-        <title>내 아파트는?</title>
-      </Helmet>
+      <SEOMetaTag />
       <InfoContainer />
       <ApartMapContainer />
     </div>
