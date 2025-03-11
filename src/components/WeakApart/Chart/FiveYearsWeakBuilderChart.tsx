@@ -34,7 +34,7 @@ export default function FiveYearsWeakBuilderChart() {
       {
         data: [118, 92, 82, 76, 71],
         backgroundColor: ["#E4E1D0"],
-        barThickness: 12,
+        barThickness: barThickness,
         maxBarThickness: 20,
         minBarLength: 3,
         borderWidth: 0,

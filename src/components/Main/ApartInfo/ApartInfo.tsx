@@ -4,7 +4,6 @@ import styles from "./ApartInfo.module.scss";
 import detailButtonIconD from "@/assets/Main/ApartInfo/detailButtonIconD.svg";
 import ApartHeadInfo from "./ApartHeadInfo";
 import ApartBuildInfo from "./ApartMainInfo/ApartBuildInfo/ApartBuildInfo";
-import ApartPrice from "./ApartMainInfo/ApartPrice";
 import ApartMaintanceCharge from "./ApartMainInfo/ApartMaintanceCharge";
 import ApartGeneralInfo from "./ApartMainInfo/ApartGeneralInfo/ApartGeneralInfo";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
