@@ -32,7 +32,7 @@ export default function ApartEtcInfo(props: TApartEtcInfo) {
         data-tooltip-id="generalInfo"
         data-tooltip-html={`${props.listData.data}`}
       >
-        {props.listData.data}
+        {props.listData.data ? props.listData.data : "정보없음"}
       </span>
       <Tooltip
         className={styles.tooltip}

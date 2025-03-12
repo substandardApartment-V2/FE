@@ -13,7 +13,7 @@ export default function DetailMaintanceCharge() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const apartInfo = useMainInfoStore((state) => state.apartInfo);
 
-  const { data, isLoading } = useGetApartData<TMaintanceChargeResponse>(
+  const { data } = useGetApartData<TMaintanceChargeResponse>(
     `${import.meta.env.VITE_LOCAL_API_CALL}/apt/feeDetail?id=${
       apartInfo?.aptInfo.detailId
     }`

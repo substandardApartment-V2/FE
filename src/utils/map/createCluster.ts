@@ -20,13 +20,14 @@ export default function createCluster(
       gridSize: 120,
       icons: [clusterMarkerIcon],
       indexGenerator: [10, 100, 200, 500, 1000],
-      stylingFunction: function (clusterMarker, count: number) {
-        const element = clusterMarker.getElement();
-        if (element) {
-          clusterMarker
-            .getElement()
-            .querySelector("div:first-child").innerText = count;
-        }
+      stylingFunction: function (
+        clusterMarker: { getElement: () => Element | null },
+        count: number
+      ) {
+        const div = clusterMarker
+          .getElement()
+          ?.querySelector("div:first-child");
+        if (div instanceof HTMLElement) div.innerText = count.toString();
       },
     });
   }

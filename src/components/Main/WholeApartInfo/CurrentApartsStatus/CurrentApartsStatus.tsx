@@ -3,7 +3,6 @@
 import styles from "./CurrentApartsStatus.module.scss";
 import StatusList from "./StatusList";
 import { TCurrentApartsStatusList } from "@/types/TMain/TCurrentApartsStatusListTypes";
-import useGetApartData from "@/hooks/Api/useGetApartData";
 
 export default function CurrentApartsStatus() {
   const dummyData = [
@@ -23,10 +22,6 @@ export default function CurrentApartsStatus() {
       content: "87 곳",
     },
   ];
-
-  const { data } = useGetApartData(
-    `${import.meta.env.VITE_LOCAL_API_CALL}/apt/main`
-  );
 
   return (
     <section className={styles.currentApartStatus}>

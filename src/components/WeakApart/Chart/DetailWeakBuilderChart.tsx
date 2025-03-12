@@ -86,7 +86,7 @@ export default function DetailWeakBuilderChart() {
             font: {
               size: 14,
             },
-            formatter: (value, context) => {
+            formatter: (_value, context) => {
               return context.chart.data.labels?.[context.dataIndex] || "";
             },
             padding: { left: 0 },

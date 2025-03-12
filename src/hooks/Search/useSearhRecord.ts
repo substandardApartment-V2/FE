@@ -31,7 +31,6 @@ export default function useSearchRecord() {
         5
       );
       localStorage.setItem("search", JSON.stringify(updatedSearchRecord));
-      console.log(updatedSearchRecord);
       return updatedSearchRecord;
     });
   };

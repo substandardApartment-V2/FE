@@ -4,8 +4,8 @@ import zoomUpIcon from "@/assets/Main/Map/zoomUpIcon.svg";
 import zoomDownIcon from "@/assets/Main/Map/zoomDownIcon.svg";
 
 export default function createCustumButton(map: naver.maps.Map) {
-  const zoomUpBtnHtml = `<button><img src="${zoomUpIcon}"/></button>`;
-  const zoomDownBtnHtml = `<button><img src="${zoomDownIcon}"/></button>`;
+  const zoomUpBtnHtml = `<button><img src="${zoomUpIcon}" alt="지도 확대 버튼"/></button>`;
+  const zoomDownBtnHtml = `<button><img src="${zoomDownIcon}" alt="지도 축소 버튼"/></button>`;
 
   const zoomUpControl = new naver.maps.CustomControl(zoomUpBtnHtml, {
     position: naver.maps.Position.TOP_RIGHT,

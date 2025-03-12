@@ -9,7 +9,7 @@ export default function FiveYearsWeakBuilderChart() {
 
   useEffect(() => {
     const handleResize = () => {
-      const newFontSize = window.innerWidth < 600 ? 10 : 16;
+      const newFontSize = window.innerWidth < 600 ? 10 : 12;
       const newBarThickness = window.innerWidth < 600 ? 11 : 13;
 
       setFontSize(newFontSize);
@@ -34,7 +34,7 @@ export default function FiveYearsWeakBuilderChart() {
       {
         data: [118, 92, 82, 76, 71],
         backgroundColor: ["#E4E1D0"],
-        barThickness: 12,
+        barThickness: barThickness,
         maxBarThickness: 20,
         minBarLength: 3,
         borderWidth: 0,

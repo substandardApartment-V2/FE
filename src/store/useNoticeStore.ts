@@ -25,7 +25,7 @@ export const useNoticeStore = create<TUseNoticeStore>((set) => ({
   isShow: "최신순",
   setServiceNoticeData: (serviceNoticeData: TServiceNoticeList[]) =>
     set(() => ({ serviceNoticeData: serviceNoticeData })),
-  setNoticeInfo: (noticeInfo: TNoticeInfo) =>
+  setNoticeInfo: (noticeInfo: TNoticeInfo | null) =>
     set(() => ({ noticeInfo: noticeInfo })),
   setPageCount: (pageCount: number) => set(() => ({ pageCount: pageCount })),
   setCurrentPage: (currentPage: number) =>
