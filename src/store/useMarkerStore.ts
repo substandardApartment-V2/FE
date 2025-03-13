@@ -5,6 +5,7 @@ import { create } from "zustand";
 export type TApartMarkerData = {
   aptId: string;
   aptName: string;
+  aptAddress: string;
   latitude: number;
   longitude: number;
 };
@@ -30,7 +31,7 @@ type TUseMarkerStore = {
   setMap: (map: naver.maps.Map | null) => void;
   // setIsLoading: (isLoading: boolean) => void;
   setBounds: (bounds: TBounds) => void;
-  setMarkderData: (markerData: TApartMarkerData[]) => void;
+  setMarkerData: (markerData: TApartMarkerData[]) => void;
   setSelectMarker: (selectMarker: naver.maps.Marker | null) => void;
   setMarkers: (markers: naver.maps.Marker[]) => void;
   setSelectMarkerId: (seletMarkerId: string) => void;
@@ -45,7 +46,7 @@ export const useMarkerStore = create<TUseMarkerStore>((set) => ({
   setMap: (map: naver.maps.Map | null) => set(() => ({ map: map })),
   // setIsLoading: (isLoading: boolean) => set(() => ({ isLoading: isLoading })),
   setBounds: (bounds: TBounds) => set(() => ({ bounds: bounds })),
-  setMarkderData: (markerData: TApartMarkerData[]) =>
+  setMarkerData: (markerData: TApartMarkerData[]) =>
     set(() => ({ markerData: markerData })),
   setSelectMarker: (selectMarker: naver.maps.Marker | null) =>
     set(() => ({ selectMarker: selectMarker })),

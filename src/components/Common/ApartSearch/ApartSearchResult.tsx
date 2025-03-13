@@ -1,12 +1,25 @@
 // 아파트 검색 결과 컴포넌트
 
-import styles from "./ApartSearchResult.module.scss";
+import infoIcon from "@/assets/Search/infoIcon.svg";
+import locationIcon from "@/assets/Search/locationIcon.svg";
+import useLocationPath from "@/hooks/Map/useLocationPath";
+import { useInfiniteScroll } from "@/hooks/Search/useInfinityScroll";
+import { useApartInfoStore } from "@/store/useApartInfoStore";
+import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
-import { TApartMarkerData } from "@/store/useMarkerStore";
+import { useSearchStore } from "@/store/useSearchStore";
+import getApartData from "@/utils/api/getApartData";
+import styles from "./ApartSearchResult.module.scss";
 
 export default function ApartSearchResult() {
-  const markerData = useMarkerStore((state) => state.markerData);
+  const keyword = useSearchStore((state) => state.keyword);
+  const { items, loading, ref, totalCount } = useInfiniteScroll(keyword);
   const map = useMarkerStore((state) => state.map);
+  const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
+  const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
+  const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
+  const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
+  const locationPath = useLocationPath();
 
   const selectSearchApartHandler = (latitude: number, longitude: number) => {
     if (map) {
@@ -16,20 +29,71 @@ export default function ApartSearchResult() {
     }
   };
 
+  const selectSearchApartInfoHandler = async (aptId: string) => {
+    const data = await getApartData(
+      `${import.meta.env.VITE_LOCAL_API_CALL}/${locationPath}/info?id=${aptId}`
+    );
+
+    setIsSlide(true);
+    setIsDetailInfo(null);
+    setMainInfo("SELECT");
+
+    setApartInfo(data.data);
+  };
+
   return (
     <section className={styles.apartSearchResult}>
+      <p className={styles.apartSearchCount}>
+        총 <em>{totalCount}</em>개의 검색결과
+      </p>
       <ul className={styles.searchResultContainer}>
-        {markerData.map((listData: TApartMarkerData, index) => (
-          <li
-            key={index}
-            className={styles.searchResult}
-            onClick={() => {
-              selectSearchApartHandler(listData.latitude, listData.longitude);
-            }}
-          >
-            <h2>{listData.aptName}</h2>
-          </li>
-        ))}
+        {items.length > 0
+          ? items.map((listData, index) => (
+              <li
+                key={index}
+                className={styles.searchResult}
+                onClick={() => {
+                  selectSearchApartHandler(
+                    listData.latitude,
+                    listData.longitude
+                  );
+                }}
+              >
+                <div className={styles.searchTitle}>
+                  <h2>{listData.aptName}</h2>
+                  <p>{listData.aptAddress}</p>
+                </div>
+                <div className={styles.searchButton}>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      selectSearchApartInfoHandler(listData.aptId);
+                    }}
+                  >
+                    <span>
+                      <img src={infoIcon} alt="정보 보기 아이콘" />
+                    </span>
+                    <em>정보 보기</em>
+                  </button>
+                  <button>
+                    <span>
+                      <img src={locationIcon} alt="위치 보기 아이콘" />
+                    </span>
+                    <em>위치 보기</em>
+                  </button>
+                </div>
+              </li>
+            ))
+          : !loading && (
+              <li className={styles.noResults}>
+                <span>?</span>죄송합니다.
+                <br /> 현재 검색하신 아파트에 대한 정보를 찾을 수 없습니다.
+              </li>
+            )}
+
+        <li ref={ref} className={styles.loadingIndicator}>
+          {loading && <div className={styles.loadingSpinner}></div>}
+        </li>
       </ul>
     </section>
   );
