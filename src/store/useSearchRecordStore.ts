@@ -1,9 +1,5 @@
+import { TSearchRecord } from "@/hooks/Search/useSearhRecord";
 import { create } from "zustand";
-
-type TSearchRecord = {
-  keyword: string;
-  id: string;
-};
 
 type TUseSearchRecordStore = {
   searchRecord: TSearchRecord[];

@@ -1,9 +1,9 @@
 // 최근 검색어 커스텀 훅
 
-import { nanoid } from "nanoid";
 import { useSearchRecordStore } from "@/store/useSearchRecordStore";
+import { nanoid } from "nanoid";
 
-type TSearchRecord = {
+export type TSearchRecord = {
   keyword: string;
   id: string;
 };
