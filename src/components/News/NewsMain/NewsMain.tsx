@@ -1,13 +1,16 @@
 import { useNewsStore } from "@/store/useNewsStore";
-import ApartNewsList from "./ApartNewsList";
-import WeakApartNewsList from "./WeakApartNewsList";
+import NewsList from "./NewsList";
 
 const NewsMain = () => {
   const activeTab = useNewsStore((state) => state.activeTab);
 
   return (
     <div>
-      {activeTab === "apartNews" ? <ApartNewsList /> : <WeakApartNewsList />}
+      {activeTab === "apartNews" ? (
+        <NewsList newsType="apt" updateTotalElements={true} />
+      ) : (
+        <NewsList newsType="defect" />
+      )}
     </div>
   );
 };

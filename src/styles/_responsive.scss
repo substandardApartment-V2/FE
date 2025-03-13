@@ -1,11 +1,11 @@
 @use "sass:map";
 
 $breakpoints: (
-  "mobile-small": 32rem,
+  "mobile-small": 320px,
   "mobile-medium": 375px,
   "mobile-large": 430px,
-  "tablet-small": 76.8rem,
-  "tablet-large": 102.4rem,
+  "tablet-small": 768px,
+  "tablet-large": 1024px,
   "desktop-small": 1280px,
   "desktop-medium": 1440px,
   "desktop-large": 1920px,
