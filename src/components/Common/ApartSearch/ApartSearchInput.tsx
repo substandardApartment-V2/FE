@@ -1,8 +1,8 @@
-import styles from "./ApartSearchInput.module.scss";
 import searchIcon from "@/assets/Main/searchICon.svg";
+import { useGetSearchData } from "@/hooks/Api/useGetSearchData";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { Dispatch, RefObject, SetStateAction } from "react";
-import { useGetSearchData } from "@/hooks/Api/useGetSearchData";
+import styles from "./ApartSearchInput.module.scss";
 
 type TApartSearchInput = {
   searchRef: RefObject<HTMLInputElement>;
@@ -16,8 +16,11 @@ export default function ApartSearchInput(props: TApartSearchInput) {
     <form
       className={styles.apartSearch}
       onSubmit={(e) => {
-        if (props.searchRef.current)
+        if (props.searchRef.current) {
           getSearchData(props.searchRef.current.value, props.searchRef, e);
+          props.searchRef.current.blur();
+        }
+        props.setShowRecentSearch(false);
       }}
     >
       <input
