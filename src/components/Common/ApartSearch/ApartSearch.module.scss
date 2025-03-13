@@ -48,7 +48,7 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: 1.2rem 2rem;
+
       &:last-child {
         border-bottom: none;
       }
@@ -61,9 +61,10 @@
       button {
         all: unset;
         display: flex;
-        justify-content: center;
         align-items: center;
+        width: 100%;
         min-width: 1.4rem;
+        padding: 1.2rem 2rem;
       }
 
       .recentIcon {
@@ -84,10 +85,16 @@
         &:hover {
           text-decoration: underline;
         }
+        @include rs.respond-to("mobile-large") {
+          font-size: 1.4rem;
+        }
       }
 
       .closeIcon {
         padding-left: 1rem;
+        width: 8%;
+        height: 2.4rem;
+        justify-content: right;
       }
     }
 
