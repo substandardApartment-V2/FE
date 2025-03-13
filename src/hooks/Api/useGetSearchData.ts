@@ -18,7 +18,7 @@ export function useGetSearchData() {
   const { addRecord } = useSearchRecord();
   const markers = useMarkerStore.getState().markers;
   const map = useMarkerStore.getState().map;
-  const setMarkerData = useMarkerStore.getState().setMarkderData;
+  const setMarkerData = useMarkerStore.getState().setMarkerData;
   const setMainInfo = useMainInfoStore.getState().setMainInfo;
   const setIsSlide = useMainInfoStore.getState().setIsSlide;
   const setKeyword = useSearchStore((state) => state.setKeyword);
