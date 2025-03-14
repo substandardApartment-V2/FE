@@ -20,7 +20,6 @@ export default function useSearchRecord() {
       keyword: newKeyword,
       id: nanoid(),
     };
-
     setSearchRecord((prevState) => {
       const currentRecords = prevState.filter(
         (record: TSearchRecord) => record.keyword !== newKeyword

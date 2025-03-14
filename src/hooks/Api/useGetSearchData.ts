@@ -1,7 +1,6 @@
 // 아파트 검색 호출 커스텀 훅
 
 import useLocationPath from "@/hooks/Map/useLocationPath";
-import useMapMarkers from "@/hooks/Map/useMapMarkers";
 import useSearchRecord from "@/hooks/Search/useSearhRecord";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
@@ -36,7 +35,7 @@ export function useGetSearchData() {
       addRecord(keyword);
       const data = await axios(
         `${
-          import.meta.env.VITE_LOCAL_API_CALL
+          import.meta.env.VITE_SERVER_API_CALL
         }/map/search/${pathName}?keyword=${removeSpecialCharacters(
           keyword.trim()
         )}`
@@ -50,7 +49,7 @@ export function useGetSearchData() {
         setMarkerData(data.data.data.results);
         setMainInfo("SEARCH");
         setIsSlide(true);
-        useMapMarkers(); // 마커 생성 커스텀 훅 호출
+        // useMapMarkers(); // 마커 생성 커스텀 훅 호출
       }
     } catch (error) {
       console.log("ERROR : ", error);

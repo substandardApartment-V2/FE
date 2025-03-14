@@ -13,7 +13,7 @@ import { useNewsStore } from "@/store/useNewsStore";
 export default function WeakMainNews() {
   const setActiveTab = useNewsStore((state) => state.setActiveTab);
   const { data, isLoading } = useGetApartData<TWeakMainNewsResponse>(
-    `${import.meta.env.VITE_LOCAL_API_CALL}/defect/main`
+    `${import.meta.env.VITE_SERVER_API_CALL}/defect/main`
   );
 
   return (

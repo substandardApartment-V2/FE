@@ -18,17 +18,21 @@ export default function ApartAmenities() {
         <img src={apartEtcInfoTitleMapping.amenities.icon} alt="부대복리시설" />
       </div>
       <ul className={styles.amenities}>
-        {apartInfo?.etcInfo.amenities.map((listData: TAmenities, index) => {
-          return (
-            <li key={index}>
-              <img
-                src={amenitiesIconMapping[listData]}
-                alt="apart amenities Icon"
-              />
-              <span>{listData}</span>
-            </li>
-          );
-        })}
+        {apartInfo?.etcInfo.amenities ? (
+          apartInfo?.etcInfo.amenities.map((listData: TAmenities, index) => {
+            return (
+              <li key={index}>
+                <img
+                  src={amenitiesIconMapping[listData]}
+                  alt="apart amenities Icon"
+                />
+                <span>{listData}</span>
+              </li>
+            );
+          })
+        ) : (
+          <li>정보없음</li>
+        )}
       </ul>
     </li>
   );

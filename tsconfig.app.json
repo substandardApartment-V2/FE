@@ -26,5 +26,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "script/MarkerClustering.js"]
+  "include": ["src", "public/script/MarkerClustering.js"]
 }

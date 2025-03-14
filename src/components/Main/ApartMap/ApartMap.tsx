@@ -34,7 +34,7 @@ export default function ApartMap() {
   }, [isLoading]);
 
   useGetApartMarker({
-    url: `${import.meta.env.VITE_LOCAL_API_CALL}/map/${locationPath}?`,
+    url: `${import.meta.env.VITE_SERVER_API_CALL}/map/${locationPath}?`,
     query: {
       maxLa: bounds?.ne.lat,
       maxLo: bounds?.ne.lng,

@@ -10,6 +10,7 @@ import { useMarkerStore } from "@/store/useMarkerStore";
 import { useSearchStore } from "@/store/useSearchStore";
 import getApartData from "@/utils/api/getApartData";
 import styles from "./ApartSearchResult.module.scss";
+import selectMapMarkerIcon from "@/assets/Main/Map/selectMapMarkerIcon.svg";
 
 export default function ApartSearchResult() {
   const keyword = useSearchStore((state) => state.keyword);
@@ -20,6 +21,8 @@ export default function ApartSearchResult() {
   const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const locationPath = useLocationPath();
+  const markers = useMarkerStore((state) => state.markers);
+  const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
 
   const selectSearchApartHandler = (latitude: number, longitude: number) => {
     if (map) {
@@ -29,15 +32,35 @@ export default function ApartSearchResult() {
     }
   };
 
-  const selectSearchApartInfoHandler = async (aptId: string) => {
+  const selectSearchApartInfoHandler = async (
+    aptId: string,
+    longitude: number,
+    latitude: number
+  ) => {
     const data = await getApartData(
-      `${import.meta.env.VITE_LOCAL_API_CALL}/${locationPath}/info?id=${aptId}`
+      `${import.meta.env.VITE_SERVER_API_CALL}/${locationPath}/info?id=${aptId}`
     );
+
+    const selectMarker = markers.find((marker) => {
+      const markerLongitude = marker.getPosition().x;
+      const markerLatitude = marker.getPosition().y;
+      return markerLatitude === latitude && markerLongitude === longitude;
+    });
+
+    if (selectMarker) {
+      selectMarker.setIcon({
+        url: selectMapMarkerIcon,
+        size: new naver.maps.Size(35, 40),
+        scaledSize: new naver.maps.Size(35, 40),
+        origin: new naver.maps.Point(0, 0),
+        anchor: new naver.maps.Point(12, 34),
+      });
+      setSelectMarker(selectMarker);
+    }
 
     setIsSlide(true);
     setIsDetailInfo(null);
     setMainInfo("SELECT");
-
     setApartInfo(data.data);
   };
 
@@ -67,7 +90,11 @@ export default function ApartSearchResult() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      selectSearchApartInfoHandler(listData.aptId);
+                      selectSearchApartInfoHandler(
+                        listData.aptId,
+                        listData.longitude,
+                        listData.latitude
+                      );
                     }}
                   >
                     <span>
