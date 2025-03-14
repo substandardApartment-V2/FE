@@ -2,7 +2,7 @@ import styles from "./WeakMainNewsList.module.scss";
 import { TWeakMainNewsList } from "@/types/TWeak/TWeakMainNewsListTypes";
 import { formatDate } from "@/utils/parse/formatDate";
 import { Link } from "react-router-dom";
-import imageDefaultImage from "@/assets/news/newsDefaultImage.jpeg";
+import imageDefaultImage from "@/assets/News/newsDefaultImage.jpeg";
 import parseContent from "@/utils/parse/parseContent";
 
 export default function WeakMainNewsList(props: TWeakMainNewsList) {
