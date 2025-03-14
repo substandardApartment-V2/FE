@@ -3,7 +3,6 @@
 import { useInfiniteScroll } from "@/hooks/Search/useInfinityScroll";
 import { useSearchStore } from "@/store/useSearchStore";
 import styles from "./ApartSearchResult.module.scss";
-import selectMapMarkerIcon from "@/assets/Main/Map/selectMapMarkerIcon.svg";
 import ApartSearchResultItem from "./ApartSearchResultItem";
 
 export default function ApartSearchResult() {
