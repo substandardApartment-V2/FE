@@ -1,3 +1,4 @@
+import selectMapMarkerIcon from "@/assets/Main/Map/selectMapMarkerIcon.svg";
 import infoIcon from "@/assets/Search/infoIcon.svg";
 import locationIcon from "@/assets/Search/locationIcon.svg";
 import useLocationPath from "@/hooks/Map/useLocationPath";
@@ -6,7 +7,6 @@ import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { TApartMarkerData, useMarkerStore } from "@/store/useMarkerStore";
 import getApartData from "@/utils/api/getApartData";
 import styles from "./ApartSearchResult.module.scss";
-import selectMapMarkerIcon from "@/assets/Main/Map/selectMapMarkerIcon.svg";
 
 type ApartResultItemProps = {
   listData: TApartMarkerData;
@@ -34,9 +34,19 @@ export default function ApartSearchResultItem({
 
   const selectSearchApartInfoHandler = async (
     aptId: string,
-    longitude: number,
-    latitude: number
+    latitude: number,
+    longitude: number
   ) => {
+    if (map) {
+      try {
+        const newLocation = new naver.maps.LatLng(latitude, longitude);
+        map.setCenter(newLocation);
+        map.setZoom(17);
+      } catch (error) {
+        console.error("지도 이동 중 오류:", error);
+      }
+    }
+
     const data = await getApartData(
       `${import.meta.env.VITE_SERVER_API_CALL}/${locationPath}/info?id=${aptId}`
     );
