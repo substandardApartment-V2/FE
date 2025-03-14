@@ -8,6 +8,7 @@ export type TApartMarkerData = {
   aptAddress: string;
   latitude: number;
   longitude: number;
+  marker?: naver.maps.Marker;
 };
 
 export type TSelectMarker = {

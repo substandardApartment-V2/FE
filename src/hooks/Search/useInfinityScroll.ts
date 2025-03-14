@@ -10,7 +10,6 @@ export function useInfiniteScroll(keyword: string) {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
-
   const { ref, inView } = useInView();
   const locationPath = useLocationPath();
   const pathName = locationPath === "apt" ? "apt" : "defect";
@@ -30,9 +29,14 @@ export function useInfiniteScroll(keyword: string) {
 
   useEffect(() => {
     if (inView && hasMore && !loading && keyword) {
-      fetchData(page, keyword);
+      fetchData(page, keyword); // 해당 구문에서 useInfiniteScroll API 콜 발생
     }
-  }, [inView, hasMore, loading, page, keyword]);
+  }, [inView]);
+
+  // setMarkerData를 따로 빼서 렌더링 순서를 맞춰주면 해결할 수 있다.
+  useEffect(() => {
+    setMarkerData(items);
+  }, [items]);
 
   const fetchData = async (pageNum: number, searchKeyword: string) => {
     if (loading) return;
@@ -40,12 +44,12 @@ export function useInfiniteScroll(keyword: string) {
 
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_LOCAL_API_CALL}/map/search/${pathName}`,
+        `${import.meta.env.VITE_SERVER_API_CALL}/map/search/${pathName}`,
         {
           params: {
             keyword: searchKeyword,
             page: pageNum,
-            limit: 10,
+            num: 10,
           },
         }
       );
@@ -58,13 +62,10 @@ export function useInfiniteScroll(keyword: string) {
 
       const { results, totalElements } = response.data.data;
       setTotalCount(totalElements);
-
       setItems((prevItems) => {
         const newItems = pageNum === 1 ? results : [...prevItems, ...results];
-        setMarkerData(newItems);
         return newItems;
       });
-
       setPage((prevPage) => prevPage + 1);
 
       const nextHasMore =

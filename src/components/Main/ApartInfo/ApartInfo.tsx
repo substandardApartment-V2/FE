@@ -21,7 +21,7 @@ export default function ApartInfo() {
 
   const apartDetailApiHandler = async () => {
     const data = await getApartData(
-      `${import.meta.env.VITE_LOCAL_API_CALL}/apt/detail?id=${
+      `${import.meta.env.VITE_SERVER_API_CALL}/apt/detail?id=${
         apartInfo?.aptInfo.detailId
       }`
     );

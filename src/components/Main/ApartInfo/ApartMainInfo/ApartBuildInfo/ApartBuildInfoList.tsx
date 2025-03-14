@@ -8,7 +8,7 @@ export default function ApartBuildInfoList(props: TApartBuildInfoList) {
   return (
     <li className={styles.apartBulidInfoList}>
       <strong>{props.title && apartBuildInfoTitleMapping[props.title]}</strong>
-      <span>{props.data ? props.data : "X"}</span>
+      <span>{props.data ? props.data : "정보없음"}</span>
     </li>
   );
 }

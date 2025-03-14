@@ -25,7 +25,7 @@ export const useGetNewsData = (
 
     try {
       const response = await axios(
-        `${import.meta.env.VITE_LOCAL_API_CALL}/news/${newsType}`,
+        `${import.meta.env.VITE_SERVER_API_CALL}/news/${newsType}`,
         {
           method: "POST",
           data: {

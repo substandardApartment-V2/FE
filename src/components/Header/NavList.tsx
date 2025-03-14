@@ -9,7 +9,7 @@ import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 export default function NavList(props: TNavList) {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
-  const setMarkderData = useMarkerStore((state) => state.setMarkderData);
+  const setMarkerData = useMarkerStore((state) => state.setMarkerData);
   const setWeakApartInfo = useWeakApartInfoStore(
     (state) => state.setWeakApartInfo
   );
@@ -19,7 +19,7 @@ export default function NavList(props: TNavList) {
     setIsDetailInfo(null);
     setMainInfo("WHOLE");
     setApartInfo(null);
-    setMarkderData([]);
+    setMarkerData([]);
     setWeakApartInfo(null);
   };
 

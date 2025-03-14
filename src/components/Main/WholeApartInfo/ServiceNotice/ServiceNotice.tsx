@@ -38,7 +38,7 @@ export default function ServiceNotice() {
   ];
 
   const { isLoading } = useGetPageData(
-    `${import.meta.env.VITE_LOCAL_API_CALL}/apt/notice`,
+    `${import.meta.env.VITE_SERVER_API_CALL}/apt/notice`,
     {
       num: 4,
       pages: currentPage,

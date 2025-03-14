@@ -22,13 +22,13 @@ export default function useCreateCluster(newMarkers: naver.maps.Marker[]) {
 
     clusterRef.current = new window.MarkerClustering({
       minClusterSize: 2,
-      maxZoom: 14,
+      maxZoom: 18,
       map: map,
       markers: newMarkers,
       disableClickZoom: true,
       gridSize: 120,
       icons: [clusterMarkerIcon],
-      indexGenerator: [10, 100, 200, 500, 1000],
+      indexGenerator: [5, 100, 200, 500, 1000],
       stylingFunction: function (
         clusterMarker: naver.maps.Marker | null,
         count: number
