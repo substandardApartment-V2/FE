@@ -1,4 +1,4 @@
-import slash from "@/assets/news/slash.svg";
+import slash from "@/assets/News/slash.svg";
 import { useNewsStore } from "@/store/useNewsStore";
 import newsHeader from "./NewsHeader.module.scss";
 
