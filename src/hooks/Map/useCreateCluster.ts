@@ -1,17 +1,30 @@
 // 네이버지도 마커 클러스터 생성 커스텀 훅
 
-import { useEffect, useRef } from "react";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import { TMarkerClustering } from "@/types/TMap/TMapMarkerTypes";
+import { useEffect, useRef } from "react";
 
 export default function useCreateCluster(newMarkers: naver.maps.Marker[]) {
   const map = useMarkerStore((state) => state.map);
   const clusterRef = useRef<TMarkerClustering | null>(null);
 
-  const clusterMarkerIcon = {
-    content: `<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(./clusterIcon.svg);background-size:contain;"></div>`,
-    size: new naver.maps.Size(40, 40),
-    anchor: new naver.maps.Point(20, 20),
+  const clusterMarkerIcon = (count: number) => {
+    const size =
+      count < 10
+        ? 40
+        : count < 30
+        ? 50
+        : count < 50
+        ? 60
+        : count < 100
+        ? 70
+        : 80;
+
+    return {
+      content: `<div style="cursor:pointer;width:${size}px;height:${size}px;line-height:${size}px;background-color:rgba(0, 35, 70, 0.6);border:1px solid rgba(0, 35, 80, 0.3);font-size:14px;color:white;text-align:center;font-weight:500;border-radius:50%">${count}</div>`,
+      size: new naver.maps.Size(size, size),
+      anchor: new naver.maps.Point(size / 2, size / 2),
+    };
   };
 
   useEffect(() => {
@@ -26,17 +39,17 @@ export default function useCreateCluster(newMarkers: naver.maps.Marker[]) {
       map: map,
       markers: newMarkers,
       disableClickZoom: true,
-      gridSize: 120,
-      icons: [clusterMarkerIcon],
+      gridSize: 400,
+      icons: [],
       indexGenerator: [5, 100, 200, 500, 1000],
       stylingFunction: function (
         clusterMarker: naver.maps.Marker | null,
         count: number
       ) {
-        const countElement = clusterMarker
-          ?.getElement()
-          ?.querySelector("div:first-child") as HTMLElement | null;
-        if (countElement) countElement.innerText = count.toString();
+        if (clusterMarker) {
+          const icon = clusterMarkerIcon(count);
+          clusterMarker.setIcon(icon);
+        }
       },
     });
 
