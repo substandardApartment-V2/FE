@@ -32,6 +32,9 @@ jobs:
       - name: Set up .env file
         run: |
           echo "VITE_GOOGLE_URL=${{ secrets.VITE_GOOGLE_URL }}" >> .env
+          echo "VITE_LOCAL_API_CALL=${{ secrets.VITE_LOCAL_API_CALL }}" >> .env
+          echo "VITE_SERVER_API_CALL=${{ secrets.VITE_SERVER_API_CALL }}" >> .env
+          echo "VITE_NAVER_MAP_CLIENT_ID=${{ secrets.VITE_NAVER_MAP_CLIENT_ID }}" >> .env
 
       # 프로젝트 빌드
       - name: Build next app
