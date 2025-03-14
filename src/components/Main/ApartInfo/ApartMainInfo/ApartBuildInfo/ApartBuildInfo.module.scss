@@ -1,0 +1,19 @@
+@use "@/styles/_colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
+.buildInfo {
+  display: flex;
+  margin-top: 1.6rem;
+  @include rs.respond-to("desktop-small") {
+    margin-top: 0;
+  }
+  .buildCompanyDate {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    width: 100%;
+    min-width: 0;
+    background-color: #ffffff;
+    @include rs.respond-to("desktop-small") {
+    }
+  }
+}

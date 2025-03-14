@@ -1,14 +1,43 @@
+@use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
 .dropDownList {
   cursor: pointer;
   border: 0.1rem solid #abb0b7;
   border-bottom: none;
   padding: 0.4rem 2rem 0.4rem 0.8rem;
+  padding-right: 0%;
+  font-size: 1.6rem;
+  &:hover {
+    background-color: #d6d6d6;
+    color: #435464;
+  }
+  span {
+    width: 100%;
+    &.small {
+      font-size: 1.4rem;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.3rem;
+      }
+    }
+    &.medium {
+      font-size: 1.6rem;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.4rem;
+      }
+    }
+    &.large {
+      font-size: 2rem;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.6rem;
+      }
+    }
+  }
   &:first-child {
     &.borderTop {
       border-top: none;
     }
   }
-
   &:last-child {
     border-bottom: 0.1rem solid #abb0b7;
   }

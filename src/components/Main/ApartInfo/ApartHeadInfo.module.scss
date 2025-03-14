@@ -1,0 +1,104 @@
+@use "@/styles/_colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
+@mixin commonApartHeadInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+  width: 100%;
+  gap: 0.8rem;
+  background-color: colors.$mainNavy;
+}
+
+@mixin commonApartNameLocation {
+  display: flex;
+  background-color: colors.$mainNavy;
+  flex-direction: column;
+  padding: 2.2rem;
+  @content;
+  //아파트 이름
+  .apartName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      // width: 100%;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.8rem;
+      }
+    }
+    button {
+      display: none;
+      @include rs.respond-to("desktop-small") {
+        display: flex;
+        align-items: center;
+        width: fit-content;
+      }
+      img {
+        width: 3rem;
+        @include rs.respond-to("tablet-small") {
+          width: 2.4rem;
+        }
+        @include rs.respond-to("mobile-large") {
+          width: 2rem;
+        }
+        @include rs.respond-to("mobile-medium") {
+          width: 1.8rem;
+        }
+      }
+    }
+  }
+  //아파트 위치정보
+  .apartLocation {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    .apartRegion {
+      font-size: 1.6rem;
+      color: #ffffff;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.4rem;
+      }
+    }
+    //아파트 우편번호
+    .apartZipCode {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      img {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+      span {
+        font-size: 1.6rem;
+        color: #ffffff;
+        @include rs.respond-to("mobile-large") {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+.mobileApartHeadInfo {
+  @include commonApartHeadInfo();
+  .mobileApartNameLocation {
+    gap: 1rem;
+    @include commonApartNameLocation();
+  }
+}
+
+.apartHeadInfo {
+  @include commonApartHeadInfo();
+  .apartNameLocation {
+    gap: 1rem;
+    @include commonApartNameLocation();
+    @include rs.respond-to("mobile-large") {
+      padding: 2.2rem;
+    }
+  }
+}

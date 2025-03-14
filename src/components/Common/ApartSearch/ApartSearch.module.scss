@@ -1,0 +1,128 @@
+@use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
+.apartSearchContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .recentSearch {
+    position: absolute;
+    width: 100%;
+    padding: 6.5rem 0rem 2.4rem;
+    left: 0;
+    top: 0;
+    background-color: white;
+    border: 0.1rem solid colors.$mainRed;
+    overflow: visible;
+    z-index: 999;
+    @include rs.respond-to("desktop-small") {
+      border: 0;
+      border-bottom: 0.1rem solid colors.$mainRed;
+    }
+
+    .recentHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem 0.8rem;
+
+      h4 {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #555;
+        font-weight: 500;
+      }
+
+      button {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #9e9e9e;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: #f2f2f2;
+        transition: 0.3s;
+      }
+
+      button {
+        all: unset;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-width: 1.4rem;
+        padding: 1.2rem 2rem;
+      }
+
+      .recentIcon {
+        display: flex;
+        margin-right: 1.2rem;
+      }
+
+      .recentTitle {
+        display: flex;
+        align-items: center;
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: colors.$mainNavy;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 2rem;
+        &:hover {
+          text-decoration: underline;
+        }
+        @include rs.respond-to("mobile-large") {
+          font-size: 1.4rem;
+        }
+      }
+
+      .closeIcon {
+        padding-left: 1rem;
+        width: 8%;
+        height: 2.4rem;
+        justify-content: right;
+      }
+    }
+
+    .noRecent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 0;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.searchResults {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background-color: black;
+  color: white;
+  z-index: 1000;
+  .searchResultsList {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    color: white;
+    button {
+      color: white;
+    }
+  }
+}

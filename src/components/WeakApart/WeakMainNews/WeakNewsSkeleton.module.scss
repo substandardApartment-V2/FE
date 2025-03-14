@@ -1,0 +1,66 @@
+@use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
+.skeletonWrapper {
+  width: 100%;
+  height: 100%;
+  border: 0.1rem solid #d6d6d6;
+  border-radius: 1rem;
+  padding: 1.6rem 1.4rem;
+  box-sizing: border-box;
+  display: flex;
+  gap: 1.2rem;
+  @include rs.respond-to("desktop-small") {
+    padding: 1.4rem 1.2rem;
+  }
+  @include rs.respond-to("tablet-small") {
+    padding: 1.2rem 1rem;
+  }
+  @include rs.respond-to("mobile-large") {
+    padding: 1rem 0.9rem;
+  }
+  .thumbnail {
+    flex: 35;
+    height: 100%;
+    border-radius: 1rem;
+    flex-shrink: 0;
+  }
+  .skeletonText {
+    flex: 65;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    gap: 1.05rem;
+    .title {
+      width: 100%;
+      height: 2rem;
+      @include rs.respond-to("desktop-small") {
+        height: 1.4rem;
+      }
+      @include rs.respond-to("mobile-large") {
+        height: 1.1rem;
+      }
+    }
+    .description {
+      width: 100%;
+      height: 5rem;
+      @include rs.respond-to("desktop-small") {
+        height: 3rem;
+      }
+      @include rs.respond-to("mobile-large") {
+        height: 2.6rem;
+      }
+    }
+    .date {
+      width: 100%;
+      height: 2rem;
+      @include rs.respond-to("desktop-small") {
+        height: 1.4rem;
+      }
+      @include rs.respond-to("mobile-large") {
+        height: 1.2rem;
+      }
+    }
+  }
+}

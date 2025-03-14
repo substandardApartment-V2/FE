@@ -1,0 +1,31 @@
+@use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
+.currentApartStatus {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.6rem;
+  @include rs.respond-to("desktop-small") {
+    gap: 0;
+  }
+  .title {
+    background-color: colors.$mainNavy;
+    color: #f5f5f5;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 1.1rem 2rem;
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.8rem;
+      padding: 1rem 0rem 1rem 2rem;
+    }
+  }
+  .currentApartsStatusContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    @include rs.respond-to("desktop-small") {
+      gap: 0.4rem;
+    }
+  }
+}

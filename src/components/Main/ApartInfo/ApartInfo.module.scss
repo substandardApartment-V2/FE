@@ -1,0 +1,55 @@
+@use "@/styles/_colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
+.apartInfo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  overflow-y: hidden;
+  @include rs.respond-to("desktop-small") {
+    position: relative;
+    gap: 0;
+  }
+  .detailInfoContainer {
+    display: none;
+    @include rs.respond-to("desktop-small") {
+      height: 100%;
+      display: block;
+    }
+  }
+  .apartInfoContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    @include rs.respond-to("desktop-small") {
+      gap: 0;
+    }
+    .apartMainInfo {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      gap: 1.6rem;
+      @include rs.respond-to("desktop-small") {
+        gap: 0rem;
+      }
+    }
+    .detailApartInfoButton {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: colors.$mainTitle;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-direction: row-reverse;
+      cursor: pointer;
+      @include rs.respond-to("desktop-small") {
+        padding: 1.4rem 2rem;
+      }
+    }
+  }
+}

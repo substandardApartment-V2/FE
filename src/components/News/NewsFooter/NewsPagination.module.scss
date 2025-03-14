@@ -1,22 +1,49 @@
+@use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
 .pagination {
   margin-top: auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.4rem;
-  padding-top: 2.7rem;
+  padding-top: 3rem;
+  @include rs.respond-to("tablet-large") {
+    padding-bottom: 3%;
+  }
   .pageContainer {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 0.8rem;
     .pageLink {
-      font-size: 1.2rem;
+      font-size: 2rem;
       font-weight: 500;
       line-height: 2rem;
-      color: #33455c;
+      color: colors.$mainTitle;
+      @include rs.respond-to("mobile-large") {
+        font-size: 1.8rem;
+      }
     }
     .pageActive {
       font-weight: 700;
-      color: #b53a40;
+      color: colors.$mainRed;
+    }
+    a {
+      img {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  button {
+    display: flex;
+    align-items: center;
+  }
+  img {
+    width: 1.6rem;
+    @include rs.respond-to("mobile-large") {
+      width: 1.4rem;
     }
   }
 }

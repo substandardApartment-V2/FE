@@ -1,0 +1,16 @@
+@use "@/styles/responsive.scss" as rs;
+
+.apartMap {
+  flex: 65;
+  @include rs.respond-to("desktop-small") {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+  .apartSearch {
+    display: none;
+    @include rs.respond-to("desktop-small") {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
+.searchButton {
+  all: unset;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: colors.$mainTitle;
+  padding: 0.8rem 1rem;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  @include rs.respond-to("desktop-small") {
+    bottom: 5rem;
+  }
+  img {
+    width: 2rem;
+    @include rs.respond-to("tablet-large") {
+      font-size: 1.8rem;
+    }
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.6rem;
+    }
+  }
+  &:not(:disabled):hover {
+    transform: translate(-50%, -60%);
+    color: #ffffff;
+    background-color: colors.$mainNavy;
+  }
+  &:disabled {
+    background-color: grey;
+  }
+  span {
+    @include rs.respond-to("mobile-large") {
+      font-size: 1.4rem;
+    }
+  }
+}

@@ -1,19 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
+import NotFound from "./components/Error/NotFound";
 import Layout from "./components/Layout";
-import ApartInfo from "./pages/ApartInfo";
+import ApartInfoPage from "./pages/ApartInfoPage";
 import News from "./pages/News";
-import PoorApart from "./pages/PoorApart";
 import Report from "./pages/Report";
+import WeakApartInfoPage from "./pages/WeakApartInfoPage";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
-      { path: "/", element: <ApartInfo /> },
-      { path: "/poor", element: <PoorApart /> },
+      { path: "/", element: <ApartInfoPage /> },
+      { path: "/weak", element: <WeakApartInfoPage /> },
       { path: "/news", element: <News /> },
       { path: "/report", element: <Report /> },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);

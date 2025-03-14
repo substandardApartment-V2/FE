@@ -3,25 +3,26 @@ import doubleRight from "@/assets/news/doubleRight.svg";
 import left from "@/assets/news/left.svg";
 import right from "@/assets/news/right.svg";
 import threeDot from "@/assets/news/threeDot.svg";
-import { useState } from "react";
+import { useNewsStore } from "@/store/useNewsStore";
 import ReactPaginate from "react-paginate";
 import newsPage from "./NewsPagination.module.scss";
 
 const NewsPagination = () => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const pageCount = 1000;
+  const { pages, setPages, totalElements } = useNewsStore();
+  const pageCount = Math.ceil(totalElements / 8);
+  const currentPage = Math.min(pages - 1, pageCount - 1);
 
   const handlePageChange = (selectedItem: { selected: number }) => {
-    setCurrentPage(selectedItem.selected);
+    setPages(selectedItem.selected + 1);
   };
 
-  const goToPage = (page: number) => {
-    setCurrentPage(page);
+  const goToPage = (pages: number) => {
+    setPages(pages);
   };
 
   return (
     <div className={newsPage.pagination}>
-      <button onClick={() => goToPage(0)} className="goToPage">
+      <button onClick={() => goToPage(1)} className="goToPage">
         <img src={doubleLeft} alt="맨처음으로" />
       </button>
       <ReactPaginate
@@ -37,7 +38,7 @@ const NewsPagination = () => {
         nextLabel={<img src={right} alt="다음" />}
         breakLabel={<img src={threeDot} alt="..." />}
       />
-      <button onClick={() => goToPage(pageCount - 1)} className="custom-button">
+      <button onClick={() => goToPage(pageCount)} className="custom-button">
         <img src={doubleRight} alt="맨뒤로" />
       </button>
     </div>

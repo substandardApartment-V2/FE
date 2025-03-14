@@ -1,29 +1,73 @@
-.dropDown {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  gap: 0.4rem;
-  padding: 0.4rem 0rem;
-  .selectContent {
-    padding-left: 0.8rem;
+@use "@/styles/colors.scss";
+@use "@/styles/responsive.scss" as rs;
+
+.dropDownContainer {
+  position: relative;
+  .dropDown {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    background-color: #ffffff;
+    color: #142337;
+    font-family: "Pretendard", sans-serif;
+    position: relative;
     &.small {
-      font-size: 1rem;
+      width: 8rem;
+      @include rs.respond-to("mobile-large") {
+        width: 8rem;
+      }
     }
     &.medium {
-      font-size: 1.3rem;
+      width: 9rem;
+      @include rs.respond-to("mobile-large") {
+        width: 8rem;
+      }
+    }
+    &.large {
+      width: 11rem;
+      @include rs.respond-to("mobile-large") {
+        width: 9rem;
+      }
+    }
+    .selectContent {
+      padding-left: 0.8rem;
+      &.small {
+        font-size: 1.4rem;
+        @include rs.respond-to("mobile-large") {
+          font-size: 1.3rem;
+        }
+      }
+      &.medium {
+        font-size: 1.6rem;
+        @include rs.respond-to("mobile-large") {
+          font-size: 1.4rem;
+        }
+      }
+      &.large {
+        font-size: 2rem;
+        @include rs.respond-to("mobile-large") {
+          font-size: 1.6rem;
+        }
+      }
+    }
+    img {
+      width: 2.4rem;
     }
   }
-}
+  .dropDownBorder {
+    border: 0.1rem solid #abb0b7;
+  }
 
-.dropDownBorder {
-  border: 0.1rem solid #abb0b7;
-}
-
-.dropDownContent {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 10;
-  background-color: white;
+  .dropDownContent {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    color: #435464;
+    width: 100%;
+    font-family: "Pretendard", sans-serif;
+  }
 }

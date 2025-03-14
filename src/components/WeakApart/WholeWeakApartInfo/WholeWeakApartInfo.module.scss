@@ -1,0 +1,28 @@
+@use "@/styles/responsive.scss" as rs;
+
+.weakRight {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  background-color: white;
+  border-bottom: 0.1rem solid #9e9e9e;
+  .mobileDetailWeakBuilderChart {
+    display: none;
+    @include rs.respond-to("desktop-small") {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .wholeWeakApartInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 1.6rem;
+    @include rs.respond-to("desktop-small") {
+      display: none;
+    }
+  }
+}
