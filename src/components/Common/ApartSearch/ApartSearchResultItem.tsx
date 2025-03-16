@@ -52,8 +52,8 @@ export default function ApartSearchResultItem({
     );
 
     const selectMarker = markers.find((marker) => {
-      const markerLatitude = marker.getPosition().x;
-      const markerLogitude = marker.getPosition().y;
+      const markerLatitude = marker.getPosition().y;
+      const markerLogitude = marker.getPosition().x;
       return markerLatitude === latitude && markerLogitude === longitude;
     });
 

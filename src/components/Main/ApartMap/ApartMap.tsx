@@ -17,11 +17,11 @@ import ApartLocation from "./ApartLocation";
 export default function ApartMap() {
   const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
   const map = useMarkerStore((state) => state.map);
-  const setMap = useMarkerStore((state) => state.setMap);
   const bounds = useMarkerStore((state) => state.bounds);
   const setBounds = useMarkerStore((state) => state.setBounds);
   const locationPath = useLocationPath();
-  const { isLoading, mapRef, getSuccess, getError } = useCreateMap(setMap);
+  const { mapRef, getSuccess, getError } = useCreateMap();
+  const isLoading = useMarkerStore((state) => state.isLoading);
 
   const updateBoundsHandler = () => {
     if (map) {
