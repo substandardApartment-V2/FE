@@ -16,9 +16,7 @@ export default function useGetApartData<T extends TAPIResponse>(url: string) {
       } catch (error) {
         console.log("Error : ", error);
       } finally {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 2000);
+        setIsLoading(false);
       }
     };
     fetchData();

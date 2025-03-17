@@ -6,18 +6,23 @@
   height: 100%;
   border: 0.1rem solid #d6d6d6;
   border-radius: 1rem;
-  padding: 2rem 1.8rem;
+  padding: 2.4rem 3rem;
   box-sizing: border-box;
   display: flex;
-  gap: 1.2rem;
+  gap: 3%;
   @include rs.respond-to("tablet-large") {
+    padding: 2.5%;
+  }
+
+  @include rs.respond-to("mobile-large") {
     padding: 4%;
   }
   .thumbnail {
     width: 30%;
     height: 100%;
-    border-radius: 1rem;
+    border-radius: 0.8rem;
     flex-shrink: 0;
+    aspect-ratio: 16/9;
     @include rs.respond-to("tablet-large") {
       width: 37%;
     }
@@ -27,24 +32,33 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding-top: 0.5rem;
     min-width: 0;
-    gap: 0.8rem;
     @include rs.respond-to("tablet-large") {
-      gap: 0.4rem;
+      width: 60%;
+      padding-top: 0rem;
     }
+
     .title {
       width: 100%;
       height: 2.8rem;
-      @include rs.respond-to("tablet-large") {
-        height: 2rem;
+      @include rs.respond-to("desktop-large") {
+        height: 2.6rem;
+      }
+      @include rs.respond-to("mobile-large") {
+        height: 2.2rem;
       }
     }
     .description {
       width: 100%;
-      height: 8rem;
+      height: 7.4rem;
+      margin: 0.6rem 0;
+      @include rs.respond-to("desktop-large") {
+        height: 7.1rem;
+      }
       @include rs.respond-to("mobile-large") {
-        height: 3.8rem;
+        height: 3.4rem;
       }
     }
     .date {

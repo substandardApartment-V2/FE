@@ -9,7 +9,7 @@ const NewsMain = () => {
       {activeTab === "apartNews" ? (
         <NewsList newsType="apt" updateTotalElements={true} />
       ) : (
-        <NewsList newsType="defect" />
+        <NewsList newsType="defect" updateTotalElements={true} />
       )}
     </div>
   );

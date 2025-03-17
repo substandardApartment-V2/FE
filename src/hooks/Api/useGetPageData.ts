@@ -26,9 +26,7 @@ export default function useGetPageData(url: string, sendData: TPageAPIRequest) {
       } catch (error) {
         console.log("Error : ", error);
       } finally {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 300);
+        setIsLoading(false);
       }
     };
     fetchData();

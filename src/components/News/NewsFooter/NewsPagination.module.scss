@@ -11,18 +11,24 @@
   @include rs.respond-to("tablet-large") {
     padding-bottom: 3%;
   }
+  @include rs.respond-to("mobile-large") {
+    padding-bottom: 5%;
+  }
   .pageContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1rem;
     .pageLink {
       font-size: 2rem;
       font-weight: 500;
       line-height: 2rem;
       color: colors.$mainTitle;
       @include rs.respond-to("mobile-large") {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+      }
+      @include rs.respond-to("mobile-small") {
+        font-size: 1.3rem;
       }
     }
     .pageActive {
@@ -45,5 +51,8 @@
     @include rs.respond-to("mobile-large") {
       width: 1.4rem;
     }
+  }
+  .customButton {
+    margin: 0.2rem;
   }
 }

@@ -17,11 +17,11 @@ import ApartLocation from "./ApartLocation";
 export default function ApartMap() {
   const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
   const map = useMarkerStore((state) => state.map);
-  const setMap = useMarkerStore((state) => state.setMap);
   const bounds = useMarkerStore((state) => state.bounds);
   const setBounds = useMarkerStore((state) => state.setBounds);
-  const locationPath = useLocationPath();
-  const { isLoading, mapRef, getSuccess, getError } = useCreateMap(setMap);
+  const { apartSeparate } = useLocationPath();
+  const { mapRef, getSuccess, getError } = useCreateMap();
+  const isLoading = useMarkerStore((state) => state.isLoading);
 
   const updateBoundsHandler = () => {
     if (map) {
@@ -31,10 +31,10 @@ export default function ApartMap() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getSuccess, getError);
-  }, [isLoading]);
+  }, []);
 
   useGetApartMarker({
-    url: `${import.meta.env.VITE_SERVER_API_CALL}/map/${locationPath}?`,
+    url: `${import.meta.env.VITE_SERVER_API_CALL}/map/${apartSeparate}?`,
     query: {
       maxLa: bounds?.ne.lat,
       maxLo: bounds?.ne.lng,

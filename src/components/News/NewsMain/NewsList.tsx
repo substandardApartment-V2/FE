@@ -20,7 +20,7 @@ const NewsList = ({ newsType, updateTotalElements = false }: NewsListProps) => {
         ? Array.from({ length: 8 }).map((_, index) => (
             <NewsSkeleton key={index} />
           ))
-        : newsItems.map((news) => <NewsItem key={news.url} {...news} />)}
+        : newsItems.map((news, index) => <NewsItem key={index} {...news} />)}
     </ul>
   );
 };

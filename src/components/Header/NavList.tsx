@@ -14,6 +14,8 @@ export default function NavList(props: TNavList) {
     (state) => state.setWeakApartInfo
   );
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
+  const setIsLoading = useMarkerStore((state) => state.setIsLoading);
+  const setMap = useMarkerStore((state) => state.setMap);
 
   const resetInfoHandler = () => {
     setIsDetailInfo(null);
@@ -21,6 +23,8 @@ export default function NavList(props: TNavList) {
     setApartInfo(null);
     setMarkerData([]);
     setWeakApartInfo(null);
+    setMap(null);
+    setIsLoading(true);
   };
 
   return (

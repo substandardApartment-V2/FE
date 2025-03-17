@@ -22,7 +22,7 @@ export default function ApartSearchResultItem({
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
   const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
-  const locationPath = useLocationPath();
+  const { apartSeparate } = useLocationPath();
 
   const selectSearchApartHandler = (latitude: number, longitude: number) => {
     if (map) {
@@ -48,12 +48,14 @@ export default function ApartSearchResultItem({
     }
 
     const data = await getApartData(
-      `${import.meta.env.VITE_SERVER_API_CALL}/${locationPath}/info?id=${aptId}`
+      `${
+        import.meta.env.VITE_SERVER_API_CALL
+      }/${apartSeparate}/info?id=${aptId}`
     );
 
     const selectMarker = markers.find((marker) => {
-      const markerLatitude = marker.getPosition().x;
-      const markerLogitude = marker.getPosition().y;
+      const markerLatitude = marker.getPosition().y;
+      const markerLogitude = marker.getPosition().x;
       return markerLatitude === latitude && markerLogitude === longitude;
     });
 
