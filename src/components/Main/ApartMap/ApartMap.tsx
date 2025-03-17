@@ -31,7 +31,7 @@ export default function ApartMap() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getSuccess, getError);
-  }, [isLoading]);
+  }, []);
 
   useGetApartMarker({
     url: `${import.meta.env.VITE_SERVER_API_CALL}/map/${apartSeparate}?`,
