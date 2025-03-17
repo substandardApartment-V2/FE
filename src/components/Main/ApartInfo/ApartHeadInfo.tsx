@@ -21,7 +21,7 @@ export default function ApartHeadInfo(props: TApartHeadInfo) {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const weakApartInfo = useWeakApartInfoStore((state) => state.weakApartInfo);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
-  const path = useLocationPath();
+  const { apartSeparate } = useLocationPath();
 
   return (
     <section
@@ -41,7 +41,7 @@ export default function ApartHeadInfo(props: TApartHeadInfo) {
           {(isDetailInfo || weakApartInfo) && (
             <button
               onClick={() => {
-                if (path === "defect") {
+                if (apartSeparate === "defect") {
                   setMainInfo("WHOLE");
                   resetSelectMarker();
                 } else {

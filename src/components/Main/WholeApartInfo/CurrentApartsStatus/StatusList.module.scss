@@ -34,12 +34,22 @@
     }
     .listSubTitle {
       font-size: 2rem;
+      height: 2rem;
       color: #f5f5f5;
+      opacity: 1;
+      transform: translateY(5px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
       @include rs.respond-to("desktop-medium") {
         font-size: 1.8rem;
+        height: 1.8rem;
       }
     }
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
+
   .listContent {
     display: flex;
     align-items: center;
@@ -65,6 +75,15 @@
     }
     @include rs.respond-to("mobile-large") {
       font-size: 2rem;
+    }
+    span {
+      opacity: 0;
+      transform: translateY(5px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .detailApartInfo {
       display: flex;

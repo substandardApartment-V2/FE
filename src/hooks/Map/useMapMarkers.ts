@@ -30,7 +30,7 @@ export default function useMapMarkers() {
   const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
 
-  const locationPath = useLocationPath();
+  const { apartSeparate } = useLocationPath();
 
   useEffect(() => {
     if (selectMarker === null) {
@@ -88,13 +88,13 @@ export default function useMapMarkers() {
               setMainInfo("WHOLE");
               selectMarkerIdRef.current = null;
               setSelectMarker(null);
-              if (locationPath === "apt") setApartInfo(null);
+              if (apartSeparate === "apt") setApartInfo(null);
               else setWeakApartInfo(null);
               return;
             }
           }
           const data = await getApartData(
-            `${import.meta.env.VITE_SERVER_API_CALL}/${locationPath}/info?id=${
+            `${import.meta.env.VITE_SERVER_API_CALL}/${apartSeparate}/info?id=${
               listData.aptId
             }`
           );
@@ -111,7 +111,7 @@ export default function useMapMarkers() {
           setMainInfo("SELECT");
           selectMarkerIdRef.current = listData.aptId;
           selectMarkerRef.current = marker;
-          if (locationPath === "apt") setApartInfo(data.data);
+          if (apartSeparate === "apt") setApartInfo(data.data);
           else setWeakApartInfo(data.data);
         });
         return marker;

@@ -30,6 +30,18 @@ export type TMaintanceChargeResponse = TAPIResponse & {
   };
 };
 
+// 메인정보 API Response data 타입
+export type TMainResponse = TAPIResponse & {
+  data: {
+    aptAvgPrice: number | null;
+    aptAvgPriceMonth: number | null;
+    aptCount: number | null;
+    plannedAptCount: number | null;
+    plannedAptMonth: number | null;
+    plannedAptYear: number | null;
+  };
+};
+
 // 페이지 API Request 타입
 export type TPageAPIRequest = {
   num?: number;

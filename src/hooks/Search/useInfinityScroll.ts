@@ -10,11 +10,27 @@ export function useInfiniteScroll(keyword: string) {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
+  const [location, setLocation] = useState(false);
   const { ref, inView } = useInView();
-  const locationPath = useLocationPath();
-  const pathName = locationPath === "apt" ? "apt" : "defect";
+  const { apartSeparate } = useLocationPath();
+  const pathName = apartSeparate === "apt" ? "apt" : "defect";
 
   const setMarkerData = useMarkerStore((state) => state.setMarkerData);
+  const map = useMarkerStore((state) => state.map);
+
+  const changeLocation = (results: any) => {
+    if (!location) setLocation(true);
+    else return;
+    if (map) {
+      const newLocation = new naver.maps.LatLng(
+        results[0].latitude,
+        results[0].longitude
+      );
+      map.setCenter(newLocation);
+      map.setZoom(17);
+      setLocation(false);
+    }
+  };
 
   useEffect(() => {
     if (!keyword) return;
@@ -23,17 +39,15 @@ export function useInfiniteScroll(keyword: string) {
     setPage(1);
     setHasMore(true);
     setTotalCount(0);
-
     fetchData(1, keyword);
   }, [keyword]);
 
   useEffect(() => {
     if (inView && hasMore && !loading && keyword) {
-      fetchData(page, keyword); // 해당 구문에서 useInfiniteScroll API 콜 발생
+      fetchData(page, keyword);
     }
   }, [inView]);
 
-  // setMarkerData를 따로 빼서 렌더링 순서를 맞춰주면 해결할 수 있다.
   useEffect(() => {
     setMarkerData(items);
   }, [items]);
@@ -61,6 +75,7 @@ export function useInfiniteScroll(keyword: string) {
       }
 
       const { results, totalElements } = response.data.data;
+      changeLocation(results);
       setTotalCount(totalElements);
       setItems((prevItems) => {
         const newItems = pageNum === 1 ? results : [...prevItems, ...results];

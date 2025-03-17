@@ -2,29 +2,45 @@ import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import { ChartOptions } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import { useState, useEffect } from "react";
 
 export default function DetailWeakBuilderChart() {
+  const [fontSize, setFontSize] = useState(16);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newFontSize = window.innerWidth < 600 ? 12 : 15;
+
+      setFontSize(newFontSize);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const labels = [
-    "                             1. 현대엔지니어링(주)",
-    "                           2. 재형건설산업(주)",
-    "                         3. 지브이종합건설",
-    "                      4. 라임종합건설",
-    "                           5. 삼도종합건설(주)",
-    "                           6. 보광종합건설(주)",
-    "                           7. (주)포스코이앤씨",
-    "                           8. 계룡건설산업(주)",
-    "                     9. (주)시티건설",
-    "                      10. (주)대우건설",
-    "                         11. (주)유림이엔씨",
-    "                                      12. 우리피엠씨종합건설(주)",
-    "                             13. (유)신호건설산업",
-    "                             14. (주)태곡종합건설",
-    "                           15. 에스엠상선(주)",
-    "                             16. (주)동양건설산업",
-    "                      17. (주)시인건설",
-    "                      18. 현대건설(주)",
-    "                19. (주)한양",
-    "                       20. 제일건설(주)",
+    "1. 현대엔지니어링(주)",
+    "2. 재형건설산업(주)",
+    "3. 지브이종합건설",
+    "4. 라임종합건설",
+    "5. 삼도종합건설(주)",
+    "6. 보광종합건설(주)",
+    "7. (주)포스코이앤씨",
+    "8. 계룡건설산업(주)",
+    "9. (주)시티건설",
+    "10. (주)대우건설",
+    "11. (주)유림이엔씨",
+    "12. 우리피엠씨종합건설(주)",
+    "13. (유)신호건설산업",
+    "14. (주)태곡종합건설",
+    "15. 에스엠상선(주)",
+    "16. (주)동양건설산업",
+    "17. (주)시인건설",
+    "18. 현대건설(주)",
+    "19. (주)한양",
+    "20. 제일건설(주)",
   ];
 
   const values = [
@@ -53,6 +69,7 @@ export default function DetailWeakBuilderChart() {
     indexAxis: "y",
     scales: {
       y: {
+        display: true,
         ticks: {
           display: false,
         },
@@ -80,16 +97,21 @@ export default function DetailWeakBuilderChart() {
       datalabels: {
         labels: {
           label: {
-            align: "top",
+            align: "end",
             anchor: "start",
             color: "white",
+            clip: false,
+            textAlign: "left",
+            offset: -5,
+            padding: { left: 5 },
             font: {
-              size: 14,
+              size: fontSize,
             },
             formatter: (_value, context) => {
-              return context.chart.data.labels?.[context.dataIndex] || "";
+              return (
+                context.chart.data.labels?.[context.dataIndex] + "\n\n" || ""
+              );
             },
-            padding: { left: 0 },
           },
           value: {
             align: "end",
@@ -97,7 +119,7 @@ export default function DetailWeakBuilderChart() {
             color: "white",
             font: {
               weight: "bold",
-              size: 14,
+              size: fontSize,
             },
             formatter: (obj) => obj.value,
             padding: { right: 4 },

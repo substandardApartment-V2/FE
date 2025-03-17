@@ -8,7 +8,7 @@ import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 
 export default function ApartLocation() {
-  const locationPath = useLocationPath();
+  const { apartSeparate } = useLocationPath();
   const selectMarker = useMarkerStore((state) => state.selectMarker);
   const map = useMarkerStore((state) => state.map);
   const apartInfo = useMainInfoStore((state) => state.apartInfo);
@@ -27,7 +27,7 @@ export default function ApartLocation() {
   return (
     <div className={styles.location} onClick={locationClickHandler}>
       <span>
-        {locationPath === "apt"
+        {apartSeparate === "apt"
           ? apartInfo?.aptInfo.roadAddress
           : weakApartInfo?.aptInfo.address}
       </span>

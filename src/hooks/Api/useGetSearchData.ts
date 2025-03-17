@@ -13,7 +13,7 @@ const removeSpecialCharacters = (input: string): string => {
 };
 
 export function useGetSearchData() {
-  const locationPath = useLocationPath();
+  const { apartSeparate } = useLocationPath();
   const { addRecord } = useSearchRecord();
   const markers = useMarkerStore.getState().markers;
   const map = useMarkerStore.getState().map;
@@ -29,7 +29,7 @@ export function useGetSearchData() {
   ) {
     if (e) e.preventDefault();
     setKeyword(keyword);
-    const pathName = locationPath === "apt" ? "apt" : "defect";
+    const pathName = apartSeparate === "apt" ? "apt" : "defect";
 
     try {
       addRecord(keyword);
