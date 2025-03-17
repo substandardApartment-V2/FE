@@ -6,11 +6,16 @@ import { Link } from "react-router-dom";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { resetSelectMarker } from "@/utils/map/resetSelectMarker";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
+
+  const { pathname } = useLocation();
+  const headerBorderStyle =
+    pathname === "/weak" || pathname === "/" ? styles.noBorderBottom : "";
 
   const navData = [
     { target: ".", navContent: "아파트 정보" },
@@ -20,7 +25,7 @@ const Header = () => {
   ];
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${headerBorderStyle}`}>
       <div className={styles.logo}>
         <Link
           to={"/"}

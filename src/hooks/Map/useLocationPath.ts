@@ -4,5 +4,7 @@ import { useLocation } from "react-router-dom";
 
 export default function useLocationPath() {
   const location = useLocation();
-  return location.pathname === "/weak" ? "defect" : "apt";
+  const pathName = location.pathname;
+  const apartSeparate = pathName === "/weak" ? "defect" : "apt";
+  return { pathName, apartSeparate };
 }

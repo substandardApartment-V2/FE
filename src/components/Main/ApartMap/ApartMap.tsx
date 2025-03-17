@@ -19,7 +19,7 @@ export default function ApartMap() {
   const map = useMarkerStore((state) => state.map);
   const bounds = useMarkerStore((state) => state.bounds);
   const setBounds = useMarkerStore((state) => state.setBounds);
-  const locationPath = useLocationPath();
+  const { apartSeparate } = useLocationPath();
   const { mapRef, getSuccess, getError } = useCreateMap();
   const isLoading = useMarkerStore((state) => state.isLoading);
 
@@ -34,7 +34,7 @@ export default function ApartMap() {
   }, [isLoading]);
 
   useGetApartMarker({
-    url: `${import.meta.env.VITE_SERVER_API_CALL}/map/${locationPath}?`,
+    url: `${import.meta.env.VITE_SERVER_API_CALL}/map/${apartSeparate}?`,
     query: {
       maxLa: bounds?.ne.lat,
       maxLo: bounds?.ne.lng,

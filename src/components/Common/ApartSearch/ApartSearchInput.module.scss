@@ -34,11 +34,13 @@
     }
     &:focus {
       border-radius: 0;
+      border-top: 0.1rem solid colors.$mainRed;
       border-bottom: 0.1rem solid colors.$mainRed;
       z-index: 9999;
     }
     @include rs.respond-to("desktop-small") {
       border: 0;
+      border-top: 0.1rem solid colors.$mainRed;
       border-bottom: 0.1rem solid colors.$mainRed;
       border-radius: 0;
       width: 100%;
@@ -52,9 +54,17 @@
   }
   .abled {
     border: 0.1rem solid #9e9e9e;
+    @include rs.respond-to("desktop-small") {
+      border-left: none;
+      border-right: none;
+    }
   }
   .disabled {
     border: 0.1rem solid colors.$mainRed;
+    @include rs.respond-to("desktop-small") {
+      border-left: none;
+      border-right: none;
+    }
   }
   .searchButton {
     display: flex;

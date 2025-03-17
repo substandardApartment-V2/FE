@@ -31,7 +31,7 @@ type TUseMarkerStore = {
   selectMarkerId?: string;
   setMap: (map: naver.maps.Map | null) => void;
   setIsLoading: (isLoading: boolean) => void;
-  setBounds: (bounds: TBounds) => void;
+  setBounds: (bounds: TBounds | null) => void;
   setMarkerData: (markerData: TApartMarkerData[]) => void;
   setSelectMarker: (selectMarker: naver.maps.Marker | null) => void;
   setMarkers: (markers: naver.maps.Marker[]) => void;
@@ -47,7 +47,7 @@ export const useMarkerStore = create<TUseMarkerStore>((set) => ({
   selectMarker: null,
   setMap: (map: naver.maps.Map | null) => set(() => ({ map: map })),
   setIsLoading: (isLoading: boolean) => set(() => ({ isLoading: isLoading })),
-  setBounds: (bounds: TBounds) => set(() => ({ bounds: bounds })),
+  setBounds: (bounds: TBounds | null) => set(() => ({ bounds: bounds })),
   setMarkerData: (markerData: TApartMarkerData[]) =>
     set(() => ({ markerData: markerData })),
   setSelectMarker: (selectMarker: naver.maps.Marker | null) =>
