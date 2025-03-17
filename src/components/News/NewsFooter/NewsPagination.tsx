@@ -22,7 +22,7 @@ const NewsPagination = () => {
 
   return (
     <div className={newsPage.pagination}>
-      <button onClick={() => goToPage(1)} className="goToPage">
+      <button onClick={() => goToPage(1)} className={newsPage.customButton}>
         <img src={doubleLeft} alt="맨처음으로" />
       </button>
       <ReactPaginate
@@ -38,7 +38,10 @@ const NewsPagination = () => {
         nextLabel={<img src={right} alt="다음" />}
         breakLabel={<img src={threeDot} alt="..." />}
       />
-      <button onClick={() => goToPage(pageCount)} className="custom-button">
+      <button
+        onClick={() => goToPage(pageCount)}
+        className={newsPage.customButton}
+      >
         <img src={doubleRight} alt="맨뒤로" />
       </button>
     </div>
