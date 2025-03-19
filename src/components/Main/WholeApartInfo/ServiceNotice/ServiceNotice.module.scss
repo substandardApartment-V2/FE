@@ -23,7 +23,7 @@
     }
     .title {
       font-size: 2rem;
-      font-family: "Pretendard-Bold", sans-serif;
+      font-weight: 600;
       @include rs.respond-to("mobile-large") {
         font-size: 1.8rem;
       }
