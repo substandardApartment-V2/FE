@@ -59,7 +59,7 @@ export default function WeakApartInfo() {
             {transformedBasicInfoArray.map((listData, index) => (
               <li key={index}>
                 <strong>{weakBasicInfoTitleMapping[listData.title]}</strong>
-                <span>{listData.data}</span>
+                <span>{listData.data ? listData.data : "정보없음"}</span>
               </li>
             ))}
           </ul>
@@ -74,7 +74,7 @@ export default function WeakApartInfo() {
               {transformedBuildInfoArray.map((listData, index) => (
                 <li key={index}>
                   <strong>{weakBuildInfoTitleMapping[listData.title]}</strong>
-                  <span>{listData.data}</span>
+                  <span>{listData.data ? listData.data : "정보없음"}</span>
                 </li>
               ))}
             </ul>
@@ -88,7 +88,7 @@ export default function WeakApartInfo() {
               {transformedSplmnInfoArray.map((listData, index) => (
                 <li key={index}>
                   <strong>{weakSplmnInfoTitleMapping[listData.title]}</strong>
-                  <span>{listData.data}</span>
+                  <span>{listData.data ? listData.data : "정보없음"}</span>
                 </li>
               ))}
             </ul>
