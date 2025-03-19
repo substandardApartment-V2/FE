@@ -23,7 +23,7 @@ const NotFound = () => {
         >
           이전으로 <img src={errorBackIcon} alt="이전 아이콘" />
         </button>
-        <Link to="">
+        <Link to="/">
           메인으로 <img src={errorBackIcon} alt="이전 아이콘" />
         </Link>
       </div>
