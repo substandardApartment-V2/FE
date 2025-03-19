@@ -9,11 +9,9 @@
   }
   .buildCompanyDate {
     display: grid;
-    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
     width: 100%;
-    min-width: 0;
     background-color: #ffffff;
-    @include rs.respond-to("desktop-small") {
-    }
   }
 }
