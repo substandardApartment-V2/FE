@@ -5,6 +5,7 @@ import { useMainInfoStore } from "@/store/useMainInfoStore";
 import styles from "./NavList.module.scss";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
+import useLocationPath from "@/hooks/Map/useLocationPath";
 
 export default function NavList(props: TNavList) {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
@@ -14,23 +15,25 @@ export default function NavList(props: TNavList) {
     (state) => state.setWeakApartInfo
   );
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
-  const setIsLoading = useMarkerStore((state) => state.setIsLoading);
   const setMap = useMarkerStore((state) => state.setMap);
+  const setMarkers = useMarkerStore((state) => state.setMarkers);
+  const { pathName } = useLocationPath();
 
   const resetInfoHandler = () => {
+    if (props.target === pathName) return;
     setIsDetailInfo(null);
     setMainInfo("WHOLE");
     setApartInfo(null);
     setMarkerData([]);
+    setMarkers([]);
     setWeakApartInfo(null);
     setMap(null);
-    setIsLoading(true);
   };
 
   return (
     <li className={styles.navList}>
       <NavLink
-        to={props.target}
+        to={props.target !== pathName ? props.target : "#"}
         className={({ isActive }) => (isActive ? styles.active : "undefined")}
         onClick={resetInfoHandler}
       >

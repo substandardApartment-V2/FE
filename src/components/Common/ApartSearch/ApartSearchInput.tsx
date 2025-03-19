@@ -1,5 +1,6 @@
 // 아파트 검색 input 컴포넌트
 
+import { useEffect, useState } from "react";
 import searchIcon from "@/assets/Main/searchICon.svg";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { Dispatch, RefObject, SetStateAction } from "react";
@@ -14,11 +15,18 @@ type TApartSearchInput = {
 };
 
 export default function ApartSearchInput(props: TApartSearchInput) {
+  const [isLoading, setIsLoading] = useState(true);
   const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
   const setMainInfo = useMainInfoStore.getState().setMainInfo;
   const setKeyword = useSearchStore((state) => state.setKeyword);
   const { addRecord } = useSearchRecord();
-  const isLoading = useMarkerStore((state) => state.isLoading);
+  const map = useMarkerStore((state) => state.map);
+
+  useEffect(() => {
+    if (map) {
+      setIsLoading(false);
+    }
+  }, [map]);
 
   return (
     <form
