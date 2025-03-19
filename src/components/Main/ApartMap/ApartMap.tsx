@@ -8,11 +8,11 @@ import MapLoading from "./MapLoading";
 import CurrentMapSearch from "./CurrentMapSearch";
 import useGetApartMarker from "@/hooks/Api/useGetApartMarker";
 import { useMarkerStore } from "@/store/useMarkerStore";
-import useMapMarkers from "@/hooks/Map/useMapMarkers";
 import useCreateMap from "@/hooks/Map/useCreateMap";
 import useLocationPath from "@/hooks/Map/useLocationPath";
 import { updateBounds } from "@/utils/map/updateBounds";
 import ApartLocation from "./ApartLocation";
+import useMapMarkers from "@/hooks/Map/useMapMarkers";
 
 export default function ApartMap() {
   const isDetailInfo = useApartInfoStore((state) => state.isDetailInfo);
@@ -20,8 +20,8 @@ export default function ApartMap() {
   const bounds = useMarkerStore((state) => state.bounds);
   const setBounds = useMarkerStore((state) => state.setBounds);
   const { apartSeparate } = useLocationPath();
-  const { mapRef, getSuccess, getError } = useCreateMap();
-  const isLoading = useMarkerStore((state) => state.isLoading);
+  const { isLoading, mapRef, getSuccess, getError } = useCreateMap();
+  // const isLoading = useMarkerStore((state) => state.isLoading);
 
   const updateBoundsHandler = () => {
     if (map) {
@@ -31,7 +31,7 @@ export default function ApartMap() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getSuccess, getError);
-  }, []);
+  }, [isLoading]);
 
   useGetApartMarker({
     url: `${import.meta.env.VITE_SERVER_API_CALL}/map/${apartSeparate}?`,

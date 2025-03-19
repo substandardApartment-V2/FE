@@ -4,7 +4,7 @@
   border: 0.1rem solid #aaafb9;
   padding: 1.4rem 2rem;
   width: 100%;
-  height: 25%;
+  min-height: 25%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   &:hover {
@@ -36,7 +36,7 @@
       font-weight: 700;
       color: #142337;
       @include rs.respond-to("desktop-large") {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
       }
       @include rs.respond-to("desktop-small") {
         font-size: 1.5rem;
@@ -49,7 +49,7 @@
       font-size: 1.5rem;
       color: #aaafb9;
       @include rs.respond-to("desktop-large") {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
       @include rs.respond-to("desktop-small") {
         font-size: 1.3rem;
@@ -70,7 +70,7 @@
     overflow: hidden;
     white-space: pre-line;
     @include rs.respond-to("desktop-large") {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
     @include rs.respond-to("mobile-large") {
       font-size: 1.3rem;
