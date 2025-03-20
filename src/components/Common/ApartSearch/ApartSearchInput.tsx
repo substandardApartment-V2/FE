@@ -8,6 +8,7 @@ import styles from "./ApartSearchInput.module.scss";
 import { useSearchStore } from "@/store/useSearchStore";
 import useSearchRecord from "@/hooks/Search/useSearhRecord";
 import { useMarkerStore } from "@/store/useMarkerStore";
+import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 
 type TApartSearchInput = {
   searchRef: RefObject<HTMLInputElement>;
@@ -21,6 +22,10 @@ export default function ApartSearchInput(props: TApartSearchInput) {
   const setKeyword = useSearchStore((state) => state.setKeyword);
   const { addRecord } = useSearchRecord();
   const map = useMarkerStore((state) => state.map);
+  const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
+  const setWeakApartInfo = useWeakApartInfoStore(
+    (state) => state.setWeakApartInfo
+  );
 
   useEffect(() => {
     if (map) {
@@ -39,6 +44,8 @@ export default function ApartSearchInput(props: TApartSearchInput) {
           setMainInfo("SEARCH");
           setIsSlide(true);
           props.searchRef.current.blur();
+          setApartInfo(null);
+          setWeakApartInfo(null);
         }
         props.setShowRecentSearch(false);
       }}
