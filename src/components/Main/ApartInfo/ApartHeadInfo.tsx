@@ -57,7 +57,7 @@ export default function ApartHeadInfo(props: TApartHeadInfo) {
           <span className={styles.apartRegion}>{props.apartRegion}</span>
           <div className={styles.apartZipCode}>
             <img src={zipCodeIcon} alt="apart zipcode icon" />
-            <span>{props.zipCode}</span>
+            <span>{props.zipCode ? props.zipCode : "정보없음"}</span>
           </div>
         </div>
       </div>
