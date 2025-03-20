@@ -8,11 +8,14 @@ import WholeApartInfo from "@/components/Main/WholeApartInfo/WholeApartInfo";
 import ApartInfo from "@/components/Main/ApartInfo/ApartInfo";
 import styles from "./InfoContainer.module.scss";
 import ApartSearch from "../Common/ApartSearch/ApartSearch";
+import { useMarkerStore } from "@/store/useMarkerStore";
+import Loading from "./Loading";
 
 export default function InfoContainer() {
   const mainInfo = useMainInfoStore((state) => state.mainInfo);
   const isSlide = useMainInfoStore((state) => state.isSlide);
   const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
+  const isLoading = useMarkerStore((state) => state.isLoading);
 
   const mainInfoType = {
     WHOLE: <WholeApartInfo />,
@@ -31,7 +34,7 @@ export default function InfoContainer() {
       <section className={styles.apartSearch}>
         <ApartSearch />
       </section>
-      {mainInfo && mainInfoType[mainInfo]}
+      {isLoading ? <Loading /> : mainInfo && mainInfoType[mainInfo]}
     </section>
   );
 }

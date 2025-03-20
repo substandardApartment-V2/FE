@@ -16,6 +16,7 @@ import communityFacilitiesIcon from "@/assets/Main/GeneralInfo/Amenities/communi
 import communityLocationIcon from "@/assets/Main/GeneralInfo/Amenities/communityLocationIcon.svg";
 import playgroundIcon from "@/assets/Main/GeneralInfo/Amenities/playgroundIcon.svg";
 import childCareIcon from "@/assets/Main/GeneralInfo/Amenities/childCareIcon.svg";
+import etcIcon from "@/assets/Main/GeneralInfo/Amenities/etcIcon.svg";
 
 export const apartEtcInfoTitleMapping = {
   amenities: { title: "부대복리시설", icon: amenitiesIcon },
@@ -48,4 +49,5 @@ export const amenitiesIconMapping = {
   보육시설: childCareIcon,
   문고: childCareIcon,
   유치원: childCareIcon,
+  기타: etcIcon,
 };
