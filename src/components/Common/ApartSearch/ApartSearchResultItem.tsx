@@ -55,10 +55,8 @@ export default function ApartSearchResultItem({
     if (map) {
       try {
         const newLocation = new naver.maps.LatLng(latitude, longitude);
-        setTimeout(() => {
-          map.setCenter(newLocation);
-          map.setZoom(19);
-        }, 50);
+        map.setCenter(newLocation);
+        map.setZoom(19);
       } catch (error) {
         console.error("지도 이동 중 오류:", error);
       }
@@ -77,16 +75,23 @@ export default function ApartSearchResultItem({
     });
 
     if (selectMarker) {
-      selectMarker.setIcon({
-        url: selectMapMarkerIcon,
-        size: new naver.maps.Size(35, 40),
-        scaledSize: new naver.maps.Size(35, 40),
-        origin: new naver.maps.Point(0, 0),
-        anchor: new naver.maps.Point(12, 34),
+      selectMarker.setMap(null);
+      if (!map) return;
+      const newMarker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(latitude, longitude),
+        map: map,
+        icon: {
+          url: selectMapMarkerIcon,
+          size: new naver.maps.Size(35, 40),
+          scaledSize: new naver.maps.Size(35, 40),
+          origin: new naver.maps.Point(0, 0),
+          anchor: new naver.maps.Point(12, 34),
+        },
       });
-      setSelectMarker(selectMarker);
+      setSelectMarker(newMarker);
       setSelectMarkerId(aptId);
     }
+
     setIsDetailInfo(null);
     setIsSlide(true);
     setMainInfo("SELECT");
