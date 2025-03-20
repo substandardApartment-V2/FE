@@ -5,13 +5,13 @@ import { TApartMarkerData } from "@/store/useMarkerStore";
 import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
 import selectMapMarkerIcon from "@/assets/Main/Map/selectMapMarkerIcon.svg";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
-import getApartData from "@/utils/api/getApartData";
 import useLocationPath from "./useLocationPath";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import useCreateCluster from "./useCreateCluster";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import { resetSelectMarker } from "@/utils/map/resetSelectMarker";
+import axios from "axios";
 
 export default function useMapMarkers() {
   const selectMarkerIdRef = useRef<string | null>(null);
@@ -22,6 +22,7 @@ export default function useMapMarkers() {
     (state) => state.setWeakApartInfo
   );
   const selectMarker = useMarkerStore((state) => state.selectMarker);
+  const setIsLoading = useMarkerStore((state) => state.setIsLoading);
   const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
   const markerData = useMarkerStore((state) => state.markerData);
   const map = useMarkerStore((state) => state.map);
@@ -29,8 +30,19 @@ export default function useMapMarkers() {
   const setMarkers = useMarkerStore((state) => state.setMarkers);
   const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
-
   const { apartSeparate } = useLocationPath();
+
+  const getApartData = async (url: string) => {
+    try {
+      setIsLoading(true);
+      const result = await axios(url);
+      return result.data;
+    } catch (error) {
+      return error;
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (selectMarker === null) {
@@ -72,7 +84,7 @@ export default function useMapMarkers() {
             return;
           }
           if (selectMarkerRef.current) {
-            setIsSlide(false);
+            // setIsSlide(false);
             selectMarkerRef.current.setIcon({
               url: mapMarkerIcon,
               size: new naver.maps.Size(35, 40),

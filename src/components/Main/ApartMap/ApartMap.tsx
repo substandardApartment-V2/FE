@@ -21,7 +21,6 @@ export default function ApartMap() {
   const setBounds = useMarkerStore((state) => state.setBounds);
   const { apartSeparate } = useLocationPath();
   const { isLoading, mapRef, getSuccess, getError } = useCreateMap();
-  // const isLoading = useMarkerStore((state) => state.isLoading);
 
   const updateBoundsHandler = () => {
     if (map) {

@@ -26,7 +26,10 @@
     text-align: center;
     min-width: 40%;
     @include rs.respond-to("desktop-large") {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
+    }
+    @include rs.respond-to("desktop-medium") {
+      font-size: 1.3rem;
     }
     @include rs.respond-to("tablet-small") {
       padding: 1rem 2rem;
@@ -51,9 +54,16 @@
     padding: 1.2rem 1.8rem;
     border: 0.1rem solid #9e9e9e;
     min-width: 60%;
+    @include rs.respond-to("desktop-large") {
+      font-size: 1.5rem;
+    }
+    @include rs.respond-to("desktop-medium") {
+      font-size: 1.3rem;
+    }
     @include rs.respond-to("desktop-small") {
       border: none;
       padding: 0 1.2rem;
+      font-size: 1.5rem;
     }
     @include rs.respond-to("tablet-small") {
       font-size: 1.5rem;

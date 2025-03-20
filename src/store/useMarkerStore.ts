@@ -41,7 +41,7 @@ type TUseMarkerStore = {
 export const useMarkerStore = create<TUseMarkerStore>((set) => ({
   map: null,
   markerData: [],
-  isLoading: true,
+  isLoading: false,
   markers: [],
   bounds: null,
   selectMarker: null,
