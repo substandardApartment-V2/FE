@@ -6,6 +6,11 @@ import imageDefaultImage from "@/assets/News/newsDefaultImage.jpeg";
 import parseContent from "@/utils/parse/parseContent";
 
 export default function WeakMainNewsList(props: TWeakMainNewsList) {
+  const onErrorImg: React.ReactEventHandler<HTMLImageElement> = (e) => {
+    const target = e.target as HTMLImageElement;
+    target.src = imageDefaultImage;
+  };
+
   return (
     <li className={styles.newsContent}>
       <Link to={props.url} target="_blank">
@@ -13,6 +18,7 @@ export default function WeakMainNewsList(props: TWeakMainNewsList) {
           src={props.image ? props.image : imageDefaultImage}
           className={styles.newsImage}
           alt="news image"
+          onError={onErrorImg}
         />
         <div className={styles.newsText}>
           <span className={styles.title}>{parseContent(props.title)}</span>

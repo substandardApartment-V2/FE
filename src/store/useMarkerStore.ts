@@ -28,14 +28,14 @@ type TUseMarkerStore = {
   markers: naver.maps.Marker[]; // 변환 후 마커 배열
   markerData: TApartMarkerData[]; // 변환 전 마커 배열
   selectMarker: naver.maps.Marker | null; // 선택된 마커
-  selectMarkerId?: string;
+  selectMarkerId: string | null;
   setMap: (map: naver.maps.Map | null) => void;
   setIsLoading: (isLoading: boolean) => void;
   setBounds: (bounds: TBounds | null) => void;
   setMarkerData: (markerData: TApartMarkerData[]) => void;
   setSelectMarker: (selectMarker: naver.maps.Marker | null) => void;
   setMarkers: (markers: naver.maps.Marker[]) => void;
-  setSelectMarkerId: (seletMarkerId: string) => void;
+  setSelectMarkerId: (seletMarkerId: string | null) => void;
 };
 
 export const useMarkerStore = create<TUseMarkerStore>((set) => ({
@@ -45,6 +45,7 @@ export const useMarkerStore = create<TUseMarkerStore>((set) => ({
   markers: [],
   bounds: null,
   selectMarker: null,
+  selectMarkerId: null,
   setMap: (map: naver.maps.Map | null) => set(() => ({ map: map })),
   setIsLoading: (isLoading: boolean) => set(() => ({ isLoading: isLoading })),
   setBounds: (bounds: TBounds | null) => set(() => ({ bounds: bounds })),
@@ -54,6 +55,6 @@ export const useMarkerStore = create<TUseMarkerStore>((set) => ({
     set(() => ({ selectMarker: selectMarker })),
   setMarkers: (markers: naver.maps.Marker[]) =>
     set(() => ({ markers: markers })),
-  setSelectMarkerId: (selectMarkerId: string) =>
+  setSelectMarkerId: (selectMarkerId: string | null) =>
     set({ selectMarkerId: selectMarkerId }),
 }));

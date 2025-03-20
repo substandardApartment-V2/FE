@@ -1,6 +1,6 @@
 // 네이버 지도 마커 생성 커스텀 훅
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { TApartMarkerData } from "@/store/useMarkerStore";
 import mapMarkerIcon from "@/assets/Main/Map/MapMarkerIcon.svg";
 import selectMapMarkerIcon from "@/assets/Main/Map/selectMapMarkerIcon.svg";
@@ -10,18 +10,15 @@ import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import useCreateCluster from "./useCreateCluster";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
-import { resetSelectMarker } from "@/utils/map/resetSelectMarker";
 import axios from "axios";
 
 export default function useMapMarkers() {
-  const selectMarkerIdRef = useRef<string | null>(null);
-  const selectMarkerRef = useRef<naver.maps.Marker | null>(null);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
   const setWeakApartInfo = useWeakApartInfoStore(
     (state) => state.setWeakApartInfo
   );
-  const selectMarker = useMarkerStore((state) => state.selectMarker);
+  const setSelectMarkerId = useMarkerStore((state) => state.setSelectMarkerId);
   const setIsLoading = useMarkerStore((state) => state.setIsLoading);
   const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
   const markerData = useMarkerStore((state) => state.markerData);
@@ -45,13 +42,7 @@ export default function useMapMarkers() {
   };
 
   useEffect(() => {
-    if (selectMarker === null) {
-      selectMarkerRef.current = null;
-    }
-  }, [selectMarker]);
-
-  useEffect(() => {
-    if (!map || !markerData) return;
+    if (!map || !markerData.length) return;
     markers.forEach((marker) => marker.setMap(null));
 
     const newMarkers = markerData
@@ -75,30 +66,20 @@ export default function useMapMarkers() {
         });
 
         naver.maps.Event.addListener(marker, "click", async () => {
-          if (
-            !selectMarkerRef.current &&
-            useMarkerStore.getState().selectMarker
-          ) {
-            resetSelectMarker();
-            setMainInfo("WHOLE");
-            return;
-          }
-          if (selectMarkerRef.current) {
+          if (useMarkerStore.getState().selectMarker) {
             // setIsSlide(false);
-            selectMarkerRef.current.setIcon({
+            const selectMarker = useMarkerStore.getState().selectMarker;
+            if (!selectMarker) return;
+            selectMarker.setIcon({
               url: mapMarkerIcon,
               size: new naver.maps.Size(35, 40),
               scaledSize: new naver.maps.Size(35, 40),
               origin: new naver.maps.Point(0, 0),
               anchor: new naver.maps.Point(12, 34),
             });
-            selectMarkerRef.current = null;
-            if (
-              selectMarkerIdRef &&
-              selectMarkerIdRef.current === listData.aptId
-            ) {
+            if (useMarkerStore.getState().selectMarkerId === listData.aptId) {
               setMainInfo("WHOLE");
-              selectMarkerIdRef.current = null;
+              setSelectMarkerId(null);
               setSelectMarker(null);
               if (apartSeparate === "apt") setApartInfo(null);
               else setWeakApartInfo(null);
@@ -121,8 +102,8 @@ export default function useMapMarkers() {
           setIsSlide(true);
           setSelectMarker(marker);
           setMainInfo("SELECT");
-          selectMarkerIdRef.current = listData.aptId;
-          selectMarkerRef.current = marker;
+          setSelectMarkerId(listData.aptId);
+          setSelectMarker(marker);
           if (apartSeparate === "apt") setApartInfo(data.data);
           else setWeakApartInfo(data.data);
         });

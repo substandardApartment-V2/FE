@@ -17,7 +17,6 @@ export function useGetSearchData() {
   const { addRecord } = useSearchRecord();
   const markers = useMarkerStore.getState().markers;
   const map = useMarkerStore.getState().map;
-  const setMarkerData = useMarkerStore.getState().setMarkerData;
   const setMainInfo = useMainInfoStore.getState().setMainInfo;
   const setIsSlide = useMainInfoStore.getState().setIsSlide;
   const setKeyword = useSearchStore((state) => state.setKeyword);
@@ -46,7 +45,6 @@ export function useGetSearchData() {
 
       if (data.data.code === 200 && map) {
         markers.forEach((marker) => marker.setMap(null));
-        setMarkerData(data.data.data.results);
         setMainInfo("SEARCH");
         setIsSlide(true);
         // useMapMarkers(); // 마커 생성 커스텀 훅 호출

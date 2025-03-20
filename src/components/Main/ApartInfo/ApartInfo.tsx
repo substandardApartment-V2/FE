@@ -8,8 +8,8 @@ import ApartMaintanceCharge from "./ApartMainInfo/ApartMaintanceCharge";
 import ApartGeneralInfo from "./ApartMainInfo/ApartGeneralInfo/ApartGeneralInfo";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
-import getApartData from "@/utils/api/getApartData";
 import DetailInfo from "../DetailInfo/DetailInfo";
+import getApartData from "@/utils/api/getApartData";
 
 export default function ApartInfo() {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
@@ -48,19 +48,21 @@ export default function ApartInfo() {
           <ApartMaintanceCharge />
           <ApartGeneralInfo />
         </section>
-        <button
-          className={styles.detailApartInfoButton}
-          onClick={() => {
-            if (isDetailInfo === "APARTINFO") setIsDetailInfo(null);
-            else {
-              setIsDetailInfo("APARTINFO");
-              apartDetailApiHandler();
-            }
-          }}
-        >
-          <img src={detailButtonIconD} alt="apart detail button" />
-          자세히보기
-        </button>
+        {apartInfo?.aptInfo.detailId && (
+          <button
+            className={styles.detailApartInfoButton}
+            onClick={() => {
+              if (isDetailInfo === "APARTINFO") setIsDetailInfo(null);
+              else {
+                setIsDetailInfo("APARTINFO");
+                apartDetailApiHandler();
+              }
+            }}
+          >
+            <img src={detailButtonIconD} alt="apart detail button" />
+            자세히보기
+          </button>
+        )}
       </section>
     </section>
   );

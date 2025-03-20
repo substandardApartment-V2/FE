@@ -5,8 +5,8 @@ import useLocationPath from "@/hooks/Map/useLocationPath";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { TApartMarkerData, useMarkerStore } from "@/store/useMarkerStore";
-import getApartData from "@/utils/api/getApartData";
 import styles from "./ApartSearchResult.module.scss";
+import axios from "axios";
 
 type ApartResultItemProps = {
   listData: TApartMarkerData;
@@ -22,7 +22,21 @@ export default function ApartSearchResultItem({
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
   const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
+  const setSelectMarkerId = useMarkerStore((state) => state.setSelectMarkerId);
+  const setIsLoading = useMarkerStore((state) => state.setIsLoading);
   const { apartSeparate } = useLocationPath();
+
+  const getApartData = async (url: string) => {
+    try {
+      setIsLoading(true);
+      const result = await axios(url);
+      return result.data;
+    } catch (error) {
+      return error;
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const selectSearchApartHandler = (latitude: number, longitude: number) => {
     if (map) {
@@ -68,6 +82,7 @@ export default function ApartSearchResultItem({
         anchor: new naver.maps.Point(12, 34),
       });
       setSelectMarker(selectMarker);
+      setSelectMarkerId(aptId);
     }
     setIsSlide(true);
     setIsDetailInfo(null);
