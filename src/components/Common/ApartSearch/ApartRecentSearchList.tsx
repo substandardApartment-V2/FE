@@ -2,12 +2,12 @@
 
 import closeIcon from "@/assets/Main/Search/searchClose.svg";
 import time from "@/assets/Main/Search/searchTime.svg";
-import { useGetSearchData } from "@/hooks/Api/useGetSearchData";
 import useSearchRecord from "@/hooks/Search/useSearhRecord";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { useSearchRecordStore } from "@/store/useSearchRecordStore";
 import { RecentSearchListProps } from "@/types/TSearch/TRecentSearchListTypes";
 import styles from "./ApartSearch.module.scss";
+import { useSearchStore } from "@/store/useSearchStore";
 
 export default function ApartRecentSearchList({
   searchRef,
@@ -16,7 +16,8 @@ export default function ApartRecentSearchList({
   const { removeRecord, clearRecord } = useSearchRecord();
   const searchRecord = useSearchRecordStore((state) => state.searchRecord);
   const setIsSlide = useMainInfoStore.getState().setIsSlide;
-  const getSearchData = useGetSearchData();
+  const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
+  const setKeyword = useSearchStore((state) => state.setKeyword);
 
   return (
     <div className={styles.recentSearch}>
@@ -39,7 +40,8 @@ export default function ApartRecentSearchList({
                 <li
                   key={record.id}
                   onClick={() => {
-                    getSearchData(record.keyword);
+                    setMainInfo("SEARCH");
+                    setKeyword(record.keyword);
                     setIsSlide(true);
                     setShowRecentSearch(false);
                     if (searchRef.current) {
