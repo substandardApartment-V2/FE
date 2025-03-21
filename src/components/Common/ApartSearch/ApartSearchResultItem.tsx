@@ -31,6 +31,7 @@ export default function ApartSearchResultItem({
   const setSelectMarkerId = useMarkerStore((state) => state.setSelectMarkerId);
   const setIsLoading = useMarkerStore((state) => state.setIsLoading);
   const setIsReset = useSearchStore((state) => state.setIsReset);
+  const isReset = useSearchStore.getState().isReset;
   const { apartSeparate } = useLocationPath();
 
   const getApartData = async (url: string) => {
@@ -51,7 +52,7 @@ export default function ApartSearchResultItem({
       map.setCenter(newLocation);
       map.setZoom(18);
     }
-    setIsReset(true);
+    if (isReset) setIsReset(false);
   };
 
   const selectSearchApartInfoHandler = async (
@@ -99,7 +100,7 @@ export default function ApartSearchResultItem({
     setMainInfo("SELECT");
     if (apartSeparate === "apt") setApartInfo(data.data);
     else setWeakApartInfo(data.data);
-    setIsReset(true);
+    if (isReset) setIsReset(false);
   };
 
   return (
