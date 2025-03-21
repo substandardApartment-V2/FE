@@ -7,6 +7,7 @@ import { useMarkerStore } from "@/store/useMarkerStore";
 import { useSearchStore } from "@/store/useSearchStore";
 import axios from "axios";
 import { RefObject } from "react";
+// import useMapMarkers from "../Map/useMapMarkers";
 
 const removeSpecialCharacters = (input: string): string => {
   return input.replace(/[^a-zA-Z0-9가-힣\s]/g, "");
@@ -17,6 +18,7 @@ export function useGetSearchData() {
   const { addRecord } = useSearchRecord();
   const markers = useMarkerStore.getState().markers;
   const map = useMarkerStore.getState().map;
+  // const setMarkerData = useMarkerStore((state) => state.setMarkerData);
   const setMainInfo = useMainInfoStore.getState().setMainInfo;
   const setIsSlide = useMainInfoStore.getState().setIsSlide;
   const setKeyword = useSearchStore((state) => state.setKeyword);
@@ -47,7 +49,6 @@ export function useGetSearchData() {
         markers.forEach((marker) => marker.setMap(null));
         setMainInfo("SEARCH");
         setIsSlide(true);
-        // useMapMarkers(); // 마커 생성 커스텀 훅 호출
       }
     } catch (error) {
       console.log("ERROR : ", error);
