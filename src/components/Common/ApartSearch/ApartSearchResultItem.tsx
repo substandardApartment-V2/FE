@@ -43,7 +43,7 @@ export default function ApartSearchResultItem({
     if (map) {
       const newLocation = new naver.maps.LatLng(latitude, longitude);
       map.setCenter(newLocation);
-      map.setZoom(17);
+      map.setZoom(18);
     }
   };
 
@@ -75,25 +75,20 @@ export default function ApartSearchResultItem({
     });
 
     if (selectMarker) {
-      selectMarker.setMap(null);
-      if (!map) return;
-      const newMarker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(latitude, longitude),
-        map: map,
-        icon: {
-          url: selectMapMarkerIcon,
-          size: new naver.maps.Size(35, 40),
-          scaledSize: new naver.maps.Size(35, 40),
-          origin: new naver.maps.Point(0, 0),
-          anchor: new naver.maps.Point(12, 34),
-        },
+      selectMarker.setIcon({
+        url: selectMapMarkerIcon,
+        size: new naver.maps.Size(35, 40),
+        scaledSize: new naver.maps.Size(35, 40),
+        origin: new naver.maps.Point(0, 0),
+        anchor: new naver.maps.Point(12, 34),
       });
-      setSelectMarker(newMarker);
+      setSelectMarker(selectMarker);
       setSelectMarkerId(aptId);
+      selectMarker.setMap(null);
+      selectMarker.setMap(useMarkerStore.getState().map);
     }
-
-    setIsDetailInfo(null);
     setIsSlide(true);
+    setIsDetailInfo(null);
     setMainInfo("SELECT");
     setApartInfo(data.data);
   };
