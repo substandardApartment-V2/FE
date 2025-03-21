@@ -38,7 +38,7 @@ export function useInfiniteScroll() {
 
   useEffect(() => {
     if (!keyword) return;
-    if (prevKeyword !== keyword) {
+    if (prevKeyword !== keyword || (prevKeyword === keyword && page === 1)) {
       setItems([]);
       setPage(1);
       setHasMore(true);
