@@ -22,8 +22,8 @@ export function useInfiniteScroll() {
   const setMarkerData = useMarkerStore((state) => state.setMarkerData);
   const map = useMarkerStore((state) => state.map);
 
-  const changeLocation = (results: any) => {
-    if (!location && page === 1) setLocation(true);
+  const changeLocation = (pageNum: number, results: any) => {
+    if (!location && pageNum === 1) setLocation(true);
     else return;
     if (map) {
       const newLocation = new naver.maps.LatLng(
@@ -43,7 +43,7 @@ export function useInfiniteScroll() {
       setPage(1);
       setHasMore(true);
       setTotalCount(0);
-      fetchData(page, keyword);
+      fetchData(1, keyword);
       setPrevKeyword(keyword);
     }
   }, [keyword]);
@@ -69,7 +69,7 @@ export function useInfiniteScroll() {
         {
           params: {
             keyword: searchKeyword,
-            page: page,
+            page: pageNum,
             num: 10,
           },
         }
@@ -82,7 +82,7 @@ export function useInfiniteScroll() {
       }
 
       const { results, totalElements } = response.data.data;
-      changeLocation(results);
+      changeLocation(pageNum, results);
       setTotalCount(totalElements);
       setItems((prevItems) => {
         const newItems = pageNum === 1 ? results : [...prevItems, ...results];
