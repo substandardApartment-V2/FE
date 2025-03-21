@@ -94,7 +94,6 @@ export default function ApartSearchResultItem({
     setIsSlide(true);
     setIsDetailInfo(null);
     setMainInfo("SELECT");
-    console.log(data.data);
     if (apartSeparate === "apt") setApartInfo(data.data);
     else setWeakApartInfo(data.data);
   };
