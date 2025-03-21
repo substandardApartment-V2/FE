@@ -30,7 +30,7 @@ export default function ApartSearchResultItem({
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const setSelectMarkerId = useMarkerStore((state) => state.setSelectMarkerId);
   const setIsLoading = useMarkerStore((state) => state.setIsLoading);
-  const { setIsReset } = useSearchStore();
+  const setIsReset = useSearchStore((state) => state.setIsReset);
   const { apartSeparate } = useLocationPath();
 
   const getApartData = async (url: string) => {
