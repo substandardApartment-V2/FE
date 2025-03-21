@@ -38,7 +38,7 @@ export default function useGetApartMarker(paras: TUseGetApartMarker) {
           const result = await axios(
             `${paras.url}minLa=${stableQuery.minLa}&minLo=${stableQuery.minLo}&maxLa=${stableQuery.maxLa}&maxLo=${stableQuery.maxLo}`
           );
-          setMarkerData(result.data.data);
+          if (result.data.data) setMarkerData(result.data.data);
           prevQuery.current = stableQuery;
         }
       } catch (error) {

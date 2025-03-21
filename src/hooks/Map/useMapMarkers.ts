@@ -42,7 +42,7 @@ export default function useMapMarkers() {
   };
 
   useEffect(() => {
-    if (!map || !markerData.length) return;
+    if (!map || markerData.length === 0) return;
     markers.forEach((marker) => marker.setMap(null));
 
     const newMarkers = markerData
@@ -103,7 +103,8 @@ export default function useMapMarkers() {
           setSelectMarker(marker);
           setMainInfo("SELECT");
           setSelectMarkerId(listData.aptId);
-          setSelectMarker(marker);
+          marker.setMap(null);
+          marker.setMap(useMarkerStore.getState().map);
           if (apartSeparate === "apt") setApartInfo(data.data);
           else setWeakApartInfo(data.data);
         });

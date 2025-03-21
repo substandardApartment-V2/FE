@@ -17,6 +17,7 @@ export default function ApartSearchResultItem({
 }: ApartResultItemProps) {
   const map = useMarkerStore((state) => state.map);
   const markers = useMarkerStore((state) => state.markers);
+
   const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
@@ -42,7 +43,7 @@ export default function ApartSearchResultItem({
     if (map) {
       const newLocation = new naver.maps.LatLng(latitude, longitude);
       map.setCenter(newLocation);
-      map.setZoom(17);
+      map.setZoom(18);
     }
   };
 
@@ -55,7 +56,7 @@ export default function ApartSearchResultItem({
       try {
         const newLocation = new naver.maps.LatLng(latitude, longitude);
         map.setCenter(newLocation);
-        map.setZoom(17);
+        map.setZoom(19);
       } catch (error) {
         console.error("지도 이동 중 오류:", error);
       }
@@ -83,6 +84,8 @@ export default function ApartSearchResultItem({
       });
       setSelectMarker(selectMarker);
       setSelectMarkerId(aptId);
+      selectMarker.setMap(null);
+      selectMarker.setMap(useMarkerStore.getState().map);
     }
     setIsSlide(true);
     setIsDetailInfo(null);
