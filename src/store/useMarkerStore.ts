@@ -22,7 +22,7 @@ export type TBounds = {
 };
 
 type TUseMarkerStore = {
-  map?: naver.maps.Map | null; //네이버 지도 전역 객체
+  map: naver.maps.Map | null; //네이버 지도 전역 객체
   isLoading: boolean; // 네이버 지도 로딩
   bounds: TBounds | null; // 경계좌표
   markers: naver.maps.Marker[]; // 변환 후 마커 배열

@@ -3,48 +3,56 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import useLocationPath from "../Map/useLocationPath";
+import { useSearchStore } from "@/store/useSearchStore";
 
-export function useInfiniteScroll(keyword: string) {
+export function useInfiniteScroll() {
   const [items, setItems] = useState<TApartMarkerData[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const [totalCount, setTotalCount] = useState(0);
-  // const [location, setLocation] = useState(false);
+  const [totalCount, setTotalCount] = useState(1);
+  const [location, setLocation] = useState(false);
   const { ref, inView } = useInView();
   const { apartSeparate } = useLocationPath();
+  const keyword = useSearchStore((state) => state.keyword);
+  const prevKeyword = useSearchStore((state) => state.prevKeyword);
+  const setPrevKeyword = useSearchStore((state) => state.setPrevKeyword);
   const pathName = apartSeparate === "apt" ? "apt" : "defect";
 
   const setMarkerData = useMarkerStore((state) => state.setMarkerData);
-  // const map = useMarkerStore((state) => state.map);
+  const map = useMarkerStore((state) => state.map);
 
-  // const changeLocation = (results: any) => {
-  //   if (!location) setLocation(true);
-  //   else return;
-  //   if (map) {
-  //     const newLocation = new naver.maps.LatLng(
-  //       results[0].latitude,
-  //       results[0].longitude
-  //     );
-  //     map.setCenter(newLocation);
-  //     map.setZoom(17);
-  //     setLocation(false);
-  //   }
-  // };
+  const changeLocation = (results: any) => {
+    if (!location && page === 1) setLocation(true);
+    else return;
+    if (map) {
+      const newLocation = new naver.maps.LatLng(
+        results[0].latitude,
+        results[0].longitude
+      );
+      map.setCenter(newLocation);
+      map.setZoom(17);
+      setLocation(false);
+    }
+  };
 
   useEffect(() => {
     if (!keyword) return;
 
-    setItems([]);
-    setPage(1);
-    setHasMore(true);
-    setTotalCount(0);
-    fetchData(1, keyword);
+    if (prevKeyword !== keyword) {
+      setItems([]);
+      setPage(1);
+      setHasMore(true);
+      setTotalCount(0);
+      fetchData(page, keyword);
+      setPrevKeyword(keyword);
+    }
   }, [keyword]);
 
   useEffect(() => {
     if (inView && hasMore && !loading && keyword) {
-      fetchData(page, keyword);
+      setPage((prevState) => prevState + 1);
+      fetchData(page + 1, keyword);
     }
   }, [inView]);
 
@@ -62,7 +70,7 @@ export function useInfiniteScroll(keyword: string) {
         {
           params: {
             keyword: searchKeyword,
-            page: pageNum,
+            page: page,
             num: 10,
           },
         }
@@ -75,13 +83,12 @@ export function useInfiniteScroll(keyword: string) {
       }
 
       const { results, totalElements } = response.data.data;
-      // changeLocation(results);
+      changeLocation(results);
       setTotalCount(totalElements);
       setItems((prevItems) => {
         const newItems = pageNum === 1 ? results : [...prevItems, ...results];
         return newItems;
       });
-      setPage((prevPage) => prevPage + 1);
 
       const nextHasMore =
         (pageNum === 1 ? results.length : items.length + results.length) <

@@ -1,13 +1,11 @@
 // 아파트 검색 결과 컴포넌트
 
 import { useInfiniteScroll } from "@/hooks/Search/useInfinityScroll";
-import { useSearchStore } from "@/store/useSearchStore";
 import styles from "./ApartSearchResult.module.scss";
 import ApartSearchResultItem from "./ApartSearchResultItem";
 
 export default function ApartSearchResult() {
-  const keyword = useSearchStore((state) => state.keyword);
-  const { items, loading, ref, totalCount } = useInfiniteScroll(keyword);
+  const { items, loading, ref, totalCount } = useInfiniteScroll();
 
   return (
     <section className={styles.apartSearchResult}>
