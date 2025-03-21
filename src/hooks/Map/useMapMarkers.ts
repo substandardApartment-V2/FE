@@ -10,6 +10,7 @@ import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import useCreateCluster from "./useCreateCluster";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
+import { useSearchStore } from "@/store/useSearchStore";
 import axios from "axios";
 
 export default function useMapMarkers() {
@@ -25,6 +26,7 @@ export default function useMapMarkers() {
   const map = useMarkerStore((state) => state.map);
   const markers = useMarkerStore((state) => state.markers);
   const setMarkers = useMarkerStore((state) => state.setMarkers);
+  const setIsReset = useSearchStore((state) => state.setIsReset);
   const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const { apartSeparate } = useLocationPath();
@@ -91,6 +93,7 @@ export default function useMapMarkers() {
               listData.aptId
             }`
           );
+          setIsReset(true);
           marker.setIcon({
             url: selectMapMarkerIcon,
             size: new naver.maps.Size(35, 40),
