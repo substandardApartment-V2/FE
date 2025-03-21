@@ -103,6 +103,8 @@ export default function useMapMarkers() {
           setSelectMarker(marker);
           setMainInfo("SELECT");
           setSelectMarkerId(listData.aptId);
+          marker.setMap(null);
+          marker.setMap(useMarkerStore.getState().map);
           if (apartSeparate === "apt") setApartInfo(data.data);
           else setWeakApartInfo(data.data);
         });
