@@ -5,6 +5,8 @@ import useLocationPath from "@/hooks/Map/useLocationPath";
 import { useApartInfoStore } from "@/store/useApartInfoStore";
 import { useMainInfoStore } from "@/store/useMainInfoStore";
 import { TApartMarkerData, useMarkerStore } from "@/store/useMarkerStore";
+import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
+import { useSearchStore } from "@/store/useSearchStore";
 import styles from "./ApartSearchResult.module.scss";
 import axios from "axios";
 
@@ -21,10 +23,14 @@ export default function ApartSearchResultItem({
   const setSelectMarker = useMarkerStore((state) => state.setSelectMarker);
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setApartInfo = useMainInfoStore((state) => state.setApartInfo);
+  const setWeakApartInfo = useWeakApartInfoStore(
+    (state) => state.setWeakApartInfo
+  );
   const setIsSlide = useMainInfoStore((state) => state.setIsSlide);
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
   const setSelectMarkerId = useMarkerStore((state) => state.setSelectMarkerId);
   const setIsLoading = useMarkerStore((state) => state.setIsLoading);
+  const { setIsReset } = useSearchStore();
   const { apartSeparate } = useLocationPath();
 
   const getApartData = async (url: string) => {
@@ -45,6 +51,7 @@ export default function ApartSearchResultItem({
       map.setCenter(newLocation);
       map.setZoom(18);
     }
+    setIsReset(true);
   };
 
   const selectSearchApartInfoHandler = async (
@@ -90,7 +97,9 @@ export default function ApartSearchResultItem({
     setIsSlide(true);
     setIsDetailInfo(null);
     setMainInfo("SELECT");
-    setApartInfo(data.data);
+    if (apartSeparate === "apt") setApartInfo(data.data);
+    else setWeakApartInfo(data.data);
+    setIsReset(true);
   };
 
   return (

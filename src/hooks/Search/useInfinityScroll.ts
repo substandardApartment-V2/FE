@@ -15,15 +15,17 @@ export function useInfiniteScroll() {
   const { ref, inView } = useInView();
   const { apartSeparate } = useLocationPath();
   const keyword = useSearchStore((state) => state.keyword);
-  const prevKeyword = useSearchStore((state) => state.prevKeyword);
+  const prevKeyword = useSearchStore.getState().prevKeyword;
   const setPrevKeyword = useSearchStore((state) => state.setPrevKeyword);
+  const setIsReset = useSearchStore((state) => state.setIsReset);
+  const isReset = useSearchStore((state) => state.isReset);
   const pathName = apartSeparate === "apt" ? "apt" : "defect";
 
   const setMarkerData = useMarkerStore((state) => state.setMarkerData);
   const map = useMarkerStore((state) => state.map);
 
-  const changeLocation = (results: any) => {
-    if (!location && page === 1) setLocation(true);
+  const changeLocation = (pageNum: number, results: any) => {
+    if (!location && pageNum === 1) setLocation(true);
     else return;
     if (map) {
       const newLocation = new naver.maps.LatLng(
@@ -38,14 +40,14 @@ export function useInfiniteScroll() {
 
   useEffect(() => {
     if (!keyword) return;
-
-    if (prevKeyword !== keyword) {
+    if (prevKeyword !== keyword || isReset) {
       setItems([]);
       setPage(1);
       setHasMore(true);
       setTotalCount(0);
-      fetchData(page, keyword);
+      fetchData(1, keyword);
       setPrevKeyword(keyword);
+      setIsReset(false);
     }
   }, [keyword]);
 
@@ -70,7 +72,7 @@ export function useInfiniteScroll() {
         {
           params: {
             keyword: searchKeyword,
-            page: page,
+            page: pageNum,
             num: 10,
           },
         }
@@ -83,7 +85,7 @@ export function useInfiniteScroll() {
       }
 
       const { results, totalElements } = response.data.data;
-      changeLocation(results);
+      changeLocation(pageNum, results);
       setTotalCount(totalElements);
       setItems((prevItems) => {
         const newItems = pageNum === 1 ? results : [...prevItems, ...results];
