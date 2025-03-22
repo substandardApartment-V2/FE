@@ -40,7 +40,7 @@ export function useInfiniteScroll() {
 
   useEffect(() => {
     if (!keyword) return;
-    if (prevKeyword !== keyword || useSearchStore.getState().isReset) {
+    if (prevKeyword !== keyword || !useSearchStore.getState().isReset) {
       setItems([]);
       setPage(1);
       setHasMore(true);
@@ -52,7 +52,13 @@ export function useInfiniteScroll() {
   }, [keyword]);
 
   useEffect(() => {
-    if (inView && hasMore && !loading && keyword) {
+    if (
+      inView &&
+      hasMore &&
+      !loading &&
+      keyword &&
+      !useSearchStore.getState().isReset
+    ) {
       setPage((prevState) => prevState + 1);
       fetchData(page + 1, keyword);
     }

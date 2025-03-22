@@ -31,7 +31,6 @@ export default function ApartSearchResultItem({
   const setSelectMarkerId = useMarkerStore((state) => state.setSelectMarkerId);
   const setIsLoading = useMarkerStore((state) => state.setIsLoading);
   const setIsReset = useSearchStore((state) => state.setIsReset);
-  const isReset = useSearchStore.getState().isReset;
   const { apartSeparate } = useLocationPath();
 
   const getApartData = async (url: string) => {
@@ -47,12 +46,12 @@ export default function ApartSearchResultItem({
   };
 
   const selectSearchApartHandler = (latitude: number, longitude: number) => {
+    setIsReset(true);
     if (map) {
       const newLocation = new naver.maps.LatLng(latitude, longitude);
       map.setCenter(newLocation);
       map.setZoom(18);
     }
-    if (isReset) setIsReset(false);
   };
 
   const selectSearchApartInfoHandler = async (
@@ -61,6 +60,7 @@ export default function ApartSearchResultItem({
     longitude: number
   ) => {
     if (map) {
+      setIsReset(true);
       try {
         const newLocation = new naver.maps.LatLng(latitude, longitude);
         map.setCenter(newLocation);
@@ -100,7 +100,6 @@ export default function ApartSearchResultItem({
     setMainInfo("SELECT");
     if (apartSeparate === "apt") setApartInfo(data.data);
     else setWeakApartInfo(data.data);
-    if (isReset) setIsReset(false);
   };
 
   return (
