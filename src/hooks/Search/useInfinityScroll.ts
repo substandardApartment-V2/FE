@@ -18,7 +18,7 @@ export function useInfiniteScroll() {
   const prevKeyword = useSearchStore.getState().prevKeyword;
   const setPrevKeyword = useSearchStore((state) => state.setPrevKeyword);
   const setIsReset = useSearchStore((state) => state.setIsReset);
-  const isReset = useSearchStore((state) => state.isReset);
+  // const isReset = useSearchStore.getState().isReset;
   const pathName = apartSeparate === "apt" ? "apt" : "defect";
 
   const setMarkerData = useMarkerStore((state) => state.setMarkerData);
@@ -40,7 +40,7 @@ export function useInfiniteScroll() {
 
   useEffect(() => {
     if (!keyword) return;
-    if (prevKeyword !== keyword || isReset) {
+    if (prevKeyword !== keyword || !useSearchStore.getState().isReset) {
       setItems([]);
       setPage(1);
       setHasMore(true);
@@ -52,7 +52,13 @@ export function useInfiniteScroll() {
   }, [keyword]);
 
   useEffect(() => {
-    if (inView && hasMore && !loading && keyword) {
+    if (
+      inView &&
+      hasMore &&
+      !loading &&
+      keyword &&
+      !useSearchStore.getState().isReset
+    ) {
       setPage((prevState) => prevState + 1);
       fetchData(page + 1, keyword);
     }

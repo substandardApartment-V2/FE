@@ -6,6 +6,7 @@ import styles from "./NavList.module.scss";
 import { useMarkerStore } from "@/store/useMarkerStore";
 import { useWeakApartInfoStore } from "@/store/useWeakApartInfoStore";
 import useLocationPath from "@/hooks/Map/useLocationPath";
+import { useSearchStore } from "@/store/useSearchStore";
 
 export default function NavList(props: TNavList) {
   const setIsDetailInfo = useApartInfoStore((state) => state.setIsDetailInfo);
@@ -18,6 +19,7 @@ export default function NavList(props: TNavList) {
   const setMap = useMarkerStore((state) => state.setMap);
   const setMarkers = useMarkerStore((state) => state.setMarkers);
   const { pathName } = useLocationPath();
+  const setIsReset = useSearchStore((state) => state.setIsReset);
 
   const resetInfoHandler = () => {
     if (props.target === pathName) return;
@@ -28,6 +30,7 @@ export default function NavList(props: TNavList) {
     setMarkers([]);
     setWeakApartInfo(null);
     setMap(null);
+    setIsReset(true);
   };
 
   return (

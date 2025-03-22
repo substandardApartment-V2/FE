@@ -18,6 +18,7 @@ export default function ApartRecentSearchList({
   const setIsSlide = useMainInfoStore.getState().setIsSlide;
   const setMainInfo = useMainInfoStore((state) => state.setMainInfo);
   const setKeyword = useSearchStore((state) => state.setKeyword);
+  const setIsReset = useSearchStore((state) => state.setIsReset);
 
   return (
     <div className={styles.recentSearch}>
@@ -44,6 +45,7 @@ export default function ApartRecentSearchList({
                     setKeyword(record.keyword);
                     setIsSlide(true);
                     setShowRecentSearch(false);
+                    setIsReset(false);
                     if (searchRef.current) {
                       searchRef.current.blur();
                     }
