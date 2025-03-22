@@ -26,6 +26,8 @@ export default function ApartSearchInput(props: TApartSearchInput) {
   const setWeakApartInfo = useWeakApartInfoStore(
     (state) => state.setWeakApartInfo
   );
+  const setIsReset = useSearchStore((state) => state.setIsReset);
+  const setSelectMarkerId = useMarkerStore((state) => state.setSelectMarkerId);
 
   useEffect(() => {
     if (map) {
@@ -43,9 +45,11 @@ export default function ApartSearchInput(props: TApartSearchInput) {
           addRecord(props.searchRef.current.value);
           setMainInfo("SEARCH");
           setIsSlide(true);
+          setIsReset(false);
           props.searchRef.current.blur();
           setApartInfo(null);
           setWeakApartInfo(null);
+          setSelectMarkerId(null);
         }
         props.setShowRecentSearch(false);
       }}
