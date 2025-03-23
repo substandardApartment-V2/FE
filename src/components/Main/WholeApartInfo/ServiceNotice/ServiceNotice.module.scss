@@ -54,10 +54,11 @@
   .show {
     display: flex;
     flex-direction: column;
+    gap: 1.6rem;
     height: 100%;
     .noticeLists {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
       gap: 1.6rem;
       height: 100%;
       @include rs.respond-to("desktop-small") {
@@ -126,35 +127,4 @@
       }
     }
   }
-  // .noticeLists {
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 1.6rem;
-  //   height: 100%;
-  //   @include rs.respond-to("desktop-small") {
-  //     gap: 0;
-  //   }
-  // }
-  // .pagination {
-  //   margin-top: auto;
-  //   display: flex;
-  //   justify-content: center;
-  //   gap: 0.4rem;
-  //   padding-top: 1.6rem;
-  //   .pageContainer {
-  //     display: flex;
-  //     justify-content: center;
-  //     gap: 0.8rem;
-  //     .pageLink {
-  //       font-size: 1.4rem;
-  //       font-weight: 500;
-  //       line-height: 2rem;
-  //       color: colors.$mainTitle;
-  //     }
-  //     .pageActive {
-  //       font-weight: 700;
-  //       color: colors.$mainRed;
-  //     }
-  //   }
-  // }
 }
