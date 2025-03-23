@@ -6,7 +6,6 @@
   display: flex;
   justify-content: center;
   gap: 0.4rem;
-  padding-top: 1.6rem;
   @include rs.respond-to("desktop-small") {
     padding: 1.6rem;
   }
