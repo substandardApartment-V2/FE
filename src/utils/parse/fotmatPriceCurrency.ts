@@ -1,7 +1,6 @@
 // 아파트 매매가 포맷 함수
-
 export const formatPriceCurrency = (num: number): string => {
-  const units = ["원", "만원", "억", "조"];
+  const units = ["만원", "억", "조"];
   let result = "";
   let unitIndex = 0;
 
